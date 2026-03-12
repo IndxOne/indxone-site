@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Merci — Votre message a bien été reçu. Nous vous répondons sous 24h.">
+<meta name="theme-color" content="#E8567A">
+<meta property="og:title" content="Message reçu — INDXONE">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://indxone.com/merci">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23E8567A' width='100' height='100'/%3E%3Ctext x='50' y='55' font-size='60' font-family='sans-serif' font-weight='bold' text-anchor='middle' fill='white'%3E✓%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Merci — INDXONE</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#06111F;color:#fff;font-family:'DM Sans',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;overflow:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(#1A3A5C 1px,transparent 1px),linear-gradient(90deg,#1A3A5C 1px,transparent 1px);background-size:60px 60px;opacity:0.07;pointer-events:none;z-index:0}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes checkDraw{from{stroke-dashoffset:60}to{stroke-dashoffset:0}}
+@keyframes circleDraw{from{stroke-dashoffset:200}to{stroke-dashoffset:0}}
+.card{background:#0A1A2E;border:1px solid rgba(26,58,92,0.5);border-radius:16px;padding:56px 48px;max-width:480px;width:100%;text-align:center;position:relative;z-index:1;animation:fadeUp 0.6s ease both}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#E8567A,#1A6F9A);border-radius:16px 16px 0 0}
+.check-wrap{margin:0 auto 32px;width:72px;height:72px}
+.check-wrap svg circle{stroke-dasharray:200;stroke-dashoffset:200;animation:circleDraw 0.6s 0.2s ease forwards}
+.check-wrap svg polyline{stroke-dasharray:60;stroke-dashoffset:60;animation:checkDraw 0.4s 0.7s ease forwards}
+.title{font-family:'Syne',sans-serif;font-weight:800;font-size:28px;margin-bottom:12px;animation:fadeUp 0.6s 0.3s ease both;opacity:0}
+.subtitle{color:#A8BCCC;font-size:15px;line-height:1.7;margin-bottom:36px;animation:fadeUp 0.6s 0.4s ease both;opacity:0}
+.subtitle strong{color:#E8B84B;font-weight:500}
+.btn-back{display:inline-block;background:#E8567A;color:#fff;padding:13px 32px;border-radius:6px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;text-decoration:none;transition:background 0.2s,transform 0.2s;border:none;cursor:pointer;animation:fadeUp 0.6s 0.5s ease both;opacity:0}
+.btn-back:hover,.btn-back:focus{background:#F07090;transform:translateY(-2px);outline:none}
+.logo{position:fixed;top:24px;left:32px;font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#fff;text-decoration:none;letter-spacing:1px;z-index:10}
+.logo span{color:#E8567A}
+@media(max-width:640px){.card{padding:40px 24px}.title{font-size:22px}.logo{font-size:16px}}
+</style>
+</head>
+<body>
+
+<a href="/" class="logo">indx<span>ONE</span></a>
+
+<div class="card" role="main">
+  <div class="check-wrap" aria-hidden="true">
+    <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="36" cy="36" r="30" stroke="#E8567A" stroke-width="2" fill="none"/>
+      <polyline points="22,36 32,46 50,28" stroke="#E8FF3C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+  </div>
+
+  <h1 class="title">Message reçu ✓</h1>
+  <p class="subtitle">
+    Merci pour votre message.<br>
+    Je vous réponds <strong>sous 24h</strong> pour qu'on puisse discuter de votre projet.
+  </p>
+  <a href="/" class="btn-back">← Retour au site</a>
+</div>
+
+</body>
+</html>

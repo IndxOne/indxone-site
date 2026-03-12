@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /.env
+Disallow: /node_modules/
+
+Sitemap: https://indxone.com/sitemap.xml
+
+# Crawl delay (0.5 seconds between requests)
+Crawl-delay: 0.5
+Request-rate: 2/1s

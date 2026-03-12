@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio de projets SI — ERP, CRM, automatisation, app mobile. Consultant SI & Automatisation, Koffi Niamkey.">
+<meta name="theme-color" content="#E8567A">
+<meta property="og:title" content="Projets — INDXONE · Koffi Niamkey">
+<meta property="og:description" content="Portfolio SI — ERP, CRM, automatisation, app mobile. Expertise transverse.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://indxone.com/projets">
+<link rel="canonical" href="https://indxone.com/projets">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23E8567A' width='100' height='100'/%3E%3Ctext x='50' y='55' font-size='60' font-family='sans-serif' font-weight='bold' text-anchor='middle' fill='white'%3E◆%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Projets — INDXONE · Koffi Niamkey</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#06111F;--deep:#0A1A2E;--steel:#1A3A5C;--pink:#E8567A;--pink2:#F07090;--gold:#E8B84B;--silver:#A8BCCC;--white:#F8FAFC;--glass:rgba(255,255,255,0.04);--glass2:rgba(255,255,255,0.08);--border:rgba(168,188,204,0.12);--border2:rgba(168,188,204,0.20);--freelance:#00D4AA;--cdi:#5B8FDB}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(ellipse 70% 40% at 15% 5%,rgba(26,111,154,0.10) 0%,transparent 55%),radial-gradient(ellipse 50% 35% at 85% 85%,rgba(232,86,122,0.06) 0%,transparent 50%);pointer-events:none;z-index:0}
+.skip{position:absolute;top:-100px;left:16px;background:var(--pink);color:#fff;padding:8px 16px;border-radius:8px;z-index:1000;font-size:.875rem;transition:top .2s}
+.skip:focus{top:16px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5vw;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,17,31,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--white);text-decoration:none;letter-spacing:.04em;display:flex;align-items:center;gap:10px}
+.nav-logo-mark{width:30px;height:30px;background:var(--navy);border:1.5px solid var(--pink);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:var(--pink)}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{color:var(--silver);text-decoration:none;font-size:.875rem;transition:color .2s}
+.nav-links a:hover,.nav-links a:focus,.nav-links a.active{color:var(--white);outline:none}
+.nav-cta{background:var(--pink)!important;color:var(--white)!important;padding:8px 20px!important;border-radius:50px!important;font-weight:500!important;font-size:.85rem!important;transition:all .2s!important}
+.nav-cta:hover,.nav-cta:focus{background:var(--pink2)!important;outline:none}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;color:var(--white)}
+.page-header{padding:120px 5vw 60px;position:relative;z-index:1;border-bottom:1px solid var(--border)}
+.breadcrumb{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--silver);letter-spacing:.08em;opacity:.6;margin-bottom:1.5rem}
+.breadcrumb a{color:inherit;text-decoration:none;transition:opacity .2s}
+.breadcrumb a:hover{opacity:1}
+.page-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.5rem,5vw,4.5rem);letter-spacing:-.03em;line-height:1.05;margin-bottom:1.2rem;opacity:0;animation:fadeUp .8s .2s ease forwards}
+.page-title .accent{background:linear-gradient(135deg,var(--pink) 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page-sub{color:var(--silver);font-size:1.05rem;font-weight:300;max-width:520px;line-height:1.7;opacity:0;animation:fadeUp .8s .4s ease forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.stats-bar{display:flex;flex-wrap:wrap;gap:3rem;padding:2.5rem 5vw;border-bottom:1px solid var(--border);position:relative;z-index:1;opacity:0;animation:fadeUp .8s .6s ease forwards}
+.stat-item{display:flex;align-items:baseline;gap:8px}
+.stat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:var(--white);line-height:1}
+.stat-label{font-size:.82rem;color:var(--silver);font-weight:300}
+.filters{padding:2rem 5vw 0;position:relative;z-index:1;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.filter-btn{background:var(--glass);border:1px solid var(--border);border-radius:50px;padding:7px 18px;font-size:.82rem;color:var(--silver);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:6px}
+.filter-btn:hover,.filter-btn:focus,.filter-btn.active{background:var(--glass2);color:var(--white);border-color:var(--border2);outline:none}
+.filter-btn.active-freelance{border-color:var(--freelance);color:var(--freelance);background:rgba(0,212,170,.08)}
+.filter-btn.active-cdi{border-color:var(--cdi);color:var(--cdi);background:rgba(91,143,219,.08)}
+.projects-container{padding:2.5rem 5vw 100px;position:relative;z-index:1;display:flex;flex-direction:column;gap:1.5rem}
+.project-card{background:var(--deep);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:border-color .3s,transform .3s}
+.project-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.project-card.hidden{display:none}
+.card-header{padding:2.5rem;display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:flex-start;cursor:pointer}
+.card-meta{display:flex;align-items:center;gap:10px;margin-bottom:.8rem;flex-wrap:wrap}
+.card-badge{display:inline-flex;align-items:center;gap:5px;border-radius:50px;padding:3px 10px;font-size:.72rem;font-family:'DM Mono',monospace;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+.badge-freelance{background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.25);color:var(--freelance)}
+.badge-cdi{background:rgba(91,143,219,.12);border:1px solid rgba(91,143,219,.25);color:var(--cdi)}
+.card-date{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--silver);opacity:.6;letter-spacing:.06em}
+.card-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.35rem;color:var(--white);letter-spacing:-.02em;line-height:1.2;margin-bottom:.7rem}
+.card-subtitle{color:var(--silver);font-size:.9rem;font-weight:300;line-height:1.6}
+.card-toggle{width:36px;height:36px;border-radius:50%;background:var(--glass);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .3s;flex-shrink:0;margin-top:4px}
+.card-toggle svg{transition:transform .3s;width:20px;height:20px}
+.card-toggle.open svg{transform:rotate(180deg)}
+.card-toggle.open{background:var(--glass2);border-color:var(--border2)}
+.card-tags{padding:0 2.5rem 1.5rem;display:flex;flex-wrap:wrap;gap:.5rem}
+.tag{background:var(--glass);border:1px solid var(--border);border-radius:50px;padding:4px 12px;font-size:.75rem;color:var(--silver);font-family:'DM Mono',monospace;letter-spacing:.04em}
+.card-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1);border-top:1px solid transparent}
+.card-body.open{max-height:900px;border-top-color:var(--border)}
+.card-body-inner{padding:2rem 2.5rem 2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+@media(max-width:768px){.card-body-inner{grid-template-columns:1fr}}
+.body-desc{color:var(--silver);font-size:.9rem;line-height:1.75;font-weight:300;margin-bottom:1.2rem}
+.body-section-title{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--pink);margin-bottom:.8rem}
+.body-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.body-list li{font-size:.85rem;color:var(--silver);display:flex;align-items:flex-start;gap:8px;font-weight:300}
+.body-list li::before{content:'→';color:var(--pink);flex-shrink:0}
+.cta-section{position:relative;z-index:1;padding:60px 5vw 100px;text-align:center}
+.cta-block{background:linear-gradient(135deg,var(--deep) 0%,rgba(26,58,92,.4) 100%);border:1px solid var(--border);border-radius:24px;padding:3.5rem 2rem}
+.section-label{display:block;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);margin-bottom:1.2rem}
+.cta-title{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(1.5rem,3vw,2.5rem);letter-spacing:-.025em;margin-bottom:1rem}
+.cta-sub{color:var(--silver);font-size:1rem;font-weight:300;margin-bottom:2.5rem}
+.cta-actions{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:var(--white);padding:14px 30px;border-radius:50px;font-size:.95rem;font-weight:500;text-decoration:none;transition:all .25s;border:none;cursor:pointer}
+.btn-primary:hover,.btn-primary:focus{background:var(--pink2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(232,86,122,.3);outline:none}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:var(--glass2);color:var(--white);padding:14px 30px;border-radius:50px;font-size:.95rem;font-weight:400;text-decoration:none;border:1px solid var(--border2);transition:all .25s}
+.btn-secondary:hover,.btn-secondary:focus{transform:translateY(-2px);outline:none}
+.btn-download{display:inline-flex;align-items:center;gap:8px;color:var(--gold);padding:14px 26px;border-radius:50px;font-size:.82rem;text-decoration:none;border:1px solid rgba(232,184,75,.3);font-family:'DM Mono',monospace;letter-spacing:.04em;transition:all .25s}
+.btn-download:hover,.btn-download:focus{background:rgba(232,184,75,.07);border-color:var(--gold);transform:translateY(-1px);outline:none}
+.social-row{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:1.5rem}
+.social-link{display:inline-flex;align-items:center;gap:8px;background:var(--glass);border:1px solid var(--border2);border-radius:10px;padding:10px 16px;text-decoration:none;color:var(--white);font-size:.85rem;transition:all .2s}
+.social-link:hover,.social-link:focus{background:var(--glass2);transform:translateY(-2px);outline:none}
+footer{border-top:1px solid var(--border);padding:2rem 5vw;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;position:relative;z-index:1}
+.footer-brand{font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;color:var(--white)}
+.footer-brand span{color:var(--silver);font-weight:300;font-size:.78rem;display:block;margin-top:2px}
+.footer-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap}
+.footer-links a{color:var(--silver);text-decoration:none;font-size:.82rem;transition:color .2s}
+.footer-links a:hover{color:var(--white)}
+.footer-legal{font-size:.72rem;color:rgba(168,188,204,.45);font-family:'DM Mono',monospace}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:64px 0 0 0;background:rgba(6,17,31,.97);backdrop-filter:blur(20px);padding:2rem 5vw;z-index:99;gap:1.5rem;align-items:flex-start}
+  .nav-hamburger{display:flex}
+  .page-header{padding:100px 5vw 40px}
+  .card-header{padding:1.5rem;grid-template-columns:1fr}
+  .card-body-inner{padding:1.5rem}
+  .stats-bar{gap:1.5rem;padding:1.5rem 5vw}
+  .cta-block{padding:2rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<a href="#contenu-principal" class="skip">Aller au contenu principal</a>
+
+<nav role="navigation" aria-label="Navigation principale">
+  <a href="https://indxone.com" class="nav-logo" aria-label="INDXONE">
+    <div class="nav-logo-mark">◆</div>
+    <div>INDXONE</div>
+  </a>
+  <ul class="nav-links" id="navLinks" role="menubar">
+    <li><a href="https://indxone.com" role="menuitem">Accueil</a></li>
+    <li><a href="https://indxone.com/collectivites" role="menuitem">Communes</a></li>
+    <li><a href="https://indxone.com/projets" role="menuitem" class="active">Projets</a></li>
+    <li><a href="https://malt.fr/koffi-niamkey" class="nav-cta" rel="noopener noreferrer" role="menuitem">Profil Malt</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<header class="page-header" role="banner" id="hero">
+  <div class="breadcrumb" role="navigation" aria-label="Fil d'Ariane">
+    <a href="https://indxone.com">Accueil</a> / Projets
+  </div>
+  <h1 class="page-title">Projets <span class="accent">SI & Produit</span></h1>
+  <p class="page-sub">4 ans de pilotage transverse — transformation digitale, architecture IT, automatisation, produit mobile. Expertise pour PME industrielles et EdTech.</p>
+</header>
+
+<div class="stats-bar" role="complementary" aria-label="Statistiques">
+  <div class="stat-item">
+    <span class="stat-num">10+</span>
+    <span class="stat-label">Projets pilotés</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">4</span>
+    <span class="stat-label">Ans d'expertise</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">110</span>
+    <span class="stat-label">Collaborateurs gérés</span>
+  </div>
+</div>
+
+<div class="filters" role="toolbar" aria-label="Filtres">
+  <button class="filter-btn active" onclick="filterProjects('all')" role="button">Tous</button>
+  <button class="filter-btn" onclick="filterProjects('cdi')" role="button"><span class="filter-dot" style="background:var(--cdi)"></span> CDI</button>
+  <button class="filter-btn" onclick="filterProjects('freelance')" role="button"><span class="filter-dot" style="background:var(--freelance)"></span> SASU</button>
+</div>
+
+<main class="projects-container" id="contenu-principal" role="main">
+  <!-- PROJETS CDI -->
+  <article class="project-card" data-type="cdi">
+    <div class="card-header" onclick="toggleCard(this)" role="button" tabindex="0" aria-expanded="false">
+      <div>
+        <div class="card-meta">
+          <span class="card-badge badge-cdi">CDI</span>
+          <span class="card-date">2020–2026</span>
+        </div>
+        <h2 class="card-title">Transformation digitale PME industrielle</h2>
+        <p class="card-subtitle">Intégration ERP, CRM, GTA, téléphonie IP, Power Platform. ~110 collaborateurs, pilotage RACI.</p>
+      </div>
+      <div class="card-toggle" role="presentation">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+        <div>
+          <p class="body-desc">Responsable SI transverse (infra, applis, projets) dans PME industrielle 110 pers. Autorité projet sur tous les volets — conduite du changement, formation, déploiement.</p>
+          <div class="body-section-title">🎯 Réalisations clés</div>
+          <ul class="body-list">
+            <li>Intégration ERP Diapason + Power BI reporting</li>
+            <li>Mise en place CRM Dynamics 365 + Power Apps</li>
+            <li>GTA Kelio — suivi temps + paie</li>
+            <li>Téléphonie IP Teams — responsable</li>
+            <li>Configurateur web en ligne (no-code)</li>
+            <li>Power Automate — automatisation processus</li>
+          </ul>
+        </div>
+        <div>
+          <div class="body-section-title">💼 Stack & Compétences</div>
+          <ul class="body-list">
+            <li>Infra: Hyper-V, AWS, GCP, Azure, Entra ID</li>
+            <li>Data: Power BI, Power Apps, Power Automate</li>
+            <li>Méthodologie: RACI, MoSCoW, Kanban, Agile</li>
+            <li>MCO + transformation SI (12+ mois/projet)</li>
+            <li>Conduite du changement & formation équipe</li>
+            <li>Coordination prestataires externes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="project-card" data-type="freelance">
+    <div class="card-header" onclick="toggleCard(this)" role="button" tabindex="0" aria-expanded="false">
+      <div>
+        <div class="card-meta">
+          <span class="card-badge badge-freelance">SASU</span>
+          <span class="card-date">Janv 2026 – Continu</span>
+        </div>
+        <h2 class="card-title">INDXONE — Plateforme logistique France ↔ Côte d'Ivoire</h2>
+        <p class="card-subtitle">FlutterFlow + Supabase + Make + Stripe. MVP livré 5j. Contrat 18 mois, automatisation 0 manual.</p>
+      </div>
+      <div class="card-toggle" role="presentation">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+        <div>
+          <p class="body-desc">Plateforme de commande + suivi fret maritime France → Côte d'Ivoire. Architecture full-stack: mobile app, backend Supabase, paiements fractionnés, webhooks Make, intégration Boxtal/Cocolis pour routage géographique automatique.</p>
+          <div class="body-section-title">🚀 Livrables</div>
+          <ul class="body-list">
+            <li>App mobile FlutterFlow (iOS + Android)</li>
+            <li>Supabase backend (auth, RLS, Edge Functions)</li>
+            <li>Stripe paiements (autorisation + capture 70%)</li>
+            <li>Make.com 4 scénarios (commande → devis → paiement → suivi)</li>
+            <li>Intégration Boxtal/Cocolis (détection IDF/province)</li>
+            <li>Système loyalty + groupage m³</li>
+          </ul>
+        </div>
+        <div>
+          <div class="body-section-title">💰 Contrat & Continuité</div>
+          <ul class="body-list">
+            <li>2 200€ HT (50/50 répartition)</li>
+            <li>Clause continuité 18 mois (-montant si app mobile future)</li>
+            <li>Premier paiement: audit + spécifications</li>
+            <li>Facturation par jalons + commission m³</li>
+            <li>Remunération SASU: dividendes optimisés</li>
+            <li>Tech: FlutterFlow Pro account (INDXONE host)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="project-card" data-type="freelance">
+    <div class="card-header" onclick="toggleCard(this)" role="button" tabindex="0" aria-expanded="false">
+      <div>
+        <div class="card-meta">
+          <span class="card-badge badge-freelance">SASU</span>
+          <span class="card-date">Janv 2026 – Phase 3</span>
+        </div>
+        <h2 class="card-title">Productization — Sites mairies France</h2>
+        <p class="card-subtitle">Template HTML/CSS + Python scraper. 80+ communes/an. 48h déploiement. Hébergement Netlify gratuit.</p>
+      </div>
+      <div class="card-toggle" role="presentation">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+        <div>
+          <p class="body-desc">Productization de sites mairies communes rurales Hauts-de-France. 3 formules (Starter 490€ + Standard + Premium). Python scraper auto-génère arborescence communes (config.js + index.html). Zip pre-built pour déploiement Netlify 1-click.</p>
+          <div class="body-section-title">📦 Pipeline</div>
+          <ul class="body-list">
+            <li>Phase 1: Scraper geo.api.gouv.fr + annuaire-mairie.fr</li>
+            <li>Phase 2: Landing page /collectivites + SEO</li>
+            <li>Phase 3: Prospecting + démo pre-built</li>
+            <li>Pilote: Mons-en-Laonnois (02000) ✓</li>
+            <li>Cible: 14 prospects trackés (P001–P014)</li>
+            <li>Acquisition: Malt, LeHibou, Collective.work</li>
+          </ul>
+        </div>
+        <div>
+          <div class="body-section-title">🎨 Technologie</div>
+          <ul class="body-list">
+            <li>Frontend: HTML5 + CSS3 + Vanilla JS</li>
+            <li>Backend scraper: Python 3.10+ (requests, BeautifulSoup)</li>
+            <li>Config-driven: 15 CONFIG data points</li>
+            <li>3 couleurs CSS variables (palette)</li>
+            <li>Lighthouse 96+ · WCAG A · 0 cookies</li>
+            <li>Hosting: Netlify Free (CDN gratuit)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="project-card" data-type="cdi">
+    <div class="card-header" onclick="toggleCard(this)" role="button" tabindex="0" aria-expanded="false">
+      <div>
+        <div class="card-meta">
+          <span class="card-badge badge-cdi">CDI</span>
+          <span class="card-date">2024–2026</span>
+        </div>
+        <h2 class="card-title">Structuration gestion projet — ClickUp + Automations</h2>
+        <p class="card-subtitle">Workspace complète. RACI, Kanban, sprints. Formule IT pour PME. 50+ workspaces déployés.</p>
+      </div>
+      <div class="card-toggle" role="presentation">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+        <div>
+          <p class="body-desc">Ref IT — design + déploiement ClickUp (RACI, Kanban, sprints). Workspace template + trainingOK pour managers. Automations: Slack sync, email digest, rapport hebdo. MCO 12+ mois.</p>
+          <div class="body-section-title">📊 Scope</div>
+          <ul class="body-list">
+            <li>Design RACI (rôles, responsabilités)</li>
+            <li>Setup Kanban (sprints 2 sem)</li>
+            <li>Task templates (projet-type)</li>
+            <li>Slack bot integration + webhooks</li>
+            <li>Reporting automatisé (API ClickUp)</li>
+            <li>Training équipe management (2h)</li>
+          </ul>
+        </div>
+        <div>
+          <div class="body-section-title">✨ Résultat</div>
+          <ul class="body-list">
+            <li>Traçabilité 100% projets</li>
+            <li>Réduction overhead réunion -30%</li>
+            <li>Engagement équipe +25% (autonomie)</li>
+            <li>Estimation mieux calibrée</li>
+            <li>Connaissance partagée (wiki interne)</li>
+            <li>MCO ongoing (support tier)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+</main>
+
+<section class="cta-section" role="region" aria-labelledby="cta-titre">
+  <div class="cta-block">
+    <span class="section-label">Ensemble</span>
+    <h2 class="cta-title" id="cta-titre">Votre projet.<br>Notre expertise.</h2>
+    <p class="cta-sub">CDI ou SASU — Transformation SI, automatisation, produit. Évaluons ensemble votre besoin.</p>
+    <div class="cta-actions">
+      <a href="https://malt.fr/koffi-niamkey" class="btn-primary" rel="noopener noreferrer">📌 Profil Malt</a>
+      <a href="mailto:contact@indxone.com" class="btn-secondary">✉ contact@indxone.com</a>
+      <a href="https://www.linkedin.com/in/koffi-niamkey/" class="btn-secondary" rel="noopener noreferrer">💼 LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer role="contentinfo">
+  <div class="footer-brand">
+    INDXONE
+    <span>Koffi Niamkey · Consultant SI & Automatisation</span>
+  </div>
+  <ul class="footer-links" role="navigation" aria-label="Liens rapides">
+    <li><a href="https://indxone.com" rel="noopener noreferrer">Accueil</a></li>
+    <li><a href="https://indxone.com/collectivites" rel="noopener noreferrer">Communes</a></li>
+    <li><a href="mailto:contact@indxone.com">Email</a></li>
+  </ul>
+  <span class="footer-legal">© 2026 INDXONE SASU · SIRET 999 968 902</span>
+</footer>
+
+<script>
+function toggleCard(el){const card=el.closest('.project-card');const toggle=card.querySelector('.card-toggle');const body=card.querySelector('.card-body');toggle.classList.toggle('open');body.classList.toggle('open');el.setAttribute('aria-expanded',toggle.classList.contains('open'))}
+function filterProjects(type){document.querySelectorAll('.project-card').forEach(card=>{if(type==='all'){card.classList.remove('hidden')}else{card.classList.toggle('hidden',card.dataset.type!==type)}});document.querySelectorAll('.filter-btn').forEach(btn=>{btn.classList.remove('active','active-freelance','active-cdi')});event.target.classList.add('active');if(type==='freelance')event.target.classList.add('active-freelance');if(type==='cdi')event.target.classList.add('active-cdi')}
+document.querySelectorAll('.card-header').forEach(h=>{h.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleCard(h)}})})
+</script>
+</body>
+</html>

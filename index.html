@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Architecte SI pour PME en transition digitale. Transformation SI, automatisation, cloud, power platform. Koffi Niamkey, Consultant indépendant.">
+<meta property="og:title" content="IndxOne – Solutions & Automatisations SI">
+<meta property="og:description" content="Consultant SI & Automatisation pour PME industrielles. ERP, CRM, Power Platform, cloud.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://indxone.com/">
+<link rel="canonical" href="https://indxone.com/">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" href="/img/icon-ix.png" sizes="96x96">
+<title>IndxOne – Solutions & Automatisations SI</title>
+<style>
+:root{--navy:#06111F;--deep:#0A1A2E;--mid:#0D2340;--steel:#1A3A5C;--blue:#1A6F9A;--pink:#E8567A;--pink2:#F07090;--gold:#C8962A;--gold2:#E8B84B;--white:#FFFFFF;--silver:#A8BCCC;--mist:#D4E4F0;--smoke:#1E2E45}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--steel) 1px,transparent 1px),linear-gradient(90deg,var(--steel) 1px,transparent 1px);background-size:60px 60px;opacity:0.07;pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.025;pointer-events:none;z-index:0}
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideRight{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 #e8567a66}50%{box-shadow:0 0 0 10px rgba(232,86,122,0)}}
+@keyframes float{0%,100%{transform:translateY(0px)}50%{transform:translateY(-8px)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+section{position:relative;z-index:1}
+.container{max-width:1100px;margin:0 auto;padding:0 32px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;backdrop-filter:blur(14px);background:rgba(6,17,31,0.85);border-bottom:1px solid rgba(26,58,92,0.4);animation:fadeIn 0.6s ease both}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;letter-spacing:1px;color:var(--white);text-decoration:none}
+.nav-logo span{color:var(--pink)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;letter-spacing:0.5px;color:var(--silver);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover,.nav-links a:focus{color:var(--white);outline:none}
+.nav-cta{background:var(--pink);color:var(--white)!important;padding:8px 20px;border-radius:4px;font-weight:600!important;transition:background 0.2s!important}
+.nav-cta:hover,.nav-cta:focus{background:var(--pink2)!important;outline:none}
+#hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;overflow:hidden}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(232,86,122,0.12);border:1px solid rgba(232,86,122,0.3);border-radius:100px;padding:6px 16px;font-size:12px;font-weight:500;color:var(--pink);letter-spacing:0.5px;margin-bottom:24px;animation:fadeUp 0.6s 0.1s ease both}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--pink);border-radius:50%;animation:pulse 2s infinite}
+.hero-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(38px,5vw,58px);line-height:1.08;margin-bottom:24px;animation:fadeUp 0.6s 0.2s ease both}
+.hero-title .line-accent{color:var(--pink)}
+.hero-title .line-muted{color:var(--silver);font-weight:600}
+.hero-sub{font-size:18px;font-weight:300;color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:40px;max-width:480px;animation:fadeUp 0.6s 0.3s ease both}
+.hero-actions{display:flex;gap:16px;margin-bottom:48px;animation:fadeUp 0.6s 0.4s ease both}
+.btn-primary{background:var(--pink);color:var(--white);padding:12px 24px;border:none;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s}
+.btn-primary:hover,.btn-primary:focus{background:var(--pink2);transform:translateY(-2px);outline:none}
+.btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(168,188,204,0.3);padding:12px 24px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s}
+.btn-outline:hover,.btn-outline:focus{border-color:rgba(168,188,204,0.7);background:rgba(168,188,204,0.05);transform:translateY(-2px);outline:none}
+.hero-stats{display:flex;gap:40px;margin-top:40px;animation:fadeUp 0.6s 0.5s ease both}
+.stat{display:flex;flex-direction:column}
+.stat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:32px;color:var(--pink);line-height:1}
+.stat-label{font-size:12px;font-weight:500;color:var(--silver);margin-top:8px;letter-spacing:0.5px}
+.hero-visual{display:flex;align-items:center;justify-content:center;animation:float 4s ease-in-out infinite;animation-delay:0.6s}
+.visual-badge{background:rgba(26,58,92,0.3);border:1px solid rgba(26,58,92,0.5);border-radius:12px;padding:32px;text-align:center;backdrop-filter:blur(8px)}
+.visual-num{font-family:'Syne',sans-serif;font-weight:800;font-size:48px;color:var(--pink)}
+.visual-label{font-size:12px;color:var(--silver);margin-top:8px;font-weight:500}
+#services{padding:80px 0;background:rgba(10,26,46,0.4)}
+.section-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);line-height:1.1;margin-bottom:48px;animation:fadeUp 0.6s ease both}
+.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:32px}
+.service-card{background:rgba(26,58,92,0.2);border:1px solid rgba(26,58,92,0.4);border-radius:12px;padding:32px;transition:all 0.3s;cursor:pointer}
+.service-card:hover{background:rgba(26,58,92,0.35);border-color:rgba(26,58,92,0.6);transform:translateY(-4px)}
+.service-icon{font-size:32px;margin-bottom:16px}
+.service-title{font-family:'Syne',sans-serif;font-weight:700;font-size:18px;margin-bottom:12px;color:var(--white)}
+.service-desc{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6}
+.service-details{font-size:12px;color:var(--pink);margin-top:12px;font-weight:500}
+#stack{padding:80px 0}
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:32px}
+.stack-category{background:rgba(26,111,154,0.1);border:1px solid rgba(26,111,154,0.2);border-radius:8px;padding:24px}
+.stack-name{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin-bottom:16px;color:var(--pink);text-transform:uppercase;letter-spacing:0.5px}
+.stack-items{display:flex;flex-direction:column;gap:8px}
+.stack-item{font-size:13px;color:rgba(255,255,255,0.7);padding-left:16px;position:relative}
+.stack-item::before{content:'›';position:absolute;left:0;color:var(--pink);font-weight:bold}
+#projets{padding:80px 0;background:rgba(10,26,46,0.4)}
+.project-grid{display:grid;gap:24px;margin-top:32px}
+.project-card{background:rgba(26,58,92,0.2);border:1px solid rgba(26,58,92,0.4);border-radius:12px;padding:32px;transition:all 0.3s}
+.project-card:hover{background:rgba(26,58,92,0.35);border-color:rgba(26,58,92,0.6);transform:translateY(-4px)}
+.project-badge{display:inline-block;background:rgba(232,86,122,0.15);color:var(--pink);padding:4px 12px;border-radius:4px;font-size:11px;font-weight:600;margin-bottom:12px;letter-spacing:0.5px}
+.project-title{font-family:'Syne',sans-serif;font-weight:700;font-size:18px;margin-bottom:8px;color:var(--white)}
+.project-desc{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;margin-bottom:16px}
+.project-meta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.project-tag{background:rgba(168,188,204,0.1);color:var(--silver);padding:4px 10px;border-radius:4px;font-size:12px;font-weight:500}
+.project-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:12px;margin-top:20px}
+.stat-box{background:rgba(232,86,122,0.1);border-left:3px solid var(--pink);padding:12px;border-radius:4px}
+.stat-box .val{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--pink)}
+.stat-box .lbl{font-size:11px;color:var(--silver);margin-top:4px}
+#contact{padding:80px 0}
+.contact-inner{max-width:600px}
+.contact-intro{font-size:16px;color:rgba(255,255,255,0.75);margin-bottom:32px;line-height:1.8}
+.contact-methods{display:flex;gap:40px;margin-bottom:40px;flex-wrap:wrap}
+.contact-method{display:flex;align-items:center;gap:12px}
+.contact-icon{font-size:20px}
+.contact-info{display:flex;flex-direction:column}
+.contact-label{font-size:11px;color:var(--silver);text-transform:uppercase;letter-spacing:0.5px;font-weight:600}
+.contact-val{font-size:14px;color:var(--white);font-weight:500;margin-top:4px}
+.contact-val a{color:var(--pink);text-decoration:none;transition:color 0.2s}
+.contact-val a:hover{color:var(--pink2)}
+.contact-socials{display:flex;gap:24px;margin-bottom:32px}
+.contact-socials a{font-size:12px;color:rgba(168,188,204,0.5);text-decoration:none;transition:color 0.2s}
+.contact-socials a:hover{color:var(--silver)}
+.contact-form{background:rgba(26,58,92,0.2);border:1px solid rgba(26,58,92,0.4);border-radius:12px;padding:32px;margin-top:40px}
+.form-group{margin-bottom:20px}
+.form-label{display:block;font-size:13px;font-weight:600;color:var(--white);margin-bottom:8px}
+.form-input,.form-select,.form-textarea{width:100%;padding:10px 12px;background:rgba(6,17,31,0.6);border:1px solid rgba(26,58,92,0.5);border-radius:4px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:13px;transition:border-color 0.2s}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--pink);background:rgba(6,17,31,0.8)}
+.form-input::placeholder{color:rgba(168,188,204,0.4)}
+.form-textarea{resize:vertical;min-height:100px}
+.form-submit{background:var(--pink);color:var(--white);padding:12px 24px;border:none;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;width:100%;margin-top:12px}
+.form-submit:hover{background:var(--pink2);transform:translateY(-2px)}
+.form-success{display:none;background:rgba(30,132,73,0.15);border:1px solid rgba(30,132,73,0.3);border-radius:4px;padding:16px;color:#1ED348;font-size:13px;margin-top:16px}
+footer{background:var(--smoke);padding:40px 0;border-top:1px solid rgba(26,58,92,0.4);position:relative;z-index:1}
+.footer-inner{max-width:1100px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.footer-brand{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--white)}
+.footer-brand span{display:block;font-size:11px;color:var(--silver);margin-top:4px;font-weight:400}
+.footer-links{display:flex;gap:24px;list-style:none}
+.footer-links a{font-size:12px;color:var(--silver);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--white)}
+.footer-legal{font-size:11px;color:rgba(168,188,204,0.4);font-weight:300}
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .hero-actions{flex-direction:column}
+  .btn-primary,.btn-outline{width:100%;justify-content:center}
+  .hero-stats{gap:20px}
+  .nav-links{gap:16px}
+  .nav-links a{font-size:12px}
+  .service-grid{grid-template-columns:1fr}
+  .stack-grid{grid-template-columns:1fr}
+  .project-grid{grid-template-columns:1fr}
+  .contact-methods{flex-direction:column;gap:20px}
+  .footer-inner{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav role="navigation" aria-label="Navigation principale">
+  <div class="container">
+    <a href="/" class="nav-logo">indx<span>ONE</span></a>
+    <ul class="nav-links" role="menubar">
+      <li><a href="#services" role="menuitem">Services</a></li>
+      <li><a href="#stack" role="menuitem">Stack</a></li>
+      <li><a href="#projets" role="menuitem">Projets</a></li>
+      <li><a href="#contact" class="nav-cta" role="menuitem">Démarrer un projet</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="hero" role="banner">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">Consultant Tech & SI · Disponible</div>
+        <h1 class="hero-title">Architecte SI<br>pour PME en<br><span class="line-accent">transition digitale</span></h1>
+        <p class="hero-sub">Je transforme vos processus métier en systèmes d'information robustes et automatisés. De la stratégie SI à l'exécution terrain — conception, pilotage, intégration.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Démarrer un projet →</a>
+          <a href="#projets" class="btn-outline">Voir les réalisations</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-num">8+</div>
+            <div class="stat-label">projets SI livrés</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">PME</div>
+            <div class="stat-label">secteur industriel</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">> 580 €</div>
+            <div class="stat-label">TJM</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-badge">
+          <div class="visual-num">💼</div>
+          <div class="visual-label">Pilotage projet<br>Intégration ERP<br>CRM Dynamics 365<br>Cloud & Infra<br>Automatisation<br>Power Platform</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <h2 class="section-title reveal">Ce que je fais</h2>
+    <div class="service-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">🗺️</div>
+        <h3 class="service-title">Architecte SI & AMOA</h3>
+        <p class="service-desc">Cadrage, pilotage et gouvernance de vos projets de transformation SI. Du schéma directeur à la mise en production.</p>
+        <div class="service-details">• Diagnostic & cartographie SI<br>• Rédaction cahier des charges<br>• Coordination prestataires (RACI)<br>• Gestion risques & planning</div>
+        <div style="font-size:12px;color:var(--pink);margin-top:16px;font-weight:600">Mission à partir de 4 jours · TJM sur devis</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">⚡</div>
+        <h3 class="service-title">Automatisation & No-code</h3>
+        <p class="service-desc">Supprimez les tâches répétitives. Je connecte vos outils et automatise vos workflows métier sans développement lourd.</p>
+        <div class="service-details">• Power Automate / Power Apps<br>• ClickUp + automatisations<br>• Intégrations API & webhooks<br>• Tableaux de bord Power BI</div>
+        <div style="font-size:12px;color:var(--pink);margin-top:16px;font-weight:600">Forfait audit processus · dès 1 500 €</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🏗️</div>
+        <h3 class="service-title">Infrastructure & Cloud</h3>
+        <p class="service-desc">MCO, migration cloud, sécurisation et administration de votre environnement IT. On-premise ou hybride.</p>
+        <div class="service-details">• Azure / AWS / GCP<br>• Hyper-V, Entra ID, M365<br>• Téléphonie IP (Teams)<br>• CI/CD GitLab</div>
+        <div style="font-size:12px;color:var(--pink);margin-top:16px;font-weight:600">Audit infrastructure · dès 990 €</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🚀</div>
+        <h3 class="service-title">Startup Launch Kit</h3>
+        <p class="service-desc">De l'idée au premier utilisateur — en 8 semaines. Je structure, outille et pilote votre MVP.</p>
+        <div class="service-details">• Cadrage MVP & choix de stack<br>• Roadmap priorisée + sprints<br>• Mise en place outils (ClickUp, Notion)<br>• Go-live accompagné</div>
+        <div style="font-size:12px;color:var(--pink);margin-top:16px;font-weight:600">Starter 1 200€ · Launch 3 500€ · Full TJM 580€</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="container">
+    <h2 class="section-title reveal">Outillage</h2>
+    <div class="stack-grid">
+      <div class="stack-category reveal">
+        <div class="stack-name">Infra & Cloud</div>
+        <div class="stack-items">
+          <div class="stack-item">Azure</div>
+          <div class="stack-item">AWS</div>
+          <div class="stack-item">GCP</div>
+          <div class="stack-item">Hyper-V</div>
+          <div class="stack-item">Entra ID</div>
+          <div class="stack-item">Exchange</div>
+          <div class="stack-item">M365</div>
+        </div>
+      </div>
+      <div class="stack-category reveal">
+        <div class="stack-name">Data & Apps</div>
+        <div class="stack-items">
+          <div class="stack-item">Power BI</div>
+          <div class="stack-item">Power Apps</div>
+          <div class="stack-item">Power Automate</div>
+          <div class="stack-item">Dynamics 365</div>
+          <div class="stack-item">DIAPASON ERP</div>
+        </div>
+      </div>
+      <div class="stack-category reveal">
+        <div class="stack-name">No-code & Collab</div>
+        <div class="stack-items">
+          <div class="stack-item">ClickUp</div>
+          <div class="stack-item">Notion</div>
+          <div class="stack-item">Airtable</div>
+          <div class="stack-item">Tally</div>
+          <div class="stack-item">Slack</div>
+          <div class="stack-item">FlutterFlow</div>
+        </div>
+      </div>
+      <div class="stack-category reveal">
+        <div class="stack-name">DevOps & Méthodes</div>
+        <div class="stack-items">
+          <div class="stack-item">GitLab CI/CD</div>
+          <div class="stack-item">Agile / Kanban</div>
+          <div class="stack-item">RACI</div>
+          <div class="stack-item">MoSCoW</div>
+          <div class="stack-item">SIPOC</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projets">
+  <div class="container">
+    <h2 class="section-title reveal">Réalisations</h2>
+    <div class="project-grid">
+      <div class="project-card reveal">
+        <div class="project-badge">⚡ Mission freelance · IndxOne</div>
+        <h3 class="project-title">Plateforme de commande fret maritime — ECAO</h3>
+        <p class="project-desc">Livraison en 5 jours ouvrés d'une plateforme complète de commande fret maritime France → Côte d'Ivoire. Zéro traitement manuel, 0 ligne de code serveur.</p>
+        <div class="project-meta">
+          <span class="project-tag">Make</span>
+          <span class="project-tag">Tally</span>
+          <span class="project-tag">Airtable</span>
+          <span class="project-tag">Stripe</span>
+          <span class="project-tag">WhatsApp API</span>
+          <span class="project-tag">No-code</span>
+        </div>
+        <div class="project-stats">
+          <div class="stat-box">
+            <div class="val">5j</div>
+            <div class="lbl">délai de livraison</div>
+          </div>
+          <div class="stat-box">
+            <div class="val">0</div>
+            <div class="lbl">traitement manuel</div>
+          </div>
+          <div class="stat-box">
+            <div class="val">30€</div>
+            <div class="lbl">coût mensuel</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-badge">📞 CDI</div>
+        <h3 class="project-title">Téléphonie IP — Microsoft Teams</h3>
+        <p class="project-desc">Pilotage complet du déploiement de la téléphonie sur IP via Teams pour ~110 collaborateurs. Responsable & autorité projet.</p>
+        <div class="project-meta">
+          <span class="project-tag">Teams</span>
+          <span class="project-tag">M365</span>
+          <span class="project-tag">Pilotage</span>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-badge">⚙️ CDI</div>
+        <h3 class="project-title">Déploiement ERP DIAPASON</h3>
+        <p class="project-desc">Coordination infrastructure et administration/configuration de l'ERP métier. Gestion des flux et des droits utilisateurs.</p>
+        <div class="project-meta">
+          <span class="project-tag">ERP</span>
+          <span class="project-tag">AMOA</span>
+          <span class="project-tag">Infra</span>
+          <span class="project-tag">Formation</span>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-badge">📊 CDI</div>
+        <h3 class="project-title">CRM Dynamics 365 + Power BI</h3>
+        <p class="project-desc">Intégration Power BI dans Dynamics 365 et évolution de l'existant avec Power Apps. Reporting commercial temps réel.</p>
+        <div class="project-meta">
+          <span class="project-tag">Dynamics 365</span>
+          <span class="project-tag">Power BI</span>
+          <span class="project-tag">Power Apps</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <h2 class="section-title reveal">Démarrons un projet ensemble</h2>
+      <p class="contact-intro reveal">Vous avez un projet de transformation SI, d'automatisation ou d'intégration d'outil ? Parlons-en — un échange de 30 min suffit souvent pour clarifier les enjeux.</p>
+      
+      <div class="contact-methods reveal">
+        <div class="contact-method">
+          <div class="contact-icon">📞</div>
+          <div class="contact-info">
+            <div class="contact-label">Téléphone</div>
+            <div class="contact-val"><a href="tel:+33775679067">07 75 67 90 67</a></div>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-info">
+            <div class="contact-label">Email</div>
+            <div class="contact-val"><a href="mailto:contact@indxone.com">contact@indxone.com</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-socials reveal">
+        <a href="https://www.malt.fr/profile/koffiniamkey2" target="_blank" rel="noopener noreferrer">Malt</a>
+        <a href="https://www.linkedin.com/in/koffi-niamkey/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+
+      <form class="contact-form reveal" name="contact-koffi" method="POST" netlify onsubmit="showSuccess(event)">
+        <div class="form-group">
+          <label class="form-label">Nom *</label>
+          <input type="text" name="nom" class="form-input" placeholder="Votre nom" required aria-label="Votre nom">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email *</label>
+          <input type="email" name="email" class="form-input" placeholder="Email" required aria-label="Email">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Sujet *</label>
+          <select name="sujet" class="form-select" required aria-label="Sujet">
+            <option value="">Sélectionner…</option>
+            <option>Projet AMOA / Architecture SI</option>
+            <option>Automatisation / No-code</option>
+            <option>Infrastructure / Cloud</option>
+            <option>Intégration ERP / CRM</option>
+            <option>Autre demande</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Budget / Contexte</label>
+          <select name="budget" class="form-select" aria-label="Budget">
+            <option value="">Préciser le cadre…</option>
+            <option>Forfait ponctuel < 2 000 €</option>
+            <option>Mission courte (2–5 jours)</option>
+            <option>Mission longue (> 10 jours)</option>
+            <option>Régie mensuelle</option>
+            <option>À définir ensemble</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea name="message" class="form-textarea" placeholder="Décrivez votre besoin..." aria-label="Message"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Envoyer le message →</button>
+        <div class="form-success" id="form-success">✅ Message reçu ! Je vous répondrai sous 24h.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      indx<span>ONE</span> — Solutions & Automatisations SI
+      <span>© 2026 SASU · SIRET 999 968 902 00018</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/collectivites/">Communes</a></li>
+      <li><a href="/projets/">Projets</a></li>
+      <li><a href="https://www.malt.fr/profile/koffiniamkey2" target="_blank" rel="noopener noreferrer">Malt</a></li>
+      <li><a href="https://www.linkedin.com/in/koffi-niamkey/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+// Reveal animations
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Form success
+function showSuccess(e) {
+  e.preventDefault();
+  if(e.target.checkValidity()) {
+    document.getElementById('form-success').style.display = 'block';
+    setTimeout(() => { e.target.reset(); document.getElementById('form-success').style.display = 'none'; }, 3000);
+  }
+}
+</script>
+</body>
+</html>

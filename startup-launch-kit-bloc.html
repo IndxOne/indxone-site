@@ -1,0 +1,130 @@
+<!-- ============================================================
+  INDXONE — Bloc "Startup Launch Kit" (v2 — layout corrigé)
+  À insérer APRÈS la 3e .service-card, AVANT </div>.services-grid
+============================================================ -->
+
+<div class="service-card service-card--startup reveal">
+
+  <div class="startup-badge">Nouveau</div>
+
+  <div class="startup-header">
+    <span class="service-icon" style="margin-bottom:0;">🚀</span>
+    <div class="service-title" style="margin-bottom:0;">Startup Launch Kit</div>
+  </div>
+
+  <div class="startup-body">
+
+    <div class="startup-left">
+      <p class="service-desc">
+        De l'idée au premier utilisateur — en 8 semaines.<br>
+        Je structure, outille et pilote votre MVP pour que vous lanciez vite,
+        sans dette technique ni désorganisation.
+      </p>
+      <ul class="service-items">
+        <li>Cadrage MVP &amp; choix de stack</li>
+        <li>Roadmap priorisée + sprints</li>
+        <li>Mise en place outils &amp; process (ClickUp, Notion)</li>
+        <li>Coordination développeurs &amp; prestataires</li>
+        <li>Accompagnement hebdo jusqu'au go-live</li>
+        <li>Checklist pré-lancement (stores, juridique, sécu)</li>
+      </ul>
+    </div>
+
+    <div class="startup-pricing">
+      <div class="startup-tier">
+        <div class="startup-tier-name">Starter</div>
+        <div class="startup-tier-price">1 200 €</div>
+        <div class="startup-tier-desc">Cadrage + roadmap + stack</div>
+      </div>
+      <div class="startup-tier startup-tier--featured">
+        <div class="startup-tier-name">Launch</div>
+        <div class="startup-tier-price">3 500 €</div>
+        <div class="startup-tier-desc">Cadrage + outils + 8 sem.</div>
+      </div>
+      <div class="startup-tier">
+        <div class="startup-tier-name">Full Pilot</div>
+        <div class="startup-tier-price">Sur devis</div>
+        <div class="startup-tier-desc">TJM 580 € · go-live inclus</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="service-price" style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(26,58,92,0.5);">
+    France &amp; Afrique francophone · Starter remboursable sur mission Launch
+  </div>
+
+</div>
+
+
+<!-- CSS à coller dans ton <style> existant -->
+<style>
+.service-card--startup {
+  position: relative;
+  grid-column: 1 / -1;
+}
+.startup-badge {
+  position: absolute;
+  top: 16px; right: 20px;
+  background: rgba(232,86,122,0.15);
+  border: 1px solid rgba(232,86,122,0.4);
+  border-radius: 100px;
+  padding: 3px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--pink);
+  letter-spacing: 0.5px;
+}
+.startup-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.startup-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .service-card--startup { grid-column: unset; }
+  .startup-body { grid-template-columns: 1fr; gap: 24px; }
+}
+.startup-pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (max-width: 768px) {
+  .startup-pricing { flex-direction: row; flex-wrap: wrap; }
+}
+.startup-tier {
+  background: rgba(26,58,92,0.4);
+  border: 1px solid rgba(26,111,154,0.2);
+  border-radius: 8px;
+  padding: 14px 18px;
+  transition: border-color 0.2s;
+}
+.startup-tier:hover { border-color: rgba(26,111,154,0.5); }
+.startup-tier--featured { background: rgba(232,86,122,0.08); border-color: rgba(232,86,122,0.3); }
+.startup-tier--featured:hover { border-color: rgba(232,86,122,0.55); }
+.startup-tier-name {
+  font-size: 11px; font-weight: 600; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--silver); margin-bottom: 4px;
+}
+.startup-tier--featured .startup-tier-name { color: var(--pink); }
+.startup-tier-price {
+  font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800;
+  color: var(--gold2); line-height: 1.1; margin-bottom: 2px;
+}
+.startup-tier-desc { font-size: 12px; color: var(--silver); opacity: 0.75; }
+</style>
+
+<!-- MODIFICATIONS ANNEXES
+  select#sujet  → ajouter : <option>Startup Launch Kit</option>
+  select#budget → ajouter avant "À définir ensemble" :
+    <option>Startup Launch Kit — Starter (1 200 €)</option>
+    <option>Startup Launch Kit — Launch (3 500 €)</option>
+    <option>Startup Launch Kit — Full Pilot (TJM)</option>
+-->
