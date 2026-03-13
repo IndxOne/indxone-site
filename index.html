@@ -2,6 +2,10 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>INDXONE — Consultant SI & Architecte Digital pour PME</title>
 <meta name="description" content="Koffi NIAMKEY — Consultant SI freelance. Pilotage de projets IT, intégration ERP/CRM, automatisation no-code, infrastructure cloud. Disponible en mission.">
@@ -163,8 +167,8 @@ section{padding:6rem 5vw}
 /* Startup kit — pleine largeur */
 .offres-bottom{margin-top:1.2rem}
 .kit-card{background:linear-gradient(135deg,var(--ink) 0%,var(--ink-3) 100%);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;position:relative;overflow:hidden}
-.kit-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--highlight));animation:shimmer 3s linear infinite;background-size:200% 100%}
-@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.kit-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--highlight));animation:shimmer 3s linear infinite;will-change:transform}
+@keyframes shimmer{0%{transform:translateX(200%)}100%{transform:translateX(-200%)}}
 .kit-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);color:var(--highlight);font-size:.68rem;font-family:var(--font-mono);letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:50px;margin-bottom:1rem}
 .kit-title{font-family:var(--font-head);font-weight:900;font-size:1.7rem;color:var(--white);letter-spacing:-.03em;line-height:1.15;margin-bottom:.8rem}
 .kit-desc{font-size:.9rem;color:rgba(255,255,255,.55);font-weight:300;line-height:1.7;margin-bottom:1.5rem}
@@ -312,7 +316,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 5vw 2.5rem}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08)}
 .footer-brand .logo{font-family:var(--font-head);font-weight:900;font-size:1.3rem;color:var(--white);letter-spacing:-.04em;display:flex;align-items:center;gap:8px;margin-bottom:.8rem;text-decoration:none}
 .footer-brand p{font-size:.84rem;line-height:1.75;font-weight:300;opacity:.75;max-width:280px;margin-bottom:1.4rem}
-.footer-legal{font-family:var(--font-mono);font-size:.68rem;color:rgba(255,255,255,.28);line-height:1.8}
+.footer-legal{font-family:var(--font-mono);font-size:.68rem;color:rgba(255,255,255,.55);line-height:1.8}
 .footer-social{display:flex;gap:.6rem;margin-top:1.2rem}
 .social-chip{display:flex;align-items:center;gap:6px;padding:7px 13px;border:1px solid rgba(255,255,255,.12);border-radius:7px;color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem;transition:all .2s}
 .social-chip:hover{border-color:var(--blue);color:var(--white);background:rgba(37,99,235,.12)}
@@ -320,8 +324,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 5vw 2.5rem}
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
 .footer-col a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.83rem;transition:color .18s}
 .footer-col a:hover{color:var(--white)}
-.footer-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding-top:2rem;margin-top:0;font-family:var(--font-mono);font-size:.7rem;color:rgba(255,255,255,.28)}
-.footer-bottom a{color:rgba(255,255,255,.38);text-decoration:none}
+.footer-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding-top:2rem;margin-top:0;font-family:var(--font-mono);font-size:.7rem;color:rgba(255,255,255,.55)}
+.footer-bottom a{color:rgba(255,255,255,.55);text-decoration:none}
 .footer-bottom a:hover{color:rgba(255,255,255,.7)}
 
 /* ══ RESPONSIVE ═════════════════════════════════════════ */
@@ -370,7 +374,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 5vw 2.5rem}
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#services">Services</a></li>
-      <li><a href="#collectivites">Collectivités</a></li>
+      <li><a href="/collectivites">Collectivités</a></li>
       <li><a href="#projets">Projets</a></li>
       <li><a href="#stack">Stack</a></li>
       <li><a href="#contact" class="nav-cta">Démarrer un projet</a></li>
@@ -452,6 +456,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 5vw 2.5rem}
   </div>
 </section>
 
+<main id="contenu-principal">
 <!-- ══ OFFRES ═════════════════════════════════════════════ -->
 <section id="services" aria-labelledby="services-title">
   <div class="section-inner">
@@ -870,6 +875,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 5vw 2.5rem}
   </div>
 </section>
 
+</main>
 <!-- ══ FOOTER ═════════════════════════════════════════════ -->
 <footer role="contentinfo">
   <div class="footer-inner">
