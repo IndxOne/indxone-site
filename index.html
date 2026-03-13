@@ -42,7 +42,7 @@
   --font-mono: 'DM Mono', monospace;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:var(--font-body);color:var(--text);background:var(--surface);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
 
 /* ══ NAV ════════════════════════════════════════════════ */
@@ -341,12 +341,28 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 5vw 2.5rem}
   .contact-grid{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr 1fr}
 }
-@media(max-width:640px){
+@media(max-width:960px){
   .nav-links{display:none}
-  .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:64px 0 0 0;background:rgba(10,15,26,.97);padding:2rem 5vw;z-index:499;gap:1.5rem;align-items:flex-start;overflow-y:auto;border-top:1px solid var(--border)}
-  .nav-links.open a{font-size:1rem;color:var(--white);border:none}
-  .hamburger{display:flex}
-  .nav-dispo{display:none}
+  .nav-links.open{
+    display:flex;
+    flex-direction:column;
+    position:fixed;
+    top:64px;left:0;right:0;bottom:0;
+    height:calc(100dvh - 64px);
+    background:#0A0F1A;
+    padding:2rem 5vw;
+    z-index:9999;
+    gap:1.5rem;
+    align-items:flex-start;
+    overflow-y:auto;
+    border-top:1px solid rgba(255,255,255,.1);
+  }
+  .nav-links.open a{font-size:1.05rem;color:#fff;border:none;display:block;width:100%}
+  .hamburger{display:flex;z-index:10000;position:relative}
+  .nav-dispo{display:flex}
+  .nav-dispo-mobile{display:none}
+}
+@media(max-width:640px){
   section{padding:4rem 5vw}
   .hero{min-height:auto;padding:100px 5vw 60px}
   .hero h1{font-size:2.1rem}
@@ -571,13 +587,13 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 5vw 2.5rem}
             <div class="coll-dot" style="background:#FF5F57"></div>
             <div class="coll-dot" style="background:#FFBD2E;margin-left:5px"></div>
             <div class="coll-dot" style="background:#28CA41;margin-left:5px"></div>
-            <span style="font-family:var(--font-mono);font-size:.65rem;color:rgba(255,255,255,.3);margin-left:auto">mairie-molinchart.netlify.app</span>
+            <span style="font-family:var(--font-mono);font-size:.65rem;color:rgba(255,255,255,.3);margin-left:auto">mairies.indxone.com/mons-en-laonnois</span>
           </div>
           <div class="coll-mockup-content">
             <div class="coll-card-demo">
               <div class="coll-card-label">Commune · Aisne (02)</div>
-              <div class="coll-card-val">Mairie de Molinchart</div>
-              <div class="coll-card-sub">02000 · Code INSEE 02489</div>
+              <div class="coll-card-val">Mairie de Mons-en-Laonnois</div>
+              <div class="coll-card-sub">02000 · Code INSEE 02497</div>
               <div class="coll-tag">✓ Site déployé · 48h ouvrées</div>
             </div>
             <div class="coll-card-demo">
@@ -711,7 +727,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 5vw 2.5rem}
 <section id="stack" aria-labelledby="stack-title">
   <div class="section-inner">
     <div class="section-label" aria-hidden="true">Outillage</div>
-    <h2 class="section-title" id="stack-title">Stack Technique</h2>
+    <h2 class="section-title" id="stack-title">Environnement Technique</h2>
     <p class="section-sub">Un ensemble d'outils maîtrisés, combinés selon les besoins de votre contexte.</p>
 
     <div class="stack-groups">
@@ -928,7 +944,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 5vw 2.5rem}
         <h4>Liens rapides</h4>
         <ul>
           <li><a href="#projets">Projets</a></li>
-          <li><a href="#stack">Stack</a></li>
+          <li><a href="#stack">Environnement Technique</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="/collectivites">Collectivités</a></li>
           <li><a href="mailto:contact@indxone.com">Email direct</a></li>
