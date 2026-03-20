@@ -2,421 +2,317 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="alternate icon" href="/favicon.ico">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>INDXONE — Portfolio & Projets SI</title>
 <meta name="description" content="Réalisations de Koffi NIAMKEY — Consultant SI INDXONE. Projets ERP, CRM, automatisation, téléphonie IP, marketplace mobile, sites mairies.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#0A0F1A;--ink-2:#111827;--ink-3:#1C2537;
-  --surface:#FFFFFF;--surface-2:#F7F9FC;
-  --border:rgba(255,255,255,.09);--border-l:#E4EAF2;
-  --blue:#2563EB;--blue-l:#60A5FA;--blue-glow:rgba(37,99,235,.28);
-  --cyan:#06B6D4;--text:#1E2A3B;--muted:#64748B;--white:#FFFFFF;
-  --highlight:#F59E0B;--success:#10B981;
-  --font-head:'Cabinet Grotesk',sans-serif;
-  --font-body:'DM Sans',sans-serif;
-  --font-mono:'DM Mono',monospace;
+  --ink:#0F1923;--ink-light:#3D4F5C;--bone:#F7F4EF;
+  --gold:#C9A84C;--gold-light:#E8D5A0;
+  --blue:#1B3A6B;--blue-mid:#2D5A9E;
+  --green:#2A7A4B;--white:#FFFFFF;
+  --border:rgba(15,25,35,0.1);
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--font-body);color:var(--text);background:var(--surface);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{font-family:'Sora',sans-serif;background:var(--bone);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(10,15,26,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-inner{max-width:1160px;margin:0 auto;padding:0 5vw;height:64px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:var(--font-head);font-weight:900;font-size:1.2rem;color:var(--white);text-decoration:none;letter-spacing:-.03em;display:flex;align-items:center;gap:8px}
-.nav-logo .dot{width:7px;height:7px;border-radius:50%;background:var(--blue);box-shadow:0 0 10px var(--blue-glow)}
-.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
-.nav-links a{color:rgba(255,255,255,.65);font-size:.875rem;text-decoration:none;transition:color .18s}
-.nav-links a:hover{color:var(--white)}
-.nav-cta{background:var(--blue)!important;color:var(--white)!important;padding:8px 18px!important;border-radius:7px!important;font-weight:500!important;font-size:.82rem!important}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
-.hamburger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:all .3s}
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(247,244,239,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-weight:700;font-size:1.1rem;letter-spacing:.05em;color:var(--ink);text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--ink-light);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--blue);color:#fff;padding:.5rem 1.2rem;border-radius:6px;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:var(--blue-mid)}
 
 /* HERO */
-.hero{background:var(--ink);padding:120px 5vw 72px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;width:600px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.14) 0%,transparent 70%);top:-80px;right:-100px;pointer-events:none}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
-.hero-inner{max-width:1160px;margin:0 auto;position:relative;z-index:1}
-.hero-eyebrow{font-family:var(--font-mono);font-size:.7rem;color:var(--blue-l);letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:1.4rem;opacity:0;animation:fadeUp .6s .1s ease forwards}
-.hero-eyebrow::before{content:'';width:20px;height:1px;background:var(--blue-l)}
-.hero h1{font-family:var(--font-head);font-weight:900;font-size:clamp(2.2rem,4.5vw,3.8rem);line-height:1.06;letter-spacing:-.04em;color:var(--white);margin-bottom:1.1rem;opacity:0;animation:fadeUp .6s .25s ease forwards}
-.hero h1 em{font-style:normal;color:transparent;background:linear-gradient(135deg,var(--blue-l),var(--cyan));-webkit-background-clip:text;background-clip:text}
-.hero-sub{font-size:1rem;color:rgba(255,255,255,.55);font-weight:300;line-height:1.75;max-width:580px;margin-bottom:2.5rem;opacity:0;animation:fadeUp .6s .4s ease forwards}
-.hero-stats{display:flex;flex-wrap:wrap;gap:1.2rem;opacity:0;animation:fadeUp .6s .55s ease forwards}
-.h-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:.9rem 1.4rem;display:flex;align-items:center;gap:.8rem}
-.h-stat .val{font-family:var(--font-head);font-weight:900;font-size:1.5rem;color:var(--white);line-height:1}
-.h-stat .lbl{font-family:var(--font-mono);font-size:.65rem;color:rgba(255,255,255,.35);letter-spacing:.06em;text-transform:uppercase;line-height:1.4}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1B2D3E 100%);color:#fff;padding:5rem 5% 4rem;position:relative;overflow:hidden}
+.hero::after{content:'PROJETS';position:absolute;right:3%;top:50%;transform:translateY(-50%);font-family:'DM Serif Display',serif;font-size:clamp(8rem,14vw,18rem);color:rgba(255,255,255,.03);line-height:1;pointer-events:none}
+.hero-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,4.5vw,3.4rem);line-height:1.15;margin-bottom:1rem;max-width:700px}
+.hero h1 em{color:var(--gold-light);font-style:italic}
+.hero p{color:rgba(255,255,255,.6);font-size:.95rem;max-width:500px;margin-bottom:2.5rem}
+.hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap}
+.h-stat strong{display:block;font-size:1.8rem;font-weight:700;color:#fff}
+.h-stat span{font-size:.72rem;color:rgba(255,255,255,.4)}
 
-/* FILTRES */
-.filter-bar{background:var(--surface-2);border-bottom:1px solid var(--border-l);padding:.8rem 5vw;position:sticky;top:64px;z-index:100}
-.filter-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
-.filter-btn{font-family:var(--font-mono);font-size:.72rem;padding:6px 14px;border-radius:50px;border:1px solid var(--border-l);background:var(--white);color:var(--muted);cursor:pointer;transition:all .18s;letter-spacing:.04em}
-.filter-btn:hover{border-color:var(--blue);color:var(--blue)}
-.filter-btn.active{background:var(--blue);color:var(--white);border-color:var(--blue)}
+/* FILTERS */
+.filter-bar{background:var(--white);border-bottom:1px solid var(--border);padding:.8rem 5%;position:sticky;top:64px;z-index:99}
+.filter-inner{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.filter-label{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);margin-right:.5rem}
+.pf-btn{padding:.35rem 1rem;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--ink-light);font-family:'Sora',sans-serif;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:.04em}
+.pf-btn:hover,.pf-btn.active{background:var(--gold);border-color:var(--gold);color:var(--ink)}
 
-/* PROJETS GRID */
-.projets-section{max-width:1160px;margin:0 auto;padding:3rem 5vw 5rem}
-.projets-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+/* BENTO */
+.projets-wrap{padding:3rem 5% 5rem;max-width:1400px;margin:0 auto}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:auto;gap:1.2rem}
 
-.projet-card{background:var(--white);border:1px solid var(--border-l);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:all .25s;cursor:pointer}
-.projet-card:hover{border-color:rgba(37,99,235,.3);box-shadow:0 12px 40px rgba(37,99,235,.11);transform:translateY(-4px)}
-.projet-card.dark{background:var(--ink);border-color:rgba(255,255,255,.1)}
-.projet-card.dark:hover{border-color:rgba(37,99,235,.5)}
-.projet-card.span2{grid-column:span 2}
-.projet-card.span3{grid-column:span 3}
-.projet-card[data-hidden="true"]{display:none}
+.bc{border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s;border:1px solid rgba(255,255,255,.12)}
+.bc:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.4)}
 
-.p-header{padding:1.8rem 1.8rem 0}
-.p-meta{display:flex;align-items:center;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap}
-.p-source{font-family:var(--font-mono);font-size:.63rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:50px;border:1px solid}
-.s-freelance{background:rgba(37,99,235,.1);color:var(--blue);border-color:rgba(37,99,235,.2)}
-.s-cdi{background:rgba(100,116,139,.1);color:var(--muted);border-color:rgba(100,116,139,.2)}
-.p-year{font-family:var(--font-mono);font-size:.63rem;color:var(--muted);letter-spacing:.06em}
-.p-icon{font-size:2.2rem;margin-bottom:.8rem;display:block}
-.p-title{font-family:var(--font-head);font-weight:800;font-size:1.15rem;letter-spacing:-.025em;color:var(--ink);line-height:1.25;margin-bottom:.5rem}
-.projet-card.dark .p-title{color:var(--white)}
-.p-desc{font-size:.84rem;color:var(--muted);line-height:1.65;font-weight:300}
-.projet-card.dark .p-desc{color:rgba(255,255,255,.55)}
+/* Layouts */
+.bc-hero  {grid-column:span 8;background:linear-gradient(135deg,#0E3060 0%,#1B3A6B 100%);border-color:rgba(74,124,199,.4)}
+.bc-metric{grid-column:span 4;background:#152030;border-color:rgba(201,168,76,.4)}
+.bc-mid   {grid-column:span 4;background:#152030;border-color:rgba(255,255,255,.15)}
+.bc-wide  {grid-column:span 6;background:#152030;border-color:rgba(255,255,255,.15)}
+.bc-full  {grid-column:span 12;background:linear-gradient(90deg,#0E2518 0%,#152030 100%);border-color:rgba(42,122,75,.45);display:flex;gap:3rem;align-items:center}
+.bc-taga  {grid-column:span 5;background:linear-gradient(135deg,#1E0D38 0%,#140A28 100%);border-color:rgba(150,80,220,.4)}
+.bc-kit   {grid-column:span 7;background:linear-gradient(135deg,#0E2848 0%,#152030 100%);border-color:rgba(201,168,76,.35)}
 
-.p-metrics{display:flex;gap:1.2rem;padding:1.2rem 1.8rem;border-top:1px solid var(--border-l);margin-top:1.4rem}
-.projet-card.dark .p-metrics{border-top-color:rgba(255,255,255,.08)}
-.metric{text-align:center}
-.metric .m-val{font-family:var(--font-head);font-weight:900;font-size:1.5rem;color:var(--ink);line-height:1;letter-spacing:-.03em}
-.projet-card.dark .metric .m-val{color:var(--white)}
-.metric .m-lbl{font-family:var(--font-mono);font-size:.63rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
-.projet-card.dark .metric .m-lbl{color:rgba(255,255,255,.35)}
+.bc-tag{display:inline-flex;align-items:center;gap:.3rem;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .6rem;border-radius:20px;margin-bottom:1rem}
+.bc-tag.freelance{background:rgba(201,168,76,.2);color:var(--gold-light);border:1px solid rgba(201,168,76,.3)}
+.bc-tag.cdi{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.12)}
+.bc-tag.wip{background:rgba(150,80,220,.2);color:#C0A0F0;border:1px solid rgba(150,80,220,.3)}
 
-.p-context{padding:.9rem 1.8rem;background:var(--surface-2);border-top:1px solid var(--border-l);font-size:.8rem;color:var(--muted);font-weight:300;line-height:1.6;font-style:italic}
-.projet-card.dark .p-context{background:rgba(255,255,255,.03);border-top-color:rgba(255,255,255,.06);color:rgba(255,255,255,.4)}
+.bc-icon{font-size:2.2rem;margin-bottom:.8rem;display:block}
+.bc-title{font-weight:700;font-size:1.15rem;color:#fff;margin-bottom:.5rem;line-height:1.3}
+.bc-title.lg{font-family:'DM Serif Display',serif;font-size:1.6rem}
+.bc-desc{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:1.2rem}
 
-.p-tags{display:flex;flex-wrap:wrap;gap:.35rem;padding:.9rem 1.8rem;border-top:1px solid var(--border-l)}
-.projet-card.dark .p-tags{border-top-color:rgba(255,255,255,.06);background:rgba(255,255,255,.02)}
-.tag{font-family:var(--font-mono);font-size:.64rem;padding:3px 9px;border-radius:50px;background:var(--surface-2);color:var(--muted);border:1px solid var(--border-l)}
-.projet-card.dark .tag{background:rgba(255,255,255,.05);color:rgba(255,255,255,.45);border-color:rgba(255,255,255,.08)}
+.bc-stats{display:flex;gap:2rem;flex-wrap:wrap}
+.bc-stat strong{display:block;font-size:1.6rem;font-weight:700;color:var(--gold-light);line-height:1;margin-bottom:.2rem}
+.bc-stat.sm strong{font-size:1.1rem}
+.bc-stat span{font-size:.68rem;color:rgba(255,255,255,.4)}
 
-/* CTA bas */
-.cta-band{background:var(--ink);padding:4.5rem 5vw;text-align:center;position:relative;overflow:hidden}
-.cta-band::before{content:'';position:absolute;width:500px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.18) 0%,transparent 70%);top:-80px;left:50%;transform:translateX(-50%)}
-.cta-band-inner{max-width:600px;margin:0 auto;position:relative;z-index:1}
-.cta-band h2{font-family:var(--font-head);font-weight:900;font-size:clamp(1.8rem,3vw,2.6rem);color:var(--white);letter-spacing:-.04em;margin-bottom:.8rem;line-height:1.1}
-.cta-band p{color:rgba(255,255,255,.5);font-size:.95rem;font-weight:300;line-height:1.75;margin-bottom:1.8rem}
-.cta-btns{display:flex;justify-content:center;flex-wrap:wrap;gap:.8rem}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:9px;font-size:.875rem;font-weight:500;text-decoration:none;transition:all .22s;border:1.5px solid transparent;font-family:var(--font-body);white-space:nowrap}
-.btn-blue{background:var(--blue);color:var(--white);border-color:var(--blue);box-shadow:0 4px 20px rgba(37,99,235,.35)}
-.btn-blue:hover{background:#1D4ED8;transform:translateY(-2px)}
-.btn-ghost{background:transparent;color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.2)}
-.btn-ghost:hover{background:rgba(255,255,255,.06)}
+.bc-chips{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:1rem}
+.bc-chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.75);font-size:.65rem;padding:.2rem .55rem;border-radius:4px}
 
-footer{background:var(--ink-2);color:rgba(255,255,255,.4);padding:2rem 5vw;border-top:1px solid rgba(255,255,255,.07)}
-.footer-mini{max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;font-family:var(--font-mono);font-size:.72rem}
-.footer-mini a{color:rgba(255,255,255,.5);text-decoration:none}
-.footer-mini a:hover{color:var(--white)}
+.bc-number{font-family:'DM Serif Display',serif;font-size:4.5rem;color:rgba(201,168,76,.25);line-height:1;position:absolute;bottom:1rem;right:1.5rem}
+
+.bc-impact{background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.35);border-radius:8px;padding:.8rem 1rem;margin-top:1rem;font-size:.78rem;color:var(--gold-light)}
+.bc-impact strong{display:block;font-size:.65rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem;opacity:.7}
+
+/* Full card */
+.bc-full-left{flex:1}
+.bc-full-right{display:flex;gap:1.5rem;flex-shrink:0}
+.bc-stat-box{text-align:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:1rem 1.2rem}
+.bc-stat-box strong{display:block;font-size:1.4rem;font-weight:700;color:#86EFAC}
+.bc-stat-box span{font-size:.68rem;color:rgba(255,255,255,.55)}
+
+/* TAGA badge */
+.wip-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.65rem;font-weight:700;letter-spacing:.06em;background:rgba(150,80,220,.15);color:#C0A0F0;border:1px solid rgba(150,80,220,.3);padding:.3rem .7rem;border-radius:20px;margin-top:.8rem}
+.wip-pulse{width:7px;height:7px;border-radius:50%;background:#C0A0F0;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,var(--blue) 0%,#0F2847 100%);color:#fff;text-align:center;padding:5rem 5%}
+.cta-section h2{font-family:'DM Serif Display',serif;font-size:2rem;margin-bottom:.8rem}
+.cta-section p{color:rgba(255,255,255,.6);margin-bottom:2rem;font-size:.9rem}
+.cta-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--ink);padding:.85rem 1.8rem;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;transition:all .2s}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-1px)}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2);padding:.85rem 1.8rem;border-radius:8px;font-weight:500;font-size:.9rem;text-decoration:none;transition:all .2s}
+.btn-ghost:hover{background:rgba(255,255,255,.15)}
+
+/* FOOTER */
+footer{background:var(--ink);color:rgba(255,255,255,.4);padding:2rem 5%;font-size:.75rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+footer a{color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--gold-light)}
 .footer-links{display:flex;gap:1.5rem}
 
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
-.reveal.visible{opacity:1;transform:none}
+/* Reveal */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+.rv.in{opacity:1;transform:none}
 
-@media(max-width:900px){.projets-grid{grid-template-columns:1fr 1fr}.projet-card.span2,.projet-card.span3{grid-column:span 1}}
-@media(max-width:640px){
-  .nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:fixed;inset:64px 0 0 0;background:rgba(10,15,26,.97);padding:2rem 5vw;z-index:499;gap:1.5rem;align-items:flex-start}
-  .nav-links.open a{font-size:1rem;color:var(--white)}.hamburger{display:flex}
-  .projets-grid{grid-template-columns:1fr}.hero-stats{flex-direction:column}
-  .cta-btns{flex-direction:column;align-items:center}.cta-btns .btn{width:100%;max-width:300px;justify-content:center}
+@media(max-width:900px){
+  .bento{grid-template-columns:1fr 1fr}
+  .bc-hero,.bc-full,.bc-kit{grid-column:span 2}
+  .bc-metric,.bc-mid,.bc-wide,.bc-taga{grid-column:span 1}
+  .bc-full{flex-direction:column}
+  .bc-full-right{flex-wrap:wrap}
+  .nav-links{display:none}
+}
+@media(max-width:560px){
+  .bento{grid-template-columns:1fr}
+  .bc{grid-column:span 1!important}
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-inner">
-    <a href="/" class="nav-logo"><span class="dot"></span>indxONE</a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="/">Accueil</a></li>
-      <li><a href="/#services">Services</a></li>
-      <li><a href="/collectivites">Collectivités</a></li>
-      <li><a href="/#contact" class="nav-cta">Démarrer un projet</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+  <a href="/" class="nav-logo">indx<span>ONE</span></a>
+  <ul class="nav-links">
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/collectivites">Collectivités</a></li>
+    <li><a href="/projets">Projets</a></li>
+    <li><a href="/#stack">Stack</a></li>
+  </ul>
+  <a href="/#contact" class="nav-cta">Démarrer un projet</a>
 </nav>
 
-<main id="contenu-principal">
 <section class="hero">
-  <div class="hero-grid" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <div class="hero-eyebrow">Portfolio · INDXONE</div>
-    <h1>Projets <em>structurants</em> livrés</h1>
-    <p class="hero-sub">Réalisations menées en CDI comme Référent IT et en freelance via INDXONE — pilotage, intégration, automatisation, déploiement terrain.</p>
-    <div class="hero-stats">
-      <div class="h-stat"><div class="val">8+</div><div class="lbl">Projets<br>livrés</div></div>
-      <div class="h-stat"><div class="val">4 ans</div><div class="lbl">Pilotage<br>projet IT</div></div>
-      <div class="h-stat"><div class="val">~110</div><div class="lbl">Collaborateurs<br>impactés</div></div>
-      <div class="h-stat"><div class="val">5j</div><div class="lbl">Délai record<br>(ECAO)</div></div>
-    </div>
+  <div class="hero-label">Réalisations</div>
+  <h1>Projets <em>structurants</em></h1>
+  <p>Menés en CDI et en freelance — en tant que pilote, référent technique ou AMOA.</p>
+  <div class="hero-stats">
+    <div class="h-stat"><strong>8+</strong><span>Projets livrés</span></div>
+    <div class="h-stat"><strong>4 ans</strong><span>Pilotage IT</span></div>
+    <div class="h-stat"><strong>~110</strong><span>Collaborateurs</span></div>
+    <div class="h-stat"><strong>2</strong><span>Marchés · FR + CI</span></div>
   </div>
 </section>
 
-<!-- FILTRES -->
-<div class="filter-bar" role="navigation" aria-label="Filtrer les projets">
+<div class="filter-bar">
   <div class="filter-inner">
-    <span style="font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-right:.3rem">Filtrer :</span>
-    <button class="filter-btn active" onclick="filter('all',this)">Tous</button>
-    <button class="filter-btn" onclick="filter('freelance',this)">Freelance · IndxOne</button>
-    <button class="filter-btn" onclick="filter('cdi',this)">CDI · Référent IT</button>
-    <button class="filter-btn" onclick="filter('automatisation',this)">Automatisation</button>
-    <button class="filter-btn" onclick="filter('infra',this)">Infra & Cloud</button>
-    <button class="filter-btn" onclick="filter('erp',this)">ERP / CRM</button>
+    <span class="filter-label">Filtrer</span>
+    <button class="pf-btn active" onclick="filterP(this,'all')">Tous</button>
+    <button class="pf-btn" onclick="filterP(this,'freelance')">⚡ IndxOne · Freelance</button>
+    <button class="pf-btn" onclick="filterP(this,'cdi')">🏢 CDI · Référent IT</button>
   </div>
 </div>
 
-<!-- PROJETS -->
-<div class="projets-section">
-  <div class="projets-grid" id="projetsGrid">
+<div class="projets-wrap">
+  <div class="bento">
 
-    <!-- ECAO — span 2, featured dark -->
-    <div class="projet-card dark span2 reveal" data-cats="freelance automatisation">
-      <div class="p-header">
-        <div class="p-meta">
-          <span class="p-source s-freelance">⚡ Freelance · IndxOne</span>
-          <span class="p-year">2026</span>
-        </div>
-        <span class="p-icon">🚢</span>
-        <div class="p-title">Plateforme de commande fret maritime — ECAO</div>
-        <div class="p-desc">Livraison en 5 jours ouvrés d'une plateforme complète de commande fret France → Côte d'Ivoire. Flux entièrement automatisé : commande en ligne → calcul tarifaire au m³ → paiement fractionné (70 % + 30 %) → notifications WhatsApp → suivi Kanban admin. Détection géographique IDF/hors-IDF pour routage automatique entre Boxtal (Île-de-France) et Cocolis (province). 0 traitement manuel, 0 ligne de code serveur.</div>
+    <!-- ECAO — hero -->
+    <div class="bc bc-hero rv" data-type="freelance">
+      <span class="bc-tag freelance">⚡ Mission freelance · IndxOne</span>
+      <span class="bc-icon">🚢</span>
+      <div class="bc-title lg">Plateforme fret maritime — ECAO</div>
+      <div class="bc-desc">Livraison en 5 jours ouvrés d'une plateforme complète de commande fret France → Côte d'Ivoire. Flux entier automatisé : commande → calcul tarifaire m³ → paiement fractionné → notifications WhatsApp → suivi Kanban admin. Détection géographique IDF/hors-IDF pour routage automatique Boxtal.</div>
+      <div class="bc-stats">
+        <div class="bc-stat"><strong>5j</strong><span>Délai livraison</span></div>
+        <div class="bc-stat"><strong>0</strong><span>Traitement manuel</span></div>
+        <div class="bc-stat"><strong>30€</strong><span>Coût infra /mois</span></div>
       </div>
-      <div class="p-metrics">
-        <div class="metric"><div class="m-val">5j</div><div class="m-lbl">Délai livraison</div></div>
-        <div class="metric"><div class="m-val">0</div><div class="m-lbl">Traitement manuel</div></div>
-        <div class="metric"><div class="m-val">30€</div><div class="m-lbl">Coût récurrent /mois</div></div>
-        <div class="metric"><div class="m-val">2 200€</div><div class="m-lbl">Contrat signé</div></div>
-      </div>
-      <div class="p-context">"Clause de continuité : montant déduit si évolution vers app mobile dans les 18 mois — engagement contractuel double mission."</div>
-      <div class="p-tags">
-        <span class="tag">Make</span><span class="tag">Tally</span><span class="tag">Airtable</span>
-        <span class="tag">Stripe</span><span class="tag">WhatsApp API</span>
-        <span class="tag">Boxtal</span><span class="tag">Cocolis</span><span class="tag">No-code</span>
-      </div>
+      <div class="bc-chips"><span class="bc-chip">Make</span><span class="bc-chip">Tally</span><span class="bc-chip">Airtable</span><span class="bc-chip">Stripe</span><span class="bc-chip">WhatsApp API</span><span class="bc-chip">No-code</span></div>
     </div>
 
-    <!-- Mairies collectivités -->
-    <div class="projet-card reveal" style="transition-delay:.08s" data-cats="freelance automatisation">
-      <div class="p-header">
-        <div class="p-meta">
-          <span class="p-source s-freelance">⚡ Freelance · IndxOne</span>
-          <span class="p-year">2026</span>
-        </div>
-        <span class="p-icon">🏛️</span>
-        <div class="p-title">Pipeline sites mairies — Aisne (02)</div>
-        <div class="p-desc">Template institutionnel HTML/JS généré automatiquement via pipeline Python. 1 fichier config.js par commune, déploiement Netlify en 20 min. Scraping API geo.gouv.fr + annuaire-mairie.fr. Score Lighthouse 96+, RGPD natif.</div>
+    <!-- Sites mairies -->
+    <div class="bc bc-metric rv" data-type="freelance">
+      <span class="bc-tag freelance">⚡ IndxOne</span>
+      <span class="bc-icon">🏛️</span>
+      <div class="bc-title">Digitalisation communes</div>
+      <div class="bc-desc" style="font-size:.75rem">Template institutionnel déployé · Aisne (02). Pipeline multi-communes actif.</div>
+      <div class="bc-stats" style="margin-top:.8rem">
+        <div class="bc-stat sm"><strong>48h</strong><span>Déploiement</span></div>
+        <div class="bc-stat sm"><strong>96+</strong><span>Lighthouse</span></div>
       </div>
-      <div class="p-tags">
-        <span class="tag">Python</span><span class="tag">HTML/JS</span>
-        <span class="tag">Netlify</span><span class="tag">geo.api.gouv.fr</span>
-      </div>
+      <div class="bc-impact" style="margin-top:.8rem"><strong>Pipeline actif</strong>Mons-en-Laonnois · 11 communes en prospection</div>
+      <div class="bc-number">IX</div>
     </div>
 
     <!-- Téléphonie IP -->
-    <div class="projet-card reveal" style="transition-delay:.04s" data-cats="cdi infra">
-      <div class="p-header">
-        <div class="p-meta">
-          <span class="p-source s-cdi">CDI · Référent IT</span>
-          <span class="p-year">2022–2023</span>
-        </div>
-        <span class="p-icon">📞</span>
-        <div class="p-title">Déploiement téléphonie IP — Microsoft Teams</div>
-        <div class="p-desc">Pilotage complet du déploiement Teams Voice pour ~110 collaborateurs. En charge de la coordination opérateur, du paramétrage M365, de la formation utilisateurs et du MCO post-déploiement. Responsable et autorité projet.</div>
+    <div class="bc bc-mid rv" data-type="cdi">
+      <span class="bc-tag cdi">CDI · Référent IT</span>
+      <span class="bc-icon">📞</span>
+      <div class="bc-title">Téléphonie IP — Microsoft Teams</div>
+      <div class="bc-desc">Pilotage complet du déploiement Teams IP. Responsable & autorité projet de bout en bout.</div>
+      <div class="bc-stats">
+        <div class="bc-stat sm"><strong>110</strong><span>Collaborateurs</span></div>
+        <div class="bc-stat sm"><strong>0</strong><span>Incident post-bascule</span></div>
       </div>
-      <div class="p-metrics">
-        <div class="metric"><div class="m-val">110</div><div class="m-lbl">Collaborateurs</div></div>
-        <div class="metric"><div class="m-val">100%</div><div class="m-lbl">Adoption</div></div>
-      </div>
-      <div class="p-tags">
-        <span class="tag">Microsoft Teams</span><span class="tag">M365</span>
-        <span class="tag">Pilotage projet</span><span class="tag">RACI</span>
-      </div>
+      <div class="bc-chips"><span class="bc-chip">Teams</span><span class="bc-chip">M365</span><span class="bc-chip">Pilotage</span></div>
     </div>
 
-    <!-- ERP DIAPASON -->
-    <div class="projet-card reveal" style="transition-delay:.08s" data-cats="cdi erp">
-      <div class="p-header">
-        <div class="p-meta">
-          <span class="p-source s-cdi">CDI · Référent IT</span>
-          <span class="p-year">2021–2022</span>
-        </div>
-        <span class="p-icon">⚙️</span>
-        <div class="p-title">Intégration ERP DIAPASON</div>
-        <div class="p-desc">Coordination infrastructure et administration / configuration de l'ERP métier industriel DIAPASON. Gestion des flux de données, des droits utilisateurs, paramétrage des modules, formation des référents métier.</div>
-      </div>
-      <div class="p-tags">
-        <span class="tag">ERP DIAPASON</span><span class="tag">AMOA</span>
-        <span class="tag">Infrastructure</span><span class="tag">Formation</span>
-      </div>
+    <!-- CRM -->
+    <div class="bc bc-mid rv" data-type="cdi">
+      <span class="bc-tag cdi">CDI · Référent IT</span>
+      <span class="bc-icon">📊</span>
+      <div class="bc-title">CRM Dynamics 365 + Power BI</div>
+      <div class="bc-desc">Intégration Power BI dans Dynamics 365, évolution Power Apps. Reporting commercial temps réel.</div>
+      <div class="bc-chips"><span class="bc-chip">Dynamics 365</span><span class="bc-chip">Power BI</span><span class="bc-chip">Power Apps</span></div>
     </div>
 
-    <!-- CRM Dynamics 365 -->
-    <div class="projet-card reveal" style="transition-delay:.12s" data-cats="cdi erp automatisation">
-      <div class="p-header">
-        <div class="p-meta">
-          <span class="p-source s-cdi">CDI · Référent IT</span>
-          <span class="p-year">2023</span>
-        </div>
-        <span class="p-icon">📊</span>
-        <div class="p-title">CRM Dynamics 365 + Power BI</div>
-        <div class="p-desc">Intégration Power BI dans Dynamics 365 CRM et évolution de l'existant avec Power Apps. Reporting commercial en temps réel, dashboards direction, automatisation des alertes commerciales via Power Automate.</div>
-      </div>
-      <div class="p-tags">
-        <span class="tag">Dynamics 365</span><span class="tag">Power BI</span>
-        <span class="tag">Power Apps</span><span class="tag">Power Automate</span>
-      </div>
+    <!-- ERP -->
+    <div class="bc bc-mid rv" data-type="cdi">
+      <span class="bc-tag cdi">CDI · Référent IT</span>
+      <span class="bc-icon">⚙️</span>
+      <div class="bc-title">Déploiement ERP DIAPASON</div>
+      <div class="bc-desc">Coordination infra puis administration, configuration, gestion des flux et droits utilisateurs.</div>
+      <div class="bc-chips"><span class="bc-chip">ERP</span><span class="bc-chip">AMOA</span><span class="bc-chip">Formation</span></div>
     </div>
 
     <!-- GED & GTA -->
-    <div class="projet-card reveal" style="transition-delay:.16s" data-cats="cdi infra">
-      <div class="p-header">
-        <div class="p-meta">
-          <span class="p-source s-cdi">CDI · Référent IT</span>
-          <span class="p-year">2022</span>
-        </div>
-        <span class="p-icon">🗂️</span>
-        <div class="p-title">GED & GTA Kelio</div>
-        <div class="p-desc">Mise en place de la Gestion Électronique de Documents et du logiciel de Gestion des Temps et Activités Kelio. Paramétrage des workflows RH, intégration avec la paie, formation des managers.</div>
-      </div>
-      <div class="p-tags">
-        <span class="tag">GED</span><span class="tag">Kelio GTA</span>
-        <span class="tag">Processus RH</span><span class="tag">Formation</span>
-      </div>
+    <div class="bc bc-wide rv" data-type="cdi">
+      <span class="bc-tag cdi">CDI · Référent IT</span>
+      <span class="bc-icon">🗂️</span>
+      <div class="bc-title">GED & GTA Kelio</div>
+      <div class="bc-desc">Mise en place de la gestion électronique documentaire et déploiement de la GTA Kelio sur ~110 collaborateurs.</div>
+      <div class="bc-chips"><span class="bc-chip">Kelio</span><span class="bc-chip">GED</span><span class="bc-chip">Formation</span></div>
     </div>
 
-    <!-- Configurateur en ligne -->
-    <div class="projet-card reveal" style="transition-delay:.08s" data-cats="cdi automatisation">
-      <div class="p-header">
-        <div class="p-meta">
-          <span class="p-source s-cdi">CDI · Référent IT</span>
-          <span class="p-year">2023–2024</span>
-        </div>
-        <span class="p-icon">🛒</span>
-        <div class="p-title">Configurateur produit en ligne</div>
-        <div class="p-desc">Pilotage de l'intégration d'un configurateur produit en ligne pour les commerciaux et revendeurs. Coordination prestataire, recette fonctionnelle, déploiement et formation terrain.</div>
+    <!-- Configurateur — full -->
+    <div class="bc bc-full rv" data-type="cdi">
+      <div class="bc-full-left">
+        <span class="bc-tag cdi">CDI · Référent IT</span>
+        <span class="bc-icon">🧩</span>
+        <div class="bc-title">Configurateur produit en ligne</div>
+        <div class="bc-desc">Logique conditionnelle complexe pour un configurateur menuiserie temps réel. Pilotage intégration, recette fonctionnelle, déploiement et formation terrain.</div>
+        <div class="bc-chips"><span class="bc-chip">Configurateur</span><span class="bc-chip">AMOA</span><span class="bc-chip">Intégration</span><span class="bc-chip">Formation</span></div>
       </div>
-      <div class="p-tags">
-        <span class="tag">Configurateur</span><span class="tag">AMOA</span>
-        <span class="tag">Intégration</span><span class="tag">Formation commerciale</span>
-      </div>
-    </div>
-
-    <!-- Structuration gestion projet -->
-    <div class="projet-card reveal" style="transition-delay:.12s" data-cats="cdi automatisation">
-      <div class="p-header">
-        <div class="p-meta">
-          <span class="p-source s-cdi">CDI · Référent IT</span>
-          <span class="p-year">2022</span>
-        </div>
-        <span class="p-icon">🔄</span>
-        <div class="p-title">Structuration Gestion de Projet</div>
-        <div class="p-desc">Mise en place complète du système de gestion de projet : ClickUp, Kanban par équipe, automatisations de notification, tableaux de bord direction. Adoption sur toutes les équipes IT.</div>
-      </div>
-      <div class="p-tags">
-        <span class="tag">ClickUp</span><span class="tag">Kanban</span>
-        <span class="tag">Automatisation</span><span class="tag">Reporting</span>
+      <div class="bc-full-right">
+        <div class="bc-stat-box"><strong>117</strong><span>Niveaux</span></div>
+        <div class="bc-stat-box"><strong>815</strong><span>Questions</span></div>
+        <div class="bc-stat-box"><strong>908</strong><span>Réponses</span></div>
       </div>
     </div>
 
     <!-- TAGA -->
-    <div class="projet-card reveal" style="transition-delay:.16s" data-cats="freelance">
-      <div class="p-header">
-        <div class="p-meta">
-          <span class="p-source s-freelance">⚡ Freelance · IndxOne</span>
-          <span class="p-year">2026 · En cours</span>
-        </div>
-        <span class="p-icon">🚗</span>
-        <div class="p-title">TAGA — Marketplace ride-hailing mobile</div>
-        <div class="p-desc">Conception et développement d'une marketplace mobile de transport ciblant Abidjan et l'Afrique de l'Ouest. Architecture Supabase + FlutterFlow, module Femme Only, logique PostGIS, intégration cartographique MapBox.</div>
+    <div class="bc bc-taga rv" data-type="freelance">
+      <span class="bc-tag wip">⚡ IndxOne · En cours</span>
+      <span class="bc-icon">🚗</span>
+      <div class="bc-title">TAGA — Marketplace ride-hailing</div>
+      <div class="bc-desc">Conception et développement d'une marketplace mobile de transport ciblant Abidjan et l'Afrique de l'Ouest. Module Femme Only, logique PostGIS, cartographie MapBox.</div>
+      <div class="bc-chips"><span class="bc-chip">FlutterFlow</span><span class="bc-chip">Supabase</span><span class="bc-chip">PostGIS</span><span class="bc-chip">MapBox</span><span class="bc-chip">Côte d'Ivoire</span></div>
+      <div class="wip-badge"><span class="wip-pulse"></span>MVP en développement · 2026</div>
+    </div>
+
+    <!-- Startup Launch Kit -->
+    <div class="bc bc-kit rv" data-type="freelance">
+      <span class="bc-tag freelance">⚡ Offre IndxOne</span>
+      <span class="bc-icon">🚀</span>
+      <div class="bc-title">Startup Launch Kit</div>
+      <div class="bc-desc">De l'idée au premier utilisateur en 8 semaines. Cadrage, stack technique, outillage no-code et pilotage MVP. Disponible pour startups France & Afrique francophone.</div>
+      <div class="bc-stats">
+        <div class="bc-stat"><strong>8 sem</strong><span>Délai go-live</span></div>
+        <div class="bc-stat"><strong>3</strong><span>Tiers disponibles</span></div>
       </div>
-      <div class="p-tags">
-        <span class="tag">FlutterFlow</span><span class="tag">Supabase</span>
-        <span class="tag">PostGIS</span><span class="tag">MapBox</span><span class="tag">Côte d'Ivoire</span>
-      </div>
+      <div class="bc-chips"><span class="bc-chip">Make</span><span class="bc-chip">FlutterFlow</span><span class="bc-chip">Supabase</span><span class="bc-chip">Netlify</span><span class="bc-chip">No-code</span></div>
     </div>
 
   </div>
 </div>
 
-<!-- CTA -->
-<div class="cta-band">
-  <div class="cta-band-inner reveal">
-    <h2>Votre projet est le prochain</h2>
-    <p>Vous avez un projet de transformation SI, d'automatisation ou d'intégration d'outil ? Discutons-en — un échange de 30 min suffit souvent pour clarifier les enjeux.</p>
-    <div class="cta-btns">
-      <a href="/#contact" class="btn btn-blue">Démarrer un projet →</a>
-      <a href="tel:+33775679067" class="btn btn-ghost">📞 07 75 67 90 67</a>
-    </div>
+<section class="cta-section">
+  <h2>Votre projet est le prochain</h2>
+  <p>Un échange de 30 min suffit pour clarifier les enjeux et voir si on est alignés.</p>
+  <div class="cta-links">
+    <a href="/#contact" class="btn-primary">Démarrer un projet →</a>
+    <a href="tel:+33775679067" class="btn-ghost">📞 07 75 67 90 67</a>
   </div>
-</div>
+</section>
 
-</main>
-<footer role="contentinfo">
-  <div class="footer-mini">
-    <span>© 2026 INDXONE SASU · SIRET 999 968 902 00018</span>
-    <div class="footer-links">
-      <a href="/">← Accueil</a>
-      <a href="/#services">Services</a>
-      <a href="/collectivites">Collectivités</a>
-      <a href="/#contact">Contact</a>
-    </div>
+<footer>
+  <span>© 2026 INDXONE SASU · SIRET 999 968 902 00018</span>
+  <div class="footer-links">
+    <a href="/">← Accueil</a>
+    <a href="/collectivites">Collectivités</a>
+    <a href="/#contact">Contact</a>
   </div>
 </footer>
 
 <script>
-function toggleNav() {
-  const links = document.getElementById('navLinks');
-  const btn   = document.getElementById('hamburger');
-  const open  = links.classList.toggle('open');
-  btn.classList.toggle('open', open);
-  btn.setAttribute('aria-expanded', open);
-}
-document.addEventListener('click', e => {
-  if (e.target.closest('#navLinks a')) {
-    document.getElementById('navLinks').classList.remove('open');
-    document.getElementById('hamburger').classList.remove('open');
-  }
-});
-
-function filter(cat, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+function filterP(btn, type) {
+  document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.projet-card').forEach(card => {
-    if (cat === 'all') {
-      card.removeAttribute('data-hidden');
-    } else {
-      const cats = card.getAttribute('data-cats') || '';
-      card.setAttribute('data-hidden', cats.includes(cat) ? 'false' : 'true');
-    }
-    // reset span si filtré
-    if (cat !== 'all' && card.getAttribute('data-hidden') !== 'false') {
-      card.style.display = 'none';
-    } else {
-      card.style.display = '';
-    }
+  document.querySelectorAll('.bc').forEach(card => {
+    const match = type === 'all' || card.dataset.type === type;
+    card.style.opacity = match ? '1' : '0.15';
+    card.style.transform = match ? '' : 'scale(0.97)';
+    card.style.transition = 'opacity .3s, transform .3s';
   });
 }
-
 const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-}, { threshold: 0.07 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, { threshold: 0.06 });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>

@@ -2,695 +2,399 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="alternate icon" href="/favicon.ico">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>INDXONE — Sites web pour mairies & communes | Offre Collectivités</title>
-<meta name="description" content="Sites officiels clé en main pour communes et mairies. Déploiement 48h, RGPD natif, Lighthouse 96+, à partir de 490 €. Département de l'Aisne et Hauts-de-France.">
+<meta name="description" content="Site officiel de votre commune en 48h. Clé en main, RGPD natif, Lighthouse 96+. À partir de 490€ HT.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
-:root{
-  --ink:#0A0F1A;--ink-2:#111827;--ink-3:#1C2537;
-  --surface:#FFFFFF;--surface-2:#F7F9FC;
-  --border:rgba(255,255,255,.09);--border-l:#E4EAF2;
-  --blue:#2563EB;--blue-l:#60A5FA;--blue-glow:rgba(37,99,235,.28);
-  --cyan:#06B6D4;--text:#1E2A3B;--muted:#64748B;--white:#FFFFFF;
-  --highlight:#F59E0B;--success:#10B981;--danger:#EF4444;
-  --font-head:'Cabinet Grotesk',sans-serif;
-  --font-body:'DM Sans',sans-serif;
-  --font-mono:'DM Mono',monospace;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--font-body);color:var(--text);background:var(--surface);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  :root{--ink:#0F1923;--ink-light:#3D4F5C;--bone:#F7F4EF;--gold:#C9A84C;--gold-light:#E8D5A0;--blue:#1B3A6B;--blue-mid:#2D5A9E;--green:#2A7A4B;--white:#FFFFFF;--border:rgba(15,25,35,0.1)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Sora',sans-serif;background:var(--bone);color:var(--ink);line-height:1.6}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(10,15,26,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-inner{max-width:1160px;margin:0 auto;padding:0 5vw;height:64px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:var(--font-head);font-weight:900;font-size:1.2rem;color:var(--white);text-decoration:none;letter-spacing:-.03em;display:flex;align-items:center;gap:8px}
-.nav-logo .dot{width:7px;height:7px;border-radius:50%;background:var(--blue);box-shadow:0 0 10px var(--blue-glow)}
-.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
-.nav-links a{color:rgba(255,255,255,.65);font-size:.875rem;text-decoration:none;transition:color .18s}
-.nav-links a:hover{color:var(--white)}
-.nav-cta{background:var(--blue)!important;color:var(--white)!important;padding:8px 18px!important;border-radius:7px!important;font-weight:500!important;font-size:.82rem!important}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
-.hamburger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:all .3s}
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  nav{position:sticky;top:0;z-index:100;background:rgba(247,244,239,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:64px}
+  .nav-logo{font-weight:700;font-size:1.1rem;letter-spacing:.05em;color:var(--ink);text-decoration:none}
+  .nav-logo span{color:var(--gold)}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{color:var(--ink-light);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{background:var(--blue);color:var(--white);padding:.5rem 1.2rem;border-radius:6px;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s}
+  .nav-cta:hover{background:var(--blue-mid)}
 
-/* HERO */
-.hero{background:var(--ink);padding:120px 5vw 80px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;width:700px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.15) 0%,transparent 70%);top:-100px;right:-150px;pointer-events:none}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
-.hero-inner{max-width:1160px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center}
-.hero-eyebrow{font-family:var(--font-mono);font-size:.7rem;color:var(--blue-l);letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;opacity:0;animation:fadeUp .6s .1s ease forwards}
-.hero-eyebrow::before{content:'';width:20px;height:1px;background:var(--blue-l)}
-.hero h1{font-family:var(--font-head);font-weight:900;font-size:clamp(2.2rem,4.5vw,3.8rem);line-height:1.06;letter-spacing:-.04em;color:var(--white);margin-bottom:1.2rem;opacity:0;animation:fadeUp .6s .25s ease forwards}
-.hero h1 em{font-style:normal;color:transparent;background:linear-gradient(135deg,var(--blue-l),var(--cyan));-webkit-background-clip:text;background-clip:text}
-.hero-sub{font-size:1rem;color:rgba(255,255,255,.6);font-weight:300;line-height:1.75;max-width:480px;margin-bottom:2rem;opacity:0;animation:fadeUp .6s .4s ease forwards}
-.hero-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:2.5rem;opacity:0;animation:fadeUp .6s .55s ease forwards}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:9px;font-size:.88rem;font-weight:500;text-decoration:none;transition:all .22s;cursor:pointer;border:1.5px solid transparent;font-family:var(--font-body);white-space:nowrap}
-.btn-blue{background:var(--blue);color:var(--white);border-color:var(--blue);box-shadow:0 4px 20px rgba(37,99,235,.35)}
-.btn-blue:hover{background:#1D4ED8;transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,99,235,.45)}
-.btn-ghost{background:transparent;color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.2)}
-.btn-ghost:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.4)}
-.hero-guarantees{display:flex;flex-wrap:wrap;gap:.6rem;opacity:0;animation:fadeUp .6s .7s ease forwards}
-.guarantee-chip{display:flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:.7rem;color:rgba(255,255,255,.55);padding:5px 12px;border:1px solid rgba(255,255,255,.1);border-radius:50px}
-.guarantee-chip .g-ico{color:#34D399}
+  .hero{background:linear-gradient(135deg,var(--blue) 0%,#0F2847 100%);color:var(--white);padding:6rem 5% 5rem;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+  .hero-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(201,168,76,.2);border:1px solid rgba(201,168,76,.4);color:var(--gold-light);font-size:.75rem;font-weight:600;padding:.3rem .8rem;border-radius:20px;margin-bottom:1.5rem;letter-spacing:.05em;text-transform:uppercase}
+  .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.15;margin-bottom:1.2rem;max-width:700px}
+  .hero h1 em{color:var(--gold-light);font-style:italic}
+  .hero p{font-size:1.05rem;color:rgba(255,255,255,.75);max-width:540px;margin-bottom:2rem}
+  .hero-stats{display:flex;gap:2.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
+  .hero-stat strong{display:block;font-size:1.6rem;font-weight:700;color:var(--gold-light)}
+  .hero-stat span{font-size:.78rem;color:rgba(255,255,255,.55)}
+  .hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn-primary{background:var(--gold);color:var(--ink);padding:.85rem 1.8rem;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;transition:all .2s;display:inline-block}
+  .btn-primary:hover{background:var(--gold-light);transform:translateY(-1px)}
+  .btn-ghost{background:rgba(255,255,255,.1);color:var(--white);border:1px solid rgba(255,255,255,.25);padding:.85rem 1.8rem;border-radius:8px;font-weight:500;font-size:.9rem;text-decoration:none;transition:all .2s;display:inline-block}
+  .btn-ghost:hover{background:rgba(255,255,255,.2)}
 
-/* Hero right — site preview */
-.hero-preview{opacity:0;animation:fadeUp .6s .6s ease forwards}
-.preview-browser{background:var(--ink-2);border-radius:14px;border:1px solid rgba(255,255,255,.1);overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.4)}
-.preview-bar{background:rgba(255,255,255,.04);padding:.65rem 1rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid rgba(255,255,255,.06)}
-.preview-dots{display:flex;gap:5px}
-.preview-dot{width:9px;height:9px;border-radius:50%}
-.preview-url{flex:1;background:rgba(255,255,255,.06);border-radius:5px;padding:4px 10px;font-family:var(--font-mono);font-size:.62rem;color:rgba(255,255,255,.35);margin:0 .8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.preview-score{font-family:var(--font-mono);font-size:.62rem;color:#34D399;display:flex;align-items:center;gap:4px}
-.preview-content{padding:1.2rem}
-.preview-nav{background:rgba(37,99,235,.8);border-radius:6px;padding:.5rem .8rem;display:flex;align-items:center;justify-content:space-between;margin-bottom:.9rem}
-.preview-nav-logo{font-family:var(--font-head);font-weight:800;font-size:.75rem;color:#fff}
-.preview-nav-links{display:flex;gap:.6rem}
-.preview-nav-link{font-size:.55rem;color:rgba(255,255,255,.7);background:rgba(255,255,255,.1);padding:2px 7px;border-radius:50px}
-.preview-hero-block{background:linear-gradient(135deg,rgba(37,99,235,.3),rgba(6,182,212,.15));border-radius:8px;padding:1rem;margin-bottom:.8rem;border:1px solid rgba(37,99,235,.2)}
-.preview-commune-name{font-family:var(--font-head);font-weight:800;font-size:.9rem;color:#fff;margin-bottom:.2rem}
-.preview-commune-sub{font-size:.62rem;color:rgba(255,255,255,.5)}
-.preview-cards{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
-.preview-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:6px;padding:.6rem}
-.preview-card-label{font-family:var(--font-mono);font-size:.55rem;color:rgba(255,255,255,.3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.3rem}
-.preview-card-val{font-size:.72rem;color:rgba(255,255,255,.75);font-family:var(--font-head);font-weight:700}
-.preview-status{display:inline-flex;align-items:center;gap:4px;margin-top:.4rem;font-family:var(--font-mono);font-size:.55rem;color:#34D399}
-.preview-status::before{content:'';width:5px;height:5px;border-radius:50%;background:#34D399;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .demo-bar{background:var(--white);border-bottom:2px solid var(--gold);padding:.8rem 5%;display:flex;align-items:center;gap:1rem;font-size:.82rem}
+  .demo-badge{background:var(--green);color:white;padding:.2rem .6rem;border-radius:4px;font-size:.72rem;font-weight:600}
+  .demo-url{color:var(--blue-mid);font-weight:500}
 
-/* Métriques héro */
-.hero-metrics{display:flex;gap:1.2rem;margin-top:1rem}
-.h-metric{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:.8rem 1rem;flex:1;text-align:center}
-.h-metric .val{font-family:var(--font-head);font-weight:900;font-size:1.4rem;color:var(--white);line-height:1}
-.h-metric .lbl{font-family:var(--font-mono);font-size:.62rem;color:rgba(255,255,255,.35);letter-spacing:.06em;text-transform:uppercase;margin-top:3px}
+  section{padding:5rem 5%}
+  .section-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+  h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.2;margin-bottom:1rem}
+  .section-sub{color:var(--ink-light);max-width:560px;font-size:.95rem}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  .problem{background:var(--white)}
+  .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+  .problem-card{padding:2rem;border:1px solid var(--border);border-radius:12px;border-top:3px solid var(--gold)}
+  .problem-card .icon{font-size:1.8rem;margin-bottom:1rem}
+  .problem-card .stat{font-size:2rem;font-weight:700;color:var(--blue);margin-bottom:.3rem}
+  .problem-card h3{font-size:.95rem;font-weight:600;margin-bottom:.5rem}
+  .problem-card p{font-size:.85rem;color:var(--ink-light)}
 
-/* SECTIONS */
-section{padding:5.5rem 5vw}
-.section-inner{max-width:1160px;margin:0 auto}
-.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--blue);letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:.8rem}
-.section-label::before{content:'';width:18px;height:1px;background:var(--blue)}
-.section-title{font-family:var(--font-head);font-weight:800;font-size:clamp(1.7rem,3.2vw,2.6rem);color:var(--ink);letter-spacing:-.03em;line-height:1.12;margin-bottom:.6rem}
-.section-sub{color:var(--muted);font-size:.95rem;font-weight:300;max-width:560px;line-height:1.75;margin-bottom:3rem}
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
-.reveal.visible{opacity:1;transform:none}
+  .steps{background:var(--bone)}
+  .steps-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;margin-top:3rem;position:relative}
+  .steps-grid::before{content:'';position:absolute;top:32px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,var(--gold) 0%,var(--border) 100%)}
+  .step{text-align:center;position:relative}
+  .step-num{width:48px;height:48px;border-radius:50%;background:var(--blue);color:white;font-weight:700;font-size:1rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;position:relative;z-index:1;border:3px solid var(--bone)}
+  .step h3{font-size:.85rem;font-weight:600;margin-bottom:.3rem}
+  .step p{font-size:.78rem;color:var(--ink-light)}
+  .step-day{font-size:.7rem;color:var(--gold);font-weight:600;margin-top:.4rem}
 
-/* POURQUOI */
-#pourquoi{background:var(--surface-2);border-top:1px solid var(--border-l);border-bottom:1px solid var(--border-l)}
-.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.why-card{background:var(--white);border:1px solid var(--border-l);border-radius:14px;padding:1.8rem;transition:all .25s;position:relative;overflow:hidden}
-.why-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .3s}
-.why-card:hover{box-shadow:0 8px 28px rgba(37,99,235,.1);transform:translateY(-3px);border-color:rgba(37,99,235,.25)}
-.why-card:hover::after{transform:scaleX(1)}
-.why-ico{font-size:2rem;margin-bottom:1rem;display:block}
-.why-title{font-family:var(--font-head);font-weight:800;font-size:1.05rem;color:var(--ink);letter-spacing:-.02em;margin-bottom:.5rem}
-.why-desc{font-size:.85rem;color:var(--muted);line-height:1.65;font-weight:300}
-.why-stat{font-family:var(--font-head);font-weight:900;font-size:2rem;color:var(--blue);letter-spacing:-.04em;margin-top:.8rem;line-height:1}
-.why-stat-label{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+  .pricing{background:var(--white)}
+  .pricing-grid{display:grid;gap:1.2rem;margin-top:3rem}
+  .pc{border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .2s,box-shadow .2s;background:var(--bone)}
+  .pc:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(15,25,35,.1)}
+  .pc.feat{border:2px solid var(--blue);background:var(--white);transform:scale(1.02);box-shadow:0 8px 32px rgba(27,58,107,.15)}
+  .pc.feat:hover{transform:scale(1.02) translateY(-4px)}
+  .ph{padding:1.5rem 1.5rem 1rem;border-bottom:1px solid var(--border)}
+  .pb{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border-radius:4px;margin-bottom:.8rem}
+  .pb.gold{background:var(--gold-light);color:#7a5a00}
+  .pb.blue{background:#DBEAFE;color:var(--blue)}
+  .pb.green{background:#D1FAE5;color:var(--green)}
+  .pb.dark{background:var(--ink);color:var(--white)}
+  .pn{font-size:1rem;font-weight:700;margin-bottom:.3rem}
+  .pd{font-size:.78rem;color:var(--ink-light);line-height:1.4}
+  .pp{padding:1.2rem 1.5rem;border-bottom:1px solid var(--border)}
+  .pa{display:flex;align-items:baseline;gap:.3rem;margin-bottom:.2rem}
+  .pa strong{font-size:2rem;font-weight:700;color:var(--ink)}
+  .pa span{font-size:.8rem;color:var(--ink-light)}
+  .ps{font-size:.75rem;color:var(--ink-light);margin-top:.25rem}
+  .ps strong{color:var(--blue)}
+  .pf{padding:1.5rem}
+  .pf ul{list-style:none}
+  .pf li{font-size:.8rem;padding:.35rem 0;display:flex;gap:.5rem;align-items:flex-start;color:var(--ink-light);border-bottom:1px solid rgba(0,0,0,.04)}
+  .pf li:last-child{border-bottom:none}
+  .pf li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
+  .pcta{margin:0 1.5rem 1.5rem;display:block;text-align:center;padding:.75rem;border-radius:8px;font-weight:600;font-size:.85rem;text-decoration:none;transition:all .2s}
+  .pcta.p{background:var(--blue);color:white}
+  .pcta.p:hover{background:var(--blue-mid)}
+  .pcta.s{background:var(--bone);color:var(--ink);border:1px solid var(--border)}
+  .pcta.s:hover{background:var(--ink);color:white}
 
-/* PROCESS */
-#process{background:var(--white)}
-.process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;margin-top:3rem}
-.process-steps::before{content:'';position:absolute;top:28px;left:calc(10%);right:calc(10%);height:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));z-index:0}
-.step{text-align:center;position:relative;z-index:1;padding:0 .5rem}
-.step-num{width:56px;height:56px;border-radius:50%;background:var(--blue);color:#fff;font-family:var(--font-head);font-weight:900;font-size:1.1rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1.1rem;box-shadow:0 4px 16px rgba(37,99,235,.35);position:relative}
-.step-num::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px dashed rgba(37,99,235,.25);animation:spin 12s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.step-ico{font-size:1.4rem;margin-bottom:.5rem;display:block}
-.step-title{font-family:var(--font-head);font-weight:700;font-size:.9rem;color:var(--ink);margin-bottom:.4rem}
-.step-desc{font-size:.78rem;color:var(--muted);font-weight:300;line-height:1.55}
-.step-time{font-family:var(--font-mono);font-size:.65rem;color:var(--blue);margin-top:.5rem;letter-spacing:.05em}
+  .sub-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);margin:2.5rem 0 .75rem}
+  .maint-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  .mc{background:var(--bone);border:1px solid var(--border);border-radius:12px;padding:1.25rem;border-left:3px solid var(--border)}
+  .mc.act{border-left-color:var(--blue);background:var(--white)}
+  .mn{font-size:.85rem;font-weight:700;margin-bottom:.5rem}
+  .mp{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--blue);margin-bottom:.2rem}
+  .ma{font-size:.75rem;color:var(--green);font-weight:600;margin-bottom:.4rem}
+  .md{font-size:.78rem;color:var(--ink-light)}
 
-/* TARIFS */
-#tarifs{background:var(--ink);padding:5.5rem 5vw}
-#tarifs .section-label{color:var(--blue-l)}
-#tarifs .section-label::before{background:var(--blue-l)}
-#tarifs .section-title{color:var(--white)}
-#tarifs .section-sub{color:rgba(255,255,255,.45)}
-.tarifs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.tarif-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:2rem;display:flex;flex-direction:column;gap:1.1rem;position:relative;transition:all .25s}
-.tarif-card:hover{border-color:rgba(37,99,235,.45);background:rgba(37,99,235,.08);transform:translateY(-3px)}
-.tarif-card.popular{background:var(--blue);border-color:var(--blue);box-shadow:0 16px 48px rgba(37,99,235,.4)}
-.tarif-card.popular:hover{background:#1D4ED8;transform:translateY(-3px)}
-.popular-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--highlight);color:var(--ink);font-family:var(--font-mono);font-size:.65rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 14px;border-radius:50px;white-space:nowrap}
-.tarif-name{font-family:var(--font-head);font-weight:800;font-size:1.1rem;color:var(--white)}
-.tarif-desc{font-size:.82rem;color:rgba(255,255,255,.5);font-weight:300;line-height:1.6}
-.tarif-price{display:flex;align-items:flex-end;gap:.4rem}
-.tarif-price .amount{font-family:var(--font-head);font-weight:900;font-size:2.5rem;color:var(--white);letter-spacing:-.04em;line-height:1}
-.tarif-price .currency{font-family:var(--font-mono);font-size:.8rem;color:rgba(255,255,255,.5);margin-bottom:.2rem}
-.tarif-price .period{font-family:var(--font-mono);font-size:.72rem;color:rgba(255,255,255,.4);margin-bottom:.2rem}
-.tarif-includes{list-style:none;display:flex;flex-direction:column;gap:.5rem}
-.tarif-includes li{display:flex;align-items:flex-start;gap:9px;font-size:.83rem;color:rgba(255,255,255,.7);line-height:1.45}
-.tarif-includes li::before{content:'✓';color:#34D399;font-size:.75rem;font-weight:700;flex-shrink:0;margin-top:2px}
-.tarif-card.popular .tarif-includes li{color:rgba(255,255,255,.9)}
-.tarif-cta{display:block;text-align:center;padding:12px;border-radius:9px;font-size:.875rem;font-weight:600;text-decoration:none;transition:all .22s;font-family:var(--font-head);margin-top:auto}
-.tarif-cta-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.25)}
-.tarif-cta-outline:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.5)}
-.tarif-cta-solid{background:var(--white);color:var(--blue);}
-.tarif-cta-solid:hover{background:var(--blue-l);color:var(--ink)}
-.tarif-note{font-family:var(--font-mono);font-size:.68rem;color:rgba(255,255,255,.65);text-align:center;margin-top:1.5rem}
+  .mod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+  .mk{background:var(--bone);border:1px solid var(--border);border-radius:12px;padding:1.25rem;border-top:3px solid var(--gold)}
+  .mkn{font-size:.85rem;font-weight:700;margin-bottom:.4rem}
+  .mkp{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--gold);margin-bottom:.3rem}
+  .mkd{font-size:.78rem;color:var(--ink-light)}
 
-/* DEMO SECTION */
-#demo{background:var(--surface-2);border-top:1px solid var(--border-l);border-bottom:1px solid var(--border-l)}
-.demo-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.demo-left .section-title{font-size:clamp(1.5rem,2.8vw,2.1rem)}
-.communes-list{display:flex;flex-direction:column;gap:.6rem;margin-bottom:2rem}
-.commune-item{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.1rem;background:var(--white);border:1px solid var(--border-l);border-radius:10px;transition:all .2s;text-decoration:none;color:var(--text)}
-.commune-item:hover{border-color:rgba(37,99,235,.3);box-shadow:0 4px 16px rgba(37,99,235,.09);transform:translateX(3px)}
-.commune-item-left{display:flex;align-items:center;gap:10px}
-.commune-ico{width:34px;height:34px;border-radius:8px;background:rgba(37,99,235,.1);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
-.commune-name{font-weight:600;font-size:.9rem;color:var(--ink)}
-.commune-meta{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);margin-top:1px}
-.commune-status{font-family:var(--font-mono);font-size:.65rem;display:flex;align-items:center;gap:5px}
-.status-live{color:#10B981}
-.status-live::before{content:'●';margin-right:2px}
-.status-pipeline{color:var(--highlight)}
-.status-pipeline::before{content:'○';margin-right:2px}
-.demo-cta-block{background:var(--white);border:1px solid var(--border-l);border-radius:14px;padding:1.8rem;text-align:center}
-.demo-cta-title{font-family:var(--font-head);font-weight:800;font-size:1.1rem;color:var(--ink);margin-bottom:.5rem}
-.demo-cta-sub{font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.65;margin-bottom:1.3rem}
-.demo-right{display:flex;flex-direction:column;gap:1rem}
-.spec-card{background:var(--white);border:1px solid var(--border-l);border-radius:12px;padding:1.4rem;transition:all .2s}
-.spec-card:hover{border-color:rgba(37,99,235,.25);box-shadow:0 4px 16px rgba(37,99,235,.08)}
-.spec-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem}
-.spec-title{font-family:var(--font-head);font-weight:700;font-size:.95rem;color:var(--ink)}
-.spec-badge{font-family:var(--font-mono);font-size:.62rem;padding:2px 8px;border-radius:50px;font-weight:500}
-.badge-green{background:#ECFDF5;color:#065F46;border:1px solid #A7F3D0}
-.badge-blue{background:rgba(37,99,235,.1);color:var(--blue);border:1px solid rgba(37,99,235,.2)}
-.spec-items{list-style:none;display:flex;flex-direction:column;gap:.4rem}
-.spec-items li{font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:8px}
-.spec-items li::before{content:'→';color:var(--blue);font-family:var(--font-mono);font-size:.72rem;flex-shrink:0}
+  .pricing-note{text-align:center;margin-top:2rem;font-size:.78rem;color:var(--ink-light);padding:1rem;background:var(--bone);border-radius:8px}
+  .pricing-note a{color:var(--blue)}
 
-/* FAQ */
-#faq{background:var(--white)}
-.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem}
-.faq-item{background:var(--surface-2);border:1px solid var(--border-l);border-radius:12px;overflow:hidden}
-.faq-q{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.3rem;cursor:pointer;font-weight:600;font-size:.9rem;color:var(--ink);gap:.8rem;transition:background .2s}
-.faq-q:hover{background:rgba(37,99,235,.04)}
-.faq-q .arr{font-size:1rem;color:var(--blue);transition:transform .3s;flex-shrink:0}
-.faq-item.open .faq-q .arr{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.7;padding:0 1.3rem}
-.faq-item.open .faq-a{max-height:300px;padding:.2rem 1.3rem 1.2rem}
+  .detr-banner{background:linear-gradient(135deg,#0B2D1F 0%,#0F4A2E 100%);color:white;padding:3rem 5%;margin:0 5%;border-radius:16px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem}
+  .detr-banner .tag{display:inline-block;background:rgba(42,122,75,.4);border:1px solid rgba(42,122,75,.6);color:#86EFAC;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border-radius:4px;margin-bottom:.8rem}
+  .detr-banner h3{font-family:'DM Serif Display',serif;font-size:1.5rem;margin-bottom:.5rem}
+  .detr-banner p{font-size:.85rem;color:rgba(255,255,255,.7);max-width:500px}
 
-/* CTA BAS */
-.cta-section{background:linear-gradient(135deg,var(--ink) 0%,var(--ink-3) 100%);padding:5rem 5vw;text-align:center;position:relative;overflow:hidden}
-.cta-section::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.2) 0%,transparent 70%);top:-100px;left:50%;transform:translateX(-50%);pointer-events:none}
-.cta-inner{max-width:640px;margin:0 auto;position:relative;z-index:1}
-.cta-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);color:var(--highlight);font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:1.5rem}
-.cta-title{font-family:var(--font-head);font-weight:900;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--white);letter-spacing:-.04em;line-height:1.1;margin-bottom:1rem}
-.cta-sub{font-size:.95rem;color:rgba(255,255,255,.55);font-weight:300;line-height:1.75;margin-bottom:2rem}
-.cta-btns{display:flex;justify-content:center;flex-wrap:wrap;gap:.8rem}
+  .refs{background:var(--bone)}
+  .refs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+  .ref-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--ink);transition:all .2s}
+  .ref-card:hover{border-color:var(--blue);transform:translateY(-2px)}
+  .ref-icon{font-size:2rem}
+  .ref-name{font-weight:600;font-size:.9rem}
+  .ref-meta{font-size:.75rem;color:var(--ink-light)}
+  .ref-status{margin-left:auto;font-size:.7rem;font-weight:600;padding:.2rem .6rem;border-radius:4px}
+  .ref-status.live{background:#D1FAE5;color:var(--green)}
+  .ref-status.demo{background:#FEF3C7;color:#92400e}
+  .ref-status.open{background:#DBEAFE;color:var(--blue)}
 
-/* FOOTER */
-footer{background:var(--ink-2);color:rgba(255,255,255,.65);padding:2.5rem 5vw;border-top:1px solid rgba(255,255,255,.65)}
-.footer-mini{max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;font-family:var(--font-mono);font-size:.72rem}
-.footer-mini a{color:rgba(255,255,255,.72);text-decoration:none;transition:color .18s}
-.footer-mini a:hover{color:var(--white)}
-.footer-links{display:flex;gap:1.5rem}
+  .faq{background:var(--white)}
+  .faq-list{margin-top:2.5rem;max-width:700px}
+  .faq-item{border-bottom:1px solid var(--border)}
+  .faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0;cursor:pointer;font-weight:600;font-size:.9rem;transition:color .2s}
+  .faq-q:hover{color:var(--blue)}
+  .faq-q::after{content:'+';font-size:1.2rem;color:var(--gold)}
+  .faq-a{font-size:.85rem;color:var(--ink-light);padding-bottom:1rem;line-height:1.7;display:none}
+  .faq-item.open .faq-q::after{content:'−'}
+  .faq-item.open .faq-a{display:block}
 
-/* RESPONSIVE */
-@media(max-width:960px){
-  .hero-inner{grid-template-columns:1fr;gap:2.5rem}
-  .hero-preview{max-width:460px}
-  .why-grid{grid-template-columns:1fr 1fr}
-  .process-steps{grid-template-columns:1fr 1fr;gap:2rem}
-  .process-steps::before{display:none}
-  .tarifs-grid{grid-template-columns:1fr}
-  .demo-inner{grid-template-columns:1fr}
-  .faq-grid{grid-template-columns:1fr}
-}
-@media(max-width:640px){
-  .nav-links{display:none}
-  .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:64px 0 0 0;background:rgba(10,15,26,.97);padding:2rem 5vw;z-index:499;gap:1.5rem;align-items:flex-start}
-  .nav-links.open a{font-size:1rem;color:var(--white)}
-  .hamburger{display:flex}
-  section{padding:4rem 5vw}
-  .hero{padding:100px 5vw 56px}
-  .why-grid{grid-template-columns:1fr}
-  .hero-actions{flex-direction:column}
-  .btn{width:100%;justify-content:center}
-  .cta-btns{flex-direction:column;align-items:center}
-  .cta-btns .btn{width:100%;max-width:320px;justify-content:center}
-  .process-steps{grid-template-columns:1fr}
-}
+  .cta-final{background:linear-gradient(135deg,var(--blue) 0%,#0F2847 100%);color:white;text-align:center;padding:5rem 5%}
+  .cta-final h2{font-family:'DM Serif Display',serif;font-size:2rem;margin-bottom:.8rem}
+  .cta-final p{color:rgba(255,255,255,.7);margin-bottom:2rem}
+  .cta-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+  footer{background:var(--ink);color:rgba(255,255,255,.5);padding:2rem 5%;text-align:center;font-size:.78rem}
+  footer a{color:var(--gold-light);text-decoration:none}
+
+  @media(max-width:900px){
+    .problem-grid,.maint-grid{grid-template-columns:1fr 1fr}
+    .pricing-grid{grid-template-columns:1fr!important}
+    .mod-grid{grid-template-columns:1fr 1fr}
+    .steps-grid{grid-template-columns:1fr}
+    .steps-grid::before{display:none}
+    .pc.feat{transform:scale(1)}
+    .detr-banner{grid-template-columns:1fr}
+    .refs-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:600px){
+    .problem-grid,.mod-grid{grid-template-columns:1fr}
+    .nav-links{display:none}
+  }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="nav-inner">
-    <a href="/" class="nav-logo"><span class="dot"></span>indxONE</a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#pourquoi">Pourquoi INDXONE</a></li>
-      <li><a href="#tarifs">Tarifs</a></li>
-      <li><a href="#demo">Démos</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact-cta" class="nav-cta">Demander une démo</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+  <a href="https://indxone.com" class="nav-logo">indx<span>ONE</span></a>
+  <ul class="nav-links">
+    <li><a href="#pourquoi">Pourquoi INDXONE</a></li>
+    <li><a href="#tarifs">Tarifs</a></li>
+    <li><a href="#demo">Démos</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#contact-cta" class="nav-cta">Demander une démo →</a>
 </nav>
 
-<main id="contenu-principal">
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-grid" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <div>
-      <div class="hero-eyebrow">Offre Collectivités · INDXONE</div>
-      <h1>Le site officiel de votre <em>commune</em>, en 48h</h1>
-      <p class="hero-sub">
-        Un site institutionnel clé en main, conforme RGPD, accessible et performant. Conçu pour les mairies sans DSI ni budget web. À partir de <strong style="color:var(--white)">490 €</strong>.
-      </p>
-      <div class="hero-actions">
-        <a href="#contact-cta" class="btn btn-blue">Demander une démo gratuite →</a>
-        <a href="#tarifs" class="btn btn-ghost">Voir les tarifs</a>
-      </div>
-      <div class="hero-guarantees">
-        <div class="guarantee-chip"><span class="g-ico">✓</span>Déploiement 48h ouvrées</div>
-        <div class="guarantee-chip"><span class="g-ico">✓</span>RGPD natif · 0 cookie tiers</div>
-        <div class="guarantee-chip"><span class="g-ico">✓</span>Lighthouse 96+</div>
-        <div class="guarantee-chip"><span class="g-ico">✓</span>Hébergement Netlify offert</div>
-      </div>
-    </div>
-
-    <div class="hero-preview">
-      <div class="preview-browser">
-        <div class="preview-bar">
-          <div class="preview-dots">
-            <div class="preview-dot" style="background:#FF5F57"></div>
-            <div class="preview-dot" style="background:#FFBD2E"></div>
-            <div class="preview-dot" style="background:#28CA41"></div>
-          </div>
-          <div class="preview-url">mairies.indxone.com/mons-en-laonnois</div>
-          <div class="preview-score">⚡ 96</div>
-        </div>
-        <div class="preview-content">
-          <div class="preview-nav">
-            <span class="preview-nav-logo">🏛️ Mons-en-Laonnois</span>
-            <div class="preview-nav-links">
-              <span class="preview-nav-link">Actus</span>
-              <span class="preview-nav-link">Services</span>
-              <span class="preview-nav-link">Contact</span>
-            </div>
-          </div>
-          <div class="preview-hero-block">
-            <div class="preview-commune-name">Bienvenue à Mons-en-Laonnois</div>
-            <div class="preview-commune-sub">Commune rurale · Aisne (02) · ~1 150 habitants</div>
-            <div class="preview-status">Mairie ouverte maintenant</div>
-          </div>
-          <div class="preview-cards">
-            <div class="preview-card">
-              <div class="preview-card-label">Actualité</div>
-              <div class="preview-card-val">Travaux Rue du Moulin</div>
-            </div>
-            <div class="preview-card">
-              <div class="preview-card-label">Prochain événement</div>
-              <div class="preview-card-val">Conseil Municipal · 28 Mars</div>
-            </div>
-            <div class="preview-card">
-              <div class="preview-card-label">Contact</div>
-              <div class="preview-card-val">03 23 24 12 93</div>
-            </div>
-            <div class="preview-card">
-              <div class="preview-card-label">Formulaire</div>
-              <div class="preview-card-val">Envoyer un message →</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-metrics">
-        <div class="h-metric"><div class="val">48h</div><div class="lbl">Délai livraison</div></div>
-        <div class="h-metric"><div class="val">96+</div><div class="lbl">Score Lighthouse</div></div>
-        <div class="h-metric"><div class="val">0€</div><div class="lbl">Hébergement</div></div>
-      </div>
-    </div>
+<section class="hero" id="hero">
+  <div class="hero-badge">🏛️ Offre Collectivités · INDXONE</div>
+  <h1>Le site officiel de votre <em>commune</em>, en 48h</h1>
+  <p>Un site institutionnel clé en main, conforme RGPD, accessible et performant. Conçu pour les mairies sans DSI ni budget web.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><strong>48h</strong><span>Déploiement garanti</span></div>
+    <div class="hero-stat"><strong>96+</strong><span>Score Lighthouse</span></div>
+    <div class="hero-stat"><strong>0€</strong><span>Hébergement</span></div>
+    <div class="hero-stat"><strong>0</strong><span>Cookie tiers · RGPD natif</span></div>
+  </div>
+  <div class="hero-actions">
+    <a href="#contact-cta" class="btn-primary">Demander une démo gratuite →</a>
+    <a href="#tarifs" class="btn-ghost">Voir les tarifs</a>
   </div>
 </section>
 
-<!-- POURQUOI -->
-<section id="pourquoi">
-  <div class="section-inner">
-    <div class="section-label">Le problème</div>
-    <h2 class="section-title">Pourquoi les communes ont besoin d'INDXONE</h2>
-    <p class="section-sub">La majorité des communes rurales n'ont pas de site web, ou disposent d'un site obsolète, lent, inaccessible. Sans DSI, sans budget, sans prestataire local.</p>
-
-    <div class="why-grid">
-      <div class="why-card reveal">
-        <span class="why-ico">🌐</span>
-        <div class="why-title">35 000 communes sans site web</div>
-        <div class="why-desc">En France, plus de la moitié des communes rurales n'ont aucune présence numérique officielle. Les habitants manquent d'accès aux informations essentielles.</div>
-        <div class="why-stat">35k</div>
-        <div class="why-stat-label">communes sans présence web</div>
-      </div>
-      <div class="why-card reveal" style="transition-delay:.08s">
-        <span class="why-ico">💸</span>
-        <div class="why-title">Des devis inaccessibles</div>
-        <div class="why-desc">Les agences web facturent entre 3 000 et 15 000 € pour un site institutionnel. Budget hors de portée pour les petites communes avec des dotations en baisse.</div>
-        <div class="why-stat">3–15k€</div>
-        <div class="why-stat-label">prix moyen agence web</div>
-      </div>
-      <div class="why-card reveal" style="transition-delay:.16s">
-        <span class="why-ico">⏱️</span>
-        <div class="why-title">Des délais de mois</div>
-        <div class="why-desc">Les projets web classiques durent 3 à 6 mois entre cahier des charges et mise en ligne. INDXONE livre un site complet et personnalisé en 48 heures ouvrées.</div>
-        <div class="why-stat">48h</div>
-        <div class="why-stat-label">vs 3–6 mois en agence</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section id="process">
-  <div class="section-inner">
-    <div class="section-label">Comment ça marche</div>
-    <h2 class="section-title">Un déploiement en 5 étapes</h2>
-    <p class="section-sub">Un processus rodé, rapide et sans friction. Du premier contact à la mise en ligne, tout est piloté par INDXONE.</p>
-
-    <div class="process-steps reveal">
-      <div class="step">
-        <div class="step-num">1</div>
-        <span class="step-ico">📞</span>
-        <div class="step-title">Appel découverte</div>
-        <div class="step-desc">30 min pour comprendre vos besoins, récupérer les infos clés</div>
-        <div class="step-time">J·0</div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <span class="step-ico">📋</span>
-        <div class="step-title">Collecte des données</div>
-        <div class="step-desc">Formulaire simplifié : horaires, contacts, actualités, agenda</div>
-        <div class="step-time">J·1</div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <span class="step-ico">⚙️</span>
-        <div class="step-title">Configuration</div>
-        <div class="step-desc">Personnalisation complète depuis le fichier config.js unique</div>
-        <div class="step-time">J·1–2</div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <span class="step-ico">🚀</span>
-        <div class="step-title">Déploiement</div>
-        <div class="step-desc">Mise en ligne Netlify, configuration DNS, HTTPS auto</div>
-        <div class="step-time">J·2</div>
-      </div>
-      <div class="step">
-        <div class="step-num">5</div>
-        <span class="step-ico">🎓</span>
-        <div class="step-title">Formation mairie</div>
-        <div class="step-desc">1h visio pour autonomiser le secrétariat sur les mises à jour</div>
-        <div class="step-time">J·3–5</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TARIFS -->
-<section id="tarifs">
-  <div class="section-inner">
-    <div class="section-label">Tarification</div>
-    <h2 class="section-title" style="color:var(--white)">Formules & Tarifs</h2>
-    <p class="section-sub">Tarifs fixes, sans surprise. Sous le seuil de délibération du conseil municipal (500 € HT) pour la formule Starter.</p>
-
-    <div class="tarifs-grid">
-
-      <div class="tarif-card reveal">
-        <div class="tarif-name">Starter</div>
-        <div class="tarif-desc">L'essentiel pour être présent en ligne. Idéal pour les petites communes sans site existant.</div>
-        <div class="tarif-price">
-          <span class="currency">€</span>
-          <span class="amount">490</span>
-          <span class="period">HT · unique</span>
-        </div>
-        <ul class="tarif-includes">
-          <li>Site complet 1 page (hero, actus, services, carte, contact)</li>
-          <li>Personnalisation couleurs, nom, contacts, horaires</li>
-          <li>Formulaire de contact (Netlify Forms)</li>
-          <li>Carte interactive OpenStreetMap</li>
-          <li>Hébergement Netlify gratuit inclus</li>
-          <li>Formation mairie 1h visio</li>
-          <li>Code source livré (propriété commune)</li>
-          <li>RGPD natif · Lighthouse 96+</li>
-        </ul>
-        <a href="#contact-cta" class="tarif-cta tarif-cta-outline">Choisir Starter →</a>
-      </div>
-
-      <div class="tarif-card popular reveal" style="transition-delay:.09s">
-        <div class="popular-badge">⭐ Le plus choisi</div>
-        <div class="tarif-name">Standard</div>
-        <div class="tarif-desc">Le site complet avec maintenance mensuelle incluse et mises à jour régulières.</div>
-        <div class="tarif-price">
-          <span class="currency">€</span>
-          <span class="amount">790</span>
-          <span class="period">HT</span>
-        </div>
-        <ul class="tarif-includes">
-          <li>Tout le Starter</li>
-          <li>Page agenda enrichie (filtre par catégorie)</li>
-          <li>Section actualités avec images</li>
-          <li>Intégration réseaux sociaux (Facebook, Instagram)</li>
-          <li>Maintenance mensuelle incluse (49 €/mois)</li>
-          <li>Mises à jour contenu : 2/mois sur demande</li>
-          <li>Support email prioritaire</li>
-          <li>Rapport performance mensuel</li>
-        </ul>
-        <a href="#contact-cta" class="tarif-cta tarif-cta-solid">Choisir Standard →</a>
-      </div>
-
-      <div class="tarif-card reveal" style="transition-delay:.18s">
-        <div class="tarif-name">Premium</div>
-        <div class="tarif-desc">L'offre complète pour les communes souhaitant un accompagnement long terme et des fonctionnalités avancées.</div>
-        <div class="tarif-price">
-          <span class="currency">€</span>
-          <span class="amount">1290</span>
-          <span class="period">HT</span>
-        </div>
-        <ul class="tarif-includes">
-          <li>Tout le Standard</li>
-          <li>Sous-pages dédiées (salle communale, école, urbanisme…)</li>
-          <li>Espace documents téléchargeables (CR conseil, PLU…)</li>
-          <li>Formulaire de réservation salle polyvalente</li>
-          <li>Maintenance Premium (79 €/mois)</li>
-          <li>Mises à jour illimitées</li>
-          <li>Formation avancée secrétariat (3h)</li>
-          <li>Audit annuel performance + SEO</li>
-        </ul>
-        <a href="#contact-cta" class="tarif-cta tarif-cta-outline">Choisir Premium →</a>
-      </div>
-
-    </div>
-    <p class="tarif-note">Tous les tarifs sont HT · TVA 20% applicable selon règles de TVA collectivités · Paiement 50% à la commande, 50% à la livraison</p>
-  </div>
-</section>
-
-<!-- DEMO -->
-<section id="demo">
-  <div class="section-inner">
-    <div class="demo-inner">
-      <div class="demo-left reveal">
-        <div class="section-label">Références</div>
-        <h2 class="section-title">Communes déjà équipées ou en cours</h2>
-        <p class="section-sub" style="margin-bottom:1.5rem">Déployés ou en pipeline dans l'arrondissement de Laon — Aisne (02).</p>
-
-        <div class="communes-list">
-          <a href="https://mairies.indxone.com" target="_blank" rel="noopener" class="commune-item">
-            <div class="commune-item-left">
-              <div class="commune-ico">🏛️</div>
-              <div>
-                <div class="commune-name">Mons-en-Laonnois</div>
-                <div class="commune-meta">02000 · INSEE 02497 · ~1 150 hab</div>
-              </div>
-            </div>
-            <div class="commune-status status-live">En ligne</div>
-          </a>
-          <div class="commune-item" style="cursor:default">
-            <div class="commune-item-left">
-              <div class="commune-ico">🏛️</div>
-              <div>
-                <div class="commune-name">Molinchart</div>
-                <div class="commune-meta">02000 · INSEE 02489 · ~120 hab</div>
-              </div>
-            </div>
-            <div class="commune-status status-pipeline">Démo générée</div>
-          </div>
-          <div class="commune-item" style="cursor:default;opacity:.6">
-            <div class="commune-item-left">
-              <div class="commune-ico">🏛️</div>
-              <div>
-                <div class="commune-name">Votre commune</div>
-                <div class="commune-meta">Aisne (02) · Hauts-de-France</div>
-              </div>
-            </div>
-            <div class="commune-status" style="color:var(--muted);font-family:var(--font-mono);font-size:.65rem">Disponible →</div>
-          </div>
-        </div>
-
-        <div class="demo-cta-block">
-          <div class="demo-cta-title">Voir une démo en direct</div>
-          <div class="demo-cta-sub">Je génère une démo personnalisée pour votre commune en moins de 24h, sans engagement.</div>
-          <a href="#contact-cta" class="btn btn-blue" style="width:100%;justify-content:center">Demander ma démo gratuite →</a>
-        </div>
-      </div>
-
-      <div class="demo-right reveal" style="transition-delay:.12s">
-        <div class="section-label" style="margin-bottom:1.5rem">Spécifications techniques</div>
-
-        <div class="spec-card">
-          <div class="spec-header">
-            <div class="spec-title">Performance & Conformité</div>
-            <span class="spec-badge badge-green">Certifié</span>
-          </div>
-          <ul class="spec-items">
-            <li>Lighthouse Performance : 96+ / 100</li>
-            <li>Lighthouse Accessibilité : 95+ / 100</li>
-            <li>RGPD strict — 0 cookie tiers, 0 tracker</li>
-            <li>HTTPS automatique via Let's Encrypt</li>
-            <li>Score SEO optimisé (balises, JSON-LD)</li>
-          </ul>
-        </div>
-
-        <div class="spec-card">
-          <div class="spec-header">
-            <div class="spec-title">Fonctionnalités incluses</div>
-            <span class="spec-badge badge-blue">Standard</span>
-          </div>
-          <ul class="spec-items">
-            <li>Carte interactive (OpenStreetMap)</li>
-            <li>Statut d'ouverture temps réel</li>
-            <li>Formulaire de contact (anti-spam)</li>
-            <li>Section actualités + agenda + services</li>
-            <li>Liens démarches nationales (service-public.fr)</li>
-            <li>Responsive mobile / tablette / desktop</li>
-          </ul>
-        </div>
-
-        <div class="spec-card">
-          <div class="spec-header">
-            <div class="spec-title">Hébergement & Domaine</div>
-            <span class="spec-badge badge-green">Netlify gratuit</span>
-          </div>
-          <ul class="spec-items">
-            <li>Hébergement Netlify Free — bande passante illimitée</li>
-            <li>Déploiement sous-domaine mairie-[commune].netlify.app</li>
-            <li>Configuration domaine propre possible (ex: mairie-mons.fr)</li>
-            <li>CDN mondial — temps de chargement &lt; 1s</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-  <div class="section-inner">
-    <div class="section-label">Questions fréquentes</div>
-    <h2 class="section-title">FAQ</h2>
-    <p class="section-sub">Tout ce que les maires et secrétaires de mairie nous demandent avant de se lancer.</p>
-
-    <div class="faq-grid" id="faqGrid">
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Faut-il une délibération du conseil municipal ? <span class="arr">+</span></div>
-        <div class="faq-a">La formule Starter à 490 € HT est en dessous du seuil de 500 € qui nécessite une délibération dans la plupart des communes. Une simple décision du maire suffit pour engager la dépense. Pour les formules supérieures, une délibération en conseil est recommandée — nous pouvons vous aider à préparer le document.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Qui met à jour le contenu ensuite ? <span class="arr">+</span></div>
-        <div class="faq-a">Avec la formule Starter, vous recevez le code source complet et une formation d'1h pour que le secrétariat puisse modifier les actualités, horaires et agenda directement dans le fichier config.js — sans connaissances techniques. Les formules Standard et Premium incluent des mises à jour réalisées par INDXONE sur demande.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Est-ce que le site sera vraiment prêt en 48h ? <span class="arr">+</span></div>
-        <div class="faq-a">Oui, à condition de nous fournir les informations nécessaires rapidement (formulaire simple : contacts, horaires, 1 à 3 actualités, logo ou blason si disponible). La mise en ligne Netlify prend moins de 10 minutes une fois le site configuré. Le délai de 48h est contractuel.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Peut-on avoir notre propre nom de domaine ? <span class="arr">+</span></div>
-        <div class="faq-a">Absolument. Netlify permet de connecter n'importe quel nom de domaine (ex: mairie-nomscommune.fr) gratuitement. INDXONE gère la configuration DNS pour vous. L'achat du domaine (~12 €/an) reste à la charge de la commune et n'est pas inclus dans nos tarifs.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Le formulaire de contact fonctionne comment ? <span class="arr">+</span></div>
-        <div class="faq-a">Les messages sont collectés via Netlify Forms (100 soumissions/mois gratuites) et vous sont transmis par email à l'adresse de la mairie. Aucune base de données, aucun serveur à gérer. Pour un volume plus important, nous pouvons intégrer Formspree ou une redirection directe.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Qu'est-ce que le RGPD natif signifie ? <span class="arr">+</span></div>
-        <div class="faq-a">Le site ne charge aucun script tiers (pas de Google Analytics, pas de Facebook Pixel, pas de cookie tiers). Aucune bannière cookie n'est nécessaire. Les seules données collectées sont celles du formulaire de contact, ce qui simplifie considérablement vos obligations RGPD en tant que collectivité.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA BAS -->
-<div class="cta-section" id="contact-cta">
-  <div class="cta-inner reveal">
-    <div class="cta-tag">🏛️ Offre Collectivités · INDXONE</div>
-    <div class="cta-title">Votre commune mérite un site à la hauteur</div>
-    <div class="cta-sub">Demandez une démo personnalisée pour votre commune — gratuite, sans engagement, livrée en 24h. Je génère un aperçu complet avec vos vraies données.</div>
-    <div class="cta-btns">
-      <a href="mailto:contact@indxone.com?subject=Démo site mairie — [Nom commune]&body=Bonjour,%0A%0AJe souhaite une démonstration pour la commune de [NOM] ([Code postal]).%0A%0AContactez-moi au : [TÉLÉPHONE]%0A%0ACordialement" class="btn btn-blue">
-        📧 Demander une démo par email
-      </a>
-      <a href="tel:+33775679067" class="btn btn-ghost">
-        📞 07 75 67 90 67
-      </a>
-    </div>
-    <p style="font-family:var(--font-mono);font-size:.7rem;color:rgba(255,255,255,.3);margin-top:1.5rem">contact@indxone.com · indxone.com · SASU INDXONE · SIRET 999 968 902 00018</p>
-  </div>
+<div class="demo-bar">
+  <span class="demo-badge">EN LIGNE</span>
+  <span class="demo-url">mairies.indxone.com/mons-en-laonnois</span>
+  <span style="color:#6b7280">· Mons-en-Laonnois (02) · ~1 150 hab.</span>
 </div>
 
-<!-- FOOTER MINI -->
-</main>
-<footer role="contentinfo">
-  <div class="footer-mini">
-    <span>© 2026 <a href="/">INDXONE</a> — Offre Collectivités</span>
-    <div class="footer-links">
-      <a href="/">← Retour à indxone.com</a>
-      <a href="/#services">Services</a>
-      <a href="/#projets">Projets</a>
-      <a href="/#contact">Contact général</a>
+<section class="problem" id="pourquoi">
+  <div class="section-label">Le problème</div>
+  <h2>Pourquoi les communes ont besoin d'INDXONE</h2>
+  <p class="section-sub">La majorité des communes rurales n'ont pas de site web — ou disposent d'un site obsolète, lent, inaccessible. Sans DSI, sans budget, sans prestataire local.</p>
+  <div class="problem-grid">
+    <div class="problem-card"><div class="icon">🌐</div><div class="stat">35 000</div><h3>Communes sans site web</h3><p>Plus de la moitié des communes rurales françaises n'ont aucune présence numérique officielle.</p></div>
+    <div class="problem-card"><div class="icon">💸</div><div class="stat">3–15k€</div><h3>Prix moyen agence web</h3><p>Budget hors de portée pour les petites communes avec des dotations en baisse.</p></div>
+    <div class="problem-card"><div class="icon">⏱️</div><div class="stat">3–6 mois</div><h3>Délais classiques</h3><p>Entre cahier des charges et mise en ligne. INDXONE livre en 48 heures ouvrées.</p></div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="section-label">Comment ça marche</div>
+  <h2>Un déploiement en 5 étapes</h2>
+  <p class="section-sub">Du premier contact à la mise en ligne — tout est piloté par INDXONE.</p>
+  <div class="steps-grid">
+    <div class="step"><div class="step-num">1</div><h3>📞 Appel découverte</h3><p>30 min pour comprendre vos besoins et récupérer les infos clés</p><div class="step-day">J·0</div></div>
+    <div class="step"><div class="step-num">2</div><h3>📋 Collecte données</h3><p>Formulaire simplifié : horaires, contacts, actualités, agenda</p><div class="step-day">J·1</div></div>
+    <div class="step"><div class="step-num">3</div><h3>⚙️ Configuration</h3><p>Personnalisation complète depuis le fichier config.js unique</p><div class="step-day">J·1–2</div></div>
+    <div class="step"><div class="step-num">4</div><h3>🚀 Déploiement</h3><p>Mise en ligne Netlify, DNS, HTTPS automatique</p><div class="step-day">J·2</div></div>
+    <div class="step"><div class="step-num">5</div><h3>🎓 Formation</h3><p>Visio 1h pour autonomiser le secrétariat sur les mises à jour</p><div class="step-day">J·3–5</div></div>
+  </div>
+</section>
+
+<section class="pricing" id="tarifs">
+  <div class="section-label">Tarification</div>
+  <h2>Formules & Tarifs</h2>
+  <p class="section-sub">Tarifs fixes, progression cohérente +300€. Vitrine sous le seuil de délibération du conseil municipal (500€ HT).</p>
+
+  <div class="pricing-grid" style="grid-template-columns:repeat(5,1fr)">
+
+    <div class="pc">
+      <div class="ph"><span class="pb gold">Vitrine</span><div class="pn">Présence essentielle</div><div class="pd">Pour les communes sans site. Décision du maire, sans délibération.</div></div>
+      <div class="pp"><div class="pa"><strong>490€</strong><span>HT · unique</span></div><div class="ps">Sans abonnement</div></div>
+      <div class="pf"><ul>
+        <li>Site 1 page (hero, actus, services, carte, contact)</li>
+        <li>Personnalisation complète</li>
+        <li>Formulaire de contact</li>
+        <li>Carte OpenStreetMap interactive</li>
+        <li>PWA installable</li>
+        <li>Hébergement Netlify inclus</li>
+        <li>Code source livré</li>
+        <li>RGPD natif · Lighthouse 96+</li>
+      </ul></div>
+      <a href="#contact-cta" class="pcta s">Choisir Vitrine →</a>
+    </div>
+
+    <div class="pc feat">
+      <div class="ph"><span class="pb blue">⭐ Le plus choisi</span><div class="pn">Commune Active</div><div class="pd">Le site complet avec contenu dynamique et alertes citoyens.</div></div>
+      <div class="pp"><div class="pa"><strong>790€</strong><span>HT · unique</span></div><div class="ps">Maintenance séparée <strong>dès 29€/mois</strong></div></div>
+      <div class="pf"><ul>
+        <li>Tout le Vitrine</li>
+        <li>Agenda enrichi (filtres catégories)</li>
+        <li>Actualités avec images</li>
+        <li>Contenu live via Google Sheets</li>
+        <li>Alertes citoyens Brevo</li>
+        <li>Formation secrétariat 1h visio</li>
+        <li>Support email prioritaire</li>
+      </ul></div>
+      <a href="#contact-cta" class="pcta p">Choisir Commune Active →</a>
+    </div>
+
+    <div class="pc" style="border:2px solid var(--green);background:linear-gradient(160deg,rgba(42,122,75,.04) 0%,white 60%)">
+      <div class="ph"><span class="pb green">✦ Nouveau</span><div class="pn">Commune Connectée</div><div class="pd">Signalement GPS, météo, agenda enrichi pour les communes actives.</div></div>
+      <div class="pp"><div class="pa"><strong>1 090€</strong><span>HT · unique</span></div><div class="ps">Maintenance séparée <strong>dès 29€/mois</strong></div></div>
+      <div class="pf"><ul>
+        <li>Tout le Commune Active</li>
+        <li>Signalement d'incidents GPS</li>
+        <li>Widget météo local</li>
+        <li>Sous-pages dédiées (école, urbanisme…)</li>
+        <li>Formation secrétariat 2h</li>
+        <li>Intégration réseaux sociaux</li>
+      </ul></div>
+      <a href="#contact-cta" class="pcta p" style="background:var(--green)">Choisir Connectée →</a>
+    </div>
+
+    <div class="pc">
+      <div class="ph"><span class="pb dark">Premium</span><div class="pn">Commune Premium</div><div class="pd">Pro + 12 mois maintenance Active inclus. Le bundle le plus avantageux.</div></div>
+      <div class="pp">
+        <div class="pa"><strong>1 490€</strong><span>HT · unique</span></div>
+        <div class="ps" style="color:var(--green);font-weight:600">✓ 12 mois maint. Active inclus <span style="color:var(--ink-light);font-weight:400">(valeur 490€)</span></div>
+      </div>
+      <div class="pf"><ul>
+        <li>Tout le Commune Connectée</li>
+        <li>12 mois maintenance Active offerts</li>
+        <li>Mises à jour contenu illimitées</li>
+        <li>Rapport performance mensuel</li>
+        <li>Audit annuel</li>
+        <li>Éligible financement DETR</li>
+      </ul></div>
+      <a href="#contact-cta" class="pcta s">Choisir Premium →</a>
+    </div>
+
+    <div class="pc" style="background:linear-gradient(160deg,#0B2030 0%,#0F1923 100%);border-color:rgba(201,168,76,.3)">
+      <div class="ph" style="border-bottom-color:rgba(255,255,255,.08)">
+        <span class="pb" style="background:rgba(201,168,76,.2);color:var(--gold-light);border:1px solid rgba(201,168,76,.3)">EPCI</span>
+        <div class="pn" style="color:white">Intercommunalité</div>
+        <div class="pd" style="color:rgba(255,255,255,.5)">Portail multi-communes pour CA, CDC et EPCI.</div>
+      </div>
+      <div class="pp" style="border-bottom-color:rgba(255,255,255,.08)">
+        <div class="pa"><strong style="color:var(--gold-light)">3 500€</strong><span style="color:rgba(255,255,255,.4)">HT</span></div>
+        <div class="ps" style="color:rgba(255,255,255,.4)">+ <strong style="color:var(--gold-light)">199€/mois</strong> HT</div>
+      </div>
+      <div class="pf"><ul>
+        <li style="color:rgba(255,255,255,.6);border-bottom-color:rgba(255,255,255,.06)">Portail multi-communes centralisé</li>
+        <li style="color:rgba(255,255,255,.6);border-bottom-color:rgba(255,255,255,.06)">Dashboard administrateur EPCI</li>
+        <li style="color:rgba(255,255,255,.6);border-bottom-color:rgba(255,255,255,.06)">Sites individuels par commune</li>
+        <li style="color:rgba(255,255,255,.6);border-bottom-color:rgba(255,255,255,.06)">Gestion centralisée actualités</li>
+        <li style="color:rgba(255,255,255,.6);border-bottom-color:rgba(255,255,255,.06)">SLA prioritaire · Support dédié</li>
+        <li style="color:rgba(255,255,255,.6);border-bottom-color:rgba(255,255,255,.06)">Éligible DETR / DSIL</li>
+      </ul></div>
+      <a href="#contact-cta" style="background:var(--gold);color:var(--ink);margin:0 1.5rem 1.5rem;display:block;text-align:center;padding:.75rem;border-radius:8px;font-weight:600;font-size:.85rem;text-decoration:none">Nous contacter →</a>
+    </div>
+
+  </div>
+
+  <p class="sub-label">Maintenance (après création) — mensuel ou annuel (2 mois offerts) :</p>
+  <div class="maint-grid">
+    <div class="mc"><div class="mn">Légère</div><div class="mp">29€<span style="font-size:.9rem;font-family:'Sora',sans-serif;font-weight:400">/mois</span></div><div class="ma">ou 290€/an — économisez 58€</div><div class="md">Hébergement + corrections mineures</div></div>
+    <div class="mc act"><div class="mn">Active ★</div><div class="mp">49€<span style="font-size:.9rem;font-family:'Sora',sans-serif;font-weight:400">/mois</span></div><div class="ma">ou 490€/an — économisez 98€</div><div class="md">Mise à jour contenu + alertes + support email</div></div>
+    <div class="mc"><div class="mn">Premium</div><div class="mp">79€<span style="font-size:.9rem;font-family:'Sora',sans-serif;font-weight:400">/mois</span></div><div class="ma">ou 790€/an — économisez 158€</div><div class="md">Active + évolutions + rapport mensuel</div></div>
+  </div>
+
+  <p class="sub-label">Modules optionnels :</p>
+  <div class="mod-grid">
+    <div class="mk"><div class="mkn">Espace documents</div><div class="mkp">150€ <span style="font-size:.8rem;font-family:'Sora',sans-serif;color:var(--ink-light)">HT</span></div><div class="mkd">CR conseil, PLU, formulaires téléchargeables</div></div>
+    <div class="mk"><div class="mkn">Réservation salle</div><div class="mkp">190€ <span style="font-size:.8rem;font-family:'Sora',sans-serif;color:var(--ink-light)">HT</span></div><div class="mkd">Salle polyvalente, gîte, terrain sport</div></div>
+    <div class="mk"><div class="mkn">Carte POI</div><div class="mkp">120€ <span style="font-size:.8rem;font-family:'Sora',sans-serif;color:var(--ink-light)">HT</span></div><div class="mkd">Commerces, arrêts bus, points d'intérêt</div></div>
+    <div class="mk"><div class="mkn">Travaux &amp; chantiers</div><div class="mkp">150€ <span style="font-size:.8rem;font-family:'Sora',sans-serif;color:var(--ink-light)">HT</span></div><div class="mkd">Carte + statut + dates — réduit les appels</div></div>
+  </div>
+
+  <div class="pricing-note">
+    Tous les tarifs sont HT · TVA applicable selon règles collectivités · Paiement 50% commande / 50% livraison<br>
+    <a href="#detr">→ Vos projets peuvent être financés via DETR ou DSIL — nous vous aidons à monter le dossier.</a>
+  </div>
+</section>
+
+<section style="background:var(--white);padding:0 0 4rem" id="detr">
+  <div class="detr-banner">
+    <div>
+      <div class="tag">💡 Financement public</div>
+      <h3>Éligible DETR & DSIL — nous montons le dossier avec vous</h3>
+      <p>Les formules Commune Premium et EPCI sont éligibles à la Dotation d'Équipement des Territoires Ruraux. INDXONE vous accompagne dans la constitution du dossier — sans surcoût.</p>
+    </div>
+    <a href="#contact-cta" class="btn-primary" style="white-space:nowrap">En savoir plus →</a>
+  </div>
+</section>
+
+<section class="refs" id="demo">
+  <div class="section-label">Références</div>
+  <h2>Communes déjà équipées ou en cours</h2>
+  <p class="section-sub">Déployés ou en pipeline dans l'arrondissement de Laon — Aisne (02).</p>
+  <div class="refs-grid">
+    <a href="https://mairies.indxone.com/mons-en-laonnois" class="ref-card"><div class="ref-icon">🏛️</div><div><div class="ref-name">Mons-en-Laonnois</div><div class="ref-meta">02000 · INSEE 02497 · ~1 150 hab.</div></div><span class="ref-status live">En ligne</span></a>
+    <div class="ref-card"><div class="ref-icon">🏛️</div><div><div class="ref-name">Molinchart</div><div class="ref-meta">02000 · INSEE 02489 · ~120 hab.</div></div><span class="ref-status demo">Démo générée</span></div>
+    <div class="ref-card"><div class="ref-icon">🏛️</div><div><div class="ref-name">Votre commune</div><div class="ref-meta">Aisne (02) · Hauts-de-France</div></div><span class="ref-status open">Disponible →</span></div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="section-label">Questions fréquentes</div>
+  <h2>Ce que les maires nous demandent</h2>
+  <div class="faq-list">
+    <div class="faq-item open">
+      <div class="faq-q">Faut-il une délibération du conseil municipal ?</div>
+      <div class="faq-a">La formule Vitrine à 490€ HT est sous le seuil de 500€ — une simple décision du maire suffit. Pour les formules supérieures, une délibération est recommandée. Nous pouvons vous aider à préparer le document.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Le site sera vraiment prêt en 48h ?</div>
+      <div class="faq-a">Oui, à condition de nous fournir les informations nécessaires rapidement (contacts, horaires, 1 à 3 actualités, logo si disponible). Le délai de 48h ouvrées est contractuel.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Peut-on avoir notre propre nom de domaine ?</div>
+      <div class="faq-a">Absolument. Netlify permet de connecter n'importe quel domaine (ex : mairie-nomcommune.fr) gratuitement. INDXONE gère la configuration DNS. L'achat du domaine (~12€/an) reste à la charge de la commune.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Nos projets sont-ils finançables via DETR ?</div>
+      <div class="faq-a">Oui. Les formules Commune Premium (1 490€) et EPCI (3 500€) sont éligibles à la DETR et à la DSIL. INDXONE vous accompagne dans la constitution du dossier sans surcoût.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Que signifie RGPD natif ?</div>
+      <div class="faq-a">Le site ne charge aucun script tiers. Aucune bannière cookie n'est nécessaire. Les seules données collectées sont celles du formulaire de contact — ce qui simplifie considérablement vos obligations RGPD.</div>
     </div>
   </div>
+</section>
+
+<section class="cta-final" id="contact-cta">
+  <h2>Votre commune mérite un site à la hauteur</h2>
+  <p>Démo personnalisée — gratuite, sans engagement, livrée en 24h avec vos vraies données.</p>
+  <div class="cta-links">
+    <a href="/cdn-cgi/l/email-protection#0f6c60617b6e6c7b4f66616b7760616a216c6062307c7a6d656a6c7b324bcca662602f7c667b6a2f626e667d666a2fed8f9b2f544160622f6c6062627a616a52296d606b76324d606165607a7d232a3f4e2a3f4e456a2f7c607a676e667b6a2f7a616a2f6bcca66260617c7b7d6e7b6660612f7f607a7d2f636e2f6c6062627a616a2f6b6a2f54414042522f27544c606b6a2f7f607c7b6e635226212a3f4e2a3f4e4c60617b6e6c7b6a75226260662f6e7a2f352f545bcc8643cc865f4740414a522a3f4e2a3f4e4c607d6b666e636a626a617b" class="btn-primary">📧 Demander une démo par email</a>
+    <a href="tel:+33775679067" class="btn-ghost">📞 07 75 67 90 67</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <a href="https://indxone.com">INDXONE</a> — Offre Collectivités · SASU INDXONE · SIRET 999 968 902 00018</p>
+  <p style="margin-top:.4rem"><a href="https://indxone.com">← Retour à indxone.com</a></p>
 </footer>
 
-<script>
-function toggleNav() {
-  const links = document.getElementById('navLinks');
-  const btn   = document.getElementById('hamburger');
-  const open  = links.classList.toggle('open');
-  btn.classList.toggle('open', open);
-  btn.setAttribute('aria-expanded', open);
-}
-document.addEventListener('click', e => {
-  if (e.target.closest('#navLinks a')) {
-    document.getElementById('navLinks').classList.remove('open');
-    document.getElementById('hamburger').classList.remove('open');
-  }
-});
-
-function toggleFaq(el) {
-  const item = el.parentElement;
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
-
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-}, { threshold: 0.07 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-</script>
-</body>
-</html>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
