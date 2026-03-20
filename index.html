@@ -787,4 +787,12 @@
 
 <script>
 function filterProjet(btn, type) {
-  document.querySelectorAll('.pf-btn').
+  document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.bento-card').forEach(card => {
+    card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+  });
+}-e 
+</script>
+</body>
+</html>
