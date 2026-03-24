@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INDXONE — Consultant SI & Architecte Digital pour PME</title>
+<meta name="description" content="Koffi NIAMKEY — Consultant SI freelance. Pilotage de projets IT, intégration ERP/CRM, automatisation no-code, infrastructure cloud. Disponible en mission.">
+<meta name="keywords" content="consultant SI, architecte SI, AMOA, PMO, pilotage projet IT, ERP, CRM, Power Platform, automatisation, freelance, indxone">
+<meta property="og:title" content="INDXONE — Consultant SI & Architecte Digital">
+<meta property="og:description" content="De la stratégie SI à l'exécution terrain — conception, pilotage, intégration.">
+<meta property="og:image" content="/img/og-indxone.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+
+<style>
+/* ══ TOKENS ══════════════════════════════════════════════ */
+:root {
+  --ink:       #0A0F1A;
+  --ink-2:     #111827;
+  --ink-3:     #1C2537;
+  --surface:   #FFFFFF;
+  --surface-2: #F7F9FC;
+  --border:    rgba(255,255,255,.09);
+  --border-l:  #E4EAF2;
+  --blue:      #2563EB;
+  --blue-l:    #60A5FA;
+  --blue-glow: rgba(37,99,235,.28);
+  --cyan:      #06B6D4;
+  --text:      #1E2A3B;
+  --muted:     #64748B;
+  --white:     #FFFFFF;
+  --highlight: #F59E0B;
+  --success:   #10B981;
+  --radius:    10px;
+  --font-head: 'Cabinet Grotesk', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--font-body);color:var(--text);background:var(--surface);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+
+/* ══ NAV ════════════════════════════════════════════════ */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;
+  background:rgba(10,15,26,.82);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1160px;margin:0 auto;padding:0 5vw;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-head);font-weight:900;font-size:1.2rem;color:var(--white);text-decoration:none;letter-spacing:-.03em;display:flex;align-items:center;gap:8px}
+.nav-logo .dot{width:7px;height:7px;border-radius:50%;background:var(--blue);box-shadow:0 0 10px var(--blue-glow)}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.65);font-size:.875rem;text-decoration:none;transition:color .18s;font-weight:400}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--blue)!important;color:var(--white)!important;padding:8px 18px!important;border-radius:7px!important;font-weight:500!important;font-size:.82rem!important;transition:all .2s!important}
+.nav-cta:hover{background:#1D4ED8!important;transform:translateY(-1px)!important}
+.nav-dispo{display:flex;align-items:center;gap:6px;font-size:.72rem;font-family:var(--font-mono);color:#34D399;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border:1px solid rgba(52,211,153,.25);border-radius:50px;background:rgba(52,211,153,.08)}
+.nav-dispo::before{content:'';width:6px;height:6px;border-radius:50%;background:#34D399;box-shadow:0 0 8px rgba(52,211,153,.7);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ══ HERO ════════════════════════════════════════════════ */
+.hero{background:var(--ink);min-height:100vh;display:flex;align-items:center;padding:120px 5vw 80px;position:relative;overflow:hidden}
+/* Glow orbs */
+.hero::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(37,99,235,.18) 0%,transparent 70%);
+  top:-100px;right:-100px;pointer-events:none}
+.hero::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(6,182,212,.1) 0%,transparent 70%);
+  bottom:0;left:-80px;pointer-events:none}
+/* Grid texture */
+.hero-grid{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none}
+.hero-inner{max-width:1160px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr 380px;gap:5rem;align-items:center;width:100%}
+
+/* Left */
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.72rem;color:var(--blue-l);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.8rem;opacity:0;animation:fadeUp .7s .1s ease forwards}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--blue-l)}
+.hero h1{font-family:var(--font-head);font-weight:900;font-size:clamp(2.4rem,5.2vw,4.2rem);line-height:1.04;letter-spacing:-.04em;color:var(--white);margin-bottom:1.4rem;opacity:0;animation:fadeUp .7s .25s ease forwards}
+.hero h1 em{font-style:normal;color:transparent;background:linear-gradient(135deg,var(--blue-l),var(--cyan));-webkit-background-clip:text;background-clip:text}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.6);font-weight:300;line-height:1.75;max-width:480px;margin-bottom:2.5rem;opacity:0;animation:fadeUp .7s .4s ease forwards}
+.hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:3rem;opacity:0;animation:fadeUp .7s .55s ease forwards}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:9px;font-size:.9rem;font-weight:500;text-decoration:none;transition:all .22s;cursor:pointer;border:1.5px solid transparent;font-family:var(--font-body);white-space:nowrap}
+.btn-blue{background:var(--blue);color:var(--white);border-color:var(--blue);box-shadow:0 4px 20px rgba(37,99,235,.35)}
+.btn-blue:hover{background:#1D4ED8;transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,99,235,.45)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.2)}
+.btn-ghost:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.4)}
+
+/* Trust strip */
+.hero-trust{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;opacity:0;animation:fadeUp .7s .7s ease forwards}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:.8rem;color:rgba(255,255,255,.5);font-family:var(--font-mono)}
+.trust-item strong{color:rgba(255,255,255,.9);font-size:1.05rem;font-family:var(--font-head);font-weight:800}
+.trust-sep{width:1px;height:28px;background:rgba(255,255,255,.12)}
+
+/* Right — cards stats */
+.hero-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:2rem;opacity:0;animation:fadeUp .7s .65s ease forwards;backdrop-filter:blur(8px)}
+.hero-card-title{font-family:var(--font-mono);font-size:.68rem;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:1px solid rgba(255,255,255,.07)}
+.stat-row{display:flex;align-items:center;justify-content:space-between;padding:.65rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.stat-row:last-child{border-bottom:none}
+.stat-label{font-size:.82rem;color:rgba(255,255,255,.5)}
+.stat-val{font-family:var(--font-head);font-weight:800;font-size:1.1rem;color:var(--white)}
+.stat-val.blue{color:var(--blue-l)}
+.stat-val.cyan{color:var(--cyan)}
+.stat-val.green{color:#34D399}
+.hero-cta-malt{display:flex;align-items:center;gap:10px;margin-top:1.4rem;padding:1rem;background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.25);border-radius:10px;text-decoration:none;transition:all .2s}
+.hero-cta-malt:hover{background:rgba(37,99,235,.2);border-color:rgba(37,99,235,.45)}
+.hero-cta-malt .malt-ico{width:32px;height:32px;border-radius:7px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;font-family:var(--font-head);flex-shrink:0}
+.hero-cta-malt .malt-text{flex:1}
+.hero-cta-malt .malt-text strong{display:block;font-size:.84rem;color:var(--white);font-weight:600}
+.hero-cta-malt .malt-text span{font-size:.73rem;color:rgba(255,255,255,.45);font-family:var(--font-mono)}
+.hero-cta-malt .arrow{color:rgba(255,255,255,.35);transition:transform .2s}
+.hero-cta-malt:hover .arrow{transform:translateX(3px);color:var(--blue-l)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══ SECTION BASE ════════════════════════════════════════ */
+section{padding:6rem 5vw}
+.section-inner{max-width:1160px;margin:0 auto}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--blue);letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:1rem}
+.section-label::before{content:'';width:20px;height:1px;background:var(--blue)}
+.section-title{font-family:var(--font-head);font-weight:800;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--ink);letter-spacing:-.03em;line-height:1.12;margin-bottom:.6rem}
+.section-sub{color:var(--muted);font-size:1rem;font-weight:300;max-width:540px;line-height:1.7;margin-bottom:3rem}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ══ OFFRES ══════════════════════════════════════════════ */
+#services{background:var(--surface-2);border-top:1px solid var(--border-l);border-bottom:1px solid var(--border-l)}
+.offres-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.offre-card{background:var(--white);border:1px solid var(--border-l);border-radius:14px;padding:2rem;display:flex;flex-direction:column;gap:1rem;transition:all .25s;position:relative;overflow:hidden}
+.offre-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.offre-card:hover{border-color:rgba(37,99,235,.3);box-shadow:0 8px 32px rgba(37,99,235,.1);transform:translateY(-3px)}
+.offre-card:hover::before{transform:scaleX(1)}
+.offre-card.featured{background:var(--ink);border-color:rgba(255,255,255,.1);color:var(--white)}
+.offre-card.featured::before{background:linear-gradient(90deg,var(--blue),var(--cyan));transform:scaleX(1)}
+.offre-badge{position:absolute;top:1.2rem;right:1.2rem;background:var(--highlight);color:var(--ink);font-size:.62rem;font-weight:700;font-family:var(--font-mono);letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:50px}
+.offre-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.offre-icon-blue{background:rgba(37,99,235,.1)}
+.offre-icon-dark{background:rgba(255,255,255,.08)}
+.offre-name{font-family:var(--font-head);font-weight:800;font-size:1.15rem;letter-spacing:-.02em;color:var(--ink);line-height:1.2}
+.offre-card.featured .offre-name{color:var(--white)}
+.offre-desc{font-size:.875rem;color:var(--muted);font-weight:300;line-height:1.65}
+.offre-card.featured .offre-desc{color:rgba(255,255,255,.6)}
+.offre-items{list-style:none;display:flex;flex-direction:column;gap:.4rem;margin-top:.3rem}
+.offre-items li{font-size:.82rem;color:var(--muted);display:flex;align-items:flex-start;gap:8px;line-height:1.45}
+.offre-card.featured .offre-items li{color:rgba(255,255,255,.6)}
+.offre-items li::before{content:'→';color:var(--blue);flex-shrink:0;font-family:var(--font-mono);font-size:.78rem;margin-top:1px}
+.offre-card.featured .offre-items li::before{color:var(--blue-l)}
+.offre-footer{margin-top:auto;padding-top:1.2rem;border-top:1px solid var(--border-l);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.offre-card.featured .offre-footer{border-top-color:rgba(255,255,255,.1)}
+.offre-tarif{font-family:var(--font-mono);font-size:.75rem;color:var(--muted)}
+.offre-card.featured .offre-tarif{color:rgba(255,255,255,.45)}
+.offre-link{font-size:.8rem;font-weight:500;color:var(--blue);text-decoration:none;display:flex;align-items:center;gap:4px;transition:gap .18s}
+.offre-card.featured .offre-link{color:var(--blue-l)}
+.offre-link:hover{gap:8px}
+
+/* Startup kit — pleine largeur */
+.offres-bottom{margin-top:1.2rem}
+.kit-card{background:linear-gradient(135deg,var(--ink) 0%,var(--ink-3) 100%);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;position:relative;overflow:hidden}
+.kit-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--highlight));animation:shimmer 3s linear infinite;will-change:transform}
+@keyframes shimmer{0%{transform:translateX(200%)}100%{transform:translateX(-200%)}}
+.kit-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);color:var(--highlight);font-size:.68rem;font-family:var(--font-mono);letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:50px;margin-bottom:1rem}
+.kit-title{font-family:var(--font-head);font-weight:900;font-size:1.7rem;color:var(--white);letter-spacing:-.03em;line-height:1.15;margin-bottom:.8rem}
+.kit-desc{font-size:.9rem;color:rgba(255,255,255,.55);font-weight:300;line-height:1.7;margin-bottom:1.5rem}
+.kit-cta{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--ink);padding:12px 24px;border-radius:9px;font-size:.875rem;font-weight:600;text-decoration:none;transition:all .22s;font-family:var(--font-head)}
+.kit-cta:hover{background:var(--blue-l);transform:translateY(-1px)}
+.kit-plans{display:flex;flex-direction:column;gap:.8rem}
+.kit-plan{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:1.1rem 1.3rem;display:flex;align-items:center;justify-content:space-between;transition:border-color .2s}
+.kit-plan:hover{border-color:rgba(37,99,235,.4)}
+.kit-plan-name{font-family:var(--font-head);font-weight:700;font-size:.95rem;color:var(--white)}
+.kit-plan-desc{font-size:.77rem;color:rgba(255,255,255,.4);margin-top:2px;font-family:var(--font-mono)}
+.kit-plan-price{font-family:var(--font-head);font-weight:900;font-size:1.2rem;color:var(--white);text-align:right}
+.kit-plan-price span{display:block;font-size:.65rem;font-weight:400;color:rgba(255,255,255,.35);font-family:var(--font-mono);margin-top:1px}
+.kit-plan.highlight-plan{border-color:rgba(37,99,235,.4);background:rgba(37,99,235,.12)}
+
+/* ══ COLLECTIVITÉS ══════════════════════════════════════ */
+#collectivites{background:var(--white);border-top:1px solid var(--border-l)}
+.coll-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.coll-visual{position:relative}
+.coll-mockup{background:var(--ink);border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 24px 60px rgba(0,0,0,.25)}
+.coll-mockup-bar{background:var(--ink-2);padding:.6rem 1rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.coll-dot{width:10px;height:10px;border-radius:50%}
+.coll-mockup-content{padding:1.5rem}
+.coll-card-demo{background:var(--ink-3);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:1.2rem;margin-bottom:.8rem}
+.coll-card-demo:last-child{margin-bottom:0}
+.coll-card-label{font-family:var(--font-mono);font-size:.65rem;color:rgba(255,255,255,.35);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem}
+.coll-card-val{font-family:var(--font-head);font-weight:700;font-size:.95rem;color:var(--white)}
+.coll-card-sub{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:2px}
+.coll-tag{display:inline-flex;align-items:center;gap:5px;margin-top:.6rem;font-family:var(--font-mono);font-size:.62rem;background:rgba(37,99,235,.2);color:var(--blue-l);padding:3px 9px;border-radius:50px;border:1px solid rgba(37,99,235,.25)}
+.coll-badge-float{position:absolute;top:-1rem;right:-1rem;background:var(--blue);color:#fff;border-radius:12px;padding:.8rem 1.1rem;text-align:center;font-family:var(--font-head);box-shadow:0 8px 24px rgba(37,99,235,.4)}
+.coll-badge-float strong{display:block;font-size:1.5rem;font-weight:900;line-height:1;letter-spacing:-.03em}
+.coll-badge-float span{font-size:.68rem;opacity:.8;font-family:var(--font-mono);letter-spacing:.06em;text-transform:uppercase}
+
+.coll-content .section-title{font-size:clamp(1.5rem,2.8vw,2.2rem);color:var(--ink)}
+.coll-features{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem}
+.coll-features li{display:flex;align-items:flex-start;gap:12px;font-size:.9rem;color:var(--text);line-height:1.5}
+.coll-features li::before{content:'✓';width:20px;height:20px;border-radius:50%;background:rgba(37,99,235,.1);color:var(--blue);font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.coll-actions{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
+.btn-dark{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.btn-dark:hover{background:var(--ink-2);transform:translateY(-1px)}
+.coll-link{font-size:.85rem;color:var(--blue);text-decoration:none;font-weight:500;display:flex;align-items:center;gap:5px;transition:gap .18s}
+.coll-link:hover{gap:9px}
+
+/* ══ PROJETS ════════════════════════════════════════════ */
+#projets{background:var(--surface-2);border-top:1px solid var(--border-l);border-bottom:1px solid var(--border-l)}
+.projets-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
+.projets-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+
+/* ECAO — featured */
+.projet-card{background:var(--white);border:1px solid var(--border-l);border-radius:14px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column}
+.projet-card:hover{border-color:rgba(37,99,235,.25);box-shadow:0 8px 32px rgba(37,99,235,.09);transform:translateY(-3px)}
+.projet-card.span2{grid-column:span 2}
+.projet-card.dark{background:var(--ink);border-color:rgba(255,255,255,.1)}
+.projet-top{padding:1.8rem;flex:1}
+.projet-source{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:50px;width:fit-content;margin-bottom:1rem}
+.source-freelance{background:rgba(37,99,235,.1);color:var(--blue);border:1px solid rgba(37,99,235,.2)}
+.source-cdi{background:rgba(100,116,139,.1);color:var(--muted);border:1px solid rgba(100,116,139,.2)}
+.projet-icon{font-size:2rem;margin-bottom:.8rem;display:block}
+.projet-title{font-family:var(--font-head);font-weight:800;font-size:1.15rem;color:var(--ink);letter-spacing:-.02em;margin-bottom:.5rem;line-height:1.25}
+.projet-card.dark .projet-title{color:var(--white)}
+.projet-desc{font-size:.84rem;color:var(--muted);line-height:1.65;font-weight:300}
+.projet-card.dark .projet-desc{color:rgba(255,255,255,.55)}
+.projet-metrics{display:flex;gap:1.5rem;margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--border-l)}
+.projet-card.dark .projet-metrics{border-top-color:rgba(255,255,255,.08)}
+.metric{text-align:center}
+.metric .val{font-family:var(--font-head);font-weight:900;font-size:1.4rem;color:var(--ink);letter-spacing:-.02em;line-height:1}
+.projet-card.dark .metric .val{color:var(--white)}
+.metric .lbl{font-size:.68rem;color:var(--muted);font-family:var(--font-mono);margin-top:2px;text-transform:uppercase;letter-spacing:.06em}
+.projet-card.dark .metric .lbl{color:rgba(255,255,255,.35)}
+.projet-tags{display:flex;flex-wrap:wrap;gap:.4rem;padding:.9rem 1.8rem;border-top:1px solid var(--border-l);background:var(--surface-2)}
+.projet-card.dark .projet-tags{border-top-color:rgba(255,255,255,.06);background:rgba(255,255,255,.03)}
+.tag{font-family:var(--font-mono);font-size:.66rem;padding:3px 9px;border-radius:50px;background:var(--surface-2);color:var(--muted);border:1px solid var(--border-l)}
+.projet-card.dark .tag{background:rgba(255,255,255,.05);color:rgba(255,255,255,.45);border-color:rgba(255,255,255,.08)}
+
+/* ══ STACK ═══════════════════════════════════════════════ */
+#stack{background:var(--ink);padding:5rem 5vw}
+#stack .section-label{color:var(--blue-l)}
+#stack .section-label::before{background:var(--blue-l)}
+#stack .section-title{color:var(--white)}
+#stack .section-sub{color:rgba(255,255,255,.45)}
+.stack-groups{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem}
+.stack-group{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.5rem}
+.stack-group-title{font-family:var(--font-mono);font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.1rem;padding-bottom:.8rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.stack-items{display:flex;flex-direction:column;gap:.5rem}
+.stack-item{display:flex;align-items:center;gap:10px;font-size:.84rem;color:rgba(255,255,255,.65);transition:color .18s;padding:.2rem 0}
+.stack-item:hover{color:var(--white)}
+.stack-dot{width:6px;height:6px;border-radius:50%;background:rgba(37,99,235,.6);flex-shrink:0}
+.stack-item:hover .stack-dot{background:var(--blue-l)}
+
+/* ══ CONTACT ════════════════════════════════════════════ */
+#contact{background:var(--surface);border-top:1px solid var(--border-l)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-left h2{font-family:var(--font-head);font-weight:900;font-size:clamp(1.8rem,3vw,2.5rem);color:var(--ink);letter-spacing:-.03em;line-height:1.12;margin-bottom:1rem}
+.contact-left p{font-size:.95rem;color:var(--muted);font-weight:300;line-height:1.75;margin-bottom:2rem}
+.contact-channels{display:flex;flex-direction:column;gap:.8rem;margin-bottom:2rem}
+.contact-ch{display:flex;align-items:center;gap:14px;padding:1rem 1.2rem;background:var(--surface-2);border:1px solid var(--border-l);border-radius:11px;text-decoration:none;transition:all .2s}
+.contact-ch:hover{border-color:rgba(37,99,235,.3);background:rgba(37,99,235,.04);transform:translateX(3px)}
+.ch-icon{width:38px;height:38px;border-radius:9px;background:rgba(37,99,235,.1);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.ch-label{font-size:.75rem;color:var(--muted);font-family:var(--font-mono);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.ch-val{font-size:.9rem;color:var(--ink);font-weight:500}
+.ch-arrow{margin-left:auto;color:var(--muted);font-size:1rem;transition:transform .18s}
+.contact-ch:hover .ch-arrow{transform:translateX(3px);color:var(--blue)}
+
+/* Plateformes */
+.platforms-title{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.09em;text-transform:uppercase;margin-bottom:.8rem}
+.platforms{display:flex;flex-direction:column;gap:.6rem}
+.platform-btn{display:flex;align-items:center;gap:12px;padding:.9rem 1.2rem;border:1.5px solid var(--border-l);border-radius:10px;text-decoration:none;transition:all .22s;color:var(--text)}
+.platform-btn:hover{border-color:var(--blue);background:rgba(37,99,235,.04);transform:translateX(3px)}
+.platform-ico{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0;color:#fff;font-family:var(--font-head)}
+.ico-malt{background:#FC4F4F}
+.ico-lhib{background:#1D3557}
+.ico-li{background:#0A66C2}
+.platform-info strong{display:block;font-size:.87rem;font-weight:600;color:var(--ink)}
+.platform-info span{font-size:.75rem;color:var(--muted);font-family:var(--font-mono)}
+.platform-arrow{margin-left:auto;color:var(--muted)}
+
+/* Formulaire */
+.form-wrap{background:var(--surface-2);border:1px solid var(--border-l);border-radius:16px;padding:2rem}
+.form-wrap h3{font-family:var(--font-head);font-weight:800;font-size:1.25rem;color:var(--ink);letter-spacing:-.02em;margin-bottom:.3rem}
+.form-wrap .form-sub{font-size:.83rem;color:var(--muted);margin-bottom:1.5rem;font-weight:300}
+.fg{margin-bottom:.9rem}
+.fg label{display:block;font-size:.78rem;font-weight:600;color:var(--ink);margin-bottom:.35rem;letter-spacing:.01em}
+.fg label .req{color:var(--blue);margin-left:2px}
+.fg input,.fg select,.fg textarea{width:100%;padding:10px 13px;font-size:.875rem;font-family:var(--font-body);border:1.5px solid var(--border-l);border-radius:8px;background:var(--white);color:var(--text);transition:border-color .18s,box-shadow .18s;outline:none}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.fg input.err,.fg select.err,.fg textarea.err{border-color:#EF4444}
+.err-msg{font-size:.73rem;color:#EF4444;margin-top:.25rem;display:none}
+.err-msg.show{display:block}
+.fg textarea{resize:vertical;min-height:100px}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.fg-check{display:flex;align-items:flex-start;gap:9px;margin-bottom:1rem}
+.fg-check input{width:15px;height:15px;margin-top:2px;flex-shrink:0;accent-color:var(--blue)}
+.fg-check label{font-size:.78rem;color:var(--muted);font-weight:300;cursor:pointer;line-height:1.5}
+/* Honeypot */
+.hp-field{position:absolute;left:-9999px;opacity:0;pointer-events:none;tab-index:-1}
+.btn-send{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--ink);color:var(--white);padding:13px;border-radius:9px;font-size:.9rem;font-weight:600;border:none;cursor:pointer;font-family:var(--font-head);letter-spacing:.01em;transition:all .22s;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.btn-send:hover{background:var(--blue);box-shadow:0 6px 24px rgba(37,99,235,.3);transform:translateY(-1px)}
+.btn-send:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.form-ok{display:none;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:9px;padding:1rem;color:#065F46;font-size:.875rem;margin-top:.8rem;align-items:center;gap:8px}
+.form-ok.show{display:flex}
+.form-note{font-size:.72rem;color:var(--muted);margin-top:.5rem;text-align:center}
+
+/* ══ FOOTER ══════════════════════════════════════════════ */
+footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 5vw 2.5rem}
+.footer-inner{max-width:1160px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer-brand .logo{font-family:var(--font-head);font-weight:900;font-size:1.3rem;color:var(--white);letter-spacing:-.04em;display:flex;align-items:center;gap:8px;margin-bottom:.8rem;text-decoration:none}
+.footer-brand p{font-size:.84rem;line-height:1.75;font-weight:300;opacity:.75;max-width:280px;margin-bottom:1.4rem}
+.footer-legal{font-family:var(--font-mono);font-size:.68rem;color:rgba(255,255,255,.55);line-height:1.8}
+.footer-social{display:flex;gap:.6rem;margin-top:1.2rem}
+.social-chip{display:flex;align-items:center;gap:6px;padding:7px 13px;border:1px solid rgba(255,255,255,.12);border-radius:7px;color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem;transition:all .2s}
+.social-chip:hover{border-color:var(--blue);color:var(--white);background:rgba(37,99,235,.12)}
+.footer-col h4{font-family:var(--font-head);font-weight:700;font-size:.88rem;color:var(--white);margin-bottom:1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.footer-col a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.83rem;transition:color .18s}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding-top:2rem;margin-top:0;font-family:var(--font-mono);font-size:.7rem;color:rgba(255,255,255,.55)}
+.footer-bottom a{color:rgba(255,255,255,.55);text-decoration:none}
+.footer-bottom a:hover{color:rgba(255,255,255,.7)}
+
+/* ══ RESPONSIVE ═════════════════════════════════════════ */
+@media(max-width:1020px){
+  .hero-inner{grid-template-columns:1fr;gap:2.5rem}
+  .hero-card{max-width:480px}
+  .offres-grid{grid-template-columns:1fr 1fr}
+  .kit-card{grid-template-columns:1fr}
+  .coll-inner{grid-template-columns:1fr;gap:2.5rem}
+  .projets-grid{grid-template-columns:1fr 1fr}
+  .projet-card.span2{grid-column:span 1}
+  .stack-groups{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:960px){
+  .nav-links{display:none}
+  .nav-links.open{
+    display:flex;
+    flex-direction:column;
+    position:fixed;
+    top:64px;left:0;right:0;bottom:0;
+    height:calc(100dvh - 64px);
+    background:#0A0F1A;
+    padding:2rem 5vw;
+    z-index:9999;
+    gap:1.5rem;
+    align-items:flex-start;
+    overflow-y:auto;
+    border-top:1px solid rgba(255,255,255,.1);
+  }
+  .nav-links.open a{font-size:1.05rem;color:#fff;border:none;display:block;width:100%}
+  .hamburger{display:flex;z-index:10000;position:relative}
+  .nav-dispo{display:flex}
+  .nav-dispo-mobile{display:none}
+}
+@media(max-width:640px){
+  section{padding:4rem 5vw}
+  .hero{min-height:auto;padding:100px 5vw 60px}
+  .hero h1{font-size:2.1rem}
+  .hero-actions{flex-direction:column}
+  .btn{width:100%;justify-content:center}
+  .hero-trust{gap:1rem}
+  .trust-sep{display:none}
+  .offres-grid{grid-template-columns:1fr}
+  .projets-grid{grid-template-columns:1fr}
+  .stack-groups{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr;gap:2rem}
+  .fg-row{grid-template-columns:1fr}
+  .hero::before,.hero::after{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════════════ -->
+<nav role="navigation" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <span class="dot" aria-hidden="true"></span>
+      indxONE
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="/collectivites">Collectivités</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#contact" class="nav-cta">Démarrer un projet</a></li>
+    </ul>
+    <div class="nav-dispo" aria-label="Statut disponibilité">Disponible</div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════════ -->
+<section class="hero" role="banner" aria-labelledby="hero-title">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Consultant SI Freelance · Paris & Remote</div>
+      <h1 id="hero-title">
+        Architecte SI pour<br>
+        PME en <em>transition digitale</em>
+      </h1>
+      <p class="hero-sub">
+        Je transforme vos processus métier en systèmes d'information robustes et automatisés.
+        De la stratégie SI à l'exécution terrain — pilotage, intégration, automatisation.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-blue">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6z"/></svg>
+          Démarrer un projet
+        </a>
+        <a href="#projets" class="btn btn-ghost">Voir les réalisations →</a>
+      </div>
+
+      <div class="hero-trust">
+        <div class="trust-item"><strong>8+</strong><span>projets SI livrés</span></div>
+        <div class="trust-sep" aria-hidden="true"></div>
+        <div class="trust-item"><strong>4 ans</strong><span>pilotage projet IT</span></div>
+        <div class="trust-sep" aria-hidden="true"></div>
+        <div class="trust-item"><strong>580€</strong><span>TJM</span></div>
+        <div class="trust-sep" aria-hidden="true"></div>
+        <div class="trust-item"><strong>PME</strong><span>industrielles</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="hero-card" aria-label="Profil et disponibilité">
+        <div class="hero-card-title">indxONE · Koffi NIAMKEY</div>
+        <div class="stat-row">
+          <span class="stat-label">Statut</span>
+          <span class="stat-val green">● Disponible</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Localisation</span>
+          <span class="stat-val" style="font-size:.9rem">Aisne · Paris · Remote</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">TJM affiché</span>
+          <span class="stat-val blue">580 € HT</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Délai démarrage</span>
+          <span class="stat-val cyan">Immédiat</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Contrat</span>
+          <span class="stat-val" style="font-size:.88rem;color:rgba(255,255,255,.6)">Freelance / Régie / Forfait</span>
+        </div>
+
+        <a href="https://www.malt.fr/profile/koffiniamkey2" target="_blank" rel="noopener" class="hero-cta-malt" aria-label="Voir le profil Malt">
+          <div class="malt-ico">M</div>
+          <div class="malt-text">
+            <strong>Voir le profil Malt</strong>
+            <span>malt.fr · TJM 580 €</span>
+          </div>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="contenu-principal">
+<!-- ══ OFFRES ═════════════════════════════════════════════ -->
+<section id="services" aria-labelledby="services-title">
+  <div class="section-inner">
+    <div class="section-label" aria-hidden="true">Ce que je fais</div>
+    <h2 class="section-title" id="services-title">Offres & Services</h2>
+    <p class="section-sub">Des missions courtes à l'accompagnement long terme — calibrées selon votre maturité digitale et vos enjeux.</p>
+
+    <div class="offres-grid">
+
+      <div class="offre-card reveal">
+        <div class="offre-icon offre-icon-blue">🗺️</div>
+        <div>
+          <div class="offre-name">Architecte SI & AMOA</div>
+          <div class="offre-desc">Cadrage, pilotage et gouvernance de vos projets de transformation SI. Du schéma directeur à la mise en production.</div>
+        </div>
+        <ul class="offre-items">
+          <li>Diagnostic & cartographie SI</li>
+          <li>Cahier des charges fonctionnel</li>
+          <li>Coordination prestataires (RACI)</li>
+          <li>Gestion risques & planning</li>
+        </ul>
+        <div class="offre-footer">
+          <span class="offre-tarif">Dès 4 jours · TJM sur devis</span>
+          <a href="#contact" class="offre-link">Demander →</a>
+        </div>
+      </div>
+
+      <div class="offre-card featured reveal" style="transition-delay:.08s">
+        <div class="offre-icon offre-icon-dark">⚡</div>
+        <div>
+          <div class="offre-name">Automatisation & No-code</div>
+          <div class="offre-desc">Supprimez les tâches répétitives. Je connecte vos outils et automatise vos workflows métier sans développement lourd.</div>
+        </div>
+        <ul class="offre-items">
+          <li>Power Automate / Power Apps</li>
+          <li>Make · Zapier · n8n</li>
+          <li>Intégrations API & webhooks</li>
+          <li>Tableaux de bord Power BI</li>
+        </ul>
+        <div class="offre-footer">
+          <span class="offre-tarif">Audit processus dès 1 500 €</span>
+          <a href="#contact" class="offre-link">Demander →</a>
+        </div>
+      </div>
+
+      <div class="offre-card reveal" style="transition-delay:.16s">
+        <div class="offre-icon offre-icon-blue">🏗️</div>
+        <div>
+          <div class="offre-name">Infrastructure & Cloud</div>
+          <div class="offre-desc">MCO, migration cloud, sécurisation et administration de votre environnement IT. On-premise ou hybride.</div>
+        </div>
+        <ul class="offre-items">
+          <li>Azure / AWS / GCP</li>
+          <li>Hyper-V · Entra ID · M365</li>
+          <li>Téléphonie IP Teams</li>
+          <li>CI/CD GitLab</li>
+        </ul>
+        <div class="offre-footer">
+          <span class="offre-tarif">Audit infra dès 990 €</span>
+          <a href="#contact" class="offre-link">Demander →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Startup Launch Kit -->
+    <div class="offres-bottom reveal" style="transition-delay:.24s">
+      <div class="kit-card">
+        <div>
+          <div class="kit-badge">★ Nouveau</div>
+          <div class="kit-title">Startup Launch Kit</div>
+          <div class="kit-desc">De l'idée au premier utilisateur en 8 semaines. Je structure, outille et pilote votre MVP pour que vous lanciez vite, sans dette technique ni désorganisation. France & Afrique francophone.</div>
+          <a href="#contact" class="kit-cta">Réserver un call →</a>
+        </div>
+        <div class="kit-plans">
+          <div class="kit-plan">
+            <div>
+              <div class="kit-plan-name">Starter</div>
+              <div class="kit-plan-desc">Cadrage + roadmap + stack</div>
+            </div>
+            <div class="kit-plan-price">1 200 €<span>Forfait fixe</span></div>
+          </div>
+          <div class="kit-plan highlight-plan">
+            <div>
+              <div class="kit-plan-name">Launch</div>
+              <div class="kit-plan-desc">Cadrage + outils + 8 semaines</div>
+            </div>
+            <div class="kit-plan-price">3 500 €<span>Starter remboursable</span></div>
+          </div>
+          <div class="kit-plan">
+            <div>
+              <div class="kit-plan-name">Full Pilot</div>
+              <div class="kit-plan-desc">Go-live inclus · TJM 580 €</div>
+            </div>
+            <div class="kit-plan-price">Sur devis<span>Mission longue</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COLLECTIVITÉS ══════════════════════════════════════ -->
+<section id="collectivites" aria-labelledby="coll-title">
+  <div class="section-inner">
+    <div class="coll-inner">
+
+      <!-- Mockup visuel -->
+      <div class="coll-visual reveal">
+        <div class="coll-mockup" role="img" aria-label="Aperçu site mairie INDXONE">
+          <div class="coll-mockup-bar">
+            <div class="coll-dot" style="background:#FF5F57"></div>
+            <div class="coll-dot" style="background:#FFBD2E;margin-left:5px"></div>
+            <div class="coll-dot" style="background:#28CA41;margin-left:5px"></div>
+            <span style="font-family:var(--font-mono);font-size:.65rem;color:rgba(255,255,255,.3);margin-left:auto">mairies.indxone.com/mons-en-laonnois</span>
+          </div>
+          <div class="coll-mockup-content">
+            <div class="coll-card-demo">
+              <div class="coll-card-label">Commune · Aisne (02)</div>
+              <div class="coll-card-val">Mairie de Mons-en-Laonnois</div>
+              <div class="coll-card-sub">02000 · Code INSEE 02497</div>
+              <div class="coll-tag">✓ Site déployé · 48h ouvrées</div>
+            </div>
+            <div class="coll-card-demo">
+              <div class="coll-card-label">Performance</div>
+              <div class="coll-card-val">Lighthouse 96+ · RGPD strict</div>
+              <div class="coll-card-sub">0 cookie tiers · Hébergement Netlify gratuit</div>
+            </div>
+            <div class="coll-card-demo">
+              <div class="coll-card-label">Personnalisation</div>
+              <div class="coll-card-val">1 fichier config.js</div>
+              <div class="coll-card-sub">~15 points de données · ~20 min de déploiement</div>
+            </div>
+          </div>
+        </div>
+        <div class="coll-badge-float">
+          <strong>490€</strong>
+          <span>Starter</span>
+        </div>
+      </div>
+
+      <!-- Contenu -->
+      <div class="coll-content reveal" style="transition-delay:.12s">
+        <div class="section-label" aria-hidden="true">Offre Collectivités</div>
+        <h2 class="section-title" id="coll-title">Sites web pour mairies & communes</h2>
+        <p class="section-sub" style="margin-bottom:1.8rem">
+          Un template institutionnel clé en main, déployable en 48h, conforme RGPD et accessible dès 490 €. Conçu pour les communes sans DSI ni budget web.
+        </p>
+        <ul class="coll-features">
+          <li>Design officiel adapté aux chartes des collectivités</li>
+          <li>Carte interactive, formulaire de contact, agenda</li>
+          <li>Horaires d'ouverture dynamiques (statut temps réel)</li>
+          <li>0 cookie tiers · RGPD natif · Lighthouse 96+</li>
+          <li>Hébergement Netlify gratuit inclus</li>
+          <li>Formation mairie incluse (1h visio)</li>
+        </ul>
+        <div class="coll-actions">
+          <a href="/collectivites" class="btn btn-dark">Voir l'offre complète →</a>
+          <a href="#contact" class="coll-link">Demander une démo <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROJETS ════════════════════════════════════════════ -->
+<section id="projets" aria-labelledby="projets-title">
+  <div class="section-inner">
+    <div class="projets-header">
+      <div>
+        <div class="section-label" aria-hidden="true">Réalisations</div>
+        <h2 class="section-title" id="projets-title">Projets Structurants</h2>
+      </div>
+      <p style="font-size:.875rem;color:var(--muted);max-width:300px;font-weight:300;line-height:1.6">Projets menés en CDI et en freelance — en tant que pilote, référent ou AMOA.</p>
+    </div>
+
+    <div class="projets-grid">
+
+      <!-- ECAO featured -->
+      <div class="projet-card dark span2 reveal">
+        <div class="projet-top">
+          <span class="projet-source source-freelance">⚡ Mission freelance · IndxOne</span>
+          <span class="projet-icon">🚢</span>
+          <div class="projet-title">Plateforme de commande fret maritime — ECAO</div>
+          <div class="projet-desc">Livraison en 5 jours ouvrés d'une plateforme complète de commande fret France → Côte d'Ivoire. Flux complet automatisé : commande → calcul tarifaire m³ → paiement fractionné → notifications WhatsApp → suivi Kanban admin. Détection géographique IDF/hors-IDF pour routage automatique Boxtal.</div>
+          <div class="projet-metrics">
+            <div class="metric"><div class="val">5j</div><div class="lbl">délai livraison</div></div>
+            <div class="metric"><div class="val">0</div><div class="lbl">traitement manuel</div></div>
+            <div class="metric"><div class="val">30€</div><div class="lbl">coût /mois</div></div>
+          </div>
+        </div>
+        <div class="projet-tags">
+          <span class="tag">Make</span><span class="tag">Tally</span><span class="tag">Airtable</span>
+          <span class="tag">Stripe</span><span class="tag">WhatsApp API</span><span class="tag">No-code</span>
+        </div>
+      </div>
+
+      <div class="projet-card reveal" style="transition-delay:.08s">
+        <div class="projet-top">
+          <span class="projet-source source-cdi">CDI · Référent IT</span>
+          <span class="projet-icon">📞</span>
+          <div class="projet-title">Téléphonie IP — Microsoft Teams</div>
+          <div class="projet-desc">Pilotage complet du déploiement Teams IP pour ~110 collaborateurs. Responsable & autorité projet.</div>
+        </div>
+        <div class="projet-tags">
+          <span class="tag">Teams</span><span class="tag">M365</span><span class="tag">Pilotage</span>
+        </div>
+      </div>
+
+      <div class="projet-card reveal" style="transition-delay:.12s">
+        <div class="projet-top">
+          <span class="projet-source source-cdi">CDI · Référent IT</span>
+          <span class="projet-icon">📊</span>
+          <div class="projet-title">CRM Dynamics 365 + Power BI</div>
+          <div class="projet-desc">Intégration Power BI dans Dynamics 365 et évolution avec Power Apps. Reporting commercial temps réel.</div>
+        </div>
+        <div class="projet-tags">
+          <span class="tag">Dynamics 365</span><span class="tag">Power BI</span><span class="tag">Power Apps</span>
+        </div>
+      </div>
+
+      <div class="projet-card reveal" style="transition-delay:.16s">
+        <div class="projet-top">
+          <span class="projet-source source-cdi">CDI · Référent IT</span>
+          <span class="projet-icon">⚙️</span>
+          <div class="projet-title">Déploiement ERP DIAPASON</div>
+          <div class="projet-desc">Coordination infra et administration de l'ERP métier. Gestion des flux et droits utilisateurs.</div>
+        </div>
+        <div class="projet-tags">
+          <span class="tag">ERP</span><span class="tag">AMOA</span><span class="tag">Formation</span>
+        </div>
+      </div>
+
+      <div class="projet-card reveal" style="transition-delay:.2s">
+        <div class="projet-top">
+          <span class="projet-source source-freelance">⚡ Freelance · IndxOne</span>
+          <span class="projet-icon">🏛️</span>
+          <div class="projet-title">Sites mairies — Offre collectivités</div>
+          <div class="projet-desc">Template institutionnel déployé pour les communes de l'Aisne. Pipeline automatisé de génération en cours.</div>
+        </div>
+        <div class="projet-tags">
+          <span class="tag">HTML/JS</span><span class="tag">Netlify</span><span class="tag">Python</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ STACK ══════════════════════════════════════════════ -->
+<section id="stack" aria-labelledby="stack-title">
+  <div class="section-inner">
+    <div class="section-label" aria-hidden="true">Outillage</div>
+    <h2 class="section-title" id="stack-title">Environnement Technique</h2>
+    <p class="section-sub">Un ensemble d'outils maîtrisés, combinés selon les besoins de votre contexte.</p>
+
+    <div class="stack-groups">
+      <div class="stack-group reveal">
+        <div class="stack-group-title">Infra & Cloud</div>
+        <div class="stack-items">
+          <div class="stack-item"><span class="stack-dot"></span>Azure / AWS / GCP</div>
+          <div class="stack-item"><span class="stack-dot"></span>Hyper-V · Entra ID</div>
+          <div class="stack-item"><span class="stack-dot"></span>Exchange · M365</div>
+          <div class="stack-item"><span class="stack-dot"></span>Téléphonie IP Teams</div>
+        </div>
+      </div>
+      <div class="stack-group reveal" style="transition-delay:.07s">
+        <div class="stack-group-title">Data & Apps</div>
+        <div class="stack-items">
+          <div class="stack-item"><span class="stack-dot"></span>Power BI</div>
+          <div class="stack-item"><span class="stack-dot"></span>Power Apps · Automate</div>
+          <div class="stack-item"><span class="stack-dot"></span>Dynamics 365</div>
+          <div class="stack-item"><span class="stack-dot"></span>DIAPASON ERP</div>
+        </div>
+      </div>
+      <div class="stack-group reveal" style="transition-delay:.14s">
+        <div class="stack-group-title">No-code & Mobile</div>
+        <div class="stack-items">
+          <div class="stack-item"><span class="stack-dot"></span>Make · Zapier · n8n</div>
+          <div class="stack-item"><span class="stack-dot"></span>FlutterFlow</div>
+          <div class="stack-item"><span class="stack-dot"></span>Airtable · Notion</div>
+          <div class="stack-item"><span class="stack-dot"></span>Tally · ClickUp</div>
+        </div>
+      </div>
+      <div class="stack-group reveal" style="transition-delay:.21s">
+        <div class="stack-group-title">Méthodes & DevOps</div>
+        <div class="stack-items">
+          <div class="stack-item"><span class="stack-dot"></span>Agile / Kanban / RACI</div>
+          <div class="stack-item"><span class="stack-dot"></span>GitLab CI/CD</div>
+          <div class="stack-item"><span class="stack-dot"></span>MoSCoW · SIPOC</div>
+          <div class="stack-item"><span class="stack-dot"></span>Supabase · Netlify</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ════════════════════════════════════════════ -->
+<section id="contact" aria-labelledby="contact-title">
+  <div class="section-inner">
+    <div class="contact-grid">
+
+      <div class="contact-left reveal">
+        <div class="section-label" aria-hidden="true">Parlons-nous</div>
+        <h2 id="contact-title">Démarrons un projet ensemble</h2>
+        <p>Vous avez un projet de transformation SI, d'automatisation ou d'intégration d'outil ? Un échange de 30 min suffit souvent pour clarifier les enjeux.</p>
+
+        <div class="contact-channels">
+          <a href="tel:+33775679067" class="contact-ch" aria-label="Appeler le 07 75 67 90 67">
+            <div class="ch-icon">📞</div>
+            <div>
+              <span class="ch-label">Téléphone</span>
+              <span class="ch-val">07 75 67 90 67</span>
+            </div>
+            <span class="ch-arrow">→</span>
+          </a>
+          <a href="mailto:contact@indxone.com" class="contact-ch" aria-label="Envoyer un email">
+            <div class="ch-icon">✉️</div>
+            <div>
+              <span class="ch-label">Email</span>
+              <span class="ch-val">contact@indxone.com</span>
+            </div>
+            <span class="ch-arrow">→</span>
+          </a>
+        </div>
+
+        <div class="platforms-title">Retrouvez-moi sur</div>
+        <div class="platforms">
+          <a href="https://www.malt.fr/profile/koffiniamkey2" target="_blank" rel="noopener" class="platform-btn" aria-label="Profil Malt">
+            <div class="platform-ico ico-malt">M</div>
+            <div class="platform-info">
+              <strong>Malt</strong>
+              <span>TJM 580 € · Profil vérifié</span>
+            </div>
+            <span class="platform-arrow">↗</span>
+          </a>
+          <a href="https://lehibou.com" target="_blank" rel="noopener" class="platform-btn" aria-label="Profil LeHibou">
+            <div class="platform-ico ico-lhib">LH</div>
+            <div class="platform-info">
+              <strong>LeHibou</strong>
+              <span>TJM 650 € · Consultant IT</span>
+            </div>
+            <span class="platform-arrow">↗</span>
+          </a>
+          <a href="https://www.linkedin.com/in/koffi-niamkey/" target="_blank" rel="noopener" class="platform-btn" aria-label="Profil LinkedIn">
+            <div class="platform-ico ico-li">in</div>
+            <div class="platform-info">
+              <strong>LinkedIn</strong>
+              <span>Koffi NIAMKEY · Page INDXONE</span>
+            </div>
+            <span class="platform-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="form-wrap reveal" style="transition-delay:.1s">
+        <h3>Envoyer un message</h3>
+        <p class="form-sub">Réponse sous 24h ouvrées · Mission, forfait ou question bienvenue</p>
+        <form id="contactForm" data-netlify="true" name="contact-indxone" novalidate>
+          <!-- Honeypot anti-spam -->
+          <div class="hp-field" aria-hidden="true">
+            <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="fg-row">
+            <div class="fg">
+              <label for="f-nom">Nom <span class="req">*</span></label>
+              <input type="text" id="f-nom" name="nom" required autocomplete="family-name" placeholder="Dupont">
+              <div class="err-msg" id="err-nom">Champ requis</div>
+            </div>
+            <div class="fg">
+              <label for="f-prenom">Prénom</label>
+              <input type="text" id="f-prenom" name="prenom" autocomplete="given-name" placeholder="Jean">
+            </div>
+          </div>
+          <div class="fg">
+            <label for="f-email">Email <span class="req">*</span></label>
+            <input type="email" id="f-email" name="email" required autocomplete="email" placeholder="jean@exemple.fr">
+            <div class="err-msg" id="err-email">Email invalide</div>
+          </div>
+          <div class="fg">
+            <label for="f-sujet">Sujet <span class="req">*</span></label>
+            <select id="f-sujet" name="sujet" required>
+              <option value="">— Sélectionnez —</option>
+              <option>Projet AMOA / Architecture SI</option>
+              <option>Automatisation / No-code</option>
+              <option>Infrastructure / Cloud</option>
+              <option>Intégration ERP / CRM</option>
+              <option>Startup Launch Kit</option>
+              <option>Site mairie / Collectivité</option>
+              <option>Autre demande</option>
+            </select>
+            <div class="err-msg" id="err-sujet">Veuillez sélectionner un objet</div>
+          </div>
+          <div class="fg">
+            <label for="f-message">Message <span class="req">*</span></label>
+            <textarea id="f-message" name="message" required placeholder="Décrivez votre projet ou votre question…"></textarea>
+            <div class="err-msg" id="err-msg">Merci de saisir votre message</div>
+          </div>
+          <div class="fg-check">
+            <input type="checkbox" id="f-rgpd" name="rgpd" required>
+            <label for="f-rgpd">J'accepte que mes données soient utilisées pour traiter ma demande. <span class="req">*</span></label>
+          </div>
+          <button type="submit" class="btn-send" id="submitBtn">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Envoyer le message
+          </button>
+          <div class="form-ok" id="formOk" role="alert">
+            <span>✓</span> <span><strong>Message envoyé !</strong> Je vous réponds sous 24h ouvrées.</span>
+          </div>
+          <p class="form-note">* Champs obligatoires · RGPD · Données non revendues</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+<!-- ══ FOOTER ═════════════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="logo">
+          <span style="width:7px;height:7px;border-radius:50%;background:var(--blue);box-shadow:0 0 8px var(--blue-glow)" aria-hidden="true"></span>
+          indxONE
+        </a>
+        <p>Consultant SI & Architecte Digital pour PME en transition. De la stratégie à l'exécution terrain — pilotage, intégration, automatisation.</p>
+        <div class="footer-legal">
+          SASU · SIRET 999 968 902 00018<br>
+          2 Rue De Vaucelles · 02000 Mons-en-Laonnois<br>
+          contact@indxone.com
+        </div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/koffi-niamkey/" target="_blank" rel="noopener" class="social-chip" aria-label="LinkedIn">
+            <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://www.malt.fr/profile/koffiniamkey2" target="_blank" rel="noopener" class="social-chip" aria-label="Malt">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+            Malt
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Architecte SI & AMOA</a></li>
+          <li><a href="#services">Automatisation No-code</a></li>
+          <li><a href="#services">Infrastructure & Cloud</a></li>
+          <li><a href="#services">Startup Launch Kit</a></li>
+          <li><a href="#collectivites">Sites mairies</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Plateformes</h4>
+        <ul>
+          <li><a href="https://www.malt.fr/profile/koffiniamkey2" target="_blank" rel="noopener">Malt ↗</a></li>
+          <li><a href="https://lehibou.com" target="_blank" rel="noopener">LeHibou ↗</a></li>
+          <li><a href="https://www.linkedin.com/in/koffi-niamkey/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+          <li><a href="https://mairies.indxone.com/mons-en-laonnois" target="_blank" rel="noopener">Démo mairies ↗</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Liens rapides</h4>
+        <ul>
+          <li><a href="#projets">Projets</a></li>
+          <li><a href="#stack">Environnement Technique</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="/collectivites">Collectivités</a></li>
+          <li><a href="mailto:contact@indxone.com">Email direct</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 INDXONE SASU — Tous droits réservés</span>
+      <span>Fait avec soin · Hébergé sur <a href="https://netlify.com" target="_blank" rel="noopener">Netlify</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Nav mobile ── */
+function toggleNav() {
+  const links = document.getElementById('navLinks');
+  const btn   = document.getElementById('hamburger');
+  const open  = links.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', open);
+}
+document.addEventListener('click', e => {
+  if (e.target.closest('#navLinks a')) {
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('hamburger').setAttribute('aria-expanded','false');
+  }
+});
+
+/* ── Nav scroll opacity ── */
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY > 20;
+  nav.style.background = scrolled
+    ? 'rgba(10,15,26,.95)' : 'rgba(10,15,26,.82)';
+}, { passive: true });
+
+/* ── Formulaire ── */
+function setErr(id, errId, show) {
+  const el  = document.getElementById(id);
+  const msg = document.getElementById(errId);
+  el?.classList.toggle('err', show);
+  msg?.classList.toggle('show', show);
+}
+
+document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const nom   = this['f-nom'].value.trim();
+  const email = this['f-email'].value.trim();
+  const sujet = this['f-sujet'].value;
+  const msg   = this['f-message'].value.trim();
+  const rgpd  = this['f-rgpd'].checked;
+  const bot   = this['bot-field']?.value;
+
+  setErr('f-nom',     'err-nom',   !nom);
+  setErr('f-email',   'err-email', !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+  setErr('f-sujet',   'err-sujet', !sujet);
+  setErr('f-message', 'err-msg',   !msg);
+
+  if (!nom || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !sujet || !msg || !rgpd || bot) return;
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours…';
+
+  fetch('/', { method: 'POST', body: new FormData(this) })
+    .then(() => {
+      document.getElementById('formOk').classList.add('show');
+      this.reset();
+    })
+    .catch(() => {
+      document.getElementById('formOk').classList.add('show');
+      this.reset();
+    })
+    .finally(() => {
+      btn.disabled = false;
+      btn.innerHTML = '<svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Envoyer le message';
+    });
+});
+
+['f-nom','f-email','f-sujet','f-message'].forEach(id => {
+  document.getElementById(id)?.addEventListener('input', () => {
+    document.getElementById(id).classList.remove('err');
+    const errId = 'err-' + id.replace('f-','');
+    document.getElementById(errId)?.classList.remove('show');
+  });
+});
+
+/* ── Scroll reveal ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Injecte le widget d'inscription alertes dans la sidebar
+(function() {
+  const sidebar = document.getElementById('sidebar');
+  if (!sidebar || !C.brevo || !C.brevo.listId) return;
+ 
+  const widget = document.createElement('div');
+  widget.className = 'alerte-widget reveal';
+  widget.innerHTML = `
+    <div class="sidebar-card" style="border-left:4px solid var(--highlight)">
+      <h3 style="font-size:1rem;font-weight:600;margin-bottom:.5rem">
+        🔔 Recevoir les alertes
+      </h3>
+      <p style="font-size:.8rem;color:var(--muted);margin-bottom:.8rem">
+        Travaux, événements, urgences — directement par email.
+      </p>
+      <div id="alerteForm">
+        <input type="email" id="alerteEmail" placeholder="votre@email.fr"
+          style="width:100%;padding:8px 12px;border:1px solid var(--border);border-radius:8px;
+                 font-family:'DM Sans',sans-serif;font-size:.875rem;margin-bottom:.5rem;box-sizing:border-box">
+        <button onclick="subscribeAlerte()"
+          style="width:100%;padding:9px;background:var(--highlight);color:#fff;border:none;
+                 border-radius:8px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif">
+          M'inscrire
+        </button>
+      </div>
+      <div id="alerteSuccess" style="display:none;color:#27AE60;font-size:.85rem;font-weight:500">
+        ✅ Inscription confirmée !
+      </div>
+      <div id="alerteError" style="display:none;color:#C0392B;font-size:.85rem">
+        ❌ Erreur, réessayez.
+      </div>
+      <p style="font-size:.7rem;color:var(--muted);margin-top:.5rem">
+        Désabonnement possible à tout moment.
+      </p>
+    </div>
+  `;
+  sidebar.prepend(widget);
+})();
+ 
+async function subscribeAlerte() {
+  const email = document.getElementById('alerteEmail').value.trim();
+  const ok  = document.getElementById('alerteSuccess');
+  const err = document.getElementById('alerteError');
+  ok.style.display = 'none';
+  err.style.display = 'none';
+ 
+  if (!email || !email.includes('@')) {
+    document.getElementById('alerteEmail').style.borderColor = '#C0392B';
+    return;
+  }
+ 
+  try {
+    const res = await fetch('/.netlify/functions/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        listId: C.brevo.listId,
+        commune: C.commune.nom,
+      }),
+    });
+    if (res.ok) {
+      document.getElementById('alerteForm').style.display = 'none';
+      ok.style.display = 'block';
+    } else {
+      err.style.display = 'block';
+    }
+  } catch {
+    err.style.display = 'block';
+  }
+}
+</script>
+</body>
+</html>
