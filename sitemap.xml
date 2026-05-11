@@ -16,6 +16,11 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://indxone.com/hub</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://indxone.com/merci</loc>
     <changefreq>yearly</changefreq>
     <priority>0.1</priority>

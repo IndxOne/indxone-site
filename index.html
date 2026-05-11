@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>INDXONE — Consultant SI & Architecte Digital</title>
-<meta name="description" content="Chef de Projet SI / AMOA Freelance. Pilotage, intégration, automatisation pour PME en transition digitale. TJM 580€. Disponible immédiatement.">
+<meta name="description" content="Consultant SI / AMOA Freelance et créateur d'IndxOne Hub. Pilotage, automatisation, outils SaaS pour freelances IT et PME en transition digitale.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -357,21 +357,43 @@
     .form-row { grid-template-columns: 1fr; }
   }
   .tools-section { background: var(--bone); padding: 5rem 5%; }
-  .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .hub-product {
+    background: linear-gradient(135deg, var(--ink) 0%, #17283A 100%);
+    color: white; border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2rem; align-items: center;
+    border: 1px solid rgba(201,168,76,0.28);
+  }
+  .hub-product h3 { font-family: 'DM Serif Display', serif; font-size: 2rem; margin-bottom: 0.6rem; }
+  .hub-product p { color: rgba(255,255,255,0.68); font-size: 0.9rem; max-width: 620px; }
+  .hub-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.2rem 0; }
+  .hub-badge { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid rgba(201,168,76,0.35); color: var(--gold-light); border-radius: 20px; padding: 0.28rem 0.65rem; }
+  .hub-preview {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px; padding: 1rem;
+  }
+  .hub-preview-row {
+    display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center;
+    padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.72); font-size: 0.78rem;
+  }
+  .hub-preview-row:last-child { border-bottom: 0; }
+  .hub-preview-row strong { color: var(--gold-light); font-size: 0.76rem; }
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
   .tool-card {
-    background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem;
-    transition: all 0.2s; text-align: center;
+    background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem;
+    transition: all 0.2s;
   }
   .tool-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(27,58,107,0.1); }
-  .tool-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .tool-icon { font-size: 1.7rem; margin-bottom: 0.8rem; }
   .tool-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; }
-  .tool-card p { font-size: 0.85rem; color: var(--ink-light); margin-bottom: 1.5rem; line-height: 1.5; }
+  .tool-card p { font-size: 0.8rem; color: var(--ink-light); margin-bottom: 1.2rem; line-height: 1.5; }
   .tool-link {
     display: inline-block; background: var(--blue); color: white; padding: 0.6rem 1.4rem; border-radius: 8px;
     font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: background 0.2s;
   }
   .tool-link:hover { background: var(--blue-mid); }
   .tools-section .btn-primary { margin-top: 2rem; display: inline-block; }
+  @media (max-width: 820px) { .hub-product { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -383,7 +405,7 @@
     <li><a href="#collectivites">Collectivités <span class="nav-pill">Nouveau</span></a></li>
     <li><a href="#projets">Projets</a></li>
     <li><a href="#stack">Stack</a></li>
-    <li><a href="#tools">Outils</a></li>
+    <li><a href="#tools">Hub</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Démarrer un projet</a>
 </nav>
@@ -401,13 +423,13 @@
   <div class="hero-stats">
     <div class="hero-stat"><strong>8+</strong><span>Projets SI livrés</span></div>
     <div class="hero-stat"><strong>4 ans</strong><span>Pilotage IT</span></div>
-    <div class="hero-stat"><strong>580€</strong><span>TJM HT</span></div>
+    <div class="hero-stat"><strong>490€</strong><span>TJM HT</span></div>
     <div class="hero-stat"><strong>PME</strong><span>Industrielles</span></div>
   </div>
   <div class="dispo-card">
     <div class="dispo-item"><div class="label">Statut</div><div class="value green">● Disponible</div></div>
     <div class="dispo-item"><div class="label">Localisation</div><div class="value">Aisne · Paris · Remote</div></div>
-    <div class="dispo-item"><div class="label">TJM affiché</div><div class="value gold">580 € HT</div></div>
+    <div class="dispo-item"><div class="label">TJM affiché</div><div class="value gold">490 € HT</div></div>
     <div class="dispo-item"><div class="label">Démarrage</div><div class="value">Immédiat</div></div>
     <div class="dispo-item"><div class="label">Contrat</div><div class="value">Régie · Forfait</div></div>
   </div>
@@ -501,7 +523,7 @@
         <div class="preview-meta">02000 · Code INSEE 02497 · ~1 150 hab.</div>
         <div class="preview-chips">
           <span class="preview-chip">✓ Site déployé · 48h</span>
-          <span class="preview-chip">RGPD natif</span>
+          <span class="preview-chip">RGPD ready</span>
           <span class="preview-chip">0 cookie tiers</span>
         </div>
       </div>
@@ -513,7 +535,7 @@
         <li>Design officiel adapté aux collectivités</li>
         <li>Carte interactive, formulaire, agenda</li>
         <li>Horaires d'ouverture dynamiques</li>
-        <li>0 cookie tiers · RGPD natif · Lighthouse 96+</li>
+        <li>0 cookie tiers · RGPD ready · Lighthouse 96+</li>
         <li>Hébergement Netlify gratuit inclus</li>
         <li>Éligible financement DETR & DSIL</li>
       </ul>
@@ -644,7 +666,7 @@
         <span class="bc-icon">🧩</span>
         <div class="bc-title">Configurateur produit en ligne</div>
         <div class="bc-desc">Logique conditionnelle complexe pour un configurateur menuiserie temps réel. 117 niveaux, 815 questions, 908 réponses avec logique conditionnelle pour devis automatique et sortie CAM.</div>
-        <div class="bc-chips"><span class="bc-chip">XML</span><span class="bc-chip">JavaScript</span><span class="bc-chip">Logique métier</span><span class="bc-chip">No-code</span></div>
+        <div class="bc-chips"><span class="bc-chip">XML</span><span class="bc-chip">PHP</span><span class="bc-chip">Logique métier</span><span class="bc-chip">SQL</span></div>
       </div>
       <div class="full-card-right">
         <div class="full-stat-box"><strong>117</strong><span>Niveaux</span></div>
@@ -661,48 +683,67 @@
 
 <!-- TOOLS -->
 <section class="tools-section" id="tools">
-  <div class="section-label">Outils</div>
-  <h2>Indxone Hub</h2>
-  <p class="section-sub">Accédez à nos outils pour freelances IT et gestion de projets.</p>
+  <div class="section-label">Produit SaaS</div>
+  <h2>IndxOne Hub</h2>
+  <p class="section-sub">Un cockpit local-first pour freelances IT : vendre, cadrer, livrer, facturer et piloter sans empiler les plateformes.</p>
+  <div class="hub-product">
+    <div>
+      <div class="kit-badge">Produit maintenu · Mai 2026</div>
+      <h3>15 outils pour structurer une activité freelance IT.</h3>
+      <p>Le Hub regroupe Missio, Deal Room, Runway, Daily Ops, Calc, SIPOC, MoSCoW, RACI, Devis, CRA et les outils financiers dans une expérience plus cohérente, avec thème global, retour Hub, démo Missio et changelog produit.</p>
+      <div class="hub-badges">
+        <span class="hub-badge">100% local par défaut</span>
+        <span class="hub-badge">Démo Missio avant activation</span>
+        <span class="hub-badge">Freemium clair</span>
+      </div>
+      <a href="https://hub.indxone.com" class="btn-primary" target="_blank" rel="noopener">Ouvrir le Hub →</a>
+      <a href="https://hub.indxone.com/pourquoi.html" class="btn-outline" target="_blank" rel="noopener" style="margin-left:.6rem;">Pourquoi IndxOne</a>
+    </div>
+    <div class="hub-preview" aria-label="Aperçu IndxOne Hub">
+      <div class="hub-preview-row"><span>Missio</span><strong>Pipeline + factures</strong></div>
+      <div class="hub-preview-row"><span>Deal Room</span><strong>Vue client</strong></div>
+      <div class="hub-preview-row"><span>Runway / Daily Ops</span><strong>Pilotage</strong></div>
+      <div class="hub-preview-row"><span>Changelog</span><strong>Produit actif</strong></div>
+    </div>
+  </div>
   <div class="tools-grid">
     <div class="tool-card">
-      <div class="tool-icon">📊</div>
+      <div class="tool-icon">💼</div>
       <h3>Missio</h3>
-      <p>Cockpit financier pour freelances. Gestion des missions, facturation, et simulation de revenus.</p>
+      <p>Pipeline, factures, TJM, revenu net et mode démo avant activation.</p>
       <a href="https://hub.indxone.com/missio-app.html" class="tool-link" target="_blank">Accéder à Missio →</a>
     </div>
     <div class="tool-card">
-      <div class="tool-icon">📝</div>
-      <h3>Évaluation de Mission</h3>
-      <p>Outil d'évaluation pour décider si une mission est viable ou non.</p>
-      <a href="https://hub.indxone.com/eval-mission.html" class="tool-link" target="_blank">Essayer l'outil →</a>
+      <div class="tool-icon">◇</div>
+      <h3>Deal Room</h3>
+      <p>Vue client partageable : contexte, périmètre, livrables, risques et avancement.</p>
+      <a href="https://hub.indxone.com/deal-room.html?v=2" class="tool-link" target="_blank">Créer une Deal Room →</a>
     </div>
     <div class="tool-card">
-      <div class="tool-icon">🔄</div>
-      <h3>SIPOC</h3>
-      <p>Générateur de diagrammes SIPOC pour la cartographie des processus.</p>
-      <a href="https://hub.indxone.com/sipoc.html" class="tool-link" target="_blank">Créer un SIPOC →</a>
+      <div class="tool-icon">🎯</div>
+      <h3>Éval mission</h3>
+      <p>Score Go/No-Go pondéré avant d’investir du temps commercial.</p>
+      <a href="https://hub.indxone.com/eval-mission-v2.html" class="tool-link" target="_blank">Évaluer →</a>
     </div>
     <div class="tool-card">
-      <div class="tool-icon">📋</div>
-      <h3>MoSCoW</h3>
-      <p>Priorisation des fonctionnalités selon la méthode MoSCoW.</p>
-      <a href="https://hub.indxone.com/moscow.html" class="tool-link" target="_blank">Prioriser →</a>
+      <div class="tool-icon">↗</div>
+      <h3>Runway</h3>
+      <p>Plan de charge 3 mois, viabilité, TJM cible et scénarios de revenu.</p>
+      <a href="https://hub.indxone.com/runway.html" class="tool-link" target="_blank">Projeter →</a>
     </div>
     <div class="tool-card">
-      <div class="tool-icon">💰</div>
-      <h3>Calculateur Mission</h3>
-      <p>Calculateur financier pour estimer les coûts et revenus des missions.</p>
-      <a href="https://hub.indxone.com/calc-mission.html" class="tool-link" target="_blank">Calculer →</a>
+      <div class="tool-icon">✓</div>
+      <h3>Daily Ops</h3>
+      <p>Routine hebdo : relances, factures, pipeline, priorités et prochaines actions.</p>
+      <a href="https://hub.indxone.com/daily-ops.html" class="tool-link" target="_blank">Piloter →</a>
     </div>
     <div class="tool-card">
-      <div class="tool-icon">📅</div>
-      <h3>RACI</h3>
-      <p>Matrice RACI pour clarifier les rôles et responsabilités.</p>
-      <a href="https://hub.indxone.com/raci.html" class="tool-link" target="_blank">Créer une matrice →</a>
+      <div class="tool-icon">🧮</div>
+      <h3>Calc</h3>
+      <p>Scratchpad TJM, net mensuel et viabilité d’une mission en quelques minutes.</p>
+      <a href="https://hub.indxone.com/calc-mission-simple.html" class="tool-link" target="_blank">Calculer →</a>
     </div>
   </div>
-  <a href="https://hub.indxone.com" class="btn-primary" target="_blank">Découvrir tous les outils →</a>
 </section>
 
 <!-- STACK -->
@@ -749,7 +790,7 @@
   </div>
   <a href="https://www.malt.fr/profile/koffiniamkey2" class="malt-card" target="_blank">
     <div class="malt-logo">M</div>
-    <div class="malt-info"><strong>Voir le profil Malt</strong><span>malt.fr · TJM 580 €</span></div>
+    <div class="malt-info"><strong>Voir le profil Malt</strong><span>malt.fr · TJM 490 €</span></div>
     <div class="malt-arrow">→</div>
   </a>
 </section>
@@ -768,8 +809,8 @@
       <div class="contact-platforms">
         <h4>Retrouvez-moi sur</h4>
         <div class="platform-links">
-          <a href="https://www.malt.fr/profile/koffiniamkey2" class="platform-link" target="_blank">M Malt — TJM 580€ · Profil vérifié ↗</a>
-          <a href="https://lehibou.com" class="platform-link" target="_blank">LH LeHibou — TJM 650€ · Consultant IT ↗</a>
+          <a href="https://www.malt.fr/profile/koffiniamkey2" class="platform-link" target="_blank">M Malt — TJM 490€ · Profil vérifié ↗</a>
+          <a href="https://lehibou.com" class="platform-link" target="_blank">LH LeHibou — TJM 650€ · Consultant IT mission longue durée ↗</a>
           <a href="https://www.linkedin.com/in/koffi-niamkey/" class="platform-link" target="_blank">in LinkedIn — Koffi NIAMKEY · Page INDXONE ↗</a>
         </div>
       </div>
@@ -791,6 +832,7 @@
           <option>Infrastructure / Cloud</option>
           <option>Intégration ERP / CRM</option>
           <option>Startup Launch Kit</option>
+          <option>IndxOne Hub / SaaS freelance</option>
           <option>Site mairie / Collectivité</option>
           <option>Autre demande</option>
         </select>
@@ -836,6 +878,7 @@
         <li><a href="#projets">Projets</a></li>
         <li><a href="#stack">Stack technique</a></li>
         <li><a href="#tools">Outils</a></li>
+        <li><a href="https://hub.indxone.com" target="_blank">IndxOne Hub ↗</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="https://indxone.com/collectivites">Collectivités</a></li>
         <li><a href="mailto:contact@indxone.com">Email direct</a></li>
@@ -855,7 +898,7 @@ function filterProjet(btn, type) {
   document.querySelectorAll('.bento-card').forEach(card => {
     card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
   });
-}-e 
+}
 </script>
 </body>
 </html>
