@@ -1,18 +1,30 @@
-# Routing Netlify — indxone.com
+# Netlify Redirects for indxone.com
+# https://docs.netlify.com/routing/redirects/
 
-# Routes principales (pretty URLs)
-/collectivites          /collectivites/index.html  200
-/collectivites/         /collectivites/index.html  200
-/projets                /projets/index.html        200
-/projets/               /projets/index.html        200
-/merci                  /merci/index.html          200
-/merci/                 /merci/index.html          200
+# ============================================================
+# Pretty URLs - Remove trailing slashes and .html
+# ============================================================
+/collectivites    /collectivites/  301
+/collectivites/   /collectivites/index.html  200
+/projets          /projets/        301
+/projets/         /projets/index.html  200
+/merci            /merci/          301
+/merci/           /merci/index.html  200
+/mentions-legales  /mentions-legales/  301
+/mentions-legales/ /mentions-legales.html  200
+/politique-confidentialite    /politique-confidentialite/    301
+/politique-confidentialite/ /politique-confidentialite.html  200
 
-# Liens raccourcis
-/hub                    https://hub.indxone.com                                   301
-/malt                   https://malt.fr/profile/koffiniamkey2                      301
-/linkedin               https://www.linkedin.com/in/koffi-niamkey/                 301
-/github                 https://github.com/indxone                                 301
+# ============================================================
+# External Redirects
+# ============================================================
+/hub       https://hub.indxone.com  301
+/malt      https://malt.fr/profile/koffiniamkey2  301
+/linkedin  https://www.linkedin.com/in/koffi-niamkey/  301
+/github    https://github.com/indxone  301
+/mairies   https://mairies.indxone.com  301
 
-# Fallback 404
-/*                      /index.html                200
+# ============================================================
+# Fallback - Serve index.html for all other routes (SPA-like)
+# ============================================================
+/*  /index.html  200
