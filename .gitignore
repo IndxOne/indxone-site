@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+.cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+temp/
+tmp/
+
+# Netlify
+.netlify/
+
+# Coverage
+coverage/
+
+# Package lock (if you want to ignore it)
+# package-lock.json
+
+# Minified files (generated)
+css/optimized.css
+
+# Scripts output
+scripts/minify-html.js

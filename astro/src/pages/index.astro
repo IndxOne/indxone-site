@@ -1,0 +1,117 @@
+---
+// Home Page
+import Base from '../layouts/Base.astro';
+
+// Meta data
+const title = 'INDXONE — Consultant SI & Architecte Digital';
+const description = 'Consultant SI / AMOA Freelance et créateur d\'IndxOne Hub. Pilotage, automatisation, outils SaaS pour freelances IT et PME en transition digitale.';
+---
+
+<Base title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-status">Disponible</div>
+    <div class="hero-sub">Consultant SI Freelance · Paris & Remote</div>
+    <h1>Architecte SI pour PME en <em>transition digitale</em></h1>
+    <p>Je transforme vos processus métier en systèmes d'information robustes et automatisés. De la stratégie SI à l'exécution terrain.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Démarrer un projet</a>
+      <a href="#projets" class="btn-ghost">Voir les réalisations →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>8+</strong><span>Projets SI livrés</span></div>
+      <div class="hero-stat"><strong>4 ans</strong><span>Pilotage IT</span></div>
+      <div class="hero-stat"><strong>490€</strong><span>TJM HT</span></div>
+      <div class="hero-stat"><strong>PME</strong><span>Industrielles</span></div>
+    </div>
+    <div class="dispo-card">
+      <div class="dispo-item"><div class="label">Statut</div><div class="value green">● Disponible</div></div>
+      <div class="dispo-item"><div class="label">Localisation</div><div class="value">Aisne · Paris · Remote</div></div>
+      <div class="dispo-item"><div class="label">TJM affiché</div><div class="value gold">490 € HT</div></div>
+      <div class="dispo-item"><div class="label">Démarrage</div><div class="value">Immédiat</div></div>
+      <div class="dispo-item"><div class="label">Contrat</div><div class="value">Régie · Forfait</div></div>
+    </div>
+  </section>
+  
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-label">Ce que je fais</div>
+      <h2>Offres & Services</h2>
+      <p class="section-sub">Des missions courtes à l'accompagnement long terme — calibrées selon votre maturité digitale.</p>
+      <div class="services-grid">
+        <!-- Service cards will be imported from components -->
+        <ServiceCard 
+          icon="🗺️" 
+          title="Architecte SI & AMOA" 
+          description="Cadrage, pilotage et gouvernance de vos projets de transformation SI. Du schéma directeur à la mise en production." 
+          features=["Diagnostic & cartographie SI", "Cahier des charges fonctionnel", "Coordination prestataires (RACI)", "Gestion risques & planning"] 
+          price="Dès 4 jours · TJM sur devis"
+        />
+        
+        <ServiceCard 
+          icon="⚡" 
+          title="Automatisation & No-code" 
+          description="Supprimez les tâches répétitives. Je connecte vos outils et automatise vos workflows métier sans développement lourd." 
+          features=["Power Automate / Power Apps", "Make · Zapier · n8n", "Intégrations API & webhooks", "Tableaux de bord Power BI"] 
+          price="Audit processus dès 1 500 €"
+        />
+        
+        <ServiceCard 
+          icon="🏗️" 
+          title="Infrastructure & Cloud" 
+          description="MCO, migration cloud, sécurisation et administration de votre environnement IT. On-premise ou hybride." 
+          features=["Azure / AWS / GCP", "Hyper-V · Entra ID · M365", "Téléphonie IP Teams", "CI/CD GitLab"] 
+          price="Audit infra dès 990 €"
+        />
+        
+        <ServiceCard 
+          featured 
+          icon="🚀" 
+          title="Startup Launch Kit" 
+          description="De l'idée au premier utilisateur en 8 semaines. Je structure, outille et pilote votre MVP pour lancer vite, sans dette technique." 
+          price="France & Afrique francophone · Starter remboursable sur mission Launch"
+        >
+          <slot>
+            <div class="kit-badge">★ Nouveau</div>
+            <div class="kit-tiers" style="gap:0.8rem; margin-top:1rem;">
+              <div class="kit-tier">
+                <div class="kit-tier-name">Starter</div>
+                <div class="kit-tier-price">1 200 €</div>
+                <div class="kit-tier-desc">Cadrage + roadmap + stack</div>
+              </div>
+              <div class="kit-tier">
+                <div class="kit-tier-name">Launch</div>
+                <div class="kit-tier-price">3 500 €</div>
+                <div class="kit-tier-desc">Cadrage + outils + 8 semaines</div>
+              </div>
+              <div class="kit-tier">
+                <div class="kit-tier-name">Full Pilot</div>
+                <div class="kit-tier-price">Sur devis</div>
+                <div class="kit-tier-desc">Go-live · TJM 580€</div>
+              </div>
+            </div>
+            <a href="#contact" class="service-link" style="margin-top:1rem;">Réserver un call →</a>
+          </slot>
+        </ServiceCard>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Collectivites Section -->
+  <section class="collectivites-section" id="collectivites">
+    <div class="container">
+      <div class="section-label">Offre Collectivités</div>
+      <div class="collectivites-inner">
+        <!-- Preview and content -->
+        <slot name="collectivites" />
+      </div>
+    </div>
+  </section>
+  
+  <!-- Other sections will be added similarly -->
+</Base>
+
+---
+// Import components
+import ServiceCard from '../components/ServiceCard.astro';

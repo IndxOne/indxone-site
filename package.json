@@ -1,0 +1,131 @@
+{
+  "name": "indxone-site",
+  "version": "1.0.0",
+  "description": "Site web de INDXONE - Consultant SI & Architecte Digital",
+  "private": true,
+  "author": "Koffi NIAMKEY <contact@indxone.com>",
+  "license": "MIT",
+  "homepage": "https://indxone.com",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/indxone-group/indxone-site.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/indxone-group/indxone-site/-/issues"
+  },
+  "keywords": [
+    "consultant",
+    "SI",
+    "AMOA",
+    "freelance",
+    "architecture",
+    "digital",
+    "PME",
+    "transition",
+    "automatisation",
+    "no-code",
+    "cloud"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run watch:css\"",
+    "build": "npm run build:css && npm run build:html",
+    "build:css": "postcss css/main.css -o css/optimized.css --env production",
+    "build:html": "node scripts/minify-html.js",
+    "watch:css": "postcss css/main.css -o css/optimized.css --watch",
+    "server": "http-server . -p 8000 -c-1 --cors",
+    "serve": "npm run server",
+    "lint": "npm run lint:css && npm run lint:html",
+    "lint:css": "stylelint css/*.css",
+    "lint:html": "html-validate *.html collectivites/*.html projets/*.html",
+    "format": "prettier --write \"**/*.{html,css,js}\"",
+    "format:check": "prettier --check \"**/*.{html,css,js}\"",
+    "test": "echo \"No tests specified\"",
+    "clean": "rm -rf node_modules dist temp .cache",
+    "deploy": "npm run build && netlify deploy --prod",
+    "deploy:staging": "npm run build && netlify deploy"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^5.0.0",
+    "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.2",
+    "cssnano": "^6.0.1",
+    "html-validate": "^8.0.0",
+    "http-server": "^14.1.1",
+    "postcss": "^8.4.32",
+    "postcss-cli": "^10.1.0",
+    "prettier": "^3.0.3",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-prettier": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all",
+    "not ie 11"
+  ],
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {},
+      "@fullhuman/postcss-purgecss": {
+        "content": [
+          "./**/*.html",
+          "./**/*.js"
+        ],
+        "safelist": {
+          "standard": [
+            /^hljs-/,
+            /^languages-/,
+            /^language-/,
+            /^reveal/,
+            /^in/,
+            /^active/,
+            /^dark/,
+            /^light/"
+          ]
+        }
+      },
+      "cssnano": {
+        "preset": "default"
+      }
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": false,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 120,
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "html"
+        }
+      }
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-prettier"
+    ],
+    "rules": {
+      "color-no-invalid-hex": true,
+      "declaration-block-no-duplicate-properties": true,
+      "selector-pseudo-class-no-unknown": [
+        true,
+        {
+          "ignorePseudoClasses": [
+            "global",
+            "local"
+          ]
+        }
+      ]
+    }
+  }
+}
