@@ -1,10 +1,15 @@
 module.exports = {
   plugins: {
+    'postcss-import': {},
     autoprefixer: {},
     '@fullhuman/postcss-purgecss': {
       content: [
-        './**/*.html',
-        './**/*.js'
+        './*.html',
+        './*.js',
+        './collectivites/*.html',
+        './projets/*.html',
+        './en/*.html',
+        './en/**/*.html'
       ],
       safelist: {
         standard: [

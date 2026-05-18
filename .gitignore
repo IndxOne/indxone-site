@@ -44,3 +44,12 @@ css/optimized.css
 
 # Scripts output
 scripts/minify-html.js
+
+# Backup files
+*.backup
+
+# Astro migration (archived)
+astro/
+
+# Documentation (untracked)
+INDXONE_SITE_DOCS.md

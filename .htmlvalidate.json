@@ -1,0 +1,19 @@
+{
+  "root": true,
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "no-trailing-whitespace": "warn",
+    "no-raw-characters": "error",
+    "prefer-native-element": "warn",
+    "void-style": ["warn", {"style": "omit"}],
+    "no-redundant-role": "warn",
+    "no-implicit-button-type": "warn",
+    "no-inline-style": "off",
+    "aria-label-misuse": "warn",
+    "tel-non-breaking": "off",
+    "element-permitted-content": "warn",
+    "heading-level": "warn",
+    "text-content": "warn",
+    "doctype-style": "off"
+  }
+}

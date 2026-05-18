@@ -1,0 +1,82 @@
+.stack {
+  background: var(--bone);
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-3xl);
+}
+
+.stack-cat {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.stack-cat-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: var(--space-md);
+}
+
+.stack-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.stack-item {
+  font-size: 0.78rem;
+  color: var(--ink-light);
+  padding: var(--space-xs) 0;
+}
+
+.malt-card {
+  background: var(--white);
+  border: 2px solid var(--gold);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-xl);
+  margin-top: var(--space-2xl);
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  text-decoration: none;
+  color: var(--ink);
+  transition: all var(--transition-base);
+  max-width: 500px;
+}
+
+.malt-card:hover {
+  background: rgba(201, 168, 76, 0.05);
+  transform: translateY(-2px);
+}
+
+.malt-logo {
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--gold);
+}
+
+.malt-info strong {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.malt-info span {
+  font-size: 0.75rem;
+  color: var(--ink-light);
+}
+
+.malt-arrow {
+  margin-left: auto;
+  color: var(--gold);
+  font-size: 1.2rem;
+}

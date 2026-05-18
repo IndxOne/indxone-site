@@ -1,0 +1,123 @@
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  transition: all var(--transition-base);
+  overflow: hidden;
+  position: relative;
+}
+
+.card:hover {
+  border-color: var(--blue);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.card-featured {
+  border: 2px solid var(--gold);
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.04) 0%, var(--white) 100%);
+}
+
+.card-blue {
+  background: var(--blue);
+  color: var(--white);
+  border: none;
+}
+
+.card-blue:hover {
+  background: var(--blue-mid);
+}
+
+.card-dark {
+  background: var(--ink);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-dark:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.service-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(27, 58, 107, 0.1);
+}
+
+.service-card.featured {
+  border: 2px solid var(--gold);
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.04) 0%, var(--white) 100%);
+}
+
+.service-icon {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-md);
+}
+
+.service-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  color: var(--ink);
+}
+
+.service-card p {
+  font-size: 0.83rem;
+  color: var(--ink-light);
+  margin-bottom: var(--space-md);
+}
+
+.service-features {
+  list-style: none;
+}
+
+.service-features li {
+  font-size: 0.78rem;
+  color: var(--ink-light);
+  padding: var(--space-xs) 0;
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.service-features li::before {
+  content: '·';
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.service-price {
+  font-size: 0.78rem;
+  color: var(--ink-light);
+  margin-top: var(--space-xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border);
+}
+
+.service-price strong {
+  color: var(--blue);
+}
+
+.service-link {
+  color: var(--blue);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-md);
+  transition: gap var(--transition-base);
+}
+
+.service-link:hover {
+  gap: var(--space-sm);
+}

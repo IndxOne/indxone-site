@@ -1,0 +1,111 @@
+.form-group {
+  margin-bottom: var(--space-lg);
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+  color: var(--ink);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-primary);
+  font-size: 0.83rem;
+  color: var(--ink);
+  background: var(--bone);
+  transition: border-color var(--transition-base);
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--blue);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--ink-lighter);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+@media (width <= 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  font-size: 0.75rem;
+  color: var(--ink-light);
+  margin-bottom: var(--space-md);
+}
+
+.form-check input {
+  width: auto;
+  margin-top: 2px;
+  accent-color: var(--blue);
+}
+
+.form-submit {
+  width: 100%;
+  background: var(--blue);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  padding: 0.9rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: background var(--transition-base);
+}
+
+.form-submit:hover {
+  background: var(--blue-mid);
+}
+
+.form-note {
+  font-size: 0.72rem;
+  color: var(--ink-light);
+  text-align: center;
+  margin-top: var(--space-sm);
+}
+
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: var(--white);
+  animation: spinner-rotate 0.6s linear infinite;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+@keyframes spinner-rotate {
+  to { transform: rotate(360deg); }
+}

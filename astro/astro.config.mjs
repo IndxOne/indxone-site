@@ -18,12 +18,12 @@ export default defineConfig({
         // Sharp is the default image service
       }
     },
-    domains: {
+    domains: [
       // Allow images from these domains
-      'indxone.com': true,
-      'hub.indxone.com': true,
-      'mairies.indxone.com': true
-    }
+      'indxone.com',
+      'hub.indxone.com',
+      'mairies.indxone.com'
+    ]
   },
   
   // Markdown configuration

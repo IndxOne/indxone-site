@@ -1,0 +1,83 @@
+.contact {
+  background: var(--white);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--space-5xl);
+}
+
+.contact-info h3 {
+  font-family: var(--font-secondary);
+  font-size: 1.5rem;
+  margin-bottom: var(--space-md);
+  color: var(--ink);
+}
+
+.contact-info p {
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  margin-bottom: var(--space-xl);
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.85rem;
+  padding: var(--space-md);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+}
+
+.contact-link:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.contact-link .icon {
+  font-size: 1.1rem;
+}
+
+.contact-platforms {
+  margin-top: var(--space-xl);
+}
+
+.contact-platforms h4 {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-light);
+  margin-bottom: var(--space-md);
+}
+
+.platform-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.platform-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  color: var(--ink-light);
+  font-size: 0.82rem;
+  transition: color var(--transition-base);
+}
+
+.platform-link:hover {
+  color: var(--blue);
+}

@@ -1,122 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--#include file="_includes/head-simple.html" -->
 <title>Merci — INDXONE</title>
 <meta name="description" content="Merci — Votre message a bien été reçu. Réponse sous 24h.">
 <meta name="robots" content="noindex">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --ink:#0F1923;--bone:#F7F4EF;
-  --gold:#C9A84C;--gold-light:#E8D5A0;
-  --blue:#1B3A6B;--blue-mid:#2D5A9E;
-  --border:rgba(15,25,35,0.1);
-}
-body{
-  font-family:'Sora',sans-serif;
-  background:linear-gradient(135deg,var(--ink) 0%,#1B2D3E 100%);
-  min-height:100vh;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  padding:2rem;overflow:hidden;
-}
-
-/* Subtle grid */
-body::before{
-  content:'';position:fixed;inset:0;
-  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-  background-size:60px 60px;pointer-events:none;
-}
-
-/* Top gold line on body */
-body::after{content:'';position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--blue-mid));z-index:10}
-
-/* Nav */
-.nav-logo{position:fixed;top:0;left:0;right:0;height:64px;display:flex;align-items:center;padding:0 5%;background:rgba(15,25,35,.6);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.07);z-index:9}
-.nav-logo a{font-weight:700;font-size:1.1rem;letter-spacing:.05em;color:#fff;text-decoration:none}
-.nav-logo a span{color:var(--gold)}
-
-/* Card */
-.card{
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:20px;
-  padding:3.5rem 3rem;
-  max-width:460px;width:100%;
-  text-align:center;
-  position:relative;z-index:1;
-  animation:fadeUp .6s ease both;
-  backdrop-filter:blur(4px);
-}
-.card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--gold),var(--blue-mid));
-  border-radius:20px 20px 0 0;
-}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-@keyframes checkDraw{from{stroke-dashoffset:60}to{stroke-dashoffset:0}}
-@keyframes circleDraw{from{stroke-dashoffset:200}to{stroke-dashoffset:0}}
-@keyframes scaleIn{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
-
-/* Check animation */
-.check-wrap{margin:0 auto 2rem;width:72px;height:72px;animation:scaleIn .5s .2s ease both;opacity:0}
-.check-wrap circle{stroke-dasharray:200;stroke-dashoffset:200;animation:circleDraw .6s .3s ease forwards}
-.check-wrap polyline{stroke-dasharray:60;stroke-dashoffset:60;animation:checkDraw .4s .8s ease forwards}
-
-h1{
-  font-family:'DM Serif Display',serif;
-  font-size:2rem;color:#fff;
-  margin-bottom:.8rem;
-  animation:fadeUp .5s .4s ease both;opacity:0;
-}
-h1 em{color:var(--gold-light);font-style:italic}
-
-.subtitle{
-  color:rgba(255,255,255,.55);font-size:.88rem;line-height:1.75;
-  margin-bottom:2rem;
-  animation:fadeUp .5s .5s ease both;opacity:0;
-}
-.subtitle strong{color:var(--gold-light);font-weight:600}
-
-/* Infos row */
-.info-row{
-  display:flex;gap:.8rem;margin-bottom:2rem;justify-content:center;
-  animation:fadeUp .5s .55s ease both;opacity:0;
-  flex-wrap:wrap;
-}
-.info-pill{
-  display:flex;align-items:center;gap:.4rem;
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
-  border-radius:8px;padding:.5rem .9rem;
-  font-size:.75rem;color:rgba(255,255,255,.6);
-}
-.info-pill .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
-
-/* Button */
-.btn-back{
-  display:inline-block;background:var(--gold);color:var(--ink);
-  padding:.85rem 2rem;border-radius:8px;
-  font-family:'Sora',sans-serif;font-weight:700;font-size:.88rem;
-  text-decoration:none;transition:all .2s;
-  animation:fadeUp .5s .65s ease both;opacity:0;
-}
-.btn-back:hover{background:var(--gold-light);transform:translateY(-2px)}
-
-/* Secondary links */
-.sec-links{
-  display:flex;gap:1.5rem;justify-content:center;margin-top:1.2rem;
-  animation:fadeUp .5s .7s ease both;opacity:0;
-}
-.sec-links a{color:rgba(255,255,255,.35);font-size:.78rem;text-decoration:none;transition:color .2s}
-.sec-links a:hover{color:rgba(255,255,255,.7)}
-
-@media(max-width:480px){.card{padding:2.5rem 1.5rem}h1{font-size:1.6rem}}
-</style>
 </head>
 <body>
 
@@ -124,7 +9,7 @@ h1 em{color:var(--gold-light);font-style:italic}
   <a href="/">indx<span>ONE</span></a>
 </div>
 
-<div class="card" role="main">
+<div class="card" role="main" id="main-content">
   <div class="check-wrap" aria-hidden="true">
     <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="36" cy="36" r="30" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
@@ -154,5 +39,6 @@ h1 em{color:var(--gold-light);font-style:italic}
   </div>
 </div>
 
+<!--#include file="_includes/analytics.html" -->
 </body>
 </html>

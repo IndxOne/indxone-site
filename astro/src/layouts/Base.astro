@@ -16,6 +16,10 @@ const { title = 'INDXONE — Consultant SI & Architecte Digital',
 import '../styles/variables.css';
 import '../styles/components.css';
 import '../styles/main.css';
+
+// Import components
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <!DOCTYPE html>
@@ -89,11 +93,10 @@ import '../styles/main.css';
   <script defer data-domain="indxone.com" src="https://plausible.io/js/script.js"></script>
   
   <!-- Main JavaScript -->
-  <script src="/js/main.js"></script>
+  <script src="/js/main.js" is:inline></script>
   
   <!-- Theme Initialization -->
   <script>
-    // Initialize theme before page render
     (function() {
       const savedTheme = localStorage.getItem('theme');
       const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -103,8 +106,3 @@ import '../styles/main.css';
   </script>
 </body>
 </html>
-
----
-// Import components
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';

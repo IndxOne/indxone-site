@@ -1,0 +1,112 @@
+.check-wrap {
+  margin: 0 auto 2rem;
+  width: 72px;
+  height: 72px;
+  animation: scaleIn 0.5s 0.2s ease both;
+  opacity: 0;
+}
+
+.check-wrap circle {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: circleDraw 0.6s 0.3s ease forwards;
+}
+
+.check-wrap polyline {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: checkDraw 0.4s 0.8s ease forwards;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.88rem;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.5s 0.5s ease both;
+  opacity: 0;
+}
+
+.subtitle strong {
+  color: var(--gold-light);
+  font-weight: 600;
+}
+
+.info-row {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+  animation: fadeUp 0.5s 0.55s ease both;
+  opacity: 0;
+  flex-wrap: wrap;
+}
+
+.info-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.info-pill .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.btn-back {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  animation: fadeUp 0.5s 0.65s ease both;
+  opacity: 0;
+}
+
+.btn-back:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+.sec-links {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 1.2rem;
+  animation: fadeUp 0.5s 0.7s ease both;
+  opacity: 0;
+}
+
+.sec-links a {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.78rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.sec-links a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 2.5rem 1.5rem;
+  }
+  h1 {
+    font-size: 1.6rem;
+  }
+}

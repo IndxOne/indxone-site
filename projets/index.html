@@ -3,151 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>INDXONE — Portfolio & Projets SI</title>
+<title>INDXONE — Portfolio &amp; Projets SI</title>
 <meta name="description" content="Réalisations de Koffi NIAMKEY — Consultant SI INDXONE. Projets ERP, CRM, automatisation, téléphonie IP, marketplace mobile, sites mairies.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#0F1923;--ink-light:#3D4F5C;--bone:#F7F4EF;
-  --gold:#C9A84C;--gold-light:#E8D5A0;
-  --blue:#1B3A6B;--blue-mid:#2D5A9E;
-  --green:#2A7A4B;--white:#FFFFFF;
-  --border:rgba(15,25,35,0.1);
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&amp;family=DM+Serif+Display:ital@0;1&amp;display=swap" rel="stylesheet">
+
+<link rel="alternate" hreflang="fr" href="https://indxone.com/projets">
+<link rel="alternate" hreflang="en" href="https://indxone.com/en/projets">
+<link rel="alternate" hreflang="x-default" href="https://indxone.com/projets">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://indxone.com/projets">
+<meta property="og:title" content="INDXONE — Réalisations &amp; Projets SI">
+<meta property="og:description" content="Projets réalisés par Koffi NIAMKEY — Consultant INDXONE. ERP, CRM, automatisation, téléphonie IP, marketplace mobile, sites mairies.">
+<meta property="og:image" content="https://indxone.com/img/icon-ix.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="INDXONE">
+<meta property="og:locale" content="fr_FR">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="INDXONE — Réalisations &amp; Projets SI">
+<meta name="twitter:description" content="Projets réalisés par Koffi NIAMKEY — Consultant INDXONE. ERP, CRM, automatisation, téléphonie IP, marketplace mobile, sites mairies.">
+<meta name="twitter:image" content="https://indxone.com/img/icon-ix.png">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "name": "Projets INDXONE",
+      "description": "Réalisations SI de Koffi NIAMKEY",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Koffi NIAMKEY",
+        "jobTitle": "Consultant SI &amp; Architecte Digital",
+        "knowsAbout": ["ERP", "CRM", "Automatisation", "Cloud", "No-code"]
+      }
+    }
+  ]
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Sora',sans-serif;background:var(--bone);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
-
-/* NAV */
-nav{position:sticky;top:0;z-index:100;background:rgba(247,244,239,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:64px}
-.nav-logo{font-weight:700;font-size:1.1rem;letter-spacing:.05em;color:var(--ink);text-decoration:none}
-.nav-logo span{color:var(--gold)}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:var(--ink-light);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .2s}
-.nav-links a:hover{color:var(--ink)}
-.nav-cta{background:var(--blue);color:#fff;padding:.5rem 1.2rem;border-radius:6px;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s}
-.nav-cta:hover{background:var(--blue-mid)}
-
-/* HERO */
-.hero{background:linear-gradient(135deg,var(--ink) 0%,#1B2D3E 100%);color:#fff;padding:5rem 5% 4rem;position:relative;overflow:hidden}
-.hero::after{content:'PROJETS';position:absolute;right:3%;top:50%;transform:translateY(-50%);font-family:'DM Serif Display',serif;font-size:clamp(8rem,14vw,18rem);color:rgba(255,255,255,.03);line-height:1;pointer-events:none}
-.hero-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
-.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,4.5vw,3.4rem);line-height:1.15;margin-bottom:1rem;max-width:700px}
-.hero h1 em{color:var(--gold-light);font-style:italic}
-.hero p{color:rgba(255,255,255,.6);font-size:.95rem;max-width:500px;margin-bottom:2.5rem}
-.hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap}
-.h-stat strong{display:block;font-size:1.8rem;font-weight:700;color:#fff}
-.h-stat span{font-size:.72rem;color:rgba(255,255,255,.4)}
-
-/* FILTERS */
-.filter-bar{background:var(--white);border-bottom:1px solid var(--border);padding:.8rem 5%;position:sticky;top:64px;z-index:99}
-.filter-inner{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
-.filter-label{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);margin-right:.5rem}
-.pf-btn{padding:.35rem 1rem;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--ink-light);font-family:'Sora',sans-serif;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:.04em}
-.pf-btn:hover,.pf-btn.active{background:var(--gold);border-color:var(--gold);color:var(--ink)}
-
-/* BENTO */
-.projets-wrap{padding:3rem 5% 5rem;max-width:1400px;margin:0 auto}
-.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:auto;gap:1.2rem}
-
-.bc{border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s;border:1px solid rgba(255,255,255,.12)}
-.bc:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.4)}
-
-/* Layouts */
-.bc-hero  {grid-column:span 8;background:linear-gradient(135deg,#0E3060 0%,#1B3A6B 100%);border-color:rgba(74,124,199,.4)}
-.bc-metric{grid-column:span 4;background:#152030;border-color:rgba(201,168,76,.4)}
-.bc-mid   {grid-column:span 4;background:#152030;border-color:rgba(255,255,255,.15)}
-.bc-wide  {grid-column:span 6;background:#152030;border-color:rgba(255,255,255,.15)}
-.bc-full  {grid-column:span 12;background:linear-gradient(90deg,#0E2518 0%,#152030 100%);border-color:rgba(42,122,75,.45);display:flex;gap:3rem;align-items:center}
-.bc-taga  {grid-column:span 5;background:linear-gradient(135deg,#1E0D38 0%,#140A28 100%);border-color:rgba(150,80,220,.4)}
-.bc-kit   {grid-column:span 7;background:linear-gradient(135deg,#0E2848 0%,#152030 100%);border-color:rgba(201,168,76,.35)}
-
-.bc-tag{display:inline-flex;align-items:center;gap:.3rem;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .6rem;border-radius:20px;margin-bottom:1rem}
-.bc-tag.freelance{background:rgba(201,168,76,.2);color:var(--gold-light);border:1px solid rgba(201,168,76,.3)}
-.bc-tag.cdi{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.12)}
-.bc-tag.wip{background:rgba(150,80,220,.2);color:#C0A0F0;border:1px solid rgba(150,80,220,.3)}
-
-.bc-icon{font-size:2.2rem;margin-bottom:.8rem;display:block}
-.bc-title{font-weight:700;font-size:1.15rem;color:#fff;margin-bottom:.5rem;line-height:1.3}
-.bc-title.lg{font-family:'DM Serif Display',serif;font-size:1.6rem}
-.bc-desc{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:1.2rem}
-
-.bc-stats{display:flex;gap:2rem;flex-wrap:wrap}
-.bc-stat strong{display:block;font-size:1.6rem;font-weight:700;color:var(--gold-light);line-height:1;margin-bottom:.2rem}
-.bc-stat.sm strong{font-size:1.1rem}
-.bc-stat span{font-size:.68rem;color:rgba(255,255,255,.4)}
-
-.bc-chips{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:1rem}
-.bc-chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.75);font-size:.65rem;padding:.2rem .55rem;border-radius:4px}
-
-.bc-number{font-family:'DM Serif Display',serif;font-size:4.5rem;color:rgba(201,168,76,.25);line-height:1;position:absolute;bottom:1rem;right:1.5rem}
-
-.bc-impact{background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.35);border-radius:8px;padding:.8rem 1rem;margin-top:1rem;font-size:.78rem;color:var(--gold-light)}
-.bc-impact strong{display:block;font-size:.65rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem;opacity:.7}
-
-/* Full card */
-.bc-full-left{flex:1}
-.bc-full-right{display:flex;gap:1.5rem;flex-shrink:0}
-.bc-stat-box{text-align:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:1rem 1.2rem}
-.bc-stat-box strong{display:block;font-size:1.4rem;font-weight:700;color:#86EFAC}
-.bc-stat-box span{font-size:.68rem;color:rgba(255,255,255,.55)}
-
-/* TAGA badge */
-.wip-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.65rem;font-weight:700;letter-spacing:.06em;background:rgba(150,80,220,.15);color:#C0A0F0;border:1px solid rgba(150,80,220,.3);padding:.3rem .7rem;border-radius:20px;margin-top:.8rem}
-.wip-pulse{width:7px;height:7px;border-radius:50%;background:#C0A0F0;animation:pulse 1.5s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-
-/* CTA */
-.cta-section{background:linear-gradient(135deg,var(--blue) 0%,#0F2847 100%);color:#fff;text-align:center;padding:5rem 5%}
-.cta-section h2{font-family:'DM Serif Display',serif;font-size:2rem;margin-bottom:.8rem}
-.cta-section p{color:rgba(255,255,255,.6);margin-bottom:2rem;font-size:.9rem}
-.cta-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.btn-primary{background:var(--gold);color:var(--ink);padding:.85rem 1.8rem;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;transition:all .2s}
-.btn-primary:hover{background:var(--gold-light);transform:translateY(-1px)}
-.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2);padding:.85rem 1.8rem;border-radius:8px;font-weight:500;font-size:.9rem;text-decoration:none;transition:all .2s}
-.btn-ghost:hover{background:rgba(255,255,255,.15)}
-
-/* FOOTER */
-footer{background:var(--ink);color:rgba(255,255,255,.4);padding:2rem 5%;font-size:.75rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
-footer a{color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}
-footer a:hover{color:var(--gold-light)}
-.footer-links{display:flex;gap:1.5rem}
-
-/* Reveal */
-.rv{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
-.rv.in{opacity:1;transform:none}
-
-@media(max-width:900px){
-  .bento{grid-template-columns:1fr 1fr}
-  .bc-hero,.bc-full,.bc-kit{grid-column:span 2}
-  .bc-metric,.bc-mid,.bc-wide,.bc-taga{grid-column:span 1}
-  .bc-full{flex-direction:column}
-  .bc-full-right{flex-wrap:wrap}
-  .nav-links{display:none}
+</script>
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "name": "Koffi NIAMKEY - Projets SI",
+      "description": "Réalisations de Koffi NIAMKEY — Consultant SI INDXONE. Projets ERP, CRM, automatisation, téléphonie IP, marketplace mobile, sites mairies.",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Koffi NIAMKEY",
+        "jobTitle": "Consultant SI &amp; Architecte Digital",
+        "knowsAbout": ["IT consulting", "Enterprise architecture", "Cloud computing", "ERP", "CRM", "Automation"]
+      }
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "IndxOne Hub - Cockpit freelance IT",
+      "description": "Suite local-first de 15 outils pour freelances IT : Missio, Deal Room, Runway, Daily Ops et plus.",
+      "author": { "@type": "Person", "name": "Koffi NIAMKEY" },
+      "programmingLanguage": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "TAGA - Marketplace ride-hailing",
+      "description": "Marketplace mobile de transport pour l'Afrique de l'Ouest avec module Femme Only et logique PostGIS.",
+      "author": { "@type": "Person", "name": "Koffi NIAMKEY" }
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Startup Launch Kit",
+      "description": "Offre d'accompagnement MVP de 8 semaines pour startups France et Afrique francophone.",
+      "author": { "@type": "Person", "name": "Koffi NIAMKEY" }
+    }
+  ]
 }
-@media(max-width:560px){
-  .bento{grid-template-columns:1fr}
-  .bc{grid-column:span 1!important}
-}
-</style>
+</script>
+
 </head>
 <body>
 
-<nav>
-  <a href="/" class="nav-logo">indx<span>ONE</span></a>
-  <ul class="nav-links">
-    <li><a href="/#services">Services</a></li>
-    <li><a href="/collectivites">Collectivités</a></li>
-    <li><a href="/projets">Projets</a></li>
-    <li><a href="https://hub.indxone.com" target="_blank">Hub</a></li>
-    <li><a href="/#stack">Stack</a></li>
-  </ul>
-  <a href="/#contact" class="nav-cta">Démarrer un projet</a>
-</nav>
+<a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
-<section class="hero">
+<!--#include file="_includes/nav.html" -->
+
+<section class="hero" id="main-content" aria-label="Portfolio et projets">
   <div class="hero-label">Réalisations</div>
   <h1>Projets <em>structurants</em></h1>
   <p>Menés en CDI et en freelance — en tant que pilote, référent technique ou AMOA.</p>
@@ -159,41 +104,27 @@ footer a:hover{color:var(--gold-light)}
   </div>
 </section>
 
-<div class="filter-bar">
+<div class="filter-bar" role="region" aria-label="Filtres des projets">
   <div class="filter-inner">
-    <span class="filter-label">Filtrer</span>
-    <button class="pf-btn active" onclick="filterP(this,'all')">Tous</button>
-    <button class="pf-btn" onclick="filterP(this,'freelance')">⚡ IndxOne · Freelance</button>
-    <button class="pf-btn" onclick="filterP(this,'cdi')">🏢 CDI · Référent IT</button>
+    <span class="filter-label" id="filter-label">Filtrer</span>
+    <button class="pf-btn active" onclick="filterP(this,'all')" aria-describedby="filter-label">Tous</button>
+    <button class="pf-btn" onclick="filterP(this,'freelance')" aria-describedby="filter-label"><span aria-hidden="true">⚡</span> IndxOne · Freelance</button>
+    <button class="pf-btn" onclick="filterP(this,'cdi')" aria-describedby="filter-label"><span aria-hidden="true">🏢</span> CDI · Référent IT</button>
   </div>
 </div>
 
 <div class="projets-wrap">
   <div class="bento">
 
-    <!-- ECAO — hero -->
-    <div class="bc bc-hero rv" data-type="freelance">
-      <span class="bc-tag freelance">⚡ Mission freelance · IndxOne</span>
-      <span class="bc-icon">🚢</span>
-      <div class="bc-title lg">Plateforme fret maritime — ECAO</div>
-      <div class="bc-desc">Livraison en 5 jours ouvrés d'une plateforme complète de commande fret France → Côte d'Ivoire. Flux entier automatisé : commande → calcul tarifaire m³ → paiement fractionné → notifications WhatsApp → suivi Kanban admin. Détection géographique IDF/hors-IDF pour routage automatique Boxtal.</div>
-      <div class="bc-stats">
-        <div class="bc-stat"><strong>5j</strong><span>Délai livraison</span></div>
-        <div class="bc-stat"><strong>0</strong><span>Traitement manuel</span></div>
-        <div class="bc-stat"><strong>30€</strong><span>Coût infra /mois</span></div>
-      </div>
-      <div class="bc-chips"><span class="bc-chip">Make</span><span class="bc-chip">Tally</span><span class="bc-chip">Airtable</span><span class="bc-chip">Stripe</span><span class="bc-chip">WhatsApp API</span><span class="bc-chip">No-code</span></div>
-    </div>
-
     <!-- Sites mairies -->
     <div class="bc bc-metric rv" data-type="freelance">
       <span class="bc-tag freelance">⚡ IndxOne</span>
-      <span class="bc-icon">🏛️</span>
+      <span class="bc-icon" aria-hidden="true">🏛️</span>
       <div class="bc-title">Digitalisation communes</div>
       <div class="bc-desc" style="font-size:.75rem">Template institutionnel déployé · Aisne (02). Pipeline multi-communes actif.</div>
       <div class="bc-stats" style="margin-top:.8rem">
         <div class="bc-stat sm"><strong>48h</strong><span>Déploiement</span></div>
-        <div class="bc-stat sm"><strong>96+</strong><span>Lighthouse</span></div>
+        <div class="bc-stat sm"><strong>90+</strong><span>Lighthouse target</span></div>
       </div>
       <div class="bc-impact" style="margin-top:.8rem"><strong>Pipeline actif</strong>Mons-en-Laonnois · 11 communes en prospection</div>
       <div class="bc-number">IX</div>
@@ -202,9 +133,9 @@ footer a:hover{color:var(--gold-light)}
     <!-- Téléphonie IP -->
     <div class="bc bc-mid rv" data-type="cdi">
       <span class="bc-tag cdi">CDI · Référent IT</span>
-      <span class="bc-icon">📞</span>
+      <span class="bc-icon" aria-hidden="true">📞</span>
       <div class="bc-title">Téléphonie IP — Microsoft Teams</div>
-      <div class="bc-desc">Pilotage complet du déploiement Teams IP. Responsable & autorité projet de bout en bout.</div>
+      <div class="bc-desc">Pilotage complet du déploiement Teams IP. Responsable &amp; autorité projet de bout en bout.</div>
       <div class="bc-stats">
         <div class="bc-stat sm"><strong>110</strong><span>Collaborateurs</span></div>
         <div class="bc-stat sm"><strong>0</strong><span>Incident post-bascule</span></div>
@@ -215,7 +146,7 @@ footer a:hover{color:var(--gold-light)}
     <!-- CRM -->
     <div class="bc bc-mid rv" data-type="cdi">
       <span class="bc-tag cdi">CDI · Référent IT</span>
-      <span class="bc-icon">📊</span>
+      <span class="bc-icon" aria-hidden="true">📊</span>
       <div class="bc-title">CRM Dynamics 365 + Power BI</div>
       <div class="bc-desc">Intégration Power BI dans Dynamics 365, évolution Power Apps. Reporting commercial temps réel.</div>
       <div class="bc-chips"><span class="bc-chip">Dynamics 365</span><span class="bc-chip">Power BI</span><span class="bc-chip">Power Apps</span></div>
@@ -224,17 +155,17 @@ footer a:hover{color:var(--gold-light)}
     <!-- ERP -->
     <div class="bc bc-mid rv" data-type="cdi">
       <span class="bc-tag cdi">CDI · Référent IT</span>
-      <span class="bc-icon">⚙️</span>
+      <span class="bc-icon" aria-hidden="true">⚙️</span>
       <div class="bc-title">Déploiement ERP DIAPASON</div>
       <div class="bc-desc">Coordination infra puis administration, configuration, gestion des flux et droits utilisateurs.</div>
       <div class="bc-chips"><span class="bc-chip">ERP</span><span class="bc-chip">AMOA</span><span class="bc-chip">Formation</span></div>
     </div>
 
-    <!-- GED & GTA -->
+    <!-- GED &amp; GTA -->
     <div class="bc bc-wide rv" data-type="cdi">
       <span class="bc-tag cdi">CDI · Référent IT</span>
-      <span class="bc-icon">🗂️</span>
-      <div class="bc-title">GED & GTA Kelio</div>
+      <span class="bc-icon" aria-hidden="true">🗂️</span>
+      <div class="bc-title">GED &amp; GTA Kelio</div>
       <div class="bc-desc">Mise en place de la gestion électronique documentaire et déploiement de la GTA Kelio sur ~110 collaborateurs.</div>
       <div class="bc-chips"><span class="bc-chip">Kelio</span><span class="bc-chip">GED</span><span class="bc-chip">Formation</span></div>
     </div>
@@ -243,7 +174,7 @@ footer a:hover{color:var(--gold-light)}
     <div class="bc bc-full rv" data-type="cdi">
       <div class="bc-full-left">
         <span class="bc-tag cdi">CDI · Référent IT</span>
-        <span class="bc-icon">🧩</span>
+        <span class="bc-icon" aria-hidden="true">🧩</span>
         <div class="bc-title">Configurateur produit en ligne</div>
         <div class="bc-desc">Logique conditionnelle complexe pour un configurateur menuiserie temps réel. Pilotage intégration, recette fonctionnelle, déploiement et formation terrain.</div>
         <div class="bc-chips"><span class="bc-chip">Configurateur</span><span class="bc-chip">AMOA</span><span class="bc-chip">Intégration</span><span class="bc-chip">Formation</span></div>
@@ -258,7 +189,7 @@ footer a:hover{color:var(--gold-light)}
     <!-- IndxOne Hub -->
     <div class="bc bc-wide rv" data-type="freelance">
       <span class="bc-tag freelance">⚡ Produit SaaS · IndxOne</span>
-      <span class="bc-icon">🧭</span>
+      <span class="bc-icon" aria-hidden="true">🧭</span>
       <div class="bc-title">IndxOne Hub — cockpit freelance IT</div>
       <div class="bc-desc">Suite local-first de 15 outils : Missio, Deal Room, Runway, Daily Ops, Calc, SIPOC, MoSCoW, RACI, Devis, CRA et routines de pilotage. Refonte UX mobile, thème global, changelog et démo Missio intégrés.</div>
       <div class="bc-stats">
@@ -272,7 +203,7 @@ footer a:hover{color:var(--gold-light)}
     <!-- TAGA -->
     <div class="bc bc-taga rv" data-type="freelance">
       <span class="bc-tag wip">⚡ IndxOne · En cours</span>
-      <span class="bc-icon">🚗</span>
+      <span class="bc-icon" aria-hidden="true">🚗</span>
       <div class="bc-title">TAGA — Marketplace ride-hailing</div>
       <div class="bc-desc">Conception et développement d'une marketplace mobile de transport ciblant Abidjan et l'Afrique de l'Ouest. Module Femme Only, logique PostGIS, cartographie MapBox.</div>
       <div class="bc-chips"><span class="bc-chip">FlutterFlow</span><span class="bc-chip">Supabase</span><span class="bc-chip">PostGIS</span><span class="bc-chip">MapBox</span><span class="bc-chip">Côte d'Ivoire</span></div>
@@ -282,9 +213,9 @@ footer a:hover{color:var(--gold-light)}
     <!-- Startup Launch Kit -->
     <div class="bc bc-kit rv" data-type="freelance">
       <span class="bc-tag freelance">⚡ Offre IndxOne</span>
-      <span class="bc-icon">🚀</span>
+      <span class="bc-icon" aria-hidden="true">🚀</span>
       <div class="bc-title">Startup Launch Kit</div>
-      <div class="bc-desc">De l'idée au premier utilisateur en 8 semaines. Cadrage, stack technique, outillage no-code et pilotage MVP. Disponible pour startups France & Afrique francophone.</div>
+      <div class="bc-desc">De l'idée au premier utilisateur en 8 semaines. Cadrage, stack technique, outillage no-code et pilotage MVP. Disponible pour startups France &amp; Afrique francophone.</div>
       <div class="bc-stats">
         <div class="bc-stat"><strong>8 sem</strong><span>Délai go-live</span></div>
         <div class="bc-stat"><strong>3</strong><span>Tiers disponibles</span></div>
@@ -295,12 +226,12 @@ footer a:hover{color:var(--gold-light)}
   </div>
 </div>
 
-<section class="cta-section">
+<section class="cta-section" aria-label="Appel à l'action projet">
   <h2>Votre projet est le prochain</h2>
   <p>Un échange de 30 min suffit pour clarifier les enjeux et voir si on est alignés.</p>
   <div class="cta-links">
     <a href="/#contact" class="btn-primary">Démarrer un projet →</a>
-    <a href="https://hub.indxone.com" class="btn-ghost" target="_blank">Ouvrir IndxOne Hub →</a>
+    <a href="https://hub.indxone.com" class="btn-ghost" target="_blank" rel="noopener noreferrer">Ouvrir IndxOne Hub →</a>
     <a href="tel:+33775679067" class="btn-ghost">📞 07 75 67 90 67</a>
   </div>
 </section>
@@ -309,7 +240,7 @@ footer a:hover{color:var(--gold-light)}
   <span>© 2026 INDXONE SASU · SIRET 999 968 902 00018</span>
   <div class="footer-links">
     <a href="/">← Accueil</a>
-    <a href="https://hub.indxone.com" target="_blank">Hub</a>
+    <a href="https://hub.indxone.com" target="_blank" rel="noopener noreferrer">Hub</a>
     <a href="/collectivites">Collectivités</a>
     <a href="/#contact">Contact</a>
   </div>
@@ -331,5 +262,7 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: 0.06 });
 document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 </script>
+
+<!--#include file="_includes/analytics.html" -->
 </body>
 </html>
