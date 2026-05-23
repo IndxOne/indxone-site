@@ -107,6 +107,7 @@
     "rules": {
       "color-no-invalid-hex": true,
       "declaration-block-no-duplicate-properties": true,
+      "no-descending-specificity": null,
       "selector-pseudo-class-no-unknown": [
         true,
         {

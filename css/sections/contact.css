@@ -1,5 +1,6 @@
 .contact {
-  background: var(--white);
+  background: var(--bg-secondary);
+  padding: var(--space-4xl) var(--space-lg);
 }
 
 .contact-grid {
@@ -36,8 +37,9 @@
   font-size: 0.85rem;
   padding: var(--space-md);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   transition: all var(--transition-base);
+  background: var(--card-bg);
 }
 
 .contact-link:hover {
@@ -76,8 +78,27 @@
   color: var(--ink-light);
   font-size: 0.82rem;
   transition: color var(--transition-base);
+  padding: 0.15rem 0;
 }
 
 .platform-link:hover {
   color: var(--blue);
+}
+
+@media (width <= 960px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+}
+
+@media (width <= 560px) {
+  .contact {
+    padding: var(--space-3xl) var(--space-md);
+  }
+
+  .contact-link,
+  .platform-link {
+    font-size: 0.8rem;
+  }
 }

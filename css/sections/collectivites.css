@@ -1,5 +1,6 @@
 .collectivites-section {
   background: var(--bone);
+  padding: var(--space-4xl) var(--space-lg);
 }
 
 .collectivites-inner {
@@ -10,11 +11,11 @@
 }
 
 .collectivites-preview {
-  background: var(--white);
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   overflow: hidden;
-  box-shadow: 0 8px 40px rgba(15, 25, 35, 0.08);
+  box-shadow: 0 8px 40px rgb(15 25 35 / 8%);
 }
 
 .preview-bar {
@@ -33,11 +34,11 @@
 
 .preview-url {
   flex: 1;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgb(255 255 255 / 8%);
   border-radius: var(--radius-sm);
   padding: var(--space-xs) var(--space-sm);
   font-size: 0.68rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgb(255 255 255 / 50%);
   margin: 0 var(--space-sm);
 }
 
@@ -72,7 +73,7 @@
 }
 
 .preview-chip {
-  background: var(--bone);
+  background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: var(--space-xs) var(--space-md);
@@ -136,7 +137,7 @@
 }
 
 .tier-mini {
-  background: var(--white);
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: var(--space-md);
@@ -165,7 +166,7 @@
 
 .tier-mini.highlighted {
   border-color: var(--blue);
-  background: rgba(27, 58, 107, 0.03);
+  background: rgb(30 108 123 / 8%);
 }
 
 .tier-mini.highlighted .tier-mini-name {

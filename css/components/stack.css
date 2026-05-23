@@ -1,5 +1,6 @@
 .stack {
   background: var(--bone);
+  padding: var(--space-4xl) var(--space-lg);
 }
 
 .stack-grid {
@@ -10,10 +11,11 @@
 }
 
 .stack-cat {
-  background: var(--white);
+  background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xl);
   padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
 }
 
 .stack-cat-name {
@@ -38,9 +40,9 @@
 }
 
 .malt-card {
-  background: var(--white);
-  border: 2px solid var(--gold);
-  border-radius: var(--radius-lg);
+  background: var(--card-bg);
+  border: 1px solid rgba(196, 95, 77, 0.32);
+  border-radius: var(--radius-xl);
   padding: var(--space-md) var(--space-xl);
   margin-top: var(--space-2xl);
   display: flex;
@@ -51,11 +53,13 @@
   color: var(--ink);
   transition: all var(--transition-base);
   max-width: 500px;
+  box-shadow: var(--shadow-sm);
 }
 
 .malt-card:hover {
-  background: rgba(201, 168, 76, 0.05);
-  transform: translateY(-2px);
+  background: rgb(196 95 77 / 6%);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 
 .malt-logo {

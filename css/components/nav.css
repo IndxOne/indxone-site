@@ -4,7 +4,6 @@
   z-index: var(--z-sticky);
   background: var(--nav-bg);
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
   padding: 0 var(--space-lg);
   display: flex;
@@ -112,7 +111,7 @@
 .lang-switch:hover {
   border-color: var(--gold);
   color: var(--ink);
-  background: rgba(201, 168, 76, 0.08);
+  background: rgb(196 95 77 / 8%);
 }
 
 .theme-toggle {

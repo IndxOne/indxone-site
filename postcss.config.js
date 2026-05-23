@@ -6,6 +6,8 @@ module.exports = {
       content: [
         './*.html',
         './*.js',
+        './merci/*.html',
+        './accessibilite/*.html',
         './collectivites/*.html',
         './projets/*.html',
         './en/*.html',

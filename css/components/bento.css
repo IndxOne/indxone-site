@@ -11,23 +11,23 @@
   position: relative;
   overflow: hidden;
   transition: transform var(--transition-slow), box-shadow var(--transition-slow);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid rgb(255 255 255 / 7%);
 }
 
 .bento-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 16px 48px rgb(0 0 0 / 30%);
 }
 
 .bento-card.hero-card {
   grid-column: span 8;
-  background: var(--gradient-blue);
+  background: var(--blue);
 }
 
 .bento-card.metric-card {
   grid-column: span 4;
-  background: linear-gradient(135deg, rgba(201, 168, 76, 0.15) 0%, rgba(201, 168, 76, 0.05) 100%);
-  border-color: rgba(201, 168, 76, 0.25);
+  background: var(--card-bg);
+  border-color: rgb(196 95 77 / 25%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -35,23 +35,23 @@
 
 .bento-card.mid-card {
   grid-column: span 4;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--card-bg);
 }
 
 .bento-card.mid-dark {
   grid-column: span 4;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--card-bg);
 }
 
 .bento-card.wide-card {
   grid-column: span 6;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--card-bg);
 }
 
 .bento-card.full-card {
   grid-column: span 12;
-  background: linear-gradient(90deg, rgba(42, 122, 75, 0.15) 0%, rgba(42, 122, 75, 0.05) 100%);
-  border-color: rgba(42, 122, 75, 0.2);
+  background: var(--card-bg);
+  border-color: rgb(78 133 107 / 20%);
   flex-direction: row;
   display: flex;
   gap: var(--space-4xl);
@@ -72,15 +72,15 @@
 }
 
 .bc-tag.freelance {
-  background: rgba(201, 168, 76, 0.2);
+  background: rgb(196 95 77 / 20%);
   color: var(--gold-light);
-  border: 1px solid rgba(201, 168, 76, 0.3);
+  border: 1px solid rgb(196 95 77 / 30%);
 }
 
 .bc-tag.cdi {
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
 }
 
 .bc-icon {
@@ -104,7 +104,7 @@
 
 .bc-desc {
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgb(255 255 255 / 55%);
   line-height: 1.6;
   margin-bottom: var(--space-md);
 }
@@ -130,7 +130,7 @@
 
 .bc-stat span {
   font-size: 0.68rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgb(255 255 255 / 40%);
 }
 
 .bc-chips {
@@ -141,9 +141,9 @@
 }
 
 .bc-chip {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.55);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
   font-size: 0.65rem;
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
@@ -153,7 +153,7 @@
   font-family: var(--font-secondary);
   font-size: 4.5rem;
   font-weight: 400;
-  color: rgba(201, 168, 76, 0.3);
+  color: rgb(196 95 77 / 30%);
   line-height: 1;
   position: absolute;
   bottom: var(--space-md);
@@ -161,8 +161,8 @@
 }
 
 .bc-impact {
-  background: rgba(201, 168, 76, 0.1);
-  border: 1px solid rgba(201, 168, 76, 0.2);
+  background: rgb(196 95 77 / 10%);
+  border: 1px solid rgb(196 95 77 / 20%);
   border-radius: var(--radius-md);
   padding: var(--space-md) var(--space-lg);
   margin-top: var(--space-md);
@@ -191,7 +191,7 @@
 
 .full-stat-box {
   text-align: center;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgb(255 255 255 / 5%);
   border-radius: var(--radius-md);
   padding: var(--space-md) var(--space-lg);
 }
@@ -205,5 +205,60 @@
 
 .full-stat-box span {
   font-size: 0.68rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgb(255 255 255 / 40%);
+}
+
+[data-theme="light"] .bento-card.mid-card,
+[data-theme="light"] .bento-card.mid-dark,
+[data-theme="light"] .bento-card.wide-card,
+[data-theme="light"] .bento-card.full-card {
+  background: var(--card-bg);
+  border-color: rgba(11, 23, 32, 0.10);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="light"] .bento-card.mid-card .bc-title,
+[data-theme="light"] .bento-card.mid-dark .bc-title,
+[data-theme="light"] .bento-card.wide-card .bc-title,
+[data-theme="light"] .bento-card.full-card .bc-title,
+[data-theme="light"] .bento-card.mid-card .bc-title.large,
+[data-theme="light"] .bento-card.mid-dark .bc-title.large,
+[data-theme="light"] .bento-card.wide-card .bc-title.large,
+[data-theme="light"] .bento-card.full-card .bc-title.large {
+  color: var(--ink);
+}
+
+[data-theme="light"] .bento-card.mid-card .bc-desc,
+[data-theme="light"] .bento-card.mid-dark .bc-desc,
+[data-theme="light"] .bento-card.wide-card .bc-desc,
+[data-theme="light"] .bento-card.full-card .bc-desc,
+[data-theme="light"] .bento-card.mid-card .bc-stat span,
+[data-theme="light"] .bento-card.mid-dark .bc-stat span,
+[data-theme="light"] .bento-card.wide-card .bc-stat span,
+[data-theme="light"] .bento-card.full-card .bc-stat span,
+[data-theme="light"] .bento-card.mid-card .full-stat-box span,
+[data-theme="light"] .bento-card.mid-dark .full-stat-box span,
+[data-theme="light"] .bento-card.wide-card .full-stat-box span,
+[data-theme="light"] .bento-card.full-card .full-stat-box span {
+  color: var(--ink-light);
+}
+
+[data-theme="light"] .bento-card.mid-card .bc-tag.cdi,
+[data-theme="light"] .bento-card.mid-dark .bc-tag.cdi,
+[data-theme="light"] .bento-card.wide-card .bc-tag.cdi,
+[data-theme="light"] .bento-card.full-card .bc-tag.cdi,
+[data-theme="light"] .bento-card.mid-card .bc-chip,
+[data-theme="light"] .bento-card.mid-dark .bc-chip,
+[data-theme="light"] .bento-card.wide-card .bc-chip,
+[data-theme="light"] .bento-card.full-card .bc-chip {
+  background: var(--bg-secondary);
+  border-color: var(--border);
+  color: var(--ink-light);
+}
+
+[data-theme="light"] .bento-card.mid-card .bc-number,
+[data-theme="light"] .bento-card.mid-dark .bc-number,
+[data-theme="light"] .bento-card.wide-card .bc-number,
+[data-theme="light"] .bento-card.full-card .bc-number {
+  color: rgb(196 95 77 / 18%);
 }

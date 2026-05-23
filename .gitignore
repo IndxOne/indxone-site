@@ -53,3 +53,7 @@ astro/
 
 # Documentation (untracked)
 INDXONE_SITE_DOCS.md
+
+# Local test artifacts
+test-results/
+C:\\Users\\KON\\AppData\\Local\\lighthouse.*/

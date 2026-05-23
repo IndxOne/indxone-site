@@ -4,16 +4,17 @@
 }
 
 .hub-product {
-  background: var(--gradient-hero);
+  background: var(--blue);
   color: var(--white);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-2xl);
   padding: var(--space-2xl);
   margin-bottom: var(--space-xl);
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: var(--space-3xl);
   align-items: center;
-  border: 1px solid rgba(201, 168, 76, 0.28);
+  border: 1px solid rgb(241 169 156 / 28%);
+  box-shadow: var(--shadow-xl);
 }
 
 .hub-product h3 {
@@ -24,7 +25,7 @@
 }
 
 .hub-product p {
-  color: rgba(255, 255, 255, 0.68);
+  color: rgb(255 255 255 / 68%);
   font-size: 0.9rem;
   max-width: 620px;
 }
@@ -41,16 +42,16 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  border: 1px solid rgba(201, 168, 76, 0.35);
+  border: 1px solid rgb(241 169 156 / 35%);
   color: var(--gold-light);
   border-radius: var(--radius-full);
   padding: 0.28rem 0.65rem;
 }
 
 .hub-preview {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-lg);
+  background: var(--bg-secondary);
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: var(--radius-xl);
   padding: var(--space-md);
 }
 
@@ -60,8 +61,8 @@
   gap: var(--space-md);
   align-items: center;
   padding: var(--space-sm) 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.72);
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+  color: rgb(255 255 255 / 72%);
   font-size: 0.78rem;
 }
 
@@ -81,17 +82,19 @@
 }
 
 .tool-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  background: var(--card-bg);
+  border: 1px solid rgba(11, 23, 32, 0.08);
+  border-radius: var(--radius-xl);
   padding: var(--space-xl);
-  transition: all var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  box-shadow: var(--shadow-sm);
+  color: var(--text-primary);
 }
 
 .tool-card:hover {
   border-color: var(--blue);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(27, 58, 107, 0.1);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
 .tool-icon {
@@ -132,4 +135,40 @@
 .tools-section .btn-primary {
   margin-top: var(--space-2xl);
   display: inline-block;
+}
+
+@media (width <= 1024px) {
+  .hub-product {
+    grid-template-columns: 1fr;
+  }
+
+  .hub-preview {
+    order: 2;
+  }
+}
+
+@media (width <= 768px) {
+  .hub-product {
+    padding: var(--space-xl);
+    gap: var(--space-xl);
+  }
+
+  .hub-product h3 {
+    font-size: 1.6rem;
+  }
+
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (width <= 560px) {
+  .hub-badges {
+    margin: var(--space-md) 0;
+  }
+
+  .hub-preview-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+  }
 }

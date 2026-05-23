@@ -6,6 +6,14 @@
   overflow: hidden;
 }
 
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: none;
+  pointer-events: none;
+}
+
 .hero::after {
   content: 'IX';
   position: absolute;
@@ -14,18 +22,19 @@
   transform: translateY(-50%);
   font-family: var(--font-secondary);
   font-size: clamp(10rem, 18vw, 22rem);
-  color: rgba(255, 255, 255, 0.03);
+  color: rgb(255 255 255 / 4%);
   line-height: 1;
   pointer-events: none;
   user-select: none;
+  opacity: 0.95;
 }
 
 .hero-status {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(42, 122, 75, 0.2);
-  border: 1px solid rgba(42, 122, 75, 0.4);
+  background: rgb(78 133 107 / 14%);
+  border: 1px solid rgb(78 133 107 / 30%);
   color: var(--green-light);
   font-size: 0.75rem;
   font-weight: 600;
@@ -62,7 +71,7 @@
 
 .hero p {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgb(255 255 255 / 65%);
   max-width: 520px;
   margin-bottom: var(--space-3xl);
 }
@@ -90,12 +99,12 @@
 
 .hero-stat span {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgb(255 255 255 / 45%);
 }
 
 .dispo-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgb(255 255 255 / 4%);
+  border: 1px solid rgb(255 255 255 / 10%);
   border-radius: var(--radius-lg);
   padding: var(--space-md) var(--space-xl);
   margin-top: var(--space-3xl);
@@ -109,7 +118,7 @@
 }
 
 .dispo-item .label {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgb(255 255 255 / 40%);
   margin-bottom: var(--space-xs);
   display: block;
 }

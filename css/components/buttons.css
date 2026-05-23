@@ -11,6 +11,31 @@
   font-family: var(--font-primary);
 }
 
+.btn-primary,
+.btn-secondary,
+.btn-ghost,
+.btn-outline,
+.btn-blue,
+.btn-primary-error,
+.btn-secondary-error,
+.btn-error,
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.8rem;
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all var(--transition-base);
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-primary);
+  line-height: 1;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .btn-primary {
   background: var(--gold);
   color: var(--ink);
@@ -19,6 +44,18 @@
 .btn-primary:hover {
   background: var(--gold-light);
   transform: translateY(-1px);
+}
+
+.btn-primary:visited,
+.btn-secondary:visited,
+.btn-ghost:visited,
+.btn-outline:visited,
+.btn-blue:visited,
+.btn-primary-error:visited,
+.btn-secondary-error:visited,
+.btn-error:visited,
+.btn-back:visited {
+  color: inherit;
 }
 
 .btn-secondary {
@@ -31,13 +68,13 @@
 }
 
 .btn-ghost {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgb(255 255 255 / 8%);
   color: var(--white);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgb(255 255 255 / 20%);
 }
 
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgb(255 255 255 / 15%);
 }
 
 .btn-outline {

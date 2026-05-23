@@ -11,7 +11,7 @@
   font-size: 8rem;
   font-weight: 400;
   line-height: 1;
-  color: rgba(201, 168, 76, 0.3);
+  color: rgb(196 95 77 / 30%);
   margin-bottom: 1rem;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .error-message {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgb(255 255 255 / 65%);
   font-size: 1rem;
   margin-bottom: 2rem;
   line-height: 1.6;
@@ -44,11 +44,11 @@
 .btn-error {
   display: inline-block;
   padding: 0.85rem 1.8rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   font-weight: 700;
   font-size: 0.9rem;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
   font-family: var(--font-primary);
 }
 
@@ -63,13 +63,13 @@
 }
 
 .btn-secondary-error {
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgb(255 255 255 / 8%);
+  color: rgb(255 255 255 / 80%);
+  border: 1px solid rgb(255 255 255 / 20%);
 }
 
 .btn-secondary-error:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgb(255 255 255 / 15%);
   color: white;
 }
 
@@ -82,12 +82,12 @@
 .suggestions {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgb(255 255 255 / 10%);
 }
 
 .suggestions-title {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgb(255 255 255 / 50%);
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -101,7 +101,7 @@
 }
 
 .suggestions-list a {
-  color: rgba(201, 168, 76, 0.8);
+  color: rgb(196 95 77 / 80%);
   text-decoration: none;
   font-size: 0.85rem;
   transition: color 0.2s;
@@ -111,13 +111,15 @@
   color: var(--gold-light);
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .error-code {
     font-size: 5rem;
   }
+
   .error-title {
     font-size: 1.5rem;
   }
+
   .error-actions {
     flex-direction: column;
     align-items: center;

@@ -24,6 +24,7 @@
 
 .problem {
   background: var(--white);
+  padding: var(--space-4xl) var(--space-lg);
 }
 
 .problem-grid {
@@ -65,6 +66,7 @@
 
 .steps {
   background: var(--bone);
+  padding: var(--space-4xl) var(--space-lg);
 }
 
 .steps-grid {
@@ -82,7 +84,7 @@
   left: 10%;
   right: 10%;
   height: 1px;
-  background: linear-gradient(90deg, var(--gold) 0%, var(--border) 100%);
+  background: var(--border);
 }
 
 .step {
@@ -127,6 +129,7 @@
 
 .pricing {
   background: var(--white);
+  padding: var(--space-4xl) var(--space-lg);
 }
 
 .pricing-grid {
@@ -145,14 +148,14 @@
 
 .pc:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(15, 25, 35, 0.1);
+  box-shadow: 0 12px 40px rgb(15 25 35 / 10%);
 }
 
 .pc.feat {
   border: 2px solid var(--blue);
   background: var(--white);
   transform: scale(1.02);
-  box-shadow: 0 8px 32px rgba(27, 58, 107, 0.15);
+  box-shadow: 0 8px 32px rgb(27 58 107 / 15%);
 }
 
 .pc.feat:hover {
@@ -255,7 +258,7 @@
   gap: 0.5rem;
   align-items: flex-start;
   color: var(--ink-light);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgb(0 0 0 / 4%);
 }
 
 .pf li:last-child {
@@ -402,7 +405,7 @@
 }
 
 .detr-banner {
-  background: linear-gradient(135deg, #0B2D1F 0%, #0F4A2E 100%);
+  background: #0F4A2E;
   color: white;
   padding: 3rem 5%;
   margin: 0 5%;
@@ -415,9 +418,9 @@
 
 .detr-banner .tag {
   display: inline-block;
-  background: rgba(42, 122, 75, 0.4);
-  border: 1px solid rgba(42, 122, 75, 0.6);
-  color: #86EFAC;
+  background: rgb(78 133 107 / 36%);
+  border: 1px solid rgb(78 133 107 / 56%);
+  color: var(--green-light);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -436,12 +439,13 @@
 
 .detr-banner p {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgb(255 255 255 / 70%);
   max-width: 500px;
 }
 
 .refs {
   background: var(--bone);
+  padding: var(--space-4xl) var(--space-lg);
 }
 
 .refs-grid {
@@ -508,6 +512,7 @@
 
 .faq {
   background: var(--white);
+  padding: var(--space-4xl) var(--space-lg);
 }
 
 .faq-list {
@@ -557,7 +562,7 @@
 }
 
 .cta-final {
-  background: linear-gradient(135deg, var(--blue) 0%, #0F2847 100%);
+  background: var(--blue);
   color: white;
   text-align: center;
   padding: 5rem 5%;
@@ -571,41 +576,49 @@
 }
 
 .cta-final p {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgb(255 255 255 / 70%);
   margin-bottom: 2rem;
 }
 
-@media (max-width: 900px) {
+@media (width <= 900px) {
   .problem-grid, .maint-grid {
     grid-template-columns: 1fr 1fr;
   }
+
   .pricing-grid {
     grid-template-columns: 1fr !important;
   }
+
   .mod-grid {
     grid-template-columns: 1fr 1fr;
   }
+
   .steps-grid {
     grid-template-columns: 1fr;
   }
+
   .steps-grid::before {
     display: none;
   }
+
   .pc.feat {
     transform: scale(1);
   }
+
   .detr-banner {
     grid-template-columns: 1fr;
   }
+
   .refs-grid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .problem-grid, .mod-grid {
     grid-template-columns: 1fr;
   }
+
   .nav-links {
     display: none;
   }

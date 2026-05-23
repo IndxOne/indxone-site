@@ -1,23 +1,23 @@
 :root {
-  --ink: #0F1923;
-  --ink-light: #3D4F5C;
-  --ink-lighter: #6B7A88;
+  --ink: #17222B;
+  --ink-light: #4D5C67;
+  --ink-lighter: #73808A;
 
-  --bone: #F7F4EF;
+  --bone: #F5F1EA;
   --white: #FFFFFF;
   --black: #000000;
 
-  --gold: #C9A84C;
-  --gold-light: #E8D5A0;
-  --gold-lighter: #F5E8C7;
+  --gold: #C45F4D;
+  --gold-light: #E7B1A6;
+  --gold-lighter: #F7DDD7;
 
-  --blue: #1B3A6B;
-  --blue-mid: #2D5A9E;
-  --blue-light: #4A6E9F;
+  --blue: #1E6C7B;
+  --blue-mid: #2F8793;
+  --blue-light: #69B8C2;
 
-  --green: #2A7A4B;
-  --green-light: #3BA85A;
-  --green-lighter: #86EFAC;
+  --green: #4E856B;
+  --green-light: #77AE8E;
+  --green-lighter: #CDE3D6;
 
   --success: #28C840;
   --warning: #FEBC2E;
@@ -26,29 +26,28 @@
 
   --bg-primary: var(--bone);
   --bg-secondary: var(--white);
-  --bg-tertiary: rgba(247, 244, 239, 0.95);
+  --bg-tertiary: rgba(245, 241, 234, 0.96);
   --text-primary: var(--ink);
   --text-secondary: var(--ink-light);
-  --text-tertiary: rgba(15, 25, 35, 0.45);
-  --border-color: var(--border);
+  --text-tertiary: rgba(11, 23, 32, 0.45);
   --surface-color: var(--white);
   --nav-bg: var(--bg-tertiary);
   --card-bg: var(--white);
 
-  --border: rgba(15, 25, 35, 0.1);
-  --border-light: rgba(15, 25, 35, 0.05);
-  --border-strong: rgba(15, 25, 35, 0.2);
+  --border: rgba(23, 34, 43, 0.10);
+  --border-light: rgba(23, 34, 43, 0.06);
+  --border-strong: rgba(23, 34, 43, 0.18);
 
-  --shadow-sm: 0 2px 8px rgba(15, 25, 35, 0.08);
-  --shadow-md: 0 8px 24px rgba(15, 25, 35, 0.12);
-  --shadow-lg: 0 16px 48px rgba(15, 25, 35, 0.16);
-  --shadow-xl: 0 24px 64px rgba(15, 25, 35, 0.2);
+  --shadow-sm: 0 2px 8px rgba(23, 34, 43, 0.07);
+  --shadow-md: 0 10px 28px rgba(23, 34, 43, 0.10);
+  --shadow-lg: 0 20px 54px rgba(23, 34, 43, 0.14);
+  --shadow-xl: 0 28px 72px rgba(23, 34, 43, 0.18);
 
-  --gradient-hero: linear-gradient(135deg, var(--ink) 0%, #1B2D3E 100%);
-  --gradient-blue: linear-gradient(135deg, var(--blue) 0%, #0A2550 100%);
-  --gradient-blue-light: linear-gradient(135deg, var(--blue-light) 0%, var(--blue) 100%);
-  --gradient-gold: linear-gradient(135deg, rgba(201, 168, 76, 0.15) 0%, rgba(201, 168, 76, 0.05) 100%);
-  --gradient-green: linear-gradient(135deg, rgba(42, 122, 75, 0.15) 0%, rgba(42, 122, 75, 0.05) 100%);
+  --gradient-hero: var(--blue);
+  --gradient-blue: var(--blue);
+  --gradient-blue-light: var(--blue-light);
+  --gradient-gold: var(--gold-lighter);
+  --gradient-green: var(--green-lighter);
 
   --font-primary: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-secondary: 'DM Serif Display', Georgia, 'Times New Roman', serif;
@@ -63,11 +62,11 @@
   --space-4xl: 5rem;
   --space-5xl: 6rem;
 
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-2xl: 20px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
   --radius-full: 9999px;
 
   --transition-fast: 0.15s ease;

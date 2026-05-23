@@ -6,15 +6,43 @@
   box-sizing: border-box;
 }
 
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  color: inherit;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-primary);
 }
 
 body {
   font-family: var(--font-primary);
-  background-color: var(--bg-primary);
+  background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
@@ -22,8 +50,12 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--blue);
-  outline-offset: 2px;
+  outline: 2px solid rgb(30 108 123 / 55%);
+  outline-offset: 3px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
 }
 
 .skip-link {
@@ -79,6 +111,7 @@ h1 {
 h2 {
   font-size: clamp(1.8rem, 3.5vw, 2.6rem);
   margin-bottom: var(--space-md);
+  letter-spacing: -0.01em;
 }
 
 h3 {
@@ -95,6 +128,7 @@ p {
   color: var(--ink-light);
   font-size: 0.95rem;
   margin-bottom: var(--space-md);
+  max-width: 72ch;
 }
 
 .section-label {

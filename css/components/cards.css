@@ -2,20 +2,23 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   padding: var(--space-2xl);
-  transition: all var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
   overflow: hidden;
   position: relative;
+  background: var(--card-bg);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 .card:hover {
   border-color: var(--blue);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
 .card-featured {
   border: 2px solid var(--gold);
-  background: linear-gradient(135deg, rgba(201, 168, 76, 0.04) 0%, var(--white) 100%);
+  background: var(--card-bg);
 }
 
 .card-blue {
@@ -31,31 +34,34 @@
 .card-dark {
   background: var(--ink);
   color: var(--white);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgb(255 255 255 / 10%);
 }
 
 .card-dark:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgb(255 255 255 / 30%);
 }
 
 .service-card {
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   padding: var(--space-2xl);
-  transition: all var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
   position: relative;
   overflow: hidden;
+  background: var(--card-bg);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 .service-card:hover {
   border-color: var(--blue);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(27, 58, 107, 0.1);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
 .service-card.featured {
   border: 2px solid var(--gold);
-  background: linear-gradient(135deg, rgba(201, 168, 76, 0.04) 0%, var(--white) 100%);
+  background: var(--card-bg);
 }
 
 .service-icon {
