@@ -1,6 +1,6 @@
 .footer {
   background: #0B1116;
-  color: rgb(255 255 255 / 40%);
+  color: rgb(244 239 232 / 62%);
   padding: var(--space-4xl) var(--space-lg) var(--space-2xl);
 }
 
@@ -49,7 +49,7 @@
 }
 
 .footer-col a {
-  color: rgb(255 255 255 / 40%);
+  color: rgb(244 239 232 / 58%);
   text-decoration: none;
   font-size: 0.78rem;
   transition: color var(--transition-base);
@@ -67,7 +67,7 @@
 }
 
 .footer-bottom a {
-  color: rgb(255 255 255 / 40%);
+  color: rgb(244 239 232 / 58%);
   text-decoration: none;
 }
 
@@ -78,7 +78,7 @@
 .footer-brand p,
 .footer-brand address,
 .footer-bottom {
-  color: rgb(255 255 255 / 46%);
+  color: rgb(244 239 232 / 56%);
 }
 
 @media (width <= 768px) {

@@ -615,7 +615,7 @@
 }
 
 @media (width <= 600px) {
-  .problem-grid, .mod-grid {
+  .problem-grid, .mod-grid, .maint-grid {
     grid-template-columns: 1fr;
   }
 

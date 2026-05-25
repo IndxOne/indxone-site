@@ -4,7 +4,7 @@
 }
 
 .hub-product {
-  background: var(--blue);
+  background: var(--card-bg);
   color: var(--white);
   border-radius: var(--radius-2xl);
   padding: var(--space-2xl);
@@ -13,7 +13,7 @@
   grid-template-columns: 1.1fr 0.9fr;
   gap: var(--space-3xl);
   align-items: center;
-  border: 1px solid rgb(241 169 156 / 28%);
+  border: 1px solid var(--border);
   box-shadow: var(--shadow-xl);
 }
 
@@ -21,11 +21,11 @@
   font-family: var(--font-secondary);
   font-size: 2rem;
   margin-bottom: var(--space-md);
-  color: var(--white);
+  color: var(--ink);
 }
 
 .hub-product p {
-  color: rgb(255 255 255 / 68%);
+  color: var(--ink-light);
   font-size: 0.9rem;
   max-width: 620px;
 }
@@ -42,15 +42,15 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  border: 1px solid rgb(241 169 156 / 35%);
-  color: var(--gold-light);
+  border: 1px solid rgba(196, 95, 77, 0.20);
+  color: var(--gold);
   border-radius: var(--radius-full);
   padding: 0.28rem 0.65rem;
 }
 
 .hub-preview {
   background: var(--bg-secondary);
-  border: 1px solid rgb(255 255 255 / 12%);
+  border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   padding: var(--space-md);
 }
@@ -61,8 +61,8 @@
   gap: var(--space-md);
   align-items: center;
   padding: var(--space-sm) 0;
-  border-bottom: 1px solid rgb(255 255 255 / 8%);
-  color: rgb(255 255 255 / 72%);
+  border-bottom: 1px solid var(--border-light);
+  color: var(--ink-light);
   font-size: 0.78rem;
 }
 
@@ -71,7 +71,7 @@
 }
 
 .hub-preview-row strong {
-  color: var(--gold-light);
+  color: var(--blue);
   font-size: 0.76rem;
 }
 
@@ -83,7 +83,7 @@
 
 .tool-card {
   background: var(--card-bg);
-  border: 1px solid rgba(11, 23, 32, 0.08);
+  border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   padding: var(--space-xl);
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
@@ -118,8 +118,8 @@
 
 .tool-link {
   display: inline-block;
-  background: var(--blue);
-  color: var(--white);
+  background: var(--gold);
+  color: var(--ink);
   padding: var(--space-sm) var(--space-lg);
   border-radius: var(--radius-md);
   font-size: 0.8rem;
@@ -129,7 +129,28 @@
 }
 
 .tool-link:hover {
-  background: var(--blue-mid);
+  background: var(--gold-light);
+}
+
+.hub-product .btn-primary {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.hub-product .btn-primary:hover {
+  background: var(--gold-light);
+}
+
+.hub-product .btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--border);
+}
+
+.hub-product .btn-outline:hover {
+  background: var(--bg-secondary);
+  border-color: var(--gold);
+  color: var(--ink);
 }
 
 .tools-section .btn-primary {

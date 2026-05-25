@@ -163,8 +163,12 @@
     padding: var(--space-3xl) var(--space-md) var(--space-2xl);
   }
 
+  .hero::after {
+    display: none;
+  }
+
   .hero-stats {
-    gap: var(--space-md);
+    gap: var(--space-sm);
   }
 
   .hero-stat strong {
@@ -179,5 +183,17 @@
   .hero-actions .btn-primary,
   .hero-actions .btn-ghost {
     text-align: center;
+  }
+
+  .hero p {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .dispo-card {
+    margin-top: var(--space-2xl);
   }
 }

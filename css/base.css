@@ -42,11 +42,20 @@ html {
 
 body {
   font-family: var(--font-primary);
+  font-size: 14px;
   background: var(--bg-primary);
   color: var(--text-primary);
-  line-height: 1.6;
+  line-height: 1.5;
   overflow-x: hidden;
   transition: background-color var(--transition-slow), color var(--transition-slow);
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 :focus-visible {

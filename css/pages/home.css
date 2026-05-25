@@ -103,11 +103,42 @@
 
 @media (width <= 560px) {
   .services {
-    padding: var(--space-3xl) var(--space-md);
+    padding: var(--space-2xl) var(--space-md);
   }
 
   .projets {
-    padding: var(--space-3xl) var(--space-md);
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .services-grid {
+    gap: var(--space-md);
+  }
+
+  .service-card {
+    padding: var(--space-lg);
+  }
+
+  .service-card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .service-features li:nth-child(n+4) {
+    display: none;
+  }
+
+  .service-price {
+    margin-top: var(--space-md);
+  }
+
+  .projets-filters {
+    margin-bottom: var(--space-xl);
+  }
+
+  .projets .section-sub {
+    margin-bottom: var(--space-xl);
   }
 }
 
