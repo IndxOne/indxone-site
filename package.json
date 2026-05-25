@@ -45,6 +45,7 @@
     "format": "prettier --write \"**/*.{html,css,js}\"",
     "format:check": "prettier --check \"**/*.{html,css,js}\"",
     "test": "vitest run",
+    "test:unit": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "test:all": "npm run test && npm run test:e2e",
