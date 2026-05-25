@@ -137,7 +137,7 @@
 }
 
 @media (width <= 768px) {
-  .hero-stats {
+  .hero > .hero-stats {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-lg);
     width: 100%;
@@ -167,12 +167,9 @@
     display: none;
   }
 
-  .hero-stats {
+  .hero .hero-stats {
     gap: var(--space-sm);
-  }
-
-  .hero-stat strong {
-    font-size: 1.4rem;
+    grid-template-columns: 1fr;
   }
 
   .hero-actions {
@@ -189,8 +186,8 @@
     margin-bottom: var(--space-2xl);
   }
 
-  .hero-stats {
-    grid-template-columns: 1fr;
+  .hero-stat strong {
+    font-size: 1.4rem;
   }
 
   .dispo-card {

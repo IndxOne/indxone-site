@@ -236,7 +236,7 @@
 [data-theme="light"] .bento-card.wide-card,
 [data-theme="light"] .bento-card.full-card {
   background: var(--card-bg);
-  border-color: rgba(11, 23, 32, 0.10);
+  border-color: rgb(11 23 32 / 10%);
   box-shadow: var(--shadow-sm);
 }
 
@@ -296,18 +296,6 @@
   .bento-home .bento-card {
     width: 100%;
     grid-column: auto !important;
-  }
-
-  .bento-home .bento-card.hero-card,
-  .bento-home .bento-card.metric-card,
-  .bento-home .bento-card.mid-card,
-  .bento-home .bento-card.mid-dark,
-  .bento-home .bento-card.wide-card,
-  .bento-home .bento-card.full-card {
-    grid-column: auto !important;
-  }
-
-  .bento-home .bento-card {
     padding: var(--space-xl);
   }
 

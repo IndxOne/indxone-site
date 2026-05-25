@@ -41,7 +41,7 @@
     "lint:dist": "npm run build && html-validate dist/*.html dist/*/index.html dist/en/*/index.html",
     "lint:full": "npm run lint && npm run lint:dist",
     "lint:css": "stylelint css/**/*.css",
-    "lint:html": "html-validate *.html collectivites/*.html projets/*.html merci/*.html en/*.html en/projets/*.html en/collectivites/*.html en/merci/*.html accessibilite/*.html en/accessibility/*.html en/legal-notice/*.html en/privacy-policy/*.html",
+    "lint:html": "npm run build && html-validate dist/*.html dist/*/index.html dist/en/*/index.html",
     "format": "prettier --write \"**/*.{html,css,js}\"",
     "format:check": "prettier --check \"**/*.{html,css,js}\"",
     "test": "vitest run",

@@ -28,8 +28,8 @@
 
 [data-theme="dark"] html {
   background:
-    radial-gradient(circle at top left, rgba(241, 169, 156, 0.12), transparent 34%),
-    radial-gradient(circle at top right, rgba(104, 200, 211, 0.10), transparent 28%),
+    radial-gradient(circle at top left, rgb(241 169 156 / 12%), transparent 34%),
+    radial-gradient(circle at top right, rgb(104 200 211 / 10%), transparent 28%),
     var(--bg-primary);
 }
 
@@ -96,18 +96,6 @@
 [data-theme="dark"] .bento-card.full-card {
   background: #1A2624;
   border-color: rgb(78 133 107 / 30%);
-}
-
-[data-theme="dark"] .form-group input,
-[data-theme="dark"] .form-group select,
-[data-theme="dark"] .form-group textarea {
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  border-color: var(--border);
-}
-
-[data-theme="dark"] .form-group label {
-  color: var(--text-primary);
 }
 
 [data-theme="dark"] .form-check {
@@ -258,7 +246,8 @@
 [data-theme="dark"] .form-group input,
 [data-theme="dark"] .form-group select,
 [data-theme="dark"] .form-group textarea {
-  background: rgba(17, 27, 39, 0.92);
+  background: rgb(17 27 39 / 92%);
+  border-color: var(--border);
 }
 
 [data-theme="dark"] .tag-gold {
