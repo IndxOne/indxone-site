@@ -100,6 +100,21 @@
     padding: var(--space-3xl) var(--space-md);
   }
 
+  .stack-grid {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(82vw, 1fr);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    padding-bottom: var(--space-sm);
+  }
+
+  .stack-grid > * {
+    scroll-snap-align: start;
+    min-width: 0;
+  }
+
   .stack-cat {
     padding: var(--space-md);
   }

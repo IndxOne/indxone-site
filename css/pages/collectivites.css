@@ -615,11 +615,36 @@
 }
 
 @media (width <= 600px) {
-  .problem-grid, .mod-grid, .maint-grid {
-    grid-template-columns: 1fr;
+  .problem-grid,
+  .mod-grid,
+  .maint-grid,
+  .pricing-grid,
+  .refs-grid,
+  .steps-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(82vw, 1fr);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    gap: 1rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .problem-grid > *,
+  .mod-grid > *,
+  .maint-grid > *,
+  .pricing-grid > *,
+  .refs-grid > *,
+  .steps-grid > * {
+    scroll-snap-align: start;
   }
 
   .nav-links {
+    display: none;
+  }
+
+  .steps-grid::before {
     display: none;
   }
 }

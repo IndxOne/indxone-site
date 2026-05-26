@@ -111,6 +111,7 @@
   }
 
   .services-grid {
+    grid-template-columns: 1fr;
     gap: var(--space-md);
   }
 
@@ -133,8 +134,73 @@
     margin-top: var(--space-md);
   }
 
+  .services-grid,
+  .projets-filters,
+  .pricing-grid,
+  .refs-grid,
+  .steps-grid,
+  .problem-grid {
+    display: grid;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(82vw, 1fr);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    padding-bottom: var(--space-sm);
+  }
+
+  .services-grid > *,
+  .pricing-grid > *,
+  .refs-grid > *,
+  .steps-grid > *,
+  .problem-grid > * {
+    scroll-snap-align: start;
+    min-width: 0;
+  }
+
+  .steps-grid::before {
+    display: none;
+  }
+
+  .steps-grid {
+    gap: var(--space-md);
+    margin-top: var(--space-2xl);
+  }
+
+  .step {
+    text-align: left;
+  }
+
+  .step-num {
+    margin-left: 0;
+  }
+
+  .pricing-grid {
+    gap: var(--space-md);
+  }
+
+  .pc {
+    width: 100%;
+  }
+
+  .problem-grid,
+  .refs-grid {
+    gap: var(--space-md);
+  }
+
   .projets-filters {
     margin-bottom: var(--space-xl);
+    grid-auto-columns: max-content;
+    grid-auto-flow: column;
+  }
+
+  .service-card,
+  .problem-card,
+  .step,
+  .pc,
+  .ref-card {
+    height: 100%;
   }
 
   .projets .section-sub {

@@ -8,7 +8,7 @@
 | Commune Active | 1 490€ HT | 790€ HT | −700€ |
 | Commune Connectée | 2 490€ HT | 1 090€ HT | −1 400€ |
 | Premium (12 mois maint. incluse) | 3 490€ HT | 1 490€ HT | −2 000€ |
-| EPCI / Sur-mesure | 3 500€ HT | 3 500€ HT | — |
+| Sur-mesure intercommunal | 3 500€ HT | 3 500€ HT | — |
 
 ## Maintenance
 
@@ -30,6 +30,6 @@
 
 - **Pilote fondateur** : réservé aux 50 premières communes. Tarif préférentiel définitif pour ces clients, non révisable.
 - **Seuil de délibération** : la formule Vitrine au tarif pilote fondateur (490€ HT) est sous le seuil de 500€ — décision du maire seule.
-- **DETR/DSIL** : les formules Premium et EPCI sont éligibles.
+- **DETR/DSIL** : les formules Premium et sur-mesure sont éligibles.
 - **Paiement** : 50% à la commande, 50% à la livraison.
 - **TVA** : applicables selon les règles collectivités.
