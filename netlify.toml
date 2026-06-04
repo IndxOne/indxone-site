@@ -1,6 +1,6 @@
 [build]
   publish = "astro/dist"
-  command = "npm run build:astro:all"
+  command = "npm install --prefix astro && npm run build:astro:all"
 
 [build.environment]
   NODE_VERSION = "18"
