@@ -48,8 +48,8 @@ scripts/minify-html.js
 # Backup files
 *.backup
 
-# Astro migration (archived)
-astro/
+# Temp files
+verify-agents.mjs
 
 # Documentation (untracked)
 INDXONE_SITE_DOCS.md

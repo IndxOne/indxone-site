@@ -1,0 +1,388 @@
+---
+import Base from '../../layouts/Base.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+
+const title = 'INDXONE — IT Consultant & Digital Architect';
+const description = 'IT Consultant / AMOA Freelance and creator of IndxOne Hub. Steering, automation, SaaS tools for IT freelancers and SMEs in digital transition.';
+---
+
+<Base title={title} description={description} lang="en" ogLocale="en_US" ogUrl="https://indxone.com/en/" hreflangFr="https://indxone.com/" hreflangEn="https://indxone.com/en/">
+  <section class="hero" id="hero">
+    <div class="hero-status">Available</div>
+    <div class="hero-sub">IT Consultant · Architecture, steering &amp; automation</div>
+    <h1>IT Architect for SMEs in <em>digital transition</em></h1>
+    <p>I transform your business processes into robust, useful information systems. From IT strategy to on-the-ground execution, with a clear and operational approach.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Start a project</a>
+      <a href="#projets" class="btn-ghost">See projects →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>8+</strong><span>IT projects delivered</span></div>
+      <div class="hero-stat"><strong>4 yrs</strong><span>IT leadership</span></div>
+      <div class="hero-stat"><strong>€890</strong><span>Starting with Showcase</span></div>
+      <div class="hero-stat"><strong>SME</strong><span>Organizations &amp; teams</span></div>
+    </div>
+    <div class="dispo-card">
+      <div class="dispo-item"><div class="label">Status</div><div class="value green">● Available</div></div>
+      <div class="dispo-item"><div class="label">Location</div><div class="value">Aisne · Paris · Remote</div></div>
+      <div class="dispo-item"><div class="label">Pricing reference</div><div class="value gold">€890 excl. tax</div></div>
+      <div class="dispo-item"><div class="label">Start</div><div class="value">Immediate</div></div>
+      <div class="dispo-item"><div class="label">Contract</div><div class="value">Fixed-price · Time &amp; materials</div></div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="section-label">What I do</div>
+    <h2>Offers &amp; Services</h2>
+    <p class="section-sub">Targeted interventions to long-term support — calibrated to your context, your teams and your digital maturity.</p>
+    <div class="services-grid">
+      <ServiceCard
+        icon="🗺️"
+        title="IT Architect &amp; AMOA"
+        description="Scoping, steering and governance of your IT transformation projects. From master plan to production deployment."
+        features={["IT audit &amp; mapping", "Functional specifications", "Vendor coordination (RACI)", "Risk &amp; schedule management"]}
+        price='From 4 days · <strong>Quote on request</strong>'
+        linkText="Request →"
+      />
+      <ServiceCard
+        icon="⚡"
+        title="Automation &amp; No-code"
+        description="Eliminate repetitive tasks. I connect your tools and automate your business workflows without heavy development."
+        features={["Power Automate / Power Apps", "Make · Zapier · n8n", "API &amp; webhook integrations", "Power BI dashboards"]}
+        price='Process audit from <strong>€1,500</strong>'
+        linkText="Request →"
+      />
+      <ServiceCard
+        icon="🏗️"
+        title="Infrastructure &amp; Cloud"
+        description="Maintenance, cloud migration, security and administration of your IT environment. On-premise or hybrid."
+        features={["Azure / AWS / GCP", "Hyper-V · Entra ID · M365", "Teams IP telephony", "GitLab CI/CD"]}
+        price='Infra audit from <strong>€990</strong>'
+        linkText="Request →"
+      />
+      <div class="service-card featured">
+        <div class="kit-badge">★ New</div>
+        <h3>Startup Launch Kit</h3>
+        <p>From idea to first user in 8 weeks. I structure, tool up and steer your MVP to launch fast, without technical debt. France &amp; French-speaking Africa.</p>
+        <div class="kit-tiers" style="gap:0.8rem; margin-top:1rem;">
+          <div class="kit-tier">
+            <div class="kit-tier-name">Starter</div>
+            <div class="kit-tier-price">€1,200</div>
+            <div class="kit-tier-desc">Scoping + roadmap + stack</div>
+          </div>
+          <div class="kit-tier">
+            <div class="kit-tier-name">Launch</div>
+            <div class="kit-tier-price">€3,500</div>
+            <div class="kit-tier-desc">Scoping + tools + 8 weeks</div>
+          </div>
+          <div class="kit-tier">
+            <div class="kit-tier-name">Full Pilot</div>
+            <div class="kit-tier-price">On request</div>
+            <div class="kit-tier-desc">Go-live · tailored pricing</div>
+          </div>
+        </div>
+        <a href="#contact" class="service-link" style="margin-top:1rem;">Book a call →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="collectivites-section" id="collectivites">
+    <div class="section-label">Local Government Offer</div>
+    <div class="collectivites-inner">
+      <div class="collectivites-preview">
+        <div class="preview-bar">
+          <div class="preview-dot" style="background:#FF5F57"></div>
+          <div class="preview-dot" style="background:#FEBC2E; margin:0 4px;"></div>
+          <div class="preview-dot" style="background:#28C840"></div>
+          <div class="preview-url">mairies.indxone.com/mons-en-laonnois</div>
+          <div class="preview-score">⚡ 90+</div>
+        </div>
+        <div class="preview-body">
+          <div class="preview-commune">Town Hall of Mons-en-Laonnois</div>
+          <div class="preview-meta">02000 · INSEE Code 02497 · ~1,150 pop.</div>
+          <div class="preview-chips">
+            <span class="preview-chip">✓ Site deployed · 48h</span>
+            <span class="preview-chip">GDPR ready</span>
+            <span class="preview-chip">No ad cookies</span>
+          </div>
+        </div>
+      </div>
+      <div class="collectivites-content">
+        <h3>Websites for town halls &amp; municipalities</h3>
+        <p>A turnkey institutional website, deployable in 48h, GDPR compliant and accessible. Designed for municipalities without an IT department or web budget.</p>
+        <ul class="collectivites-features">
+          <li>Official design adapted for local government</li>
+          <li>Interactive map, contact form, agenda</li>
+          <li>Dynamic opening hours</li>
+          <li>No ad cookies · GDPR-ready · Target 90+ Lighthouse performance</li>
+          <li>Free Netlify hosting included</li>
+          <li>Eligible for DETR &amp; DSIL funding</li>
+        </ul>
+        <div class="pricing-tiers-mini">
+          <div class="tier-mini">
+            <div class="tier-mini-name">Showcase</div>
+            <div class="tier-mini-price">€890 <small>excl. tax · + €19/mo opt.</small></div>
+          </div>
+          <div class="tier-mini highlighted">
+            <div class="tier-mini-name">⭐ Active Commune</div>
+            <div class="tier-mini-price">€1,490 <small>excl. tax · one-time</small></div>
+          </div>
+          <div class="tier-mini">
+            <div class="tier-mini-name">Connected Commune</div>
+            <div class="tier-mini-price">€2,490 <small>excl. tax · one-time</small></div>
+          </div>
+          <div class="tier-mini">
+            <div class="tier-mini-name">Premium</div>
+            <div class="tier-mini-price">€3,490 <small>excl. tax · 12 mo incl.</small></div>
+          </div>
+          <div class="tier-mini">
+            <div class="tier-mini-name">Custom</div>
+            <div class="tier-mini-price">€3,500 <small>excl. tax + €199/mo</small></div>
+          </div>
+        </div>
+        <div class="cta-group">
+          <a href="/en/collectivites" class="btn-blue">See full offer →</a>
+          <a href="#contact" class="btn-outline">Request a demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projets" id="projets">
+    <div class="section-label">Projects</div>
+    <h2>Flagship Projects</h2>
+    <p class="section-sub">Delivered as employee, mission-based consultant or support role — as lead, referent or AMOA.</p>
+
+    <div class="projets-filters">
+      <button type="button" class="pf-btn active" onclick="filterProjet(this,'all')">All projects</button>
+      <button type="button" class="pf-btn" onclick="filterProjet(this,'freelance')">⚡ IndxOne · Missions</button>
+      <button type="button" class="pf-btn" onclick="filterProjet(this,'cdi')">🏢 Employment · Referent</button>
+    </div>
+
+    <div class="bento bento-home">
+      <div class="bento-card metric-card" data-type="freelance">
+        <span class="bc-tag freelance">⚡ IndxOne</span>
+        <span class="bc-icon" aria-hidden="true">🏛️</span>
+        <div class="bc-title">Municipality digitalization</div>
+        <div class="bc-desc" style="font-size:0.75rem;">Institutional template deployed · Aisne (02). Multi-town pipeline in progress.</div>
+        <div class="bc-chips"><span class="bc-chip">HTML/JS</span><span class="bc-chip">Netlify</span><span class="bc-chip">Python</span></div>
+        <div class="bc-stats">
+          <div class="bc-stat sm"><strong>48h</strong><span>Deployment</span></div>
+          <div class="bc-stat sm"><strong>90+</strong><span>Lighthouse target</span></div>
+        </div>
+        <div class="bc-impact"><strong>Active pipeline</strong>Mons-en-Laonnois · expanding</div>
+      </div>
+
+      <div class="bento-card mid-card" data-type="cdi">
+        <span class="bc-tag cdi">Employee · IT Referent</span>
+        <span class="bc-icon">📞</span>
+        <div class="bc-title">IP Telephony — Microsoft Teams</div>
+        <div class="bc-desc">Full management of Teams IP deployment. Lead &amp; project authority end-to-end.</div>
+        <div class="bc-stats">
+          <div class="bc-stat sm"><strong>110</strong><span>Employees</span></div>
+          <div class="bc-stat sm"><strong>0</strong><span>Post-migration incidents</span></div>
+        </div>
+        <div class="bc-chips"><span class="bc-chip">Teams</span><span class="bc-chip">M365</span><span class="bc-chip">Leadership</span></div>
+      </div>
+
+      <div class="bento-card mid-dark" data-type="cdi">
+        <span class="bc-tag cdi">Employee · IT Referent</span>
+        <span class="bc-icon">📊</span>
+        <div class="bc-title">CRM Dynamics 365 + Power BI</div>
+        <div class="bc-desc">Power BI integration into Dynamics 365, Power Apps evolution. Real-time sales reporting.</div>
+        <div class="bc-chips"><span class="bc-chip">Dynamics 365</span><span class="bc-chip">Power BI</span><span class="bc-chip">Power Apps</span></div>
+      </div>
+
+      <div class="bento-card wide-card" data-type="cdi">
+        <span class="bc-tag cdi">Employee · IT Referent</span>
+        <span class="bc-icon">⚙️</span>
+        <div class="bc-title">ERP DIAPASON Deployment</div>
+        <div class="bc-desc">Infrastructure coordination then ERP administration and configuration. Flow management, user rights and team training.</div>
+        <div class="bc-chips"><span class="bc-chip">ERP</span><span class="bc-chip">AMOA</span><span class="bc-chip">Training</span><span class="bc-chip">Coordination</span></div>
+      </div>
+
+      <div class="bento-card wide-card" data-type="cdi">
+        <span class="bc-tag cdi">Employee · IT Referent</span>
+        <span class="bc-icon">🗂️</span>
+        <div class="bc-title">DMS &amp; Kelio GTA</div>
+        <div class="bc-desc">Electronic document management setup and Kelio time tracking deployment across the full scope (~110 employees).</div>
+        <div class="bc-chips"><span class="bc-chip">Kelio</span><span class="bc-chip">DMS</span><span class="bc-chip">Training</span></div>
+      </div>
+
+      <div class="bento-card full-card" data-type="cdi">
+        <div class="full-card-left">
+          <span class="bc-tag cdi">Employee · IT Referent</span>
+          <span class="bc-icon">🧩</span>
+          <div class="bc-title">Online product configurator</div>
+          <div class="bc-desc">Complex conditional logic for a real-time joinery configurator. 117 levels, 815 questions, 908 answers with conditional logic for automatic quotes and CAM output.</div>
+          <div class="bc-chips"><span class="bc-chip">XML</span><span class="bc-chip">PHP</span><span class="bc-chip">Business logic</span><span class="bc-chip">SQL</span></div>
+        </div>
+        <div class="full-card-right">
+          <div class="full-stat-box"><strong>117</strong><span>Levels</span></div>
+          <div class="full-stat-box"><strong>815</strong><span>Questions</span></div>
+          <div class="full-stat-box"><strong>908</strong><span>Answers</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tools-section" id="tools">
+    <div class="section-label">SaaS Product</div>
+    <h2>IndxOne Hub</h2>
+    <p class="section-sub">A local-first cockpit for steering projects, scoping missions and tracking activity without stacking platforms.</p>
+    <div class="hub-product">
+      <div>
+        <div class="kit-badge">Product maintained · May 2026</div>
+        <h3>15 tools to structure the steering of an independent activity or a small team.</h3>
+        <p>The Hub brings together Missio, Deal Room, Runway, Daily Ops, Calc, SIPOC, MoSCoW, RACI, Quotes, CRA and financial tools in a coherent experience, with global theme, Hub return, Missio demo and product changelog.</p>
+        <div class="hub-badges">
+          <span class="hub-badge">100% local by default</span>
+          <span class="hub-badge">Missio demo before activation</span>
+          <span class="hub-badge">Clear freemium</span>
+        </div>
+        <a href="https://hub.indxone.com" class="btn-primary" target="_blank" rel="noopener noreferrer">Open Hub →</a>
+        <a href="https://hub.indxone.com/pourquoi.html" class="btn-outline" target="_blank" rel="noopener noreferrer" style="margin-left:.6rem;">Why IndxOne</a>
+      </div>
+      <section class="hub-preview" aria-label="IndxOne Hub preview">
+        <div class="hub-preview-row"><span>Missio</span><strong>Pipeline + invoices</strong></div>
+        <div class="hub-preview-row"><span>Deal Room</span><strong>Client view</strong></div>
+        <div class="hub-preview-row"><span>Runway / Daily Ops</span><strong>Steering</strong></div>
+        <div class="hub-preview-row"><span>Changelog</span><strong>Active product</strong></div>
+      </section>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-icon">💼</div>
+        <h3>Missio</h3>
+        <p>Pipeline, invoices, activity and demo mode before activation.</p>
+        <a href="https://hub.indxone.com/missio-app.html" class="tool-link" target="_blank" rel="noopener noreferrer">Access Missio →</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">◇</div>
+        <h3>Deal Room</h3>
+        <p>Shareable client view: context, scope, deliverables, risks and progress.</p>
+        <a href="https://hub.indxone.com/deal-room.html?v=2" class="tool-link" target="_blank" rel="noopener noreferrer">Create a Deal Room →</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">🎯</div>
+        <h3>Mission Eval</h3>
+        <p>Weighted Go/No-Go score before investing sales time.</p>
+        <a href="https://hub.indxone.com/eval-mission-v2.html" class="tool-link" target="_blank" rel="noopener noreferrer">Evaluate →</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">↗</div>
+        <h3>Runway</h3>
+        <p>Load plan, viability, revenue projection and reserve scenarios.</p>
+        <a href="https://hub.indxone.com/runway.html" class="tool-link" target="_blank" rel="noopener noreferrer">Project →</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">✓</div>
+        <h3>Daily Ops</h3>
+        <p>Weekly routine: follow-ups, invoices, pipeline, priorities and next actions.</p>
+        <a href="https://hub.indxone.com/daily-ops.html" class="tool-link" target="_blank" rel="noopener noreferrer">Steer →</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">🧮</div>
+        <h3>Calc</h3>
+        <p>Calculation scratchpad, revenue and viability in minutes.</p>
+        <a href="https://hub.indxone.com/calc-mission-simple.html" class="tool-link" target="_blank" rel="noopener noreferrer">Calculate →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="stack" id="stack">
+    <div class="section-label">Tooling</div>
+    <h2>Technical Environment</h2>
+    <div class="stack-grid">
+      <div class="stack-cat">
+        <div class="stack-cat-name">Infra &amp; Cloud</div>
+        <div class="stack-items">
+          <div class="stack-item">Azure / AWS / GCP</div>
+          <div class="stack-item">Hyper-V · Entra ID</div>
+          <div class="stack-item">Exchange · M365</div>
+          <div class="stack-item">Teams IP Telephony</div>
+        </div>
+      </div>
+      <div class="stack-cat">
+        <div class="stack-cat-name">Data &amp; Apps</div>
+        <div class="stack-items">
+          <div class="stack-item">Power BI</div>
+          <div class="stack-item">Power Apps · Automate</div>
+          <div class="stack-item">Dynamics 365</div>
+          <div class="stack-item">DIAPASON ERP</div>
+        </div>
+      </div>
+      <div class="stack-cat">
+        <div class="stack-cat-name">No-code &amp; Mobile</div>
+        <div class="stack-items">
+          <div class="stack-item">Make · Zapier · n8n</div>
+          <div class="stack-item">FlutterFlow</div>
+          <div class="stack-item">Airtable · Notion</div>
+          <div class="stack-item">Tally · ClickUp</div>
+        </div>
+      </div>
+      <div class="stack-cat">
+        <div class="stack-cat-name">Methods &amp; DevOps</div>
+        <div class="stack-items">
+          <div class="stack-item">Agile / Kanban / RACI</div>
+          <div class="stack-item">GitLab CI/CD</div>
+          <div class="stack-item">MoSCoW · SIPOC</div>
+          <div class="stack-item">Supabase · Netlify</div>
+        </div>
+      </div>
+    </div>
+    <a href="https://www.malt.fr/profile/koffiniamkey2" class="malt-card" target="_blank" rel="noopener noreferrer">
+      <div class="malt-logo">M</div>
+      <div class="malt-info"><strong>View Malt profile</strong><span>malt.fr · public profile</span></div>
+      <div class="malt-arrow">→</div>
+    </a>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="section-label">Let's talk</div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Let's start a project together</h3>
+        <p>A 30-minute call is often enough to clarify the stakes. Available immediately.</p>
+        <div class="contact-links">
+          <a href="tel:+33775679067" class="contact-link"><span class="icon">📞</span>+33 7 75 67 90 67</a>
+          <a href="mailto:contact@indxone.com" class="contact-link"><span class="icon">✉️</span>contact@indxone.com</a>
+        </div>
+        <div class="contact-platforms">
+          <h3>Find me on</h3>
+          <div class="platform-links">
+            <a href="https://www.malt.fr/profile/koffiniamkey2" class="platform-link" target="_blank" rel="noopener noreferrer">Malt — verified profile ↗</a>
+            <a href="https://www.linkedin.com/in/koffi-niamkey/" class="platform-link" target="_blank" rel="noopener noreferrer">in LinkedIn — Koffi NIAMKEY · INDXONE page ↗</a>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" name="contact-indxone" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/en/merci">
+        <input type="hidden" name="form-name" value="contact-indxone">
+        <input type="hidden" name="bot-field">
+        <div class="form-row">
+          <div class="form-group"><label>Last Name *</label><input type="text" name="nom" placeholder="Dupont" required></div>
+          <div class="form-group"><label>First Name</label><input type="text" name="prenom" placeholder="Jean"></div>
+        </div>
+        <div class="form-group"><label>Email *</label><input type="email" name="email" placeholder="jean.dupont@company.com" required></div>
+        <div class="form-group">
+          <label>Subject *</label>
+          <select name="sujet" required>
+            <option value="">— Select —</option>
+            <option>AMOA / IT Architecture project</option>
+            <option>Automation / No-code</option>
+            <option>Infrastructure / Cloud</option>
+            <option>ERP / CRM Integration</option>
+            <option>Startup Launch Kit</option>
+            <option>IndxOne Hub / steering cockpit</option>
+            <option>Municipality website</option>
+            <option>Other request</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message *</label><textarea name="message" placeholder="Describe your project or needs..." required></textarea></div>
+        <div class="form-check"><input type="checkbox" id="consent-en" name="consent" required><label for="consent-en">I agree to my data being used to process my request, in accordance with the <a href="/en/privacy-policy">privacy policy</a>.</label></div>
+        <button type="submit" class="form-submit">Send message</button>
+        <div class="form-note">Response within 24 business hours · GDPR · Data not sold</div>
+      </form>
+    </div>
+  </section>
+</Base>

@@ -3,16 +3,6 @@
  * Core functionality for all pages
  */
 
-// DOM Ready
-// ============================================================
-document.addEventListener('DOMContentLoaded', function() {
-  initRevealAnimations();
-  initMobileMenu();
-  initFormEnhancements();
-  initSmoothScroll();
-  initIntersectionObservers();
-});
-=======
 // ============================================================
 // DOM Ready
 // ============================================================
@@ -23,6 +13,13 @@ document.addEventListener('DOMContentLoaded', function() {
   initFormEnhancements();
   initSmoothScroll();
   initIntersectionObservers();
+  
+  // Auto-init FAQ on page load
+  document.querySelectorAll('.faq-q').forEach((q) => {
+    q.addEventListener('click', function() {
+      this.closest('.faq-item').classList.toggle('open');
+    });
+  });
 });
 
 // ============================================================
@@ -94,16 +91,7 @@ function getCurrentTheme() {
   const savedTheme = localStorage.getItem('theme');
   const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   return savedTheme || (systemPrefersDark ? 'dark' : 'light');
-}============================================================
-// DOM Ready
-// ============================================================
-document.addEventListener('DOMContentLoaded', function() {
-  initRevealAnimations();
-  initMobileMenu();
-  initFormEnhancements();
-  initSmoothScroll();
-  initIntersectionObservers();
-});
+}
 
 // ============================================================
 // Reveal Animations
@@ -202,15 +190,25 @@ function initFormEnhancements() {
   const forms = document.querySelectorAll('form[data-netlify]');
   
   forms.forEach((form) => {
-    // Add loading state
+    const isEnglish = document.documentElement.lang === 'en';
+    const loadingText = isEnglish
+      ? '<span class="spinner"></span> Sending...'
+      : '<span class="spinner"></span> Envoi en cours...';
+    
     const submitBtn = form.querySelector('button[type="submit"]') || form.querySelector('input[type="submit"]');
     if (submitBtn) {
       const originalText = submitBtn.innerHTML || submitBtn.value;
       
       form.addEventListener('submit', function() {
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span class="spinner"></span> Envoi en cours...';
+        submitBtn.innerHTML = loadingText;
         submitBtn.style.opacity = '0.7';
+      });
+      
+      form.addEventListener('error', function() {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        submitBtn.style.opacity = '1';
       });
     }
 
@@ -414,22 +412,13 @@ window.toggleFAQ = function(button) {
   faqItem.classList.toggle('open');
 };
 
-// Auto-init FAQ on page load
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.faq-q').forEach((q) => {
-    q.addEventListener('click', function() {
-      this.closest('.faq-item').classList.toggle('open');
-    });
-  });
-});
-
 // ============================================================
 // Console Easter Egg
 // ============================================================
 console.log(
   '%c🚀 INDXONE %c— Consultant SI & Architecte Digital',
   'color: #C9A84C; font-size: 20px; font-weight: bold;',
-  'color: #0F1923; font-size: 20px;'
+  'color: #0F1923; font-size: 20px;' 
 );
 console.log('%cBesoin d\'un projet IT ? Contactez-moi !', 'color: #2A7A4B; font-size: 14px;');
 console.log('%c📧 contact@indxone.com | 📞 07 75 67 90 67', 'color: #1B3A6B; font-size: 12px;');

@@ -1,0 +1,186 @@
+---
+import Base from '../layouts/Base.astro';
+const title = 'Mentions Légales | INDXONE';
+const description = 'Mentions légales de la société INDXONE SASU - Informations légales et conditions d\'utilisation.';
+---
+
+<Base title={title} description={description}>
+  <div class="legal-page">
+    <header class="legal-header">
+      <p class="section-label">Informations légales</p>
+      <h1>Mentions Légales</h1>
+      <p class="legal-intro">
+        Conformément aux dispositions des articles 6-III et 19 de la Loi n°2004-575 du 21 juin 2004
+        pour la Confiance dans l'économie numérique, dite "LCEN", il est porté à la
+        connaissance des utilisateurs du site indxone.com les présentes mentions légales.
+      </p>
+    </header>
+
+    <section class="legal-section">
+      <h2>1. Identité de l'éditeur</h2>
+      <p class="legal-body">
+        <strong>Raison sociale :</strong> INDXONE SASU<br>
+        <strong>SIRET :</strong> 999 968 902 00018<br>
+        <strong>Siège social :</strong> 2 Rue De Vaucelles, 02000 Mons-en-Laonnois, France<br>
+        <strong>Téléphone :</strong> +33 7 75 67 90 67<br>
+        <strong>Email :</strong> <a href="mailto:contact@indxone.com">contact@indxone.com</a>
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>2. Directeur de la publication</h2>
+      <p class="legal-body">Koffi NIAMKEY - Gérant de INDXONE SASU</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>3. Hébergement</h2>
+      <p class="legal-body">
+        <strong>Prestataire :</strong> Netlify, Inc.<br>
+        <strong>Adresse :</strong> 2325 3rd Street, San Francisco, CA 94107, United States<br>
+        <strong>Site web :</strong> <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer">https://www.netlify.com</a>
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>4. Propriété intellectuelle</h2>
+      <p class="legal-body">
+        L'ensemble du contenu du site indxone.com (textes, images, graphismes, logos, icônes, sons,
+        logiciels, etc.) est la propriété exclusive de INDXONE SASU ou de ses partenaires.
+      </p>
+      <p class="legal-body">
+        Toute reproduction, distribution, publication, adaptation, modification ou transmission
+        sous quelque forme que ce soit, de tout ou partie des éléments du site, sans l'autorisation
+        préalable et écrite de INDXONE SASU, est strictement interdite.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>5. Limitations de responsabilité</h2>
+      <p class="legal-body">
+        INDXONE SASU ne pourra être tenue responsable des dommages directs et indirects causés au
+        matériel de l'utilisateur lors de l'accès au site indxone.com.
+      </p>
+      <p class="legal-body">
+        INDXONE SASU ne sera pas responsable des dommages indirects (tels que par exemple une perte
+        de marché ou perte d'une chance) consécutifs à l'utilisation du site indxone.com.
+      </p>
+      <p class="legal-body">
+        Des espaces interactifs (espace commentaire, formulaire de contact) sont à la disposition
+        des utilisateurs. INDXONE SASU se réserve le droit de supprimer, sans mise en demeure
+        préalable, tout contenu déposé dans cet espace qui contreviendrait à la législation
+        applicable en France, en particulier aux dispositions relatives à la protection des
+        données.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>6. Liens hypertextes</h2>
+      <p class="legal-body">
+        Le site indxone.com contient un certain nombre de liens hypertextes vers d'autres sites
+        (partenaires, informations ...) mis en place avec l'autorisation de INDXONE SASU.
+      </p>
+      <p class="legal-body">
+        Cependant, INDXONE SASU n'a pas la possibilité de vérifier le contenu des sites
+        ainsi visés. L'utilisateur reconnaît donc utiliser ces informations sous sa
+        responsabilité propre. INDXONE SASU ne saurait être tenue pour responsable de quelque
+        contrefaçon que ce soit aux droits d'auteur, à un droit de marque ou à un droit
+        de brevet que subirait un utilisateur à cause de l'utilisation du site indxone.com.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>7. Droit applicable et attribution de juridiction</h2>
+      <p class="legal-body">
+        Tout litige en relation avec l'utilisation du site indxone.com est soumis au droit français.
+        Il est fait attribution exclusive de juridiction aux tribunaux compétents de Laon.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>8. Changements</h2>
+      <p class="legal-body">
+        INDXONE SASU se réserve le droit de modifier ou de corriger le contenu de ce site et de
+        ces mentions légales à tout moment et sans préavis.
+      </p>
+    </section>
+
+    <div class="legal-footer">
+      <p>Dernière mise à jour : Juin 2026</p>
+      <a href="/">← Retour à l'accueil</a>
+    </div>
+  </div>
+</Base>
+
+<style is:global>
+  .legal-page {
+    padding: 4rem 5%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .legal-header {
+    margin-bottom: 3rem;
+  }
+
+  .legal-header h1 {
+    font-family: var(--font-secondary);
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+
+  .legal-intro {
+    color: var(--ink-light);
+    margin-top: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  .legal-section {
+    margin-bottom: 3rem;
+  }
+
+  .legal-section h2 {
+    font-family: var(--font-secondary);
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .legal-body {
+    color: var(--ink-light);
+    margin-top: 1rem;
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  .legal-body a {
+    color: var(--blue);
+    text-decoration: none;
+  }
+
+  .legal-body a:hover {
+    text-decoration: underline;
+  }
+
+  .legal-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .legal-footer p {
+    color: var(--ink-light);
+    font-size: 0.85rem;
+  }
+
+  .legal-footer a {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--blue);
+    text-decoration: none;
+  }
+
+  .legal-footer a:hover {
+    text-decoration: underline;
+  }
+</style>

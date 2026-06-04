@@ -1,41 +1,61 @@
-# Charte graphique INDXONE (corporate vs commune)
+# Charte graphique INDXONE
 
-## Principes généraux
+**Date :** Juin 2026
+**Périmètre :** indxone.com (corporate) + mairies.indxone.com (produit commune)
 
-**INDXONE SASU** possède deux univers visuels distincts :
+> **Principe fondamental :** Le rouge `#D21C1C` est la couleur des sites mairies (offre collectivités), pas celle du site corporate indxone.com.
 
-1. **Corporate** (`indxone.com`) — Bleu nuit / or / encre pour le site vitrine consultant SI
-2. **Commune** (`mairies.indxone.com/*`) — Rouge `#D21C1C` pour les sites mairies (offre collectivités)
+---
 
-Le rouge mairie ne doit jamais être utilisé comme couleur primaire sur le site corporate.
+## 1. Univers corporate — indxone.com
 
-## Palette corporate (indxone.com)
+### Palette
 
 | Rôle | Token | Hex | Usage |
 |------|-------|-----|-------|
 | Texte principal | `--ink` | `#0F1923` | Titres, corps, `theme-color` PWA |
 | Texte secondaire | `--ink-light` | `#3D4F5C` | Descriptions |
 | Fond clair | `--bone` | `#F7F4EF` | Fond page |
-| Primaire institutionnel | `--blue` | `#1B3A6B` | CTA, liens, dégradés hero |
+| Primaire institutionnel | `--blue` | `#1B3A6B` | CTA, liens forts, dégradés hero |
 | Primaire hover | `--blue-mid` | `#2D5A9E` | États interactifs |
 | Accent premium | `--gold` | `#C9A84C` | Highlights, badges |
 | Territoire / collectivités | `--green` | `#2A7A4B` | Section collectivités, stats |
-| Succès | `--success` | `#28C840` | Feedback formulaire |
-| Erreur | `--error` | `#FF5F57` | Erreurs formulaire |
+| Succès / erreur | `--success` / `--error` | `#28C840` / `#FF5F57` | Feedback formulaire |
 
-## Palette commune (mairies.indxone.com)
+### Typographie
 
-| Rôle | Valeur |
-|------|--------|
-| Primaire commune | `#D21C1C` (rouge institutionnel) |
-| Secondaire | Variables selon commune |
+- Primaire : **Sora** (sans-serif) — titres de section, navigation, corps
+- Secondaire : **DM Serif Display** (serif) — titres de page, hero
+- Fallback : `-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`
 
-## Règle d'or
+### Styles clés
 
-- **Aucun élément de nav, footer ou CTA principal** sur `indxone.com` ne doit utiliser le rouge `#D21C1C`
-- Les screenshots / mockups de démo mairie peuvent montrer le rouge avec la légende « site communal »
-- `theme_color` du manifest = `#0F1923` (déjà conforme)
+- Fond hero : dégradé `--ink` → `#1B2D3E`
+- Boutons primaires : fond `--blue`, texte blanc
+- Accents : `--gold` pour les badges et highlights
+- Arrondis : `--radius-md` (8px) pour les cartes, `--radius-lg` (12px) pour les sections
 
-## Dark mode
+---
 
-Maintenir les contrastes WCAG AA sur les deux modes. Les tokens CSS sont dans `css/variables.css` et les overrides dark dans `css/utilities/theme.css`.
+## 2. Univers produit commune — mairies.indxone.com
+
+### Palette
+
+| Rôle | Hex | Usage |
+|------|-----|-------|
+| Primaire commune | `#D21C1C` | Header, CTA, accents |
+| Fond | `#FFFFFF` | Pages |
+| Texte | `#1A1A2E` | Corps |
+
+### Principe
+
+Sur indxone.com, les visuels « démo commune » peuvent **montrer** le rouge pilote (`#D21C1C`) dans les mockups / screenshots, avec légende « site communal » — sans remplacer la palette corporate sur la chrome du site INDXONE.
+
+---
+
+## 3. Règles d'usage
+
+1. **Le rouge `#D21C1C` est interdit** sur les éléments chrome de indxone.com (nav, footer, CTA principaux, boutons génériques).
+2. La section `/collectivites/` utilise le vert (`--green`) comme couleur de territoire, jamais le rouge.
+3. Les screenshots de sites mairie dans les pages corporate sont encapsulés dans des mockups avec bordure et légende.
+4. Le `theme-color` PWA est `#0F1923` (ink), pas le rouge.

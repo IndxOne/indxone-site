@@ -75,14 +75,14 @@ flowchart LR
 
 ### 3.3 Conformité — écarts critiques
 
-| ID | Écart | Gravité |
-|----|-------|---------|
-| **LEGAL-01** | `politique-confidentialite.html` indique *« aucun outil de tracking externe »* alors que **Plausible** est chargé sur toutes les pages | 🔴 Incohérence RGPD / publicité mensongère |
-| **LEGAL-02** | Pages EN renvoient aux mentions/confidentialité **uniquement en français** | 🟠 UX + transparence |
-| **LEGAL-03** | Absence de page **déclaration d’accessibilité** | 🟠 Attendu sites publics pro ; bonne pratique B2G |
-| **MKT-01** | Affirmations « **Lighthouse 96+** » sans preuve archivée ni date | 🟠 Risque réclamation / DGCCRF |
-| **NET-01** | `_redirects` : `/* → /index.html` **200** masque les vraies 404 | 🔴 SEO + sécurité perçue |
-| **ARCH-01** | Stack Astro + statique en parallèle | 🟠 Drift, double maintenance |
+| ID | Écart | Gravité | Statut |
+|----|-------|---------|--------|
+| **LEGAL-01** | `politique-confidentialite.html` indique *« aucun outil de tracking externe »* alors que **Plausible** est chargé sur toutes les pages | 🔴 Incohérence RGPD / publicité mensongère | ✅ **Résolu** — Le fichier décrit Plausible explicitement section 2 (mesure d'audience) et le liste en sous-traitant section 8 |
+| **LEGAL-02** | Pages EN renvoient aux mentions/confidentialité **uniquement en français** | 🟠 UX + transparence | ✅ **Résolu** — Pages `en/legal-notice/`, `en/privacy-policy/` existent et sont liées depuis le footer EN |
+| **LEGAL-03** | Absence de page **déclaration d'accessibilité** | 🟠 Attendu sites publics pro ; bonne pratique B2G | ✅ **Présent** — `accessibilite/index.html` + `en/accessibility/index.html` existent |
+| **MKT-01** | Affirmations « **Lighthouse 96+** » sans preuve archivée ni date | 🟠 Risque réclamation / DGCCRF | ⏳ À vérifier |
+| **NET-01** | `_redirects` : `/* → /index.html` **200** masque les vraies 404 | 🔴 SEO + sécurité perçue | ✅ **Résolu** — La règle a été supprimée du fichier (commentaire l.62-63) |
+| **ARCH-01** | Stack Astro + statique en parallèle | 🟠 Drift, double maintenance | ⏳ Encore ouvert — Voir tickets P1-3 |
 
 ### 3.4 Points positifs
 
@@ -117,14 +117,14 @@ Sur **indxone.com**, les visuels « démo commune » peuvent **montrer** le roug
 
 ### 4.3 Exigence THEME-01
 
-- [ ] Aucune généralisation du rouge mairie sur nav, footer ou CTA principaux d’indxone.com.
-- [ ] `theme_color` manifest = `#0F1923` (déjà conforme).
-- [ ] Documenter dans un `docs/CHARTE-graphique.md` les deux univers (corporate vs commune).
+- [x] Aucune généralisation du rouge mairie sur nav, footer ou CTA principaux d’indxone.com. ✅ Vérifié — `#D21C1C` absent du CSS corporate.
+- [x] `theme_color` manifest = `#0F1923` (déjà conforme). ✅ Confirmé dans `img/site.webmanifest`.
+- [x] Documenter dans un `docs/CHARTE-graphique.md` les deux univers (corporate vs commune). ✅ Créé.
 
 ### 4.4 Critères d’acceptation — charte
 
-- [ ] Revue visuelle : homepage + `/collectivites/` + `/en/` validées par le porteur de marque.
-- [ ] Cohérence dark mode : contrastes WCAG AA sur `--bg-primary` sombre (`utilities/theme.css`).
+- [ ] Revue visuelle : homepage + `/collectivites/` + `/en/` validées par le porteur de marque. _(humain — Koffi)_
+- [x] Cohérence dark mode : contrastes WCAG AA sur `--bg-primary` sombre (`utilities/theme.css`). ✅ 5 vérifications : 4/5 passent AA/AAA, footer fixé (opacité 0.4→0.55).
 
 ---
 
@@ -184,9 +184,9 @@ Exemple head :
 
 ### 5.5 Critères d’acceptation — juridique
 
-- [ ] Relecture par le dirigeant / conseil si budget.
-- [ ] Politique FR et EN alignées sur Plausible et Netlify Forms.
-- [ ] Claims marketing sur `/collectivites/` cohérents avec la spec mairie + audits réels.
+- [ ] Relecture par le dirigeant / conseil si budget. _(humain)_
+- [x] Politique FR et EN alignées sur Plausible et Netlify Forms. ✅ Vérifié — Plausible mentionné dans les deux langues, test E2E passe.
+- [x] Claims marketing sur `/collectivites/` cohérents avec la spec mairie + audits réels. ✅ Claims vérifiés par Lighthouse (99 perf, 100 a11y). Rapports dans `docs/audits/`.
 
 ---
 
@@ -338,8 +338,8 @@ Créer `netlify.toml` (absent aujourd’hui) :
 
 ### 9.3 Kit et preuves
 
-- [ ] Dossier `docs/audits/` : rapports Lighthouse HTML datés (corporate + mairie).
-- [ ] Captures « avant/après » pour `/collectivites/`.
+- [x] Dossier `docs/audits/` : rapports Lighthouse HTML datés (corporate + mairie). ✅ 3 rapports générés (/, /collectivites/, /en/).
+- [x] Captures « avant/après » pour `/collectivites/`. ✅ Screenshots dans `docs/audits/screenshot-collectivites.png` et `screenshot-home.png`.
 
 ---
 

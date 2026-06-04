@@ -1,74 +1,76 @@
 ---
-// Base Layout Component
-// Used by all pages
-
 interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  lang?: 'fr' | 'en';
+  ogLocale?: string;
+  ogUrl?: string;
+  hreflangFr?: string;
+  hreflangEn?: string;
 }
 
-const { title = 'INDXONE — Consultant SI & Architecte Digital', 
-        description = 'Consultant SI / AMOA Freelance et créateur d\'IndxOne Hub. Pilotage, automatisation, outils SaaS pour freelances IT et PME en transition digitale.',
-        ogImage = 'https://indxone.com/img/icon-ix.png' } = Astro.props;
+const {
+  title = 'INDXONE — Consultant SI &amp; Architecte Digital',
+  description = 'Consultant SI / AMOA et cr\u00e9ateur d\'IndxOne Hub. Pilotage, automatisation, outils SaaS pour freelances IT et PME en transition digitale.',
+  ogImage = 'https://indxone.com/img/icon-ix.png',
+  lang = 'fr',
+  ogLocale = 'fr_FR',
+  ogUrl = 'https://indxone.com/',
+  hreflangFr = 'https://indxone.com/',
+  hreflangEn = 'https://indxone.com/en/',
+} = Astro.props;
 
-// Import global styles
 import '../styles/variables.css';
 import '../styles/components.css';
 import '../styles/main.css';
 
-// Import components
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import NavEn from '../components/NavEn.astro';
+import FooterEn from '../components/FooterEn.astro';
+
+const isEn = lang === 'en';
+const siteName = 'INDXONE';
+const ogSiteName = siteName;
 ---
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <!-- Primary Meta Tags -->
   <title>{title}</title>
   <meta name="description" content={description} />
-  <meta name="keywords" content="consultant SI, AMOA, architecture SI, automatisation, no-code, cloud, Azure, AWS, Power BI, Dynamics 365, freelance IT, transition digitale, PME" />
   <meta name="author" content="Koffi NIAMKEY - INDXONE" />
-  
-  <!-- Open Graph / Facebook -->
+
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://indxone.com/" />
+  <meta property="og:url" content={ogUrl} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={ogImage} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:site_name" content="INDXONE" />
-  <meta property="og:locale" content="fr_FR" />
-  
-  <!-- Twitter Card -->
+  <meta property="og:site_name" content={ogSiteName} />
+  <meta property="og:locale" content={ogLocale} />
+
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
-  <meta name="twitter:site" content="@indxone" />
-  <meta name="twitter:creator" content="@koffiniamkey" />
-  
-  <!-- Favicon -->
+
+  <link rel="alternate" hreflang="fr" href={hreflangFr} />
+  <link rel="alternate" hreflang="en" href={hreflangEn} />
+  <link rel="alternate" hreflang="x-default" href={hreflangFr} />
+
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
-  <link rel="manifest" href="/img/site.webmanifest" />
-  
-  <!-- Fonts -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  
-  <!-- Preload critical resources -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Sora:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
+
   <link rel="preload" href="/css/main.css" as="style" />
-  
-  <!-- No JavaScript fallbacks -->
+
   <noscript>
     <style>
       .reveal { opacity: 1 !important; transform: none !important; }
@@ -78,24 +80,18 @@ import Footer from '../components/Footer.astro';
 </head>
 
 <body>
-  <!-- Navigation -->
-  <Nav />
-  
-  <!-- Main Content -->
-  <main>
+  {isEn
+    ? <a href="#main-content" class="skip-link">Skip to main content</a>
+    : <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+  }
+  {isEn ? <NavEn /> : <Nav />}
+  <main id="main-content">
     <slot />
   </main>
-  
-  <!-- Footer -->
-  <Footer />
-  
-  <!-- Analytics -->
+  {isEn ? <FooterEn /> : <Footer />}
+
   <script defer data-domain="indxone.com" src="https://plausible.io/js/script.js"></script>
-  
-  <!-- Main JavaScript -->
   <script src="/js/main.js" is:inline></script>
-  
-  <!-- Theme Initialization -->
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
@@ -104,5 +100,17 @@ import Footer from '../components/Footer.astro';
       document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
+<style is:global>
+  .skip-link {
+    position: absolute; top: -100%; left: 0; z-index: 10000;
+    padding: 0.5rem 1rem; background: #0F1923; color: #fff;
+    font-size: 0.875rem; font-weight: 600; text-decoration: none;
+    transition: top 0.1s;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+</style>
+
 </body>
 </html>

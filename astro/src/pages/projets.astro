@@ -1,0 +1,263 @@
+---
+import Base from '../layouts/Base.astro';
+const title = 'INDXONE — Portfolio & Projets SI';
+const description = 'Réalisations de Koffi NIAMKEY — Consultant SI INDXONE. Projets ERP, CRM, automatisation, téléphonie IP, marketplace mobile, sites mairies.';
+---
+
+<Base title={title} description={description}>
+  <section class="projets-hero">
+    <div class="ph-label">Réalisations</div>
+    <h1>Projets <em>structurants</em></h1>
+    <p>Menés en CDI et en freelance — en tant que pilote, référent technique ou AMOA.</p>
+    <div class="ph-stats">
+      <div class="ph-stat"><strong>8+</strong><span>Projets livrés</span></div>
+      <div class="ph-stat"><strong>4 ans</strong><span>Pilotage IT</span></div>
+      <div class="ph-stat"><strong>~110</strong><span>Collaborateurs</span></div>
+      <div class="ph-stat"><strong>2</strong><span>Marchés · FR + CI</span></div>
+    </div>
+  </section>
+
+  <div class="projets-filter-bar">
+    <div class="filter-inner">
+      <span class="filter-label">Filtrer</span>
+      <button type="button" class="pf-btn active" onclick="filterP(this,'all')">Tous</button>
+      <button type="button" class="pf-btn" onclick="filterP(this,'freelance')">⚡ IndxOne · Freelance</button>
+      <button type="button" class="pf-btn" onclick="filterP(this,'cdi')">🏢 CDI · Référent IT</button>
+    </div>
+  </div>
+
+  <div class="projets-wrap">
+    <div class="bento">
+
+      <div class="bc bc-metric" data-type="freelance">
+        <span class="bc-tag freelance">⚡ IndxOne</span>
+        <span class="bc-icon">🏛️</span>
+        <div class="bc-title">Digitalisation communes</div>
+        <div class="bc-desc" style="font-size:.75rem">Template institutionnel déployé · Aisne (02). Pipeline multi-communes actif.</div>
+        <div class="bc-stats" style="margin-top:.8rem">
+          <div class="bc-stat sm"><strong>48h</strong><span>Déploiement</span></div>
+          <div class="bc-stat sm"><strong>96+</strong><span>Lighthouse</span></div>
+        </div>
+        <div class="bc-impact" style="margin-top:.8rem"><strong>Pipeline actif</strong>Mons-en-Laonnois · 11 communes en prospection</div>
+        <div class="bc-number">IX</div>
+      </div>
+
+      <div class="bc bc-mid" data-type="cdi">
+        <span class="bc-tag cdi">CDI · Référent IT</span>
+        <span class="bc-icon">📞</span>
+        <div class="bc-title">Téléphonie IP — Microsoft Teams</div>
+        <div class="bc-desc">Pilotage complet du déploiement Teams IP. Responsable &amp; autorité projet de bout en bout.</div>
+        <div class="bc-stats">
+          <div class="bc-stat sm"><strong>110</strong><span>Collaborateurs</span></div>
+          <div class="bc-stat sm"><strong>0</strong><span>Incident post-bascule</span></div>
+        </div>
+        <div class="bc-chips"><span class="bc-chip">Teams</span><span class="bc-chip">M365</span><span class="bc-chip">Pilotage</span></div>
+      </div>
+
+      <div class="bc bc-mid" data-type="cdi">
+        <span class="bc-tag cdi">CDI · Référent IT</span>
+        <span class="bc-icon">📊</span>
+        <div class="bc-title">CRM Dynamics 365 + Power BI</div>
+        <div class="bc-desc">Intégration Power BI dans Dynamics 365, évolution Power Apps. Reporting commercial temps réel.</div>
+        <div class="bc-chips"><span class="bc-chip">Dynamics 365</span><span class="bc-chip">Power BI</span><span class="bc-chip">Power Apps</span></div>
+      </div>
+
+      <div class="bc bc-mid" data-type="cdi">
+        <span class="bc-tag cdi">CDI · Référent IT</span>
+        <span class="bc-icon">⚙️</span>
+        <div class="bc-title">Déploiement ERP DIAPASON</div>
+        <div class="bc-desc">Coordination infra puis administration, configuration, gestion des flux et droits utilisateurs.</div>
+        <div class="bc-chips"><span class="bc-chip">ERP</span><span class="bc-chip">AMOA</span><span class="bc-chip">Formation</span></div>
+      </div>
+
+      <div class="bc bc-wide" data-type="cdi">
+        <span class="bc-tag cdi">CDI · Référent IT</span>
+        <span class="bc-icon">🗂️</span>
+        <div class="bc-title">GED &amp; GTA Kelio</div>
+        <div class="bc-desc">Mise en place de la gestion électronique documentaire et déploiement de la GTA Kelio sur ~110 collaborateurs.</div>
+        <div class="bc-chips"><span class="bc-chip">Kelio</span><span class="bc-chip">GED</span><span class="bc-chip">Formation</span></div>
+      </div>
+
+      <div class="bc bc-full" data-type="cdi">
+        <div class="bc-full-left">
+          <span class="bc-tag cdi">CDI · Référent IT</span>
+          <span class="bc-icon">🧩</span>
+          <div class="bc-title">Configurateur produit en ligne</div>
+          <div class="bc-desc">Logique conditionnelle complexe pour un configurateur menuiserie temps réel. Pilotage intégration, recette fonctionnelle, déploiement et formation terrain.</div>
+          <div class="bc-chips"><span class="bc-chip">Configurateur</span><span class="bc-chip">AMOA</span><span class="bc-chip">Intégration</span><span class="bc-chip">Formation</span></div>
+        </div>
+        <div class="bc-full-right">
+          <div class="bc-stat-box"><strong>117</strong><span>Niveaux</span></div>
+          <div class="bc-stat-box"><strong>815</strong><span>Questions</span></div>
+          <div class="bc-stat-box"><strong>908</strong><span>Réponses</span></div>
+        </div>
+      </div>
+
+      <div class="bc bc-wide" data-type="freelance">
+        <span class="bc-tag freelance">⚡ Produit SaaS · IndxOne</span>
+        <span class="bc-icon">🧭</span>
+        <div class="bc-title">IndxOne Hub — cockpit freelance IT</div>
+        <div class="bc-desc">Suite local-first de 15 outils : Missio, Deal Room, Runway, Daily Ops, Calc, SIPOC, MoSCoW, RACI, Devis, CRA et routines de pilotage. Refonte UX mobile, thème global, changelog et démo Missio intégrés.</div>
+        <div class="bc-stats">
+          <div class="bc-stat sm"><strong>15</strong><span>Outils</span></div>
+          <div class="bc-stat sm"><strong>0</strong><span>Compte requis</span></div>
+        </div>
+        <div class="bc-chips"><span class="bc-chip">HTML/CSS/JS</span><span class="bc-chip">LocalStorage</span><span class="bc-chip">Freemium</span><span class="bc-chip">Netlify</span></div>
+        <div class="bc-impact"><strong>Produit actif</strong>Deal Room, changelog, mode démo Missio et navigation Hub unifiée.</div>
+      </div>
+
+      <div class="bc bc-taga" data-type="freelance">
+        <span class="bc-tag wip">⚡ IndxOne · En cours</span>
+        <span class="bc-icon">🚗</span>
+        <div class="bc-title">TAGA — Marketplace ride-hailing</div>
+        <div class="bc-desc">Conception et développement d'une marketplace mobile de transport ciblant Abidjan et l'Afrique de l'Ouest. Module Femme Only, logique PostGIS, cartographie MapBox.</div>
+        <div class="bc-chips"><span class="bc-chip">FlutterFlow</span><span class="bc-chip">Supabase</span><span class="bc-chip">PostGIS</span><span class="bc-chip">MapBox</span><span class="bc-chip">Côte d'Ivoire</span></div>
+        <div class="wip-badge"><span class="wip-pulse"></span>MVP en développement · 2026</div>
+      </div>
+
+      <div class="bc bc-kit" data-type="freelance">
+        <span class="bc-tag freelance">⚡ Offre IndxOne</span>
+        <span class="bc-icon">🚀</span>
+        <div class="bc-title">Startup Launch Kit</div>
+        <div class="bc-desc">De l'idée au premier utilisateur en 8 semaines. Cadrage, stack technique, outillage no-code et pilotage MVP. Disponible pour startups France &amp; Afrique francophone.</div>
+        <div class="bc-stats">
+          <div class="bc-stat"><strong>8 sem</strong><span>Délai go-live</span></div>
+          <div class="bc-stat"><strong>3</strong><span>Tiers disponibles</span></div>
+        </div>
+        <div class="bc-chips"><span class="bc-chip">Make</span><span class="bc-chip">FlutterFlow</span><span class="bc-chip">Supabase</span><span class="bc-chip">Netlify</span><span class="bc-chip">No-code</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <section class="projets-cta-section">
+    <h2>Votre projet est le prochain</h2>
+    <p>Un échange de 30 min suffit pour clarifier les enjeux et voir si on est alignés.</p>
+    <div class="cta-links">
+      <a href="/#contact" class="btn-primary">Démarrer un projet →</a>
+      <a href="https://hub.indxone.com" class="btn-ghost" target="_blank">Ouvrir IndxOne Hub →</a>
+      <a href="tel:+33775679067" class="btn-ghost">📞 07 75 67 90 67</a>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+  .projets-hero {
+    background: linear-gradient(135deg, #0F1923 0%, #1B2D3E 100%);
+    color: white; padding: 5rem 5% 4rem; position: relative; overflow: hidden;
+  }
+  .projets-hero::after {
+    content: 'PROJETS'; position: absolute; right: 3%; top: 50%; transform: translateY(-50%);
+    font-family: 'DM Serif Display', serif; font-size: clamp(8rem,14vw,18rem);
+    color: rgba(255,255,255,.03); line-height: 1; pointer-events: none;
+  }
+  .ph-label { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #C9A84C; margin-bottom: .8rem; }
+  .projets-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.2rem,4.5vw,3.4rem); line-height: 1.15; margin-bottom: 1rem; max-width: 700px; color: white; }
+  .projets-hero h1 em { color: #E8D5A0; font-style: italic; }
+  .projets-hero p { color: rgba(255,255,255,.6); font-size: .95rem; max-width: 500px; margin-bottom: 2.5rem; }
+  .ph-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+  .ph-stat strong { display: block; font-size: 1.8rem; font-weight: 700; color: white; }
+  .ph-stat span { font-size: .72rem; color: rgba(255,255,255,.4); }
+
+  .projets-filter-bar {
+    background: white; border-bottom: 1px solid var(--border);
+    padding: .8rem 5%; position: sticky; top: 64px; z-index: 99;
+  }
+  .filter-inner { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
+  .filter-label { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-light); margin-right: .5rem; }
+  .pf-btn { padding: .35rem 1rem; border-radius: 20px; border: 1px solid var(--border); background: transparent; color: var(--ink-light); font-family: 'Sora', sans-serif; font-size: .75rem; font-weight: 600; cursor: pointer; transition: all .2s; letter-spacing: .04em; }
+  .pf-btn:hover, .pf-btn.active { background: #C9A84C; border-color: #C9A84C; color: #0F1923; }
+
+  .projets-wrap { padding: 3rem 5% 5rem; max-width: 1400px; margin: 0 auto; }
+
+  .bento { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: auto; gap: 1.2rem; }
+
+  .bc {
+    border-radius: 16px; padding: 2rem; position: relative; overflow: hidden;
+    transition: transform .25s, box-shadow .25s;
+    border: 1px solid rgba(255,255,255,.12);
+  }
+  .bc:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,.4); }
+
+  .bc-hero { grid-column: span 8; background: linear-gradient(135deg,#0E3060 0%,#1B3A6B 100%); border-color: rgba(74,124,199,.4); }
+  .bc-metric { grid-column: span 4; background: #152030; border-color: rgba(201,168,76,.4); }
+  .bc-mid { grid-column: span 4; background: #152030; border-color: rgba(255,255,255,.15); }
+  .bc-wide { grid-column: span 6; background: #152030; border-color: rgba(255,255,255,.15); }
+  .bc-full { grid-column: span 12; background: linear-gradient(90deg,#0E2518 0%,#152030 100%); border-color: rgba(42,122,75,.45); display: flex; gap: 3rem; align-items: center; }
+  .bc-taga { grid-column: span 5; background: linear-gradient(135deg,#1E0D38 0%,#140A28 100%); border-color: rgba(150,80,220,.4); }
+  .bc-kit { grid-column: span 7; background: linear-gradient(135deg,#0E2848 0%,#152030 100%); border-color: rgba(201,168,76,.35); }
+
+  .bc-tag { display: inline-flex; align-items: center; gap: .3rem; font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .25rem .6rem; border-radius: 20px; margin-bottom: 1rem; }
+  .bc-tag.freelance { background: rgba(201,168,76,.2); color: #E8D5A0; border: 1px solid rgba(201,168,76,.3); }
+  .bc-tag.cdi { background: rgba(255,255,255,.08); color: rgba(255,255,255,.6); border: 1px solid rgba(255,255,255,.12); }
+  .bc-tag.wip { background: rgba(150,80,220,.2); color: #C0A0F0; border: 1px solid rgba(150,80,220,.3); }
+
+  .bc-icon { font-size: 2.2rem; margin-bottom: .8rem; display: block; }
+  .bc-title { font-weight: 700; font-size: 1.15rem; color: white; margin-bottom: .5rem; line-height: 1.3; }
+  .bc-title.lg { font-family: 'DM Serif Display', serif; font-size: 1.6rem; }
+  .bc-desc { font-size: .8rem; color: rgba(255,255,255,.55); line-height: 1.65; margin-bottom: 1.2rem; }
+  .bc-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .bc-stat strong { display: block; font-size: 1.6rem; font-weight: 700; color: #E8D5A0; line-height: 1; margin-bottom: .2rem; }
+  .bc-stat.sm strong { font-size: 1.1rem; }
+  .bc-stat span { font-size: .68rem; color: rgba(255,255,255,.4); }
+  .bc-chips { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: 1rem; }
+  .bc-chip { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.75); font-size: .65rem; padding: .2rem .55rem; border-radius: 4px; }
+  .bc-number { font-family: 'DM Serif Display', serif; font-size: 4.5rem; color: rgba(201,168,76,.25); line-height: 1; position: absolute; bottom: 1rem; right: 1.5rem; }
+  .bc-impact { background: rgba(201,168,76,.15); border: 1px solid rgba(201,168,76,.35); border-radius: 8px; padding: .8rem 1rem; margin-top: 1rem; font-size: .78rem; color: #E8D5A0; }
+  .bc-impact strong { display: block; font-size: .65rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .2rem; opacity: .7; }
+
+  .bc-full-left { flex: 1; }
+  .bc-full-right { display: flex; gap: 1.5rem; flex-shrink: 0; }
+  .bc-stat-box { text-align: center; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15); border-radius: 10px; padding: 1rem 1.2rem; }
+  .bc-stat-box strong { display: block; font-size: 1.4rem; font-weight: 700; color: #86EFAC; }
+  .bc-stat-box span { font-size: .68rem; color: rgba(255,255,255,.55); }
+
+  .wip-badge { display: inline-flex; align-items: center; gap: .4rem; font-size: .65rem; font-weight: 700; letter-spacing: .06em; background: rgba(150,80,220,.15); color: #C0A0F0; border: 1px solid rgba(150,80,220,.3); padding: .3rem .7rem; border-radius: 20px; margin-top: .8rem; }
+  .wip-pulse { width: 7px; height: 7px; border-radius: 50%; background: #C0A0F0; animation: wipPulse 1.5s infinite; }
+  @keyframes wipPulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+  .projets-cta-section {
+    background: linear-gradient(135deg, #1B3A6B 0%, #0F2847 100%);
+    color: white; text-align: center; padding: 5rem 5%;
+  }
+  .projets-cta-section h2 { font-family: 'DM Serif Display', serif; font-size: 2rem; margin-bottom: .8rem; color: white; }
+  .projets-cta-section p { color: rgba(255,255,255,.6); margin-bottom: 2rem; font-size: .9rem; }
+
+  @media(max-width:900px){
+    .bento { grid-template-columns: 1fr 1fr; }
+    .bc-hero, .bc-full, .bc-kit { grid-column: span 2; }
+    .bc-metric, .bc-mid, .bc-wide, .bc-taga { grid-column: span 1; }
+    .bc-full { flex-direction: column; }
+    .bc-full-right { flex-wrap: wrap; }
+  }
+  @media(max-width:560px){
+    .bento { grid-template-columns: 1fr; }
+    .bc { grid-column: span 1 !important; }
+  }
+</style>
+
+<script>
+  window.filterP = function(btn, type) {
+    document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.bc').forEach(card => {
+      const match = type === 'all' || card.dataset.type === type;
+      card.style.opacity = match ? '1' : '0.15';
+      card.style.transform = match ? '' : 'scale(0.97)';
+      card.style.transition = 'opacity 0.3s, transform 0.3s';
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.06 });
+
+    document.querySelectorAll('.bc').forEach(el => revealObserver.observe(el));
+  });
+</script>
