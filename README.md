@@ -10,7 +10,7 @@ Site vitrine **https://indxone.com** — INDXONE SASU (consultant SI, offre coll
 - **Analytics** : **Plausible** (sans cookies publicitaires — voir `politique-confidentialite.html`)
 - **Formulaires** : **Netlify Forms**
 - **Tests** : Vitest (unit), Playwright (e2e)
-- **Migration Astro** : Archivée — voir branche `feat/astro-migration`
+- **Stack** : HTML statique + CSS modulaire, build `dist/` unique
 
 ## Commandes
 

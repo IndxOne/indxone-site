@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync } from 'fs';
 import { glob } from 'glob';
 
 const files = await glob('**/*.html', {
-  ignore: ['node_modules/**', 'dist/**', 'astro/**', '.git/**'],
+  ignore: ['node_modules/**', 'dist/**', '.git/**'],
 });
 
 let totalFixes = 0;

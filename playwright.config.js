@@ -10,7 +10,7 @@ export default defineConfig({
     screenshot: "only-on-failure",
   },
   webServer: {
-    command: "npm run server",
+    command: "python3 -m http.server 8000 --directory dist",
     port: 8000,
     timeout: 15000,
     reuseExistingServer: true,

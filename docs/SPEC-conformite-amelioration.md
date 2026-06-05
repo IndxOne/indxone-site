@@ -55,7 +55,7 @@ flowchart LR
 |---------|------|--------|
 | **Production** | Build Node `scripts/build.js` → `dist/` + deploy Netlify | Référence opérationnelle |
 | **Sources** | HTML statiques racine + `collectivites/`, `projets/`, `en/` | Maintenabilité moyenne |
-| **Astro** | Dossier `astro/` partiellement migré, **non branché** sur `npm run build` (`build:astro` = stub) | **Dette majeure** — double vérité |
+| **Architecture** | Build Node `scripts/build.js` → `dist/` + deploy Netlify | Référence opérationnelle |
 | **CSS** | `css/style.css` (modulaire) + `css/optimized.css` (PostCSS purge) | OK si build systématique |
 | **Tests** | Vitest unit + Playwright e2e (`tests/`) | Sous-exploité en CI |
 | **README** | Template GitLab générique | Documentation absente |
@@ -285,17 +285,11 @@ Créer `netlify.toml` (absent aujourd’hui) :
 
 ### 8.1 Décision d’orchestration (ARCH-01)
 
-**Option A — Recommandée à court terme :** statique seul
+**Situation cible :** site statique seul
 
-- Geler la migration Astro jusqu’à spec dédiée.
-- Supprimer ou archiver `astro/` derrière branche `feat/astro-migration`.
+- Conserver le site statique comme source unique.
 - Documenter dans `README.md` le workflow `npm run build:all && deploy`.
-
-**Option B — Moyen terme :** Astro source unique
-
-- Terminer migration (checklist `astro/README.md`).
-- Remplacer `scripts/build.js` par `cd astro && npm run build`.
-- Tests e2e sur sortie Astro.
+- Les tests e2e s’exécutent sur `dist/`.
 
 **Exigence ARCH-01 :** une seule stack en production d’ici **S+8**.
 
