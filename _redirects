@@ -11,9 +11,7 @@
 /merci            /merci/          301
 /merci/           /merci/index.html  200
 /mentions-legales  /mentions-legales/  301
-/mentions-legales/ /mentions-legales.html  200
-/politique-confidentialite    /politique-confidentialite/    301
-/politique-confidentialite/ /politique-confidentialite.html  200
+/politique-confidentialite  /politique-confidentialite/  301
 
 # ============================================================
 # External Redirects

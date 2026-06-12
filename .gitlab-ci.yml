@@ -42,7 +42,7 @@ test:unit:
 
 test:e2e:
   stage: test
-  image: mcr.microsoft.com/playwright:v1.40.0-focal
+  image: mcr.microsoft.com/playwright:v1.60.0-jammy
   script:
     - npm ci
     - npx playwright install --with-deps
