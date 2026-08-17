@@ -215,6 +215,118 @@
   color: var(--gold-light);
 }
 
+/* Dark mode follows the same palette as light mode: navy, blue and orange. */
+/* stylelint-disable no-duplicate-selectors */
+[data-theme="dark"] {
+  --bg-primary: #0d1720;
+  --bg-secondary: #14232e;
+  --bg-tertiary: rgb(13 23 32 / 96%);
+  --ink: #f2f6f8;
+  --ink-light: #c3d0d8;
+  --ink-lighter: #91a3ad;
+  --text-primary: #f2f6f8;
+  --text-secondary: #c3d0d8;
+  --text-tertiary: #91a3ad;
+  --surface-color: #14232e;
+  --nav-bg: rgb(13 23 32 / 96%);
+  --card-bg: #14232e;
+  --border: rgb(242 246 248 / 12%);
+  --border-light: rgb(242 246 248 / 7%);
+  --border-strong: rgb(242 246 248 / 22%);
+  --gold: #f08a63;
+  --gold-light: #ffb08c;
+  --gold-lighter: #6f3325;
+  --blue: #63c1d4;
+  --blue-mid: #83d1df;
+  --blue-light: #a6e1eb;
+  --green: #7bc49a;
+  --green-light: #a2ddb9;
+  --green-lighter: #214d3a;
+}
+
+[data-theme="dark"] html {
+  background: radial-gradient(circle at top left, rgb(99 193 212 / 12%), transparent 34%), var(--bg-primary);
+}
+
+[data-theme="dark"] .hero,
+[data-theme="dark"] .corporate-pillar-dark {
+  background: #132d3a;
+}
+
+[data-theme="dark"] .nav {
+  background: var(--nav-bg);
+}
+
+[data-theme="dark"] .corporate-proof {
+  background: #081018;
+  color: var(--ink);
+}
+
+[data-theme="dark"] .hero {
+  border-bottom-color: var(--border);
+}
+
+[data-theme="dark"] .hero::before {
+  background: linear-gradient(90deg, rgb(99 193 212 / 10%), transparent 55%);
+}
+
+[data-theme="dark"] .hero h1,
+[data-theme="dark"] .hero .dispo-item .value,
+[data-theme="dark"] .corporate-product h3,
+[data-theme="dark"] .corporate-case h3,
+[data-theme="dark"] .service-card h3 {
+  color: var(--ink);
+}
+
+[data-theme="dark"] .hero p,
+[data-theme="dark"] .hero-stat span,
+[data-theme="dark"] .dispo-item .label,
+[data-theme="dark"] .corporate-pillar p,
+[data-theme="dark"] .corporate-pillar li,
+[data-theme="dark"] .corporate-case p,
+[data-theme="dark"] .corporate-product p,
+[data-theme="dark"] .service-card p,
+[data-theme="dark"] .service-features li {
+  color: var(--ink-light);
+}
+
+[data-theme="dark"] .services,
+[data-theme="dark"] .contact,
+[data-theme="dark"] .corporate-cases {
+  background: var(--bg-primary);
+}
+
+[data-theme="dark"] .corporate-lab,
+[data-theme="dark"] .corporate-product,
+[data-theme="dark"] .service-card,
+[data-theme="dark"] .corporate-pillar,
+[data-theme="dark"] .corporate-case,
+[data-theme="dark"] .contact-form,
+[data-theme="dark"] .dispo-card {
+  background: var(--bg-secondary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .corporate-product-featured {
+  background: #193846;
+  border-color: var(--gold);
+}
+
+[data-theme="dark"] .hero .btn-ghost,
+[data-theme="dark"] .corporate-lab-heading .btn-ghost {
+  color: var(--blue-light);
+  border-color: var(--blue);
+  background: transparent;
+}
+
+[data-theme="dark"] .hero .btn-ghost:hover,
+[data-theme="dark"] .corporate-lab-heading .btn-ghost:hover {
+  background: var(--blue);
+  color: #0d1720;
+}
+
+/* stylelint-enable no-duplicate-selectors */
+
 [data-theme="dark"] .card,
 [data-theme="dark"] .service-card,
 [data-theme="dark"] .tool-card {

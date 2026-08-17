@@ -40,6 +40,11 @@ const ROOT_HTML = [
   'politique-confidentialite.html',
 ];
 
+const ROOT_HTML_ALIASES = [
+  { src: 'mentions-legales.html', dest: 'mentions-legales/index.html' },
+  { src: 'politique-confidentialite.html', dest: 'politique-confidentialite/index.html' },
+];
+
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
@@ -117,6 +122,13 @@ async function main() {
   for (const file of ROOT_HTML) {
     const src = path.join(ROOT, file);
     const dest = path.join(DIST, file);
+    if (fs.existsSync(src)) {
+      await minifyAndCopyHtml(src, dest, true);
+    }
+  }
+  for (const alias of ROOT_HTML_ALIASES) {
+    const src = path.join(ROOT, alias.src);
+    const dest = path.join(DIST, alias.dest);
     if (fs.existsSync(src)) {
       await minifyAndCopyHtml(src, dest, true);
     }

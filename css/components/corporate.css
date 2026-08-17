@@ -1,0 +1,240 @@
+.corporate-section {
+  padding: 6rem 5%;
+  background: var(--bg-primary);
+}
+
+.home-secondary {
+  display: none;
+}
+
+.corporate-section > h2,
+.corporate-section > .section-sub,
+.corporate-pillars,
+.corporate-case-grid,
+.corporate-lab-heading,
+.corporate-product-grid {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.corporate-section > h2 {
+  margin-top: 0.6rem;
+  max-width: 780px;
+}
+
+.corporate-pillars {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.corporate-pillar {
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.corporate-pillar-dark {
+  background: var(--ink);
+  color: var(--white);
+  border-color: var(--ink);
+}
+
+.corporate-pillar-index {
+  display: block;
+  color: var(--gold);
+  font: 700 1.8rem/1 var(--font-secondary);
+  margin-bottom: 1.3rem;
+}
+
+.corporate-pillar h3,
+.corporate-case h3,
+.corporate-product h3 {
+  margin-bottom: 0.7rem;
+}
+
+.corporate-pillar-dark h3 {
+  color: var(--white);
+}
+
+.corporate-pillar p,
+.corporate-pillar li,
+.corporate-case p,
+.corporate-product p {
+  color: var(--ink-light);
+}
+
+.corporate-pillar-dark p,
+.corporate-pillar-dark li {
+  color: rgb(255 255 255 / 70%);
+}
+
+.corporate-pillar ul {
+  display: grid;
+  gap: 0.45rem;
+  margin: 1.25rem 0 1.5rem;
+  padding-left: 1.1rem;
+}
+
+.corporate-link {
+  color: var(--blue);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.corporate-pillar-dark .corporate-link {
+  color: var(--gold-light);
+}
+
+.corporate-cases {
+  background: var(--bone);
+}
+
+.corporate-case-grid,
+.corporate-product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.corporate-case,
+.corporate-product {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--white);
+}
+
+.corporate-case {
+  display: flex;
+  flex-direction: column;
+  min-height: 245px;
+}
+
+.corporate-case strong {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  color: var(--blue);
+}
+
+.corporate-case-tag,
+.corporate-product-status {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: var(--gold-dark);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.corporate-lab-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 2rem;
+}
+
+.corporate-lab-heading .section-sub {
+  margin: 0.7rem 0 0;
+}
+
+.corporate-product {
+  display: flex;
+  flex-direction: column;
+  min-height: 230px;
+}
+
+.corporate-product-featured {
+  border-color: var(--gold);
+  background: linear-gradient(145deg, var(--white), rgb(201 168 76 / 10%));
+}
+
+.corporate-product-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: end;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  color: var(--ink-light);
+  font-size: 0.78rem;
+}
+
+.corporate-proof {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) 1.6fr;
+  gap: 3rem;
+  align-items: center;
+  padding: 4rem 5%;
+  background: var(--ink);
+  color: var(--white);
+}
+
+.corporate-proof h2 {
+  margin-top: 0.6rem;
+  color: var(--white);
+}
+
+.corporate-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.corporate-proof-grid div {
+  padding: 1.1rem;
+  border-left: 1px solid rgb(255 255 255 / 25%);
+}
+
+.corporate-proof-grid strong,
+.corporate-proof-grid span {
+  display: block;
+}
+
+.corporate-proof-grid strong {
+  color: var(--gold-light);
+  font: 700 clamp(1.25rem, 2vw, 2rem)/1.1 var(--font-secondary);
+}
+
+.corporate-proof-grid span {
+  margin-top: 0.4rem;
+  color: rgb(255 255 255 / 68%);
+  font-size: 0.82rem;
+}
+
+@media (width <= 800px) {
+  .corporate-pillars,
+  .corporate-case-grid,
+  .corporate-product-grid,
+  .corporate-proof {
+    grid-template-columns: 1fr;
+  }
+
+  .corporate-proof-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .corporate-lab-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+}
+
+@media (width <= 480px) {
+  .corporate-section {
+    padding: 4rem 5%;
+  }
+
+  .corporate-pillar,
+  .corporate-case,
+  .corporate-product {
+    padding: 1.25rem;
+  }
+}

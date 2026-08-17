@@ -1,19 +1,19 @@
 :root {
-  --ink: #17222B;
-  --ink-light: #4D5C67;
-  --ink-lighter: #73808A;
+  --ink: #172B3A;
+  --ink-light: #52616B;
+  --ink-lighter: #82909A;
 
-  --bone: #F5F1EA;
+  --bone: #F7F8F6;
   --white: #FFFFFF;
   --black: #000000;
 
-  --gold: #C45F4D;
-  --gold-light: #E7B1A6;
-  --gold-lighter: #F7DDD7;
+  --gold: #D66A45;
+  --gold-light: #E7A38D;
+  --gold-lighter: #FBE9E3;
 
-  --blue: #1E6C7B;
-  --blue-mid: #2F8793;
-  --blue-light: #69B8C2;
+  --blue: #176B87;
+  --blue-mid: #2A86A3;
+  --blue-light: #75BCD0;
 
   --green: #4E856B;
   --green-light: #77AE8E;

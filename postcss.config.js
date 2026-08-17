@@ -6,6 +6,7 @@ module.exports = {
       content: [
         './*.html',
         './*.js',
+        './_includes/*.html',
         './merci/*.html',
         './accessibilite/*.html',
         './collectivites/*.html',

@@ -9,11 +9,13 @@
 @import url('components/footer.css');
 @import url('components/tags.css');
 @import url('components/hub.css');
+@import url('components/corporate.css');
 @import url('components/stack.css');
 @import url('sections/collectivites.css');
 @import url('sections/contact.css');
 @import url('utilities/helpers.css');
 @import url('utilities/animations.css');
+@import url('pages/redesign.css');
 @import url('utilities/theme.css');
 @import url('pages/home.css');
 @import url('pages/projets.css');
