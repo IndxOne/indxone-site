@@ -36,13 +36,13 @@ const HTML_DIRS = [
 const ROOT_HTML = [
   'index.html',
   '404.html',
-  'mentions-legales.html',
-  'politique-confidentialite.html',
 ];
 
-const ROOT_HTML_ALIASES = [
-  { src: 'mentions-legales.html', dest: 'mentions-legales/index.html' },
-  { src: 'politique-confidentialite.html', dest: 'politique-confidentialite/index.html' },
+// Ces pages sont générées comme répertoires (src.html → dest/index.html)
+// pour que Python http.server les serve sans extension, cohérent avec les autres pages
+const ROOT_HTML_AS_DIRS = [
+  { src: 'mentions-legales.html',          dest: 'mentions-legales' },
+  { src: 'politique-confidentialite.html', dest: 'politique-confidentialite' },
 ];
 
 function ensureDir(dir) {
@@ -126,9 +126,9 @@ async function main() {
       await minifyAndCopyHtml(src, dest, true);
     }
   }
-  for (const alias of ROOT_HTML_ALIASES) {
-    const src = path.join(ROOT, alias.src);
-    const dest = path.join(DIST, alias.dest);
+  for (const { src: srcFile, dest: destDir } of ROOT_HTML_AS_DIRS) {
+    const src = path.join(ROOT, srcFile);
+    const dest = path.join(DIST, destDir, 'index.html');
     if (fs.existsSync(src)) {
       await minifyAndCopyHtml(src, dest, true);
     }
