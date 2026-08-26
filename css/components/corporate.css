@@ -3,8 +3,12 @@
   background: var(--bg-primary);
 }
 
-.home-secondary {
-  display: none;
+/* Repli mobile/tablette : masqué comme le reste des sections MVP réduites
+   dans css/pages/home.css (≤900px). Desktop conserve ces sections. */
+@media (width <= 900px) {
+  .home-secondary {
+    display: none;
+  }
 }
 
 .corporate-section > h2,
