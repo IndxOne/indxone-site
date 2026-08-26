@@ -249,11 +249,11 @@
 }
 
 .projets h2 {
-  color: white;
+  color: var(--ink);
 }
 
 .projets .section-sub {
-  color: rgb(255 255 255 / 50%);
+  color: var(--ink-light);
 }
 
 .projets-filters {
@@ -448,9 +448,9 @@
 .pf-btn {
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-full);
-  border: 1px solid rgb(255 255 255 / 15%);
+  border: 1px solid var(--border);
   background: transparent;
-  color: rgb(255 255 255 / 50%);
+  color: var(--ink-light);
   font-family: var(--font-primary);
   font-size: 0.75rem;
   font-weight: 600;

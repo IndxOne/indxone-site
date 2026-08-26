@@ -19,7 +19,7 @@
 }
 
 .subtitle {
-  color: rgb(255 255 255 / 55%);
+  color: var(--ink-light);
   font-size: 0.88rem;
   line-height: 1.75;
   margin-bottom: 2rem;
@@ -46,12 +46,12 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  background: rgb(255 255 255 / 6%);
-  border: 1px solid rgb(255 255 255 / 10%);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: var(--space-sm) 0.9rem;
   font-size: 0.75rem;
-  color: rgb(255 255 255 / 60%);
+  color: var(--ink-light);
 }
 
 .info-pill .dot {
@@ -92,14 +92,14 @@
 }
 
 .sec-links a {
-  color: rgb(255 255 255 / 35%);
+  color: var(--ink-lighter);
   font-size: 0.78rem;
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .sec-links a:hover {
-  color: rgb(255 255 255 / 70%);
+  color: var(--ink);
 }
 
 @media (width <= 480px) {

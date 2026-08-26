@@ -1,6 +1,6 @@
 .error-container {
   text-align: center;
-  color: white;
+  color: var(--ink);
   max-width: 600px;
   width: 100%;
   z-index: 1;
@@ -18,7 +18,7 @@
 .error-title {
   font-family: var(--font-secondary);
   font-size: 2rem;
-  color: white;
+  color: var(--ink);
   margin-bottom: 0.8rem;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .error-message {
-  color: rgb(255 255 255 / 65%);
+  color: var(--ink-light);
   font-size: 1rem;
   margin-bottom: 2rem;
   line-height: 1.6;
@@ -63,14 +63,14 @@
 }
 
 .btn-secondary-error {
-  background: rgb(255 255 255 / 8%);
-  color: rgb(255 255 255 / 80%);
-  border: 1px solid rgb(255 255 255 / 20%);
+  background: var(--bg-secondary);
+  color: var(--ink);
+  border: 1px solid var(--border);
 }
 
 .btn-secondary-error:hover {
-  background: rgb(255 255 255 / 15%);
-  color: white;
+  background: var(--bone);
+  color: var(--ink);
 }
 
 .error-illustration {
@@ -82,12 +82,12 @@
 .suggestions {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgb(255 255 255 / 10%);
+  border-top: 1px solid var(--border);
 }
 
 .suggestions-title {
   font-size: 0.85rem;
-  color: rgb(255 255 255 / 50%);
+  color: var(--ink-light);
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
