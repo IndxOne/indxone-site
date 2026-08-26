@@ -6,7 +6,7 @@
 }
 
 .bento-home {
-  align-items: start;
+  align-items: stretch;
 }
 
 .bento-card {
@@ -50,10 +50,20 @@
 
 .bento-home .metric-card .bc-stat.sm {
   min-width: 0;
-  background: rgb(255 255 255 / 5%);
+  background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: var(--space-sm) var(--space-md);
+}
+
+.metric-card .bc-title,
+.metric-card .bc-title.large {
+  color: var(--ink);
+}
+
+.metric-card .bc-desc,
+.metric-card .bc-stat span {
+  color: var(--ink-light);
 }
 
 .bento-card.mid-card {
