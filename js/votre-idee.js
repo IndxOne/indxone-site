@@ -9,6 +9,23 @@
   const status = document.querySelector('#idea-form-status');
   const projectTypeInput = form.querySelector('[data-serialized="project-type"]');
   const projectTypeChoices = [...form.querySelectorAll('input[name="project-type-choice"]')];
+  const submitButton = form.querySelector('button[type="submit"]');
+  const projectTypeMap = {
+    'mariage ou événement': 'mariage',
+    'site internet': 'site',
+    application: 'application',
+    'activité à développer': 'activite',
+    'idée encore floue': 'idee_floue',
+  };
+  const queryTypeMap = {
+    mariage: 'mariage ou événement',
+    site: 'site internet',
+    application: 'application',
+    activite: 'activité à développer',
+    organisation: 'application',
+    floue: 'idée encore floue',
+    idee_floue: 'idée encore floue',
+  };
   const branch = {
     title: form.querySelector('[data-branch-title]'),
     hint: form.querySelector('[data-branch-hint]'),
@@ -55,6 +72,12 @@
     const data = Object.fromEntries(new FormData(form).entries());
     data['project-type-choice'] = projectTypeChoices.find((choice) => choice.checked)?.value || '';
     try {
+      const previous = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+      data.started_at = previous?.started_at || new Date().toISOString();
+    } catch {
+      data.started_at = new Date().toISOString();
+    }
+    try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     } catch {}
   }
@@ -78,6 +101,72 @@
       else if (data[element.name] !== undefined) element.value = data[element.name];
     });
     syncBranch();
+  }
+
+  function applyQueryType() {
+    const type = new URLSearchParams(window.location.search).get('type');
+    const choiceValue = queryTypeMap[type];
+    const choice = projectTypeChoices.find((candidate) => candidate.value === choiceValue);
+    if (!choice) return;
+    choice.checked = true;
+    syncBranch();
+    saveDraft();
+  }
+
+  function getStartedAt() {
+    try {
+      const draft = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+      return draft?.started_at || new Date().toISOString();
+    } catch {
+      return new Date().toISOString();
+    }
+  }
+
+  function createSubmissionId() {
+    if (window.crypto?.randomUUID) return window.crypto.randomUUID();
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (char) => {
+      const random = Math.random() * 16 | 0;
+      const value = char === 'x' ? random : (random & 0x3 | 0x8);
+      return value.toString(16);
+    });
+  }
+
+  function buildPayload() {
+    const selected = projectTypeChoices.find((choice) => choice.checked)?.value || '';
+    const now = new Date().toISOString();
+    return {
+      form_version: '1.0.0',
+      submission_id: createSubmissionId(),
+      project_type: projectTypeMap[selected],
+      created_at: getStartedAt(),
+      contact: {
+        nom: form.elements.name.value,
+        prenom: form.elements.firstname.value,
+        email: form.elements.email.value,
+        phone: form.elements.phone.value,
+      },
+      consent: { accepted: form.elements.consent.checked, accepted_at: now },
+      responses: {
+        trunk: {
+          goal: form.elements.goal.value,
+          audience: form.elements.audience.value,
+          style: form.elements.style.value,
+          examples: form.elements.examples.value,
+          start: form.elements.start.value,
+          budget: form.elements.budget.value,
+          support: form.elements.support.value,
+        },
+        conditional: {
+          branch_one: form.elements['branch-one'].value,
+          branch_two: form.elements['branch-two'].value,
+        },
+      },
+      meta: {
+        origin: window.location.href,
+        referrer: document.referrer,
+        language: document.documentElement.lang || 'fr',
+      },
+    };
   }
 
   function syncBranch() {
@@ -175,7 +264,7 @@
     button.addEventListener('click', () => showStep(Math.max(0, currentStep - 1)));
   });
 
-  form.addEventListener('submit', (event) => {
+  form.addEventListener('submit', async (event) => {
     if (currentStep !== 6) {
       event.preventDefault();
       return;
@@ -185,11 +274,30 @@
       showStep(5);
       return;
     }
-    try { localStorage.removeItem(STORAGE_KEY); } catch {}
+    event.preventDefault();
+    clearError();
+    submitButton.disabled = true;
+    submitButton.textContent = 'Envoi en cours…';
+    status.textContent = 'Votre demande est en cours d’envoi…';
+    try {
+      const response = await fetch('/api/submit-idee', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(buildPayload()),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || result.fallback || !result.ok) throw new Error('submission_failed');
+      try { localStorage.removeItem(STORAGE_KEY); } catch {}
+      window.location.assign('/merci/');
+    } catch {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Envoyer ma demande';
+      showError('La demande n’a pas pu être envoyée. Vérifiez votre connexion puis réessayez.');
+    }
   });
 
   restoreDraft();
+  applyQueryType();
   syncBranch();
   showStep(0);
 })();
-

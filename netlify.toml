@@ -1,9 +1,28 @@
 [build]
   publish = "dist"
   command = "npm run build:all"
+  functions = "netlify/functions"
 
 [build.environment]
   NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/api/submit-idee"
+  to = "/.netlify/functions/submit-idea"
+  status = 200
+
+[[redirects]]
+  from = "/api/contact"
+  to = "/.netlify/functions/contact-api"
+  status = 200
+
+# API functions — POST only, JSON responses
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Content-Type = "application/json"
+    X-Content-Type-Options = "nosniff"
+    Cache-Control = "no-store"
 
 [[headers]]
   for = "/*"

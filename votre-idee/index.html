@@ -24,11 +24,12 @@
           <p class="idea-lead">Quelques questions pour comprendre ce que vous imaginez et vous proposer une direction utile. Il n'y a aucun engagement.</p>
         </div>
 
-        <form id="idea-form" class="idea-form" name="votre-idee" method="POST" action="/merci" data-netlify="true" netlify-honeypot="bot-field" novalidate>
-          <input type="hidden" name="form-name" value="votre-idee">
+        <form id="idea-form" class="idea-form" name="soumission-votre-idee" method="POST" action="/merci" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="soumission-votre-idee">
           <input type="hidden" name="bot-field" tabindex="-1">
-          <input type="hidden" name="form-version" value="1">
+          <input type="hidden" name="form-version" value="1.0.0">
           <input type="hidden" name="project-type" data-serialized="project-type">
+          <input type="text" name="company_name" tabindex="-1" autocomplete="off" aria-hidden="true" class="idea-honeypot">
 
           <div class="idea-progress">
             <div class="idea-progress-track"><span id="idea-progress-bar"></span></div>

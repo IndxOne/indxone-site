@@ -200,3 +200,17 @@ test.describe("INDXONE site — skip links", () => {
     await expect(skip).toHaveAttribute("href", "#main-content");
   });
 });
+
+test.describe("INDXONE site — votre idée", () => {
+  test("starts a mobile-first guided project journey", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/votre-idee/");
+
+    await expect(page).toHaveTitle(/Racontez votre idée/);
+    await expect(page.locator("#idea-title")).toHaveText("Racontez votre idée.");
+    await page.locator(".idea-choice", { hasText: "Une application" }).click();
+    await page.getByRole("button", { name: "Continuer" }).click();
+    await expect(page.locator('[data-step="1"]')).toBeVisible();
+    await expect(page.locator('[data-step="2"]')).toBeHidden();
+  });
+});

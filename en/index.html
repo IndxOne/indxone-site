@@ -135,7 +135,7 @@
             <li>Risk &amp; schedule management</li>
           </ul>
           <div class="service-price">From 4 days · <strong>Quote on request</strong></div>
-          <a href="#contact" class="service-link">Request →</a>
+          <a href="#contact" class="service-link">Get an estimate →</a>
         </div>
         <div class="service-card">
           <div class="service-icon">⚡</div>
@@ -151,7 +151,7 @@
             <li>Power BI dashboards</li>
           </ul>
           <div class="service-price">Process audit from <strong>€1,500</strong></div>
-          <a href="#contact" class="service-link">Request →</a>
+          <a href="#contact" class="service-link">Get an estimate →</a>
         </div>
         <div class="service-card">
           <div class="service-icon">🏗️</div>
@@ -163,34 +163,34 @@
             <li>Teams IP telephony</li>
             <li>GitLab CI/CD</li>
           </ul>
-          <div class="service-price">Infra audit from <strong>€990</strong></div>
-          <a href="#contact" class="service-link">Request →</a>
+          <div class="service-price">Infrastructure work: <strong>on request</strong></div>
+          <a href="#contact" class="service-link">Get an estimate →</a>
         </div>
         <div class="service-card featured">
           <div class="kit-badge">★ New</div>
-          <h3>Startup Launch Kit</h3>
+          <h3>Launch Kit</h3>
           <p>
-            From idea to first user in 8 weeks. I structure, tool up and steer your MVP to launch fast, without
-            technical debt. France &amp; French-speaking Africa.
+            From idea to first user in 8 weeks, with 6 intervention days spread across the period. I structure, equip
+            and steer your first version to launch fast, without technical debt. France &amp; French-speaking Africa.
           </p>
           <div class="kit-tiers" style="gap: 0.8rem; margin-top: 1rem">
             <div class="kit-tier">
-              <div class="kit-tier-name">Starter</div>
-              <div class="kit-tier-price">€1,200</div>
-              <div class="kit-tier-desc">Scoping + roadmap + stack</div>
+              <div class="kit-tier-name">Essential</div>
+              <div class="kit-tier-price">From €1,200</div>
+              <div class="kit-tier-desc">Scoping + roadmap + technical foundation</div>
             </div>
             <div class="kit-tier">
               <div class="kit-tier-name">Launch</div>
-              <div class="kit-tier-price">€3,500</div>
-              <div class="kit-tier-desc">Scoping + tools + 8 weeks</div>
+              <div class="kit-tier-price">On request</div>
+              <div class="kit-tier-desc">6 days spread across 8 weeks</div>
             </div>
             <div class="kit-tier">
               <div class="kit-tier-name">Full Pilot</div>
               <div class="kit-tier-price">On request</div>
-              <div class="kit-tier-desc">Go-live · tailored pricing</div>
+              <div class="kit-tier-desc">Enhanced steering through launch</div>
             </div>
           </div>
-          <a href="#contact" class="service-link" style="margin-top: 1rem">Book a call →</a>
+          <a href="#contact" class="service-link" style="margin-top: 1rem">Get an estimate →</a>
         </div>
       </div>
     </section>
@@ -557,37 +557,39 @@
           data-netlify="true"
           netlify-honeypot="bot-field"
           action="/en/merci"
+          aria-label="Contact form"
         >
           <input type="hidden" name="form-name" value="contact-indxone-en" />
           <input type="hidden" name="bot-field" />
+          <input type="hidden" name="company_name" tabindex="-1" />
           <div class="form-row">
             <div class="form-group">
-              <label>Last Name *</label><input type="text" name="nom" placeholder="Dupont" required />
+              <label for="nom-en">Last Name *</label><input type="text" id="nom-en" name="nom" placeholder="Dupont" required />
             </div>
             <div class="form-group">
-              <label>First Name</label><input type="text" name="prenom" placeholder="Jean" />
+              <label for="prenom-en">First Name</label><input type="text" id="prenom-en" name="prenom" placeholder="Jean" />
             </div>
           </div>
           <div class="form-group">
-            <label>Email *</label><input type="email" name="email" placeholder="jean.dupont@company.com" required />
+            <label for="email-en">Email *</label><input type="email" id="email-en" name="email" placeholder="jean.dupont@company.com" required />
           </div>
           <div class="form-group">
-            <label>Subject *</label>
-            <select name="sujet" required>
+            <label for="sujet-en">Subject *</label>
+            <select id="sujet-en" name="sujet" required>
               <option value="">— Select —</option>
               <option>AMOA / IT Architecture project</option>
               <option>Automation / No-code</option>
               <option>Infrastructure / Cloud</option>
               <option>ERP / CRM Integration</option>
-              <option>Startup Launch Kit</option>
+              <option>Launch Kit</option>
               <option>IndxOne Hub / steering cockpit</option>
               <option>Municipality website</option>
               <option>Other request</option>
             </select>
           </div>
           <div class="form-group">
-            <label>Message *</label
-            ><textarea name="message" placeholder="Describe your project or needs..." required></textarea>
+            <label for="message-en">Message *</label
+            ><textarea id="message-en" name="message" placeholder="Describe your project or needs..." required></textarea>
           </div>
           <div class="form-row">
             <div class="form-group">
@@ -645,7 +647,7 @@
               <li><a href="/en/#services">IT Architect &amp; AMOA</a></li>
               <li><a href="/en/#services">No-code Automation</a></li>
               <li><a href="/en/#services">Infrastructure &amp; Cloud</a></li>
-              <li><a href="/en/#services">Startup Launch Kit</a></li>
+              <li><a href="/en/#services">Launch Kit</a></li>
               <li><a href="/en/collectivites">Municipality websites</a></li>
             </ul>
           </div>

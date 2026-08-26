@@ -10,6 +10,8 @@
 /projets/         /projets/index.html  200
 /merci            /merci/          301
 /merci/           /merci/index.html  200
+/votre-idee       /votre-idee/       301
+/votre-idee/      /votre-idee/index.html  200
 /mentions-legales  /mentions-legales/  301
 /politique-confidentialite  /politique-confidentialite/  301
 

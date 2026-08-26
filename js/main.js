@@ -112,37 +112,129 @@ function initMobileMenu() {
 }
 
 // ============================================================
-// Form Enhancements
+// Form Enhancements (AJAX + error/success states)
 // ============================================================
 function initFormEnhancements() {
-  const forms = document.querySelectorAll('form[data-netlify]');
-  
-  forms.forEach((form) => {
-    const isEnglish = document.documentElement.lang === 'en';
-    const loadingText = isEnglish
-      ? '<span class="spinner"></span> Sending...'
-      : '<span class="spinner"></span> Envoi en cours...';
-    
-    const submitBtn = form.querySelector('button[type="submit"]') || form.querySelector('input[type="submit"]');
-    if (submitBtn) {
-      const originalText = submitBtn.innerHTML || submitBtn.value;
-      
-      form.addEventListener('submit', function() {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = loadingText;
-        submitBtn.style.opacity = '0.7';
-      });
-      
-      form.addEventListener('error', function() {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-        submitBtn.style.opacity = '1';
-      });
+  var forms = document.querySelectorAll('form[data-netlify]');
+
+  forms.forEach(function (form) {
+    var isEnglish = document.documentElement.lang === 'en';
+    var loadingText = isEnglish
+      ? '<span class="spinner"></span> Sending\u2026'
+      : '<span class="spinner"></span> Envoi en cours\u2026';
+    var successText = isEnglish ? 'Sent \u2713' : 'Envoy\u00e9 \u2713';
+    var errorText = isEnglish ? 'Error \u2014 retry' : 'Erreur \u2014 r\u00e9essayer';
+
+    var submitBtn = form.querySelector('button[type="submit"]') || form.querySelector('input[type="submit"]');
+    if (!submitBtn) return;
+
+    var originalText = submitBtn.innerHTML || submitBtn.value;
+
+    // Inject hidden timing field for antispam
+    var startedField = form.querySelector('input[name="started_at"]');
+    if (!startedField) {
+      startedField = document.createElement('input');
+      startedField.type = 'hidden';
+      startedField.name = 'started_at';
+      form.appendChild(startedField);
+    }
+    startedField.value = new Date().toISOString();
+
+    // Inject hidden lang field
+    var langField = form.querySelector('input[name="lang"]');
+    if (!langField) {
+      langField = document.createElement('input');
+      langField.type = 'hidden';
+      langField.name = 'lang';
+      form.appendChild(langField);
+    }
+    langField.value = isEnglish ? 'en' : 'fr';
+
+    // Remove display:none honeypot visual (kept hidden)
+    var botField = form.querySelector('input[name="bot_field"]');
+    if (botField) {
+      botField.setAttribute('tabindex', '-1');
+      botField.setAttribute('autofocus', 'false');
     }
 
+    form.addEventListener('submit', function (e) {
+      // Prevent native submission — use AJAX
+      e.preventDefault();
+
+      // Guard: already submitting
+      if (submitBtn.disabled) return;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = loadingText;
+      submitBtn.style.opacity = '0.7';
+
+      // Clear previous errors
+      var prevError = form.querySelector('.form-error');
+      if (prevError) prevError.remove();
+
+      // Collect form data
+      var formData = new FormData(form);
+      var payload = {};
+      formData.forEach(function (value, key) {
+        payload[key] = value;
+      });
+
+      // Determine endpoint
+      var endpoint = '/api/contact';
+
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+        .then(function (resp) {
+          if (!resp.ok) {
+            return resp.json().catch(function () {
+              return { error: 'Erreur serveur' };
+            }).then(function (data) {
+              throw new Error(data.error || data.details ? data.details.join(', ') : 'Erreur ' + resp.status);
+            });
+          }
+          return resp.json();
+        })
+        .then(function () {
+          // Success
+          submitBtn.innerHTML = successText;
+          submitBtn.style.opacity = '1';
+          submitBtn.style.background = 'var(--green, #2a7a4b)';
+
+          // Redirect to thank-you page after short delay
+          var redirectUrl = isEnglish ? '/en/merci' : '/merci';
+          setTimeout(function () {
+            window.location.href = redirectUrl;
+          }, 800);
+        })
+        .catch(function (err) {
+          // Error — re-enable form
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = errorText;
+          submitBtn.style.opacity = '1';
+          submitBtn.style.background = 'var(--red, #c0392b)';
+
+          // Show error message below button
+          var errorDiv = document.createElement('div');
+          errorDiv.className = 'form-error';
+          errorDiv.setAttribute('role', 'alert');
+          errorDiv.textContent = err.message || (isEnglish
+            ? 'An error occurred. Please try again or contact us directly.'
+            : 'Une erreur est survenue. R\u00e9essayez ou contactez-nous directement.');
+          form.appendChild(errorDiv);
+
+          // Reset button after 4s
+          setTimeout(function () {
+            submitBtn.innerHTML = originalText;
+            submitBtn.style.background = '';
+          }, 4000);
+        });
+    });
+
     // Auto-fill current year if needed
-    const yearInputs = form.querySelectorAll('input[name="year"]');
-    yearInputs.forEach((input) => {
+    var yearInputs = form.querySelectorAll('input[name="year"]');
+    yearInputs.forEach(function (input) {
       if (!input.value) {
         input.value = new Date().getFullYear();
       }

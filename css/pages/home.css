@@ -186,6 +186,12 @@
   color: var(--gold-light);
 }
 
+.kit-pricing-note {
+  color: rgb(255 255 255 / 72%);
+  font-size: 0.72rem;
+  margin: var(--space-md) 0 0;
+}
+
 .service-tools-note {
   color: var(--ink-light) !important;
   font-size: 0.72rem !important;

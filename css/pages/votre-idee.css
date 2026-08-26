@@ -242,6 +242,14 @@
   font-size: 0.8rem;
 }
 
+.idea-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 @media (width <= 600px) {
   .idea-shell {
     width: min(100% - 1rem, 760px);
@@ -280,4 +288,3 @@
     transition: none;
   }
 }
-
