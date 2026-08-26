@@ -19,26 +19,6 @@ test.describe("INDXONE site — homepage", () => {
     await expect(page).toHaveURL(/projets/);
   });
 
-  test("dark mode toggle works", async ({ page }) => {
-    await page.goto("/");
-    const toggle = page.locator(".theme-toggle");
-    await expect(toggle).toBeVisible();
-
-    // Initially light
-    let theme = await page.locator("html").getAttribute("data-theme");
-    expect(theme).toBe("light");
-
-    // Click — should become dark
-    await toggle.click();
-    theme = await page.locator("html").getAttribute("data-theme");
-    expect(theme).toBe("dark");
-
-    // Click again — back to light
-    await toggle.click();
-    theme = await page.locator("html").getAttribute("data-theme");
-    expect(theme).toBe("light");
-  });
-
   test("contact form has required fields", async ({ page }) => {
     await page.goto("/");
     const form = page.locator(".contact-form");

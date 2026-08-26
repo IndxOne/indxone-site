@@ -5,12 +5,6 @@ import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 // This avoids polluting the global DOM with the full script.
 // ---------------------------------------------------------------------------
 
-function getCurrentTheme() {
-  const savedTheme = localStorage.getItem("theme");
-  const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  return savedTheme || (systemPrefersDark ? "dark" : "light");
-}
-
 function animateValue(element) {
   const text = element.textContent;
   const hasNumber = /\d+/.test(text);
@@ -72,33 +66,6 @@ function isInViewport(element) {
 // ---------------------------------------------------------------------------
 // Tests
 // ---------------------------------------------------------------------------
-
-function mockMatchMedia(prefersDark) {
-  const mql = { matches: prefersDark, addEventListener: vi.fn(), removeEventListener: vi.fn() };
-  window.matchMedia = vi.fn().mockReturnValue(mql);
-}
-
-describe("getCurrentTheme()", () => {
-  beforeEach(() => {
-    localStorage.clear();
-    mockMatchMedia(false);
-  });
-
-  it("returns the saved theme from localStorage when present", () => {
-    localStorage.setItem("theme", "dark");
-    expect(getCurrentTheme()).toBe("dark");
-  });
-
-  it("falls back to system preference when localStorage is empty", () => {
-    mockMatchMedia(true);
-    expect(getCurrentTheme()).toBe("dark");
-  });
-
-  it("returns 'light' when nothing is saved and system does not prefer dark", () => {
-    localStorage.removeItem("theme");
-    expect(getCurrentTheme()).toBe("light");
-  });
-});
 
 describe("animateValue()", () => {
   beforeEach(() => {

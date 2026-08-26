@@ -6,7 +6,7 @@
 }
 
 .bento-home {
-  align-items: start;
+  align-items: stretch;
 }
 
 .bento-card {
@@ -50,10 +50,20 @@
 
 .bento-home .metric-card .bc-stat.sm {
   min-width: 0;
-  background: rgb(255 255 255 / 5%);
+  background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: var(--space-sm) var(--space-md);
+}
+
+.metric-card .bc-title,
+.metric-card .bc-title.large {
+  color: var(--ink);
+}
+
+.metric-card .bc-desc,
+.metric-card .bc-stat span {
+  color: var(--ink-light);
 }
 
 .bento-card.mid-card {
@@ -96,7 +106,7 @@
 
 .bc-tag.freelance {
   background: rgb(196 95 77 / 20%);
-  color: var(--gold-light);
+  color: var(--gold);
   border: 1px solid rgb(196 95 77 / 30%);
 }
 
@@ -142,7 +152,7 @@
   display: block;
   font-size: 1.6rem;
   font-weight: 700;
-  color: var(--gold-light);
+  color: var(--gold);
   line-height: 1;
   margin-bottom: var(--space-xs);
 }
@@ -153,7 +163,7 @@
 
 .bc-stat span {
   font-size: 0.68rem;
-  color: rgb(255 255 255 / 40%);
+  color: rgb(255 255 255 / 55%);
 }
 
 .bc-chips {
@@ -190,7 +200,7 @@
   padding: var(--space-md) var(--space-lg);
   margin-top: var(--space-md);
   font-size: 0.78rem;
-  color: var(--gold-light);
+  color: var(--gold);
 }
 
 .bc-impact strong {
@@ -199,7 +209,7 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: var(--space-xs);
-  opacity: 0.6;
+  opacity: 0.85;
 }
 
 .full-card-left {
@@ -223,7 +233,7 @@
   display: block;
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--green-light);
+  color: var(--green);
 }
 
 .full-stat-box span {
@@ -231,58 +241,58 @@
   color: rgb(255 255 255 / 40%);
 }
 
-[data-theme="light"] .bento-card.mid-card,
-[data-theme="light"] .bento-card.mid-dark,
-[data-theme="light"] .bento-card.wide-card,
-[data-theme="light"] .bento-card.full-card {
+.bento-card.mid-card,
+.bento-card.mid-dark,
+.bento-card.wide-card,
+.bento-card.full-card {
   background: var(--card-bg);
   border-color: rgb(11 23 32 / 10%);
   box-shadow: var(--shadow-sm);
 }
 
-[data-theme="light"] .bento-card.mid-card .bc-title,
-[data-theme="light"] .bento-card.mid-dark .bc-title,
-[data-theme="light"] .bento-card.wide-card .bc-title,
-[data-theme="light"] .bento-card.full-card .bc-title,
-[data-theme="light"] .bento-card.mid-card .bc-title.large,
-[data-theme="light"] .bento-card.mid-dark .bc-title.large,
-[data-theme="light"] .bento-card.wide-card .bc-title.large,
-[data-theme="light"] .bento-card.full-card .bc-title.large {
+.bento-card.mid-card .bc-title,
+.bento-card.mid-dark .bc-title,
+.bento-card.wide-card .bc-title,
+.bento-card.full-card .bc-title,
+.bento-card.mid-card .bc-title.large,
+.bento-card.mid-dark .bc-title.large,
+.bento-card.wide-card .bc-title.large,
+.bento-card.full-card .bc-title.large {
   color: var(--ink);
 }
 
-[data-theme="light"] .bento-card.mid-card .bc-desc,
-[data-theme="light"] .bento-card.mid-dark .bc-desc,
-[data-theme="light"] .bento-card.wide-card .bc-desc,
-[data-theme="light"] .bento-card.full-card .bc-desc,
-[data-theme="light"] .bento-card.mid-card .bc-stat span,
-[data-theme="light"] .bento-card.mid-dark .bc-stat span,
-[data-theme="light"] .bento-card.wide-card .bc-stat span,
-[data-theme="light"] .bento-card.full-card .bc-stat span,
-[data-theme="light"] .bento-card.mid-card .full-stat-box span,
-[data-theme="light"] .bento-card.mid-dark .full-stat-box span,
-[data-theme="light"] .bento-card.wide-card .full-stat-box span,
-[data-theme="light"] .bento-card.full-card .full-stat-box span {
+.bento-card.mid-card .bc-desc,
+.bento-card.mid-dark .bc-desc,
+.bento-card.wide-card .bc-desc,
+.bento-card.full-card .bc-desc,
+.bento-card.mid-card .bc-stat span,
+.bento-card.mid-dark .bc-stat span,
+.bento-card.wide-card .bc-stat span,
+.bento-card.full-card .bc-stat span,
+.bento-card.mid-card .full-stat-box span,
+.bento-card.mid-dark .full-stat-box span,
+.bento-card.wide-card .full-stat-box span,
+.bento-card.full-card .full-stat-box span {
   color: var(--ink-light);
 }
 
-[data-theme="light"] .bento-card.mid-card .bc-tag.cdi,
-[data-theme="light"] .bento-card.mid-dark .bc-tag.cdi,
-[data-theme="light"] .bento-card.wide-card .bc-tag.cdi,
-[data-theme="light"] .bento-card.full-card .bc-tag.cdi,
-[data-theme="light"] .bento-card.mid-card .bc-chip,
-[data-theme="light"] .bento-card.mid-dark .bc-chip,
-[data-theme="light"] .bento-card.wide-card .bc-chip,
-[data-theme="light"] .bento-card.full-card .bc-chip {
+.bento-card.mid-card .bc-tag.cdi,
+.bento-card.mid-dark .bc-tag.cdi,
+.bento-card.wide-card .bc-tag.cdi,
+.bento-card.full-card .bc-tag.cdi,
+.bento-card.mid-card .bc-chip,
+.bento-card.mid-dark .bc-chip,
+.bento-card.wide-card .bc-chip,
+.bento-card.full-card .bc-chip {
   background: var(--bg-secondary);
   border-color: var(--border);
   color: var(--ink-light);
 }
 
-[data-theme="light"] .bento-card.mid-card .bc-number,
-[data-theme="light"] .bento-card.mid-dark .bc-number,
-[data-theme="light"] .bento-card.wide-card .bc-number,
-[data-theme="light"] .bento-card.full-card .bc-number {
+.bento-card.mid-card .bc-number,
+.bento-card.mid-dark .bc-number,
+.bento-card.wide-card .bc-number,
+.bento-card.full-card .bc-number {
   color: rgb(196 95 77 / 18%);
 }
 
