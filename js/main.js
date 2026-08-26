@@ -7,7 +7,6 @@
 // DOM Ready
 // ============================================================
 document.addEventListener('DOMContentLoaded', function() {
-  initTheme();
   initRevealAnimations();
   initMobileMenu();
   initFormEnhancements();
@@ -21,77 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
-
-// ============================================================
-// Theme Management (Dark Mode)
-// ============================================================
-function initTheme() {
-  const themeToggle = document.querySelector('.theme-toggle');
-  
-  if (!themeToggle) return;
-
-  // Load saved theme or use system preference
-  const savedTheme = localStorage.getItem('theme');
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
-  // Set initial theme
-  let currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-  setTheme(currentTheme);
-
-  // Update toggle button
-  updateThemeToggle(currentTheme);
-
-  // Toggle on click
-  themeToggle.addEventListener('click', function() {
-    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    setTheme(currentTheme);
-    updateThemeToggle(currentTheme);
-    localStorage.setItem('theme', currentTheme);
-  });
-
-  // Listen for system theme changes
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (!savedTheme) {
-      // Only auto-switch if no saved preference
-      currentTheme = e.matches ? 'dark' : 'light';
-      setTheme(currentTheme);
-      updateThemeToggle(currentTheme);
-    }
-  });
-}
-
-function setTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  
-  // For immediate effect on elements that need it
-  if (theme === 'dark') {
-    document.documentElement.classList.add('dark-mode');
-    document.documentElement.classList.remove('light-mode');
-  } else {
-    document.documentElement.classList.remove('dark-mode');
-    document.documentElement.classList.add('light-mode');
-  }
-  
-  // Dispatch event for other components
-  window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
-}
-
-function updateThemeToggle(theme) {
-  const toggle = document.querySelector('.theme-toggle');
-  if (toggle) {
-    toggle.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
-    toggle.setAttribute('aria-label', theme === 'dark' ? 'Passer en mode clair' : 'Passer en mode sombre');
-  }
-}
-
-// ============================================================
-// Theme Helper - Check current theme
-// ============================================================
-function getCurrentTheme() {
-  const savedTheme = localStorage.getItem('theme');
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  return savedTheme || (systemPrefersDark ? 'dark' : 'light');
-}
 
 // ============================================================
 // Reveal Animations

@@ -231,58 +231,58 @@
   color: rgb(255 255 255 / 40%);
 }
 
-[data-theme="light"] .bento-card.mid-card,
-[data-theme="light"] .bento-card.mid-dark,
-[data-theme="light"] .bento-card.wide-card,
-[data-theme="light"] .bento-card.full-card {
+.bento-card.mid-card,
+.bento-card.mid-dark,
+.bento-card.wide-card,
+.bento-card.full-card {
   background: var(--card-bg);
   border-color: rgb(11 23 32 / 10%);
   box-shadow: var(--shadow-sm);
 }
 
-[data-theme="light"] .bento-card.mid-card .bc-title,
-[data-theme="light"] .bento-card.mid-dark .bc-title,
-[data-theme="light"] .bento-card.wide-card .bc-title,
-[data-theme="light"] .bento-card.full-card .bc-title,
-[data-theme="light"] .bento-card.mid-card .bc-title.large,
-[data-theme="light"] .bento-card.mid-dark .bc-title.large,
-[data-theme="light"] .bento-card.wide-card .bc-title.large,
-[data-theme="light"] .bento-card.full-card .bc-title.large {
+.bento-card.mid-card .bc-title,
+.bento-card.mid-dark .bc-title,
+.bento-card.wide-card .bc-title,
+.bento-card.full-card .bc-title,
+.bento-card.mid-card .bc-title.large,
+.bento-card.mid-dark .bc-title.large,
+.bento-card.wide-card .bc-title.large,
+.bento-card.full-card .bc-title.large {
   color: var(--ink);
 }
 
-[data-theme="light"] .bento-card.mid-card .bc-desc,
-[data-theme="light"] .bento-card.mid-dark .bc-desc,
-[data-theme="light"] .bento-card.wide-card .bc-desc,
-[data-theme="light"] .bento-card.full-card .bc-desc,
-[data-theme="light"] .bento-card.mid-card .bc-stat span,
-[data-theme="light"] .bento-card.mid-dark .bc-stat span,
-[data-theme="light"] .bento-card.wide-card .bc-stat span,
-[data-theme="light"] .bento-card.full-card .bc-stat span,
-[data-theme="light"] .bento-card.mid-card .full-stat-box span,
-[data-theme="light"] .bento-card.mid-dark .full-stat-box span,
-[data-theme="light"] .bento-card.wide-card .full-stat-box span,
-[data-theme="light"] .bento-card.full-card .full-stat-box span {
+.bento-card.mid-card .bc-desc,
+.bento-card.mid-dark .bc-desc,
+.bento-card.wide-card .bc-desc,
+.bento-card.full-card .bc-desc,
+.bento-card.mid-card .bc-stat span,
+.bento-card.mid-dark .bc-stat span,
+.bento-card.wide-card .bc-stat span,
+.bento-card.full-card .bc-stat span,
+.bento-card.mid-card .full-stat-box span,
+.bento-card.mid-dark .full-stat-box span,
+.bento-card.wide-card .full-stat-box span,
+.bento-card.full-card .full-stat-box span {
   color: var(--ink-light);
 }
 
-[data-theme="light"] .bento-card.mid-card .bc-tag.cdi,
-[data-theme="light"] .bento-card.mid-dark .bc-tag.cdi,
-[data-theme="light"] .bento-card.wide-card .bc-tag.cdi,
-[data-theme="light"] .bento-card.full-card .bc-tag.cdi,
-[data-theme="light"] .bento-card.mid-card .bc-chip,
-[data-theme="light"] .bento-card.mid-dark .bc-chip,
-[data-theme="light"] .bento-card.wide-card .bc-chip,
-[data-theme="light"] .bento-card.full-card .bc-chip {
+.bento-card.mid-card .bc-tag.cdi,
+.bento-card.mid-dark .bc-tag.cdi,
+.bento-card.wide-card .bc-tag.cdi,
+.bento-card.full-card .bc-tag.cdi,
+.bento-card.mid-card .bc-chip,
+.bento-card.mid-dark .bc-chip,
+.bento-card.wide-card .bc-chip,
+.bento-card.full-card .bc-chip {
   background: var(--bg-secondary);
   border-color: var(--border);
   color: var(--ink-light);
 }
 
-[data-theme="light"] .bento-card.mid-card .bc-number,
-[data-theme="light"] .bento-card.mid-dark .bc-number,
-[data-theme="light"] .bento-card.wide-card .bc-number,
-[data-theme="light"] .bento-card.full-card .bc-number {
+.bento-card.mid-card .bc-number,
+.bento-card.mid-dark .bc-number,
+.bento-card.wide-card .bc-number,
+.bento-card.full-card .bc-number {
   color: rgb(196 95 77 / 18%);
 }
 

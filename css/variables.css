@@ -1,15 +1,20 @@
 :root {
-  --ink: #172B3A;
-  --ink-light: #52616B;
+  /* Valeurs extraites de la maquette validée (26/08/2026) : ivoire chaud,
+     encre presque noire, orange terracotta CTA + orange doux secondaire,
+     accents pêche et moutarde en petite touche. */
+  --ink: #14202B;
+  --ink-light: #4A5560;
   --ink-lighter: #82909A;
 
-  --bone: #F7F8F6;
+  --bone: #F8F3EC;
   --white: #FFFFFF;
   --black: #000000;
 
-  --gold: #D66A45;
-  --gold-light: #E7A38D;
+  --gold: #C8603A;
+  --gold-light: #DD8562;
   --gold-lighter: #FBE9E3;
+  --peach-tint: #F3E5D3;
+  --accent-yellow: #EBC16C;
 
   --blue: #176B87;
   --blue-mid: #2A86A3;
