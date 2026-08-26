@@ -106,7 +106,7 @@
 
 .bc-tag.freelance {
   background: rgb(196 95 77 / 20%);
-  color: var(--gold-light);
+  color: var(--gold);
   border: 1px solid rgb(196 95 77 / 30%);
 }
 
@@ -200,7 +200,7 @@
   padding: var(--space-md) var(--space-lg);
   margin-top: var(--space-md);
   font-size: 0.78rem;
-  color: var(--gold-light);
+  color: var(--gold);
 }
 
 .bc-impact strong {
@@ -209,7 +209,7 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: var(--space-xs);
-  opacity: 0.6;
+  opacity: 0.85;
 }
 
 .full-card-left {

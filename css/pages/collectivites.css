@@ -179,8 +179,8 @@
 }
 
 .pb.gold {
-  background: var(--gold-light);
-  color: #7a5a00;
+  background: var(--gold-lighter);
+  color: var(--gold);
 }
 
 .pb.blue {

@@ -111,6 +111,14 @@
   color: var(--ink);
 }
 
+.dispo-item .value.green {
+  color: var(--green);
+}
+
+.dispo-item .value.gold {
+  color: var(--gold);
+}
+
 .services,
 .corporate-section,
 .contact {
