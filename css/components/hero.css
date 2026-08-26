@@ -90,6 +90,10 @@
   width: fit-content;
 }
 
+.hero-stats-compact {
+  grid-template-columns: repeat(3, auto);
+}
+
 .hero-stat strong {
   display: block;
   font-size: 1.8rem;
