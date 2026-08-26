@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Racontez votre idée — INDXONE</title>
+    <meta name="description" content="Parlez-nous de votre mariage, activité, site, application ou idée. Quelques questions pour clarifier votre projet, sans engagement.">
+    <link rel="canonical" href="https://indxone.com/votre-idee">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body class="idea-page">
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    <!--#include file="_includes/nav.html" -->
+
+    <main id="main-content">
+      <section class="idea-shell" aria-labelledby="idea-title">
+        <div class="idea-intro">
+          <p class="section-label">Parlons de votre projet</p>
+          <h1 id="idea-title">Racontez votre idée.</h1>
+          <p class="idea-lead">Quelques questions pour comprendre ce que vous imaginez et vous proposer une direction utile. Il n'y a aucun engagement.</p>
+        </div>
+
+        <form id="idea-form" class="idea-form" name="votre-idee" method="POST" action="/merci" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="votre-idee">
+          <input type="hidden" name="bot-field" tabindex="-1">
+          <input type="hidden" name="form-version" value="1">
+          <input type="hidden" name="project-type" data-serialized="project-type">
+
+          <div class="idea-progress">
+            <div class="idea-progress-track"><span id="idea-progress-bar"></span></div>
+            <p id="idea-progress-label" class="idea-progress-label" aria-live="polite">Étape 1 sur 6</p>
+          </div>
+
+          <fieldset class="idea-step" data-step="0">
+            <legend>Que souhaitez-vous créer ?</legend>
+            <p class="step-hint">Choisissez le point de départ qui vous ressemble le plus.</p>
+            <div class="idea-choice-grid">
+              <label class="idea-choice"><input type="radio" name="project-type-choice" value="mariage ou événement" required><span><strong>Un mariage ou événement</strong><small>Un site pour informer, partager et faire vivre un moment.</small></span></label>
+              <label class="idea-choice"><input type="radio" name="project-type-choice" value="site internet"><span><strong>Un site internet</strong><small>Présenter une activité, une association ou un projet.</small></span></label>
+              <label class="idea-choice"><input type="radio" name="project-type-choice" value="application"><span><strong>Une application</strong><small>Simplifier une action pour vos clients, équipes ou membres.</small></span></label>
+              <label class="idea-choice"><input type="radio" name="project-type-choice" value="activité à développer"><span><strong>Une activité à développer</strong><small>Clarifier votre offre et les premiers outils utiles.</small></span></label>
+              <label class="idea-choice"><input type="radio" name="project-type-choice" value="idée encore floue"><span><strong>Une idée encore floue</strong><small>Mettre des mots sur un besoin avant de choisir la solution.</small></span></label>
+            </div>
+            <p class="idea-error" data-error="project-type" role="alert"></p>
+            <button type="button" class="btn-primary idea-next">Continuer</button>
+          </fieldset>
+
+          <fieldset class="idea-step" data-step="1" hidden>
+            <legend>Commençons simplement.</legend>
+            <p class="step-hint">Les grandes lignes suffisent à ce stade.</p>
+            <div class="form-group"><label for="idea-goal">Que souhaitez-vous créer ou améliorer ? *</label><textarea id="idea-goal" name="goal" rows="4" required placeholder="Ex. Un espace simple pour présenter mon activité et recevoir des demandes."></textarea></div>
+            <div class="form-group"><label for="idea-audience">À qui cela servira-t-il ? *</label><input id="idea-audience" type="text" name="audience" required placeholder="Ex. Mes clients, des invités, une équipe…"></div>
+            <div class="idea-nav"><button type="button" class="btn-outline idea-back">Retour</button><button type="button" class="btn-primary idea-next">Continuer</button></div>
+          </fieldset>
+
+          <fieldset class="idea-step" data-step="2" hidden>
+            <legend data-branch-title>Quelques précisions.</legend>
+            <p class="step-hint" data-branch-hint>Ces réponses nous aideront à comprendre votre contexte.</p>
+            <div class="form-group"><label for="branch-one" data-branch-one-label>Quelle est la priorité aujourd'hui ? *</label><textarea id="branch-one" name="branch-one" rows="3" required></textarea></div>
+            <div class="form-group"><label for="branch-two" data-branch-two-label>À quoi reconnaîtra-t-on que le projet est réussi ? *</label><textarea id="branch-two" name="branch-two" rows="3" required></textarea></div>
+            <div class="idea-nav"><button type="button" class="btn-outline idea-back">Retour</button><button type="button" class="btn-primary idea-next">Continuer</button></div>
+          </fieldset>
+
+          <fieldset class="idea-step" data-step="3" hidden>
+            <legend>Votre vision.</legend>
+            <p class="step-hint">Il n'y a pas de mauvaise réponse.</p>
+            <div class="form-group"><label for="idea-style">Quelle ambiance imaginez-vous ? *</label><input id="idea-style" type="text" name="style" required placeholder="Ex. Sobre, chaleureuse, très simple à utiliser…"></div>
+            <div class="form-group"><label for="idea-examples">Avez-vous des exemples que vous aimez ?</label><textarea id="idea-examples" name="examples" rows="3" placeholder="Un lien ou quelques mots suffisent."></textarea></div>
+            <div class="form-group"><label for="idea-start">Quand souhaitez-vous commencer ou lancer le projet ? *</label><select id="idea-start" name="start" required><option value="">Sélectionnez une option</option><option>J'explore encore</option><option>Dans le mois</option><option>Dans les 3 mois</option><option>Ce trimestre</option><option>À une date précise</option></select></div>
+            <div class="idea-nav"><button type="button" class="btn-outline idea-back">Retour</button><button type="button" class="btn-primary idea-next">Continuer</button></div>
+          </fieldset>
+
+          <fieldset class="idea-step" data-step="4" hidden>
+            <legend>Comment avancer ensemble ?</legend>
+            <p class="step-hint">Une indication suffit ; elle pourra évoluer.</p>
+            <div class="form-group"><label for="idea-budget">Quelle enveloppe envisagez-vous ?</label><select id="idea-budget" name="budget"><option value="">Je préfère en parler</option><option>Moins de 1 500 €</option><option>1 500 € à 5 000 €</option><option>5 000 € à 15 000 €</option><option>Plus de 15 000 €</option></select></div>
+            <div class="form-group"><label for="idea-support">Jusqu'où souhaitez-vous être accompagné(e) ? *</label><select id="idea-support" name="support" required><option value="">Sélectionnez une option</option><option>Clarifier l'idée et démarrer</option><option>Construire une première version</option><option>Jusqu'à la mise en ligne</option><option>Je ne sais pas encore</option></select></div>
+            <div class="idea-nav"><button type="button" class="btn-outline idea-back">Retour</button><button type="button" class="btn-primary idea-next">Continuer</button></div>
+          </fieldset>
+
+          <fieldset class="idea-step" data-step="5" hidden>
+            <legend>Comment vous recontacter ?</legend>
+            <p class="step-hint">Nous utiliserons ces informations uniquement pour répondre à votre demande.</p>
+            <div class="form-row"><div class="form-group"><label for="idea-name">Nom *</label><input id="idea-name" type="text" name="name" required autocomplete="family-name"></div><div class="form-group"><label for="idea-firstname">Prénom</label><input id="idea-firstname" type="text" name="firstname" autocomplete="given-name"></div></div>
+            <div class="form-group"><label for="idea-email">Email *</label><input id="idea-email" type="email" name="email" required autocomplete="email" placeholder="vous@exemple.fr"></div>
+            <div class="form-group"><label for="idea-phone">Téléphone (facultatif)</label><input id="idea-phone" type="tel" name="phone" autocomplete="tel"></div>
+            <div class="form-check"><input id="idea-consent" type="checkbox" name="consent" required><label for="idea-consent">J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="/politique-confidentialite">politique de confidentialité</a>. *</label></div>
+            <p class="idea-error" data-error="contact" role="alert"></p>
+            <div class="idea-nav"><button type="button" class="btn-outline idea-back">Retour</button><button type="button" class="btn-primary idea-next">Voir le récapitulatif</button></div>
+          </fieldset>
+
+          <section class="idea-review" data-step="6" hidden aria-labelledby="review-title">
+            <h2 id="review-title">Votre récapitulatif</h2>
+            <p class="step-hint">Relisez tranquillement avant l'envoi.</p>
+            <dl id="idea-summary" class="idea-summary"></dl>
+            <p class="idea-review-note">Vous pourrez préciser les détails lors du premier échange.</p>
+            <div class="idea-nav"><button type="button" class="btn-outline idea-back">Modifier</button><button type="submit" class="btn-primary">Envoyer ma demande</button></div>
+          </section>
+
+          <p id="idea-form-status" class="idea-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <!--#include file="_includes/footer.html" -->
+    <!--#include file="_includes/analytics.html" -->
+    <script src="/js/votre-idee.js" defer></script>
+  </body>
+</html>

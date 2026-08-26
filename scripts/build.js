@@ -29,6 +29,7 @@ const HTML_DIRS = [
   { src: 'collectivites', dest: 'collectivites' },
   { src: 'projets', dest: 'projets' },
   { src: 'merci', dest: 'merci' },
+  { src: 'votre-idee', dest: 'votre-idee' },
   { src: 'accessibilite', dest: 'accessibilite' },
   { src: 'en', dest: 'en' },
 ];
