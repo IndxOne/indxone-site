@@ -187,7 +187,7 @@
 }
 
 .service-tools-note {
-  color: var(--ink-lighter) !important;
+  color: var(--ink-light) !important;
   font-size: 0.72rem !important;
   margin-top: var(--space-lg);
   margin-bottom: var(--space-md);
@@ -223,7 +223,7 @@
 .kit-tier-name {
   font-size: 0.78rem;
   font-weight: 600;
-  color: var(--gold-light);
+  color: #E5987A;
   margin-bottom: var(--space-xs);
 }
 

@@ -28,7 +28,7 @@
 }
 
 .subtitle strong {
-  color: var(--gold-light);
+  color: var(--gold);
   font-weight: 600;
 }
 
@@ -92,7 +92,7 @@
 }
 
 .sec-links a {
-  color: var(--ink-lighter);
+  color: var(--ink-light);
   font-size: 0.78rem;
   text-decoration: none;
   transition: color 0.2s;

@@ -18,7 +18,7 @@
 }
 
 .demo-url {
-  color: var(--blue-mid);
+  color: var(--blue);
   font-weight: 500;
 }
 
@@ -420,7 +420,7 @@
   display: inline-block;
   background: rgb(78 133 107 / 36%);
   border: 1px solid rgb(78 133 107 / 56%);
-  color: var(--green-light);
+  color: var(--white);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -576,7 +576,7 @@
 }
 
 .cta-final p {
-  color: rgb(255 255 255 / 70%);
+  color: rgb(255 255 255 / 85%);
   margin-bottom: 2rem;
 }
 

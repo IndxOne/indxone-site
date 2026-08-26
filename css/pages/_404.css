@@ -23,7 +23,7 @@
 }
 
 .error-title em {
-  color: var(--gold-light);
+  color: var(--gold);
   font-style: italic;
 }
 
@@ -101,7 +101,7 @@
 }
 
 .suggestions-list a {
-  color: rgb(196 95 77 / 80%);
+  color: var(--gold);
   text-decoration: none;
   font-size: 0.85rem;
   transition: color 0.2s;

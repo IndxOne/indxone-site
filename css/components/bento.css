@@ -152,7 +152,7 @@
   display: block;
   font-size: 1.6rem;
   font-weight: 700;
-  color: var(--gold-light);
+  color: var(--gold);
   line-height: 1;
   margin-bottom: var(--space-xs);
 }
@@ -163,7 +163,7 @@
 
 .bc-stat span {
   font-size: 0.68rem;
-  color: rgb(255 255 255 / 40%);
+  color: rgb(255 255 255 / 55%);
 }
 
 .bc-chips {
@@ -233,7 +233,7 @@
   display: block;
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--green-light);
+  color: var(--green);
 }
 
 .full-stat-box span {
