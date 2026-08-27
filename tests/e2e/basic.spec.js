@@ -155,7 +155,7 @@ test.describe("INDXONE site — collectivites page", () => {
     const footer = page.locator(".footer");
     const box = await footer.boundingBox();
     expect(box?.height).toBeGreaterThanOrEqual(380);
-    expect(box?.height).toBeLessThanOrEqual(520);
+    expect(box?.height).toBeLessThanOrEqual(480);
     const legal = page.locator(".footer-legal-links");
     await expect(legal).toBeVisible();
     const legalBox = await legal.boundingBox();
