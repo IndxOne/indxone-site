@@ -127,6 +127,17 @@ test.describe("INDXONE site — collectivites page", () => {
     const demoLink = page.locator('a[href*="mairies.indxone.com"]').first();
     await expect(demoLink).toBeVisible();
   });
+
+  test("mobile navigation uses the shared hamburger", async ({ page }) => {
+    await page.setViewportSize({ width: 360, height: 800 });
+    await page.goto("/collectivites/");
+    const toggle = page.locator(".mobile-menu-toggle");
+    await expect(toggle).toBeVisible();
+    await toggle.click();
+    await expect(page.locator("#mobile-menu")).toBeVisible();
+    await expect(page.locator("#mobile-menu")).toContainText("Réalisation");
+    await expect(page.locator("body")).toHaveClass(/menu-open/);
+  });
 });
 
 test.describe("INDXONE site — legal pages", () => {
