@@ -5,7 +5,7 @@
 
 .hub-product {
   background: var(--card-bg);
-  color: var(--white);
+  color: var(--ink);
   border-radius: var(--radius-2xl);
   padding: var(--space-2xl);
   margin-bottom: var(--space-xl);

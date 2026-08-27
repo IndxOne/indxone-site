@@ -142,6 +142,15 @@
   grid-column: 2;
   grid-row: 1 / span 2;
   white-space: nowrap;
+  background: transparent;
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+.hub-feature > .btn-ghost:hover,
+.hub-feature > .btn-ghost:focus-visible {
+  background: var(--blue);
+  color: var(--white);
 }
 
 .cta-phone {
