@@ -25,6 +25,7 @@
     organisation: 'application',
     floue: 'idée encore floue',
     idee_floue: 'idée encore floue',
+    collectivite: 'site internet',
   };
   const branch = {
     title: form.querySelector('[data-branch-title]'),
@@ -110,6 +111,10 @@
     if (!choice) return;
     choice.checked = true;
     syncBranch();
+    if (type === 'collectivite') {
+      form.elements.goal.value = 'Un site officiel clair pour notre collectivité.';
+      form.elements.audience.value = 'Habitants, élus et services municipaux';
+    }
     saveDraft();
   }
 

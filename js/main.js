@@ -9,6 +9,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   initRevealAnimations();
   initMobileMenu();
+  initContextualProjectLinks();
   initFormEnhancements();
   initSmoothScroll();
   initIntersectionObservers();
@@ -20,6 +21,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+function initContextualProjectLinks() {
+  if (document.body.dataset.formContext !== 'collectivite') return;
+  document.querySelectorAll('a[href="/votre-idee"], a[href="/#contact"]').forEach((link) => {
+    link.href = '/votre-idee/?type=collectivite';
+  });
+}
 
 // ============================================================
 // Reveal Animations

@@ -128,6 +128,16 @@ test.describe("INDXONE site — collectivites page", () => {
     await expect(demoLink).toBeVisible();
   });
 
+  test("conversion links open the prefilled collectivités form", async ({ page }) => {
+    await page.goto("/collectivites/");
+    await expect(page.locator(".nav-cta")).toHaveAttribute("href", "/votre-idee/?type=collectivite");
+    await page.locator(".nav-cta").click();
+    await expect(page).toHaveURL(/\/votre-idee\/\?type=collectivite/);
+    await expect(page.locator('input[name="project-type-choice"][value="site internet"]')).toBeChecked();
+    await page.getByRole("button", { name: "Continuer" }).click();
+    await expect(page.locator("#idea-goal")).toHaveValue(/collectivité/i);
+  });
+
   test("mobile navigation uses the shared hamburger", async ({ page }) => {
     await page.setViewportSize({ width: 360, height: 800 });
     await page.goto("/collectivites/");
