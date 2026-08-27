@@ -86,10 +86,10 @@ describe("animateValue()", () => {
 
   it("preserves prefix and suffix text around the number", () => {
     const el = document.createElement("strong");
-    el.textContent = "8+";
+    el.textContent = "15+";
     animateValue(el);
     vi.advanceTimersByTime(1000);
-    expect(el.textContent).toBe("8+");
+    expect(el.textContent).toBe("15+");
   });
 
   it("does nothing when element has no number", () => {

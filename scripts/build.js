@@ -31,7 +31,6 @@ const HTML_DIRS = [
   { src: 'merci', dest: 'merci' },
   { src: 'votre-idee', dest: 'votre-idee' },
   { src: 'accessibilite', dest: 'accessibilite' },
-  { src: 'en', dest: 'en' },
 ];
 
 const ROOT_HTML = [
@@ -89,6 +88,7 @@ async function minifyAndCopyHtml(src, dest, assemble = false) {
       const assembled = assembleFile(src);
       if (assembled) content = assembled;
     }
+    content = content.replace(/\s*<link\s+rel="alternate"\s+hreflang="en"[^>]*>/gi, '');
     const minified = await minify(content, HTML_MINIFY_OPTIONS);
     fs.writeFileSync(dest, minified, 'utf8');
 

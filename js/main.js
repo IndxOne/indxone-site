@@ -119,12 +119,9 @@ function initFormEnhancements() {
   var forms = document.querySelectorAll('form[data-netlify]');
 
   forms.forEach(function (form) {
-    var isEnglish = document.documentElement.lang === 'en';
-    var loadingText = isEnglish
-      ? '<span class="spinner"></span> Sending\u2026'
-      : '<span class="spinner"></span> Envoi en cours\u2026';
-    var successText = isEnglish ? 'Sent \u2713' : 'Envoy\u00e9 \u2713';
-    var errorText = isEnglish ? 'Error \u2014 retry' : 'Erreur \u2014 r\u00e9essayer';
+    var loadingText = '<span class="spinner"></span> Envoi en cours\u2026';
+    var successText = 'Envoy\u00e9 \u2713';
+    var errorText = 'Erreur \u2014 r\u00e9essayer';
 
     var submitBtn = form.querySelector('button[type="submit"]') || form.querySelector('input[type="submit"]');
     if (!submitBtn) return;
@@ -149,7 +146,7 @@ function initFormEnhancements() {
       langField.name = 'lang';
       form.appendChild(langField);
     }
-    langField.value = isEnglish ? 'en' : 'fr';
+    langField.value = 'fr';
 
     // Remove display:none honeypot visual (kept hidden)
     var botField = form.querySelector('input[name="bot_field"]');
@@ -204,7 +201,7 @@ function initFormEnhancements() {
           submitBtn.style.background = 'var(--green, #2a7a4b)';
 
           // Redirect to thank-you page after short delay
-          var redirectUrl = isEnglish ? '/en/merci' : '/merci';
+          var redirectUrl = '/merci';
           setTimeout(function () {
             window.location.href = redirectUrl;
           }, 800);
@@ -220,9 +217,7 @@ function initFormEnhancements() {
           var errorDiv = document.createElement('div');
           errorDiv.className = 'form-error';
           errorDiv.setAttribute('role', 'alert');
-          errorDiv.textContent = err.message || (isEnglish
-            ? 'An error occurred. Please try again or contact us directly.'
-            : 'Une erreur est survenue. R\u00e9essayez ou contactez-nous directement.');
+          errorDiv.textContent = err.message || 'Une erreur est survenue. R\u00e9essayez ou contactez-nous directement.';
           form.appendChild(errorDiv);
 
           // Reset button after 4s

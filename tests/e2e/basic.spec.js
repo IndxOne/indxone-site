@@ -62,6 +62,17 @@ test.describe("INDXONE site — homepage", () => {
     await expect(menu).toHaveAttribute("data-open", "false");
   });
 
+  test("guided idea form loads its dedicated styles on mobile", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/votre-idee/");
+    const form = page.locator(".idea-form");
+    await expect(form).toBeVisible();
+    await expect(form).toHaveCSS("box-sizing", "border-box");
+    await expect(page.locator(".idea-choice")).toHaveCount(5);
+    const formWidth = await form.evaluate((element) => element.getBoundingClientRect().width);
+    expect(formWidth).toBeLessThanOrEqual(390);
+  });
+
   test("JSON-LD structured data exists", async ({ page }) => {
     await page.goto("/");
     const jsonld = page.locator('script[type="application/ld+json"]');
@@ -72,28 +83,6 @@ test.describe("INDXONE site — homepage", () => {
     expect(parsed["@context"]).toBe("https://schema.org");
     expect(parsed["@graph"]).toBeDefined();
     expect(Array.isArray(parsed["@graph"])).toBe(true);
-  });
-});
-
-test.describe("INDXONE site — English page", () => {
-  test("has correct language attribute and English content", async ({ page }) => {
-    await page.goto("/en/");
-    await expect(page.locator("html")).toHaveAttribute("lang", "en");
-    await expect(page).toHaveTitle(/IT Consultant & Digital Architect/);
-
-    const metaDesc = page.locator('meta[name="description"]');
-    await expect(metaDesc).toHaveAttribute("content", /IT Consultant/);
-  });
-
-  test("contact form consent is labeled and links to privacy policy", async ({ page }) => {
-    await page.goto("/en/");
-    const consent = page.locator("#consent-en");
-    await expect(consent).toHaveAttribute("required");
-    await expect(page.locator('label[for="consent-en"]')).toContainText(/privacy policy/i);
-    await expect(page.locator('label[for="consent-en"] a')).toHaveAttribute(
-      "href",
-      "/en/privacy-policy",
-    );
   });
 });
 
@@ -141,17 +130,6 @@ test.describe("INDXONE site — legal pages", () => {
     await expect(page.locator("body")).toContainText(/SIRET/);
   });
 
-  test("EN legal notice exists", async ({ page }) => {
-    const response = await page.goto("/en/legal-notice");
-    expect(response?.status()).toBe(200);
-    await expect(page.locator("body")).toContainText(/Legal Notice/i);
-  });
-
-  test("EN privacy policy exists", async ({ page }) => {
-    const response = await page.goto("/en/privacy-policy");
-    expect(response?.status()).toBe(200);
-    await expect(page.locator("body")).toContainText(/Privacy Policy/i);
-  });
 });
 
 test.describe("INDXONE site — accessibility pages", () => {
@@ -161,11 +139,6 @@ test.describe("INDXONE site — accessibility pages", () => {
     await expect(page.locator("body")).toContainText(/Accessibilité/i);
   });
 
-  test("EN accessibility page exists", async ({ page }) => {
-    const response = await page.goto("/en/accessibility");
-    expect(response?.status()).toBe(200);
-    await expect(page.locator("body")).toContainText(/Accessibility/i);
-  });
 });
 
 test.describe("INDXONE site — analytics", () => {
@@ -175,11 +148,6 @@ test.describe("INDXONE site — analytics", () => {
     await expect(plausible).toHaveCount(1);
   });
 
-  test("Plausible script loaded on EN homepage", async ({ page }) => {
-    await page.goto("/en/");
-    const plausible = page.locator('script[data-domain="indxone.com"]');
-    await expect(plausible).toHaveCount(1);
-  });
 });
 
 test.describe("INDXONE site — skip links", () => {
@@ -189,17 +157,6 @@ test.describe("INDXONE site — skip links", () => {
     await expect(skip).toHaveAttribute("href", "#main-content");
   });
 
-  test("EN projets page has skip link", async ({ page }) => {
-    await page.goto("/en/projets");
-    const skip = page.locator(".skip-link");
-    await expect(skip).toHaveAttribute("href", "#main-content");
-  });
-
-  test("EN collectivites page has skip link", async ({ page }) => {
-    await page.goto("/en/collectivites");
-    const skip = page.locator(".skip-link");
-    await expect(skip).toHaveAttribute("href", "#main-content");
-  });
 });
 
 test.describe("INDXONE site — votre idée", () => {
