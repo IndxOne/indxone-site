@@ -90,14 +90,6 @@ function validatePayload(body, lang) {
 // --- Submit to Netlify Forms ---
 
 async function submitToNetlifyForms(payload, formName) {
-  var siteId = process.env.NETLIFY_SITE_ID;
-  var accessToken = process.env.NETLIFY_AUTH_TOKEN;
-
-  if (!siteId || !accessToken) {
-    console.error("[contact-api] NETLIFY_SITE_ID or NETLIFY_AUTH_TOKEN not set");
-    return { ok: false, status: 503 };
-  }
-
   var formData = new URLSearchParams();
   formData.append("form-name", formName);
   formData.append("nom", payload.nom);
@@ -109,13 +101,16 @@ async function submitToNetlifyForms(payload, formName) {
   formData.append("delai", payload.delai || "");
   formData.append("consent", "true");
 
-  var url = "https://api.netlify.com/api/v1/sites/" + siteId + "/forms/" + formName + "/submissions";
+  // Netlify Forms accepts URL-encoded submissions at the deployed site's
+  // root. The management API is for reading forms/submissions, not ingestion.
+  var siteUrl = process.env.NETLIFY_FORM_SITE_URL || process.env.SITE_URL || "https://indxone.com";
+  var url = new URL("/", siteUrl).toString();
 
   var resp = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: "Bearer " + accessToken,
+      Accept: "text/html,application/xhtml+xml",
     },
     body: formData.toString(),
   });

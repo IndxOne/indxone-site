@@ -143,57 +143,60 @@ function validatePayload(body) {
   return { valid: errors.length === 0, errors: errors };
 }
 
-// --- Submit to Netlify Forms via API ---
+// --- Submit to Netlify Forms ---
+//
+// Netlify Forms ingests submissions through the deployed site's HTML endpoint.
+// The Netlify API exposes form metadata/submissions, but is not an ingestion
+// endpoint. Keeping this forwarding server-side preserves the validation and
+// antispam checks above without exposing credentials in the browser.
 
 async function submitToNetlifyForms(payload) {
-  var siteId = process.env.NETLIFY_SITE_ID;
-  var accessToken = process.env.NETLIFY_AUTH_TOKEN;
-
-  if (!siteId || !accessToken) {
-    console.error("[submit-idea] NETLIFY_SITE_ID or NETLIFY_AUTH_TOKEN not set");
-    return { ok: false, status: 503 };
-  }
-
   var formData = new URLSearchParams();
   formData.append("form-name", FORM_NAME);
-  formData.append("submission_id", payload.submission_id);
-  formData.append("form_version", payload.form_version);
-  formData.append("project_type", payload.project_type);
-  formData.append("created_at", payload.created_at);
-  formData.append("nom", payload.contact.nom);
-  formData.append("prenom", payload.contact.prenom || "");
-  formData.append("email", payload.contact.email);
-  formData.append("phone", payload.contact.phone || "");
 
-  // Flatten trunk responses
-  if (payload.responses && payload.responses.trunk) {
-    var trunkKeys = Object.keys(payload.responses.trunk);
-    for (var i = 0; i < trunkKeys.length; i++) {
-      formData.append("trunk_" + trunkKeys[i], payload.responses.trunk[trunkKeys[i]] || "");
-    }
-  }
+  // Use the names declared in votre-idee/index.html. Netlify detects the
+  // form from that static HTML and accepts the URL-encoded POST at the site
+  // root. Empty fields are kept so the dashboard has a stable schema.
+  var trunk = payload.responses && payload.responses.trunk || {};
+  var conditional = payload.responses && payload.responses.conditional || {};
+  var fields = {
+    "form-version": payload.form_version,
+    "submission-id": payload.submission_id,
+    "created-at": payload.created_at,
+    "project-type": payload.project_type,
+    "project-type-choice": payload.project_type,
+    goal: trunk.goal,
+    audience: trunk.audience,
+    "branch-one": conditional.branch_one,
+    "branch-two": conditional.branch_two,
+    style: trunk.style,
+    examples: trunk.examples,
+    start: trunk.start,
+    budget: trunk.budget,
+    support: trunk.support,
+    name: payload.contact.nom,
+    firstname: payload.contact.prenom,
+    email: payload.contact.email,
+    phone: payload.contact.phone,
+    consent: "true",
+    "consent-at": payload.consent.accepted_at,
+    origin: payload.meta && payload.meta.origin,
+    referrer: payload.meta && payload.meta.referrer,
+    language: payload.meta && payload.meta.language,
+    company_name: "",
+  };
+  Object.keys(fields).forEach(function (key) {
+    formData.append(key, fields[key] || "");
+  });
 
-  // Flatten conditional responses
-  if (payload.responses && payload.responses.conditional) {
-    var condKeys = Object.keys(payload.responses.conditional);
-    for (var j = 0; j < condKeys.length; j++) {
-      formData.append("cond_" + condKeys[j], payload.responses.conditional[condKeys[j]] || "");
-    }
-  }
-
-  formData.append("consent", "true");
-  formData.append("consent_at", payload.consent.accepted_at || "");
-  formData.append("origin", payload.meta ? payload.meta.origin : "");
-  formData.append("referrer", payload.meta ? payload.meta.referrer : "");
-  formData.append("language", payload.meta ? payload.meta.language : "");
-
-  var url = "https://api.netlify.com/api/v1/sites/" + siteId + "/forms/" + FORM_NAME + "/submissions";
+  var siteUrl = process.env.NETLIFY_FORM_SITE_URL || process.env.SITE_URL || "https://indxone.com";
+  var url = new URL("/", siteUrl).toString();
 
   var resp = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: "Bearer " + accessToken,
+      Accept: "text/html,application/xhtml+xml",
     },
     body: formData.toString(),
   });
