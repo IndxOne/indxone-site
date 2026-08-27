@@ -274,6 +274,15 @@
    complet reste visible : cf. rendu mobile déjà validé, ne pas modifier ce
    qui suit ≤900px sans revalider le mobile. */
 @media (width <= 900px) {
+  /* La homepage mobile conserve le parcours court : les blocs corporate
+     détaillés sont des preuves secondaires, tandis que #lab reste le bloc
+     Produits IndxOne visible. */
+  #expertise,
+  #cas-usage,
+  .corporate-proof {
+    display: none;
+  }
+
   .collectivites-section,
   .stack,
   .tools-section {
