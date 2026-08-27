@@ -728,3 +728,17 @@
 .pricing-details .mod-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
+
+.secondary-contact {
+  color: rgb(255 255 255 / 78%);
+  font-size: 0.8rem;
+  min-height: 44px;
+  padding: 0.7rem 0;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.secondary-contact:hover,
+.secondary-contact:focus-visible {
+  color: var(--white);
+}
