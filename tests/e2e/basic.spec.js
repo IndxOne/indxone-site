@@ -74,6 +74,14 @@ test.describe("INDXONE site — homepage", () => {
     await expect(page.locator("#lab")).toBeVisible();
   });
 
+  test("projects CTA and footer stay simple and touch-friendly", async ({ page }) => {
+    await page.goto("/projets/");
+    await expect(page.locator(".cta-section .btn-primary")).toHaveText(/Démarrer un projet/);
+    await expect(page.locator(".cta-section a[href^='https://hub']")).toHaveCount(0);
+    await expect(page.locator(".projets-footer")).toHaveCSS("background-color", "rgb(20, 32, 43)");
+    await expect(page.locator(".projets-footer a").first()).toHaveCSS("min-height", "44px");
+  });
+
   test("JSON-LD structured data exists", async ({ page }) => {
     await page.goto("/");
     const jsonld = page.locator('script[type="application/ld+json"]');

@@ -409,7 +409,7 @@
   color: var(--white);
 }
 
-.cta-section ~ footer {
+.projets-footer {
   align-items: flex-start;
   background: var(--ink);
   border-top: 1px solid rgb(255 255 255 / 12%);
@@ -421,23 +421,23 @@
   padding: 24px var(--space-lg);
 }
 
-.cta-section ~ footer .projets-footer-brand {
+.projets-footer .projets-footer-brand {
   display: grid;
   gap: 4px;
   line-height: 1.5;
 }
 
-.cta-section ~ footer .projets-footer-brand span {
+.projets-footer .projets-footer-brand span {
   color: var(--white);
   font-weight: 600;
 }
 
-.cta-section ~ footer .projets-footer-brand small {
+.projets-footer .projets-footer-brand small {
   color: rgb(255 255 255 / 68%);
   font-size: 0.7rem;
 }
 
-.cta-section ~ footer .footer-links {
+.projets-footer .footer-links {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -445,7 +445,7 @@
   justify-content: flex-end;
 }
 
-.cta-section ~ footer a {
+.projets-footer a {
   color: var(--white);
   font-weight: 600;
   min-height: 44px;
@@ -453,8 +453,8 @@
   text-decoration: none;
 }
 
-.cta-section ~ footer a:hover,
-.cta-section ~ footer a:focus-visible {
+.projets-footer a:hover,
+.projets-footer a:focus-visible {
   color: var(--gold-light);
 }
 
@@ -536,12 +536,12 @@
     width: 100%;
   }
 
-  .cta-section ~ footer {
+  .projets-footer {
     gap: 16px;
     grid-template-columns: 1fr;
   }
 
-  .cta-section ~ footer .footer-links {
+  .projets-footer .footer-links {
     align-items: flex-start;
     gap: 0 16px;
     justify-content: flex-start;
