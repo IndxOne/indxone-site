@@ -116,8 +116,10 @@ test.describe("INDXONE site — collectivites page", () => {
     await page.goto("/collectivites/");
     await expect(page.locator(".pricing-grid")).toBeVisible();
     const offerCards = page.locator(".pc");
-    const count = await offerCards.count();
-    expect(count).toBeGreaterThanOrEqual(4);
+    await expect(offerCards).toHaveCount(3);
+    await expect(offerCards.nth(0)).toContainText("Commune Essentielle");
+    await expect(offerCards.nth(1)).toContainText("Commune Active");
+    await expect(offerCards.nth(2)).toContainText("Commune Connectée");
   });
 
   test("demo link points to mairies platform", async ({ page }) => {
