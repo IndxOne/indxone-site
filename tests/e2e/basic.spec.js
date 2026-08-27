@@ -14,8 +14,8 @@ test.describe("INDXONE site — homepage", () => {
     const count = await navLinks.count();
     expect(count).toBeGreaterThanOrEqual(4);
 
-    // Click the "Projets" link and verify we navigate
-    await navLinks.filter({ hasText: "Projets" }).first().click();
+    // Click the "Réalisations" link and verify we navigate
+    await navLinks.filter({ hasText: "Réalisations" }).first().click();
     await expect(page).toHaveURL(/projets/);
   });
 
@@ -46,6 +46,20 @@ test.describe("INDXONE site — homepage", () => {
     // Simulate focus
     await skipLink.focus();
     await expect(skipLink).toBeFocused();
+  });
+
+  test("mobile navigation opens, locks the page, and closes with Escape", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/");
+    const toggle = page.locator(".mobile-menu-toggle");
+    const menu = page.locator("#mobile-menu");
+    await expect(toggle).toBeVisible();
+    await toggle.click();
+    await expect(menu).toHaveAttribute("data-open", "true");
+    await expect(page.locator(".nav-mobile-cta")).toBeVisible();
+    await expect(page.locator("body")).toHaveClass(/menu-open/);
+    await page.keyboard.press("Escape");
+    await expect(menu).toHaveAttribute("data-open", "false");
   });
 
   test("JSON-LD structured data exists", async ({ page }) => {
@@ -91,24 +105,11 @@ test.describe("INDXONE site — errors", () => {
 });
 
 test.describe("INDXONE site — projets page", () => {
-  test("project filter buttons work", async ({ page }) => {
+  test("project page presents the simplified portfolio", async ({ page }) => {
     await page.goto("/projets/");
-    const filterBtns = page.locator(".pf-btn");
-    await expect(filterBtns).toHaveCount(3);
-
-    // Initially "Tous" is active
-    await expect(filterBtns.nth(0)).toHaveClass(/active/);
-
-    // Click "CDI · Référent IT"
-    await filterBtns.nth(2).click();
-    await expect(filterBtns.nth(2)).toHaveClass(/active/);
-
-    // Cards with data-type="cdi" should be visible, freelance cards dimmed
-    const cdiCards = page.locator('.bc[data-type="cdi"]');
-    const freelanceCards = page.locator('.bc[data-type="freelance"]');
-    await expect(cdiCards.first()).toBeVisible();
-    // Freelance cards are dimmed (opacity 0.15), not hidden display:none
-    await expect(freelanceCards.first()).toHaveCSS("opacity", "0.15");
+    await expect(page.locator(".filter-bar")).toBeHidden();
+    await expect(page.locator(".project-grid")).toBeVisible();
+    await expect(page.locator(".project-card")).toHaveCount(3);
   });
 });
 

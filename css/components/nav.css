@@ -118,18 +118,100 @@
   display: none;
 }
 
+.mobile-menu-backdrop,
+.nav-mobile-cta {
+  display: none;
+}
+
+.nav-links a[aria-current="page"] {
+  color: var(--gold);
+  font-weight: 700;
+}
+
 @media (width <= 768px) {
+  .nav {
+    padding-inline: var(--space-md);
+  }
+
   .nav-links {
     display: none;
   }
 
+  .nav-links[data-open="true"] {
+    display: flex;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    background: rgb(248 243 236 / 98%);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgb(15 25 35 / 10%);
+  }
+
+  .nav-links[data-open="true"] .nav-mobile-cta {
+    display: block;
+    margin-top: var(--space-sm);
+  }
+
+  .nav-mobile-cta a {
+    display: block;
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    background: var(--gold);
+    color: var(--ink) !important;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .mobile-menu-backdrop {
+    display: block;
+    position: fixed;
+    inset: 64px 0 0;
+    z-index: calc(var(--z-sticky) - 1);
+    background: rgb(20 32 43 / 28%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-base);
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  body.menu-open .mobile-menu-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  body.menu-open .mobile-menu-toggle .bar:first-child {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  body.menu-open .mobile-menu-toggle .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  body.menu-open .mobile-menu-toggle .bar:last-child {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
   .mobile-menu-toggle {
     display: flex;
+    position: fixed;
+    top: 14px;
+    right: var(--space-md);
+    z-index: calc(var(--z-sticky) + 1);
     flex-direction: column;
     gap: 4px;
     cursor: pointer;
     background: none;
     border: none;
+    color: inherit;
     padding: 8px;
   }
 
@@ -143,10 +225,10 @@
 
   .nav-actions {
     gap: var(--space-sm);
+    padding-right: 2.75rem;
   }
 
   .nav-cta {
-    font-size: 0.75rem;
-    padding: var(--space-xs) var(--space-sm);
+    display: none;
   }
 }

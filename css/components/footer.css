@@ -42,6 +42,7 @@
   color: var(--gold-light);
 }
 
+.footer-col h2,
 .footer-col h3 {
   color: var(--white);
   font-size: 0.78rem;

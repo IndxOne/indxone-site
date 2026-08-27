@@ -26,8 +26,16 @@
   background: var(--surface-color);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
+  box-sizing: border-box;
   padding: clamp(1rem, 4vw, 2.5rem);
   box-shadow: var(--shadow-sm);
+}
+
+.idea-step {
+  border: 0;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
 }
 
 .idea-progress {
@@ -65,6 +73,12 @@
   margin-bottom: var(--space-sm);
 }
 
+.idea-step legend {
+  display: block;
+  padding: 0;
+  width: 100%;
+}
+
 .step-hint {
   margin-bottom: var(--space-xl);
   color: var(--ink-light);
@@ -76,6 +90,7 @@
 }
 
 .idea-choice {
+  box-sizing: border-box;
   display: flex;
   align-items: flex-start;
   gap: var(--space-md);
@@ -91,6 +106,12 @@
 .idea-choice:has(input:checked) {
   border-color: var(--gold);
   background: var(--gold-lighter);
+  box-shadow: inset 4px 0 var(--gold);
+}
+
+.idea-choice input:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
 }
 
 .idea-choice input {
@@ -114,6 +135,7 @@
   color: var(--ink-light);
   font-size: 0.78rem;
   line-height: 1.45;
+  overflow-wrap: anywhere;
 }
 
 .form-group {
@@ -131,6 +153,8 @@
 .form-group input,
 .form-group select,
 .form-group textarea {
+  box-sizing: border-box;
+  max-width: 100%;
   width: 100%;
   min-height: 48px;
   padding: 0.8rem 0.9rem;
@@ -159,6 +183,7 @@
 
 .idea-nav {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: var(--space-sm);
   margin-top: var(--space-2xl);
@@ -252,13 +277,42 @@
 
 @media (width <= 600px) {
   .idea-shell {
-    width: min(100% - 1rem, 760px);
+    box-sizing: border-box;
+    width: 100%;
+    padding-inline: 20px;
     padding-top: 2rem;
   }
 
   .idea-form {
     border-radius: var(--radius-lg);
-    padding: 1rem;
+    padding: 20px;
+  }
+
+  .idea-choice-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .idea-choice {
+    width: 100%;
+    min-width: 0;
+    padding: 16px 20px;
+  }
+
+  .idea-choice > span {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .idea-choice strong,
+  .idea-choice small {
+    white-space: normal;
+  }
+
+  .idea-step > .idea-next,
+  .idea-nav .btn-primary,
+  .idea-nav .btn-outline {
+    width: 100%;
   }
 
   .form-row {
@@ -271,15 +325,17 @@
     bottom: 0.5rem;
     z-index: 2;
     padding: 0.6rem;
-    margin-inline: -0.4rem;
+    margin-inline: 0;
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     background: color-mix(in srgb, var(--surface-color) 94%, transparent);
     backdrop-filter: blur(8px);
+    flex-direction: column;
   }
 
   .idea-nav button {
-    flex: 1;
+    flex: 0 0 auto;
+    width: 100%;
   }
 }
 

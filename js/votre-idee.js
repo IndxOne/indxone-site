@@ -213,6 +213,7 @@
       ['Pour qui', form.elements.audience.value],
       ['Précisions', form.elements['branch-one'].value + '\n' + form.elements['branch-two'].value],
       ['Votre vision', form.elements.style.value],
+      ['Budget', form.elements.budget.value],
       ['Démarrage', form.elements.start.value],
       ['Accompagnement', form.elements.support.value],
       ['Contact', [form.elements.firstname.value, form.elements.name.value, form.elements.email.value].filter(Boolean).join(' · ')],

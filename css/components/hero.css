@@ -35,7 +35,7 @@
   gap: 0.5rem;
   background: rgb(78 133 107 / 14%);
   border: 1px solid rgb(78 133 107 / 30%);
-  color: var(--green-light);
+  color: var(--green);
   font-size: 0.75rem;
   font-weight: 600;
   padding: 0.3rem 0.8rem;
@@ -88,6 +88,8 @@
   grid-template-columns: repeat(4, auto);
   gap: var(--space-3xl);
   width: fit-content;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-stats-compact {
@@ -103,7 +105,8 @@
 
 .hero-stat span {
   font-size: 0.75rem;
-  color: rgb(255 255 255 / 45%);
+  color: var(--white);
+  opacity: 0.9;
 }
 
 .dispo-card {
@@ -113,6 +116,9 @@
   padding: var(--space-md) var(--space-xl);
   margin-top: var(--space-3xl);
   display: inline-flex;
+  width: min(100%, 960px);
+  justify-content: space-between;
+  margin-inline: auto;
   gap: var(--space-3xl);
   flex-wrap: wrap;
 }
@@ -156,6 +162,8 @@
   }
 
   .dispo-card {
+    width: 100%;
+    align-items: stretch;
     padding: var(--space-sm) var(--space-md);
     gap: var(--space-md);
     flex-direction: column;
@@ -196,5 +204,7 @@
 
   .dispo-card {
     margin-top: var(--space-2xl);
+    gap: var(--space-sm);
+    padding-block: var(--space-sm);
   }
 }
