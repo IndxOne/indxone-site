@@ -148,6 +148,19 @@ test.describe("INDXONE site — collectivites page", () => {
     await expect(page.locator("#mobile-menu")).toContainText("Réalisation");
     await expect(page.locator("body")).toHaveClass(/menu-open/);
   });
+
+  test("mobile footer stays compact and keeps legal links together", async ({ page }) => {
+    await page.setViewportSize({ width: 360, height: 800 });
+    await page.goto("/collectivites/");
+    const footer = page.locator(".footer");
+    const box = await footer.boundingBox();
+    expect(box?.height).toBeGreaterThanOrEqual(380);
+    expect(box?.height).toBeLessThanOrEqual(520);
+    const legal = page.locator(".footer-legal-links");
+    await expect(legal).toBeVisible();
+    const legalBox = await legal.boundingBox();
+    expect(legalBox?.height).toBeLessThanOrEqual(48);
+  });
 });
 
 test.describe("INDXONE site — legal pages", () => {
