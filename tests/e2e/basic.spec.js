@@ -3,9 +3,9 @@ import { test, expect } from "@playwright/test";
 test.describe("INDXONE site — homepage", () => {
   test("has correct title and description meta tags", async ({ page }) => {
     await page.goto("/");
-    await expect(page).toHaveTitle(/INDXONE.*Consultant SI/);
+    await expect(page).toHaveTitle(/INDXONE.*Donnons vie à votre idée/);
     const metaDesc = page.locator('meta[name="description"]');
-    await expect(metaDesc).toHaveAttribute("content", /Consultant SI/);
+    await expect(metaDesc).toHaveAttribute("content", /transforme vos idées/i);
   });
 
   test("navigation links are present and work", async ({ page }) => {
@@ -19,22 +19,11 @@ test.describe("INDXONE site — homepage", () => {
     await expect(page).toHaveURL(/projets/);
   });
 
-  test("contact form has required fields", async ({ page }) => {
+  test("contact is guided to the project form", async ({ page }) => {
     await page.goto("/");
-    const form = page.locator(".contact-form");
-    await expect(form).toBeVisible();
-
-    // Check required inputs exist
-    await expect(form.locator("#nom")).toHaveAttribute("required");
-    await expect(form.locator("#email")).toHaveAttribute("required");
-    await expect(form.locator("#sujet")).toHaveAttribute("required");
-    await expect(form.locator("#message")).toHaveAttribute("required");
-    await expect(form.locator("#consent")).toHaveAttribute("required");
-    await expect(page.locator('label[for="consent"]')).toContainText(/politique de confidentialité/i);
-
-    // Submit with empty fields triggers validation
-    await form.locator('button[type="submit"]').click();
-    await expect(page.locator("#nom")).toBeFocused();
+    await expect(page.locator("#contact")).toBeVisible();
+    await expect(page.locator('#contact a[href="/votre-idee"]')).toHaveText(/Obtenir une estimation/);
+    await expect(page.locator(".contact-form")).toHaveCount(0);
   });
 
   test("skip link is present and focusable", async ({ page }) => {
@@ -93,8 +82,8 @@ test.describe("INDXONE site — homepage", () => {
     const content = await jsonld.textContent();
     const parsed = JSON.parse(content);
     expect(parsed["@context"]).toBe("https://schema.org");
-    expect(parsed["@graph"]).toBeDefined();
-    expect(Array.isArray(parsed["@graph"])).toBe(true);
+    expect(parsed["@type"]).toBe("WebSite");
+    expect(parsed["name"]).toBe("INDXONE");
   });
 });
 
