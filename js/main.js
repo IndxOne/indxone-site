@@ -119,6 +119,10 @@ function initFormEnhancements() {
   var forms = document.querySelectorAll('form[data-netlify]');
 
   forms.forEach(function (form) {
+    // Le parcours guidé possède son propre payload et son propre endpoint.
+    // Ne pas lui appliquer le gestionnaire générique du formulaire contact.
+    if (form.dataset.customSubmit === 'true') return;
+
     var loadingText = '<span class="spinner"></span> Envoi en cours\u2026';
     var successText = 'Envoy\u00e9 \u2713';
     var errorText = 'Erreur \u2014 r\u00e9essayer';

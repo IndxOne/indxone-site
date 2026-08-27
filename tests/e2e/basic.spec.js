@@ -69,6 +69,7 @@ test.describe("INDXONE site — homepage", () => {
     await expect(form).toBeVisible();
     await expect(form).toHaveCSS("box-sizing", "border-box");
     await expect(page.locator(".idea-choice")).toHaveCount(5);
+    await expect(form).toHaveAttribute("data-custom-submit", "true");
     const formWidth = await form.evaluate((element) => element.getBoundingClientRect().width);
     expect(formWidth).toBeLessThanOrEqual(390);
   });
