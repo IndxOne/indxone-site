@@ -1,14 +1,14 @@
 .footer {
   background: #0B1116;
   color: rgb(244 239 232 / 78%);
-  padding: var(--space-4xl) var(--space-lg) var(--space-2xl);
+  padding: 48px 16px 32px;
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: var(--space-3xl);
-  margin-bottom: var(--space-3xl);
+  gap: 16px;
+  margin-bottom: 32px;
 }
 
 .footer-brand .logo {
@@ -51,15 +51,21 @@
 }
 
 .footer-col ul {
+  display: grid;
+  gap: 0;
   list-style: none;
 }
 
 .footer-col li {
-  margin-bottom: var(--space-xs);
+  margin: 0;
 }
 
 .footer-col a {
+  align-items: center;
   color: rgb(244 239 232 / 78%);
+  display: inline-flex;
+  min-height: 44px;
+  padding: 7px 0;
   text-decoration: none;
   font-size: 0.78rem;
   transition: color var(--transition-base);
@@ -73,11 +79,15 @@
   align-items: center;
   font-size: 0.72rem;
   flex-wrap: wrap;
-  gap: var(--space-sm);
+  gap: 16px;
 }
 
 .footer-bottom a {
+  align-items: center;
   color: rgb(244 239 232 / 76%);
+  display: inline-flex;
+  min-height: 44px;
+  padding: 7px 0;
   text-decoration: none;
 }
 
@@ -104,7 +114,7 @@
 @media (width <= 768px) {
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-xl);
+    gap: 16px;
   }
 
   .footer-brand {
@@ -114,6 +124,6 @@
   .footer-bottom {
     flex-direction: column;
     text-align: center;
-    gap: var(--space-xs);
+    gap: 16px;
   }
 }
