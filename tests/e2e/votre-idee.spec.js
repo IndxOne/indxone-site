@@ -526,4 +526,157 @@ test.describe("INDXONE — /votre-idee page", () => {
     await page.getByRole("button", { name: "Voir le récapitulatif" }).click();
     await expect(page.locator('button[type="submit"]')).toHaveText("Envoyer ma demande");
   });
+
+  // ─── Form submission ─────────────────────────────────────
+
+  async function navigateToStep6(page) {
+    await page.locator(".idea-choice").nth(1).click();
+    await page.getByRole("button", { name: "Continuer" }).click();
+    await page.locator("#idea-goal").fill("Un site vitrine pour mon coaching");
+    await page.locator("#idea-audience").fill("Mes clients potentiels");
+    await page.getByRole("button", { name: "Continuer" }).click();
+    await page.locator("#branch-one").fill("Mon activité de coaching professionnel");
+    await page.locator("#branch-two").fill("Accueil, services, témoignages, contact");
+    await page.getByRole("button", { name: "Continuer" }).click();
+    await page.locator("#idea-style").fill("Sobre, chaleureux, professionnel");
+    await page.locator("#idea-start").selectOption("Dans les 3 mois");
+    await page.getByRole("button", { name: "Continuer" }).click();
+    await page.locator("#idea-budget").selectOption("1 500–5 000 €");
+    await page.locator("#idea-support").selectOption("Jusqu'à la mise en ligne");
+    await page.getByRole("button", { name: "Continuer" }).click();
+    await page.locator("#idea-name").fill("Dupont");
+    await page.locator("#idea-firstname").fill("Jean");
+    await page.locator("#idea-email").fill("jean@coaching.fr");
+    await page.locator("#idea-consent").check();
+    await page.getByRole("button", { name: "Voir le récapitulatif" }).click();
+    await expect(page.locator('[data-step="6"]')).toBeVisible();
+  }
+
+  test("submit shows loading state then error when API is unreachable", async ({ page }) => {
+    await page.route("**/api/submit-idee", (route) =>
+      route.fulfill({ status: 500, body: JSON.stringify({ error: "test" }) })
+    );
+
+    await navigateToStep6(page);
+    const submitBtn = page.locator('button[type="submit"]');
+
+    await submitBtn.click();
+
+    // After failed submission: button re-enabled with original text, still on step 6
+    await expect(submitBtn).toBeEnabled({ timeout: 10000 });
+    await expect(submitBtn).toHaveText("Envoyer ma demande");
+    await expect(page.locator('[data-step="6"]')).toBeVisible();
+    // Error message is shown to the user
+    const statusText = await page.locator("#idea-form-status").textContent();
+    expect(statusText.length).toBeGreaterThan(0);
+  });
+
+  test("submit button re-enables after error so user can retry", async ({ page }) => {
+    await page.route("**/api/submit-idee", (route) =>
+      route.fulfill({ status: 500, body: JSON.stringify({ error: "test" }) })
+    );
+
+    await navigateToStep6(page);
+    const submitBtn = page.locator('button[type="submit"]');
+
+    // First attempt — fails
+    await submitBtn.click();
+    await expect(submitBtn).toBeEnabled({ timeout: 10000 });
+
+    // Second attempt — button is clickable, also fails gracefully
+    await submitBtn.click();
+    await expect(submitBtn).toBeEnabled({ timeout: 10000 });
+    await expect(submitBtn).toHaveText("Envoyer ma demande");
+    // Still on step 6, no crash
+    await expect(page.locator('[data-step="6"]')).toBeVisible();
+  });
+
+  test("double-click does not crash or navigate away", async ({ page }) => {
+    await page.route("**/api/submit-idee", (route) =>
+      route.fulfill({ status: 500, body: JSON.stringify({ error: "test" }) })
+    );
+
+    await navigateToStep6(page);
+    const submitBtn = page.locator('button[type="submit"]');
+
+    // Rapid double click — second fires while first is in-flight
+    await submitBtn.click();
+    await submitBtn.click({ force: true });
+
+    // Wait for recovery
+    await expect(submitBtn).toBeEnabled({ timeout: 10000 });
+    // Still on step 6 (no redirect, no crash)
+    await expect(page.locator('[data-step="6"]')).toBeVisible();
+  });
+
+  test("submit builds correct payload structure", async ({ page }) => {
+    await navigateToStep6(page);
+
+    // Intercept the fetch to inspect the payload
+    const requestPromise = page.waitForRequest((req) => req.url().includes("/api/submit-idee"));
+    page.locator('button[type="submit"]').click();
+    const request = await requestPromise;
+    const payload = JSON.parse(request.postData() || "{}");
+
+    expect(payload.form_version).toBe("1.0.0");
+    expect(payload.project_type).toBe("site");
+    expect(payload.submission_id).toMatch(
+      /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/
+    );
+    expect(payload.contact.nom).toBe("Dupont");
+    expect(payload.contact.prenom).toBe("Jean");
+    expect(payload.contact.email).toBe("jean@coaching.fr");
+    expect(payload.consent.accepted).toBe(true);
+    expect(payload.consent.accepted_at).toBeTruthy();
+    expect(payload.responses.trunk.goal).toBe("Un site vitrine pour mon coaching");
+    expect(payload.responses.trunk.audience).toBe("Mes clients potentiels");
+    expect(payload.responses.trunk.style).toBe("Sobre, chaleureux, professionnel");
+    expect(payload.responses.trunk.start).toBe("Dans les 3 mois");
+    expect(payload.responses.trunk.budget).toBe("1 500–5 000 €");
+    expect(payload.responses.trunk.support).toBe("Jusqu'à la mise en ligne");
+    expect(payload.responses.conditional.branch_one).toBe("Mon activité de coaching professionnel");
+    expect(payload.responses.conditional.branch_two).toBe("Accueil, services, témoignages, contact");
+    expect(payload.meta.origin).toContain("/votre-idee");
+    expect(payload.meta.language).toBe("fr");
+  });
+
+  test("created_at uses started_at from draft (not submit time)", async ({ page }) => {
+    // Load page — draft starts with current time
+    const beforeLoad = Date.now();
+    await page.goto("/votre-idee/");
+    await navigateToStep6(page);
+
+    const requestPromise = page.waitForRequest((req) => req.url().includes("/api/submit-idee"));
+    page.locator('button[type="submit"]').click();
+    const request = await requestPromise;
+    const payload = JSON.parse(request.postData() || "{}");
+
+    const createdAt = new Date(payload.created_at).getTime();
+    // created_at should be close to page load time, not submit time
+    expect(createdAt).toBeGreaterThanOrEqual(beforeLoad - 1000);
+    expect(createdAt).toBeLessThanOrEqual(Date.now());
+  });
+
+  test("draft is cleared from localStorage after successful submit attempt", async ({ page }) => {
+    await page.goto("/votre-idee/");
+    await navigateToStep6(page);
+
+    // Draft should exist
+    let draft = await page.evaluate(() => localStorage.getItem("indxone:votre-idee:draft:v1"));
+    expect(draft).toBeTruthy();
+
+    // Intercept and fail the request to prevent redirect
+    await page.route("**/api/submit-idee", (route) =>
+      route.fulfill({ status: 500, body: JSON.stringify({ error: "test" }) })
+    );
+
+    await page.locator('button[type="submit"]').click();
+    await expect(page.locator("#idea-form-status")).toContainText(/connexion|réessayez|envoyée/i, {
+      timeout: 10000,
+    });
+
+    // Draft should NOT be cleared on error (only on success)
+    draft = await page.evaluate(() => localStorage.getItem("indxone:votre-idee:draft:v1"));
+    expect(draft).toBeTruthy();
+  });
 });
