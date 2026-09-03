@@ -564,9 +564,6 @@
 
 .faq-item {
   max-width: 700px;
-}
-
-.faq-item {
   border-bottom: 1px solid var(--border);
 }
 
