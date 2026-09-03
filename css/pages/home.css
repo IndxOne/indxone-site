@@ -1,13 +1,40 @@
+.hero-stats-compact {
+  grid-template-columns: repeat(3, 1fr) !important;
+  width: min(100%, 600px) !important;
+}
+
 .project-types,
 .approach {
   background: var(--bg-primary);
-  padding: var(--space-4xl) var(--space-lg);
+  padding: var(--space-3xl) var(--space-lg);
+}
+
+.project-types > .section-label,
+.project-types > h2,
+.project-types > .section-sub,
+.approach > .section-label,
+.approach > h2,
+.approach > .section-sub,
+.services > .section-label,
+.services > h2,
+.services > .section-sub,
+.projets > .section-label,
+.projets > h2,
+.projets > .section-sub,
+.about-block > .section-label,
+.contact > .section-label {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .project-types-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-lg);
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .project-type-card {
@@ -29,19 +56,28 @@
 }
 
 .project-type-icon {
-  font-size: 1.6rem;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--gold-lighter);
+  color: var(--gold);
+  font-size: 1.3rem;
   margin-bottom: var(--space-md);
 }
 
-.project-type-card h3 {
+.project-type-card strong {
+  display: block;
   font-size: 1rem;
   font-weight: 700;
   color: var(--ink);
   margin-bottom: var(--space-sm);
 }
 
-.project-type-card p {
+.project-type-card small {
+  display: block;
   font-size: 0.85rem;
   color: var(--ink-light);
 }
@@ -52,6 +88,9 @@
   gap: var(--space-lg);
   margin-top: var(--space-2xl);
   position: relative;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .approach-steps::before {
@@ -105,7 +144,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-xl);
-  max-width: 960px;
+  max-width: 1180px;
   margin: 0 auto;
   flex-wrap: wrap;
 }
@@ -131,6 +170,9 @@
   border-radius: var(--radius-xl);
   padding: var(--space-lg) var(--space-xl);
   margin-bottom: var(--space-2xl);
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .contact-cta-band p {
@@ -141,13 +183,16 @@
 
 .services {
   background: var(--bg-secondary);
-  padding: var(--space-4xl) var(--space-lg);
+  padding: var(--space-3xl) var(--space-lg);
 }
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-lg);
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .startup-kit {
@@ -162,6 +207,7 @@
   background: var(--ink);
   border-color: var(--gold);
   color: var(--white);
+  grid-column: 1 / -1;
 }
 
 .service-card.featured h3,
@@ -247,7 +293,7 @@
 
 .projets {
   background: var(--bg-primary);
-  padding: var(--space-4xl) var(--space-lg);
+  padding: var(--space-3xl) var(--space-lg);
 }
 
 .projets .section-label {

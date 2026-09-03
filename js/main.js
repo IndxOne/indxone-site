@@ -23,9 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initContextualProjectLinks() {
-  if (document.body.dataset.formContext !== 'collectivite') return;
+  var isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
+  if (isHome) return;
+  var target = document.body.dataset.formContext === 'collectivite'
+    ? '/votre-idee/?type=collectivite'
+    : '/votre-idee/';
   document.querySelectorAll('a[href="/votre-idee"], a[href="/#contact"]').forEach((link) => {
-    link.href = '/votre-idee/?type=collectivite';
+    link.href = target;
   });
 }
 

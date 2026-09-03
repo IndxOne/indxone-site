@@ -103,9 +103,11 @@
         <a href="#tarifs" class="btn-ghost">Voir les tarifs</a>
       </div>
     </section>
-    <div class="demo-bar">
-      <span class="demo-badge">EN LIGNE</span> <span class="demo-url">mairies.indxone.com/mons-en-laonnois</span>
-      <span style="color: #6b7280">· Mons-en-Laonnois (02) · ~1 150 hab.</span>
+    <div class="demo-bar-wrap">
+      <div class="demo-bar">
+        <span class="demo-badge">EN LIGNE</span> <span class="demo-url">mairies.indxone.com/mons-en-laonnois</span>
+        <span style="color: #6b7280">· Mons-en-Laonnois (02) · ~1 150 hab.</span>
+      </div>
     </div>
     <section class="problem" id="pourquoi" aria-label="Problème des communes">
       <div class="section-label">Le problème</div>
@@ -368,7 +370,7 @@
           </div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">Que signifie RGPD natif ?</div>
+          <div class="faq-q">Que signifie « conforme au RGPD » ?</div>
           <div class="faq-a">
             Aucun cookie tiers n'est utilisé. Le site est conçu selon les principes RGPD et d'accessibilité ; les seules
             données collectées sont celles que vous transmettez volontairement via le contact.
@@ -376,42 +378,15 @@
         </div>
       </div>
     </section>
-    <section class="cta-final" id="contact-cta" aria-label="Appel à l'action">
+    <section class="cta-section" id="contact-cta" aria-label="Appel à l'action">
       <h2>Votre commune mérite un site à la hauteur</h2>
       <p>Recevez une proposition adaptée à votre commune, sans engagement.</p>
       <div class="cta-links">
         <a href="/votre-idee/?type=collectivite" class="btn-primary">Recevoir votre devis →</a>
-        <a class="secondary-contact" href="mailto:contact@indxone.com?subject=Demande%20de%20devis%20collectivit%C3%A9"
-          >Ou écrire directement par email</a
-        >
+        <a href="mailto:contact@indxone.com?subject=Demande%20de%20devis%20collectivit%C3%A9" class="cta-phone">Ou écrire directement par email</a>
       </div>
     </section>
-    <footer class="footer collectivites-footer">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a class="logo" href="https://indxone.com">indx<span>ONE</span></a>
-          <p>Sites web clairs et accessibles pour les collectivités.</p>
-          <address><a href="mailto:contact@indxone.com">contact@indxone.com</a></address>
-        </div>
-        <div class="footer-col">
-          <h2>Collectivités</h2>
-          <ul>
-            <li><a href="#pourquoi">Offre</a></li>
-            <li><a href="#demo">Démo</a></li>
-            <li><a href="#tarifs">Tarifs</a></li>
-            <li><a href="#faq">FAQ</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2026 INDXONE SASU · SIRET 999 968 902 00018</span>
-        <div class="footer-legal-links" aria-label="Informations légales">
-          <a href="/mentions-legales">Mentions légales</a>
-          <a href="/politique-confidentialite">Confidentialité</a>
-        </div>
-        <a href="https://indxone.com">INDXONE.com</a>
-      </div>
-    </footer>
+    <!--#include file="_includes/footer.html" -->
     <!--#include file="_includes/analytics.html" -->
   </body>
 </html>

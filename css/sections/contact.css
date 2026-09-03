@@ -1,6 +1,12 @@
 .contact {
   background: var(--bg-secondary);
-  padding: var(--space-4xl) var(--space-lg);
+  padding: var(--space-3xl) var(--space-lg);
+}
+
+.contact-info {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .contact-grid {
