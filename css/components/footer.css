@@ -42,6 +42,9 @@
 .footer-contact a {
   color: inherit;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 
 .footer-contact a:hover {

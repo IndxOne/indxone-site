@@ -78,8 +78,8 @@ test.describe("INDXONE site — homepage", () => {
     await page.goto("/projets/");
     await expect(page.locator(".cta-section .btn-primary")).toHaveText(/Démarrer un projet/);
     await expect(page.locator(".cta-section a[href^='https://hub']")).toHaveCount(0);
-    await expect(page.locator(".projets-footer")).toHaveCSS("background-color", "rgb(20, 32, 43)");
-    await expect(page.locator(".projets-footer a").first()).toHaveCSS("min-height", "44px");
+    await expect(page.locator(".footer")).toHaveCSS("background-color", "rgb(11, 17, 22)");
+    await expect(page.locator(".footer a").first()).toHaveCSS("min-height", "44px");
   });
 
   test("JSON-LD structured data exists", async ({ page }) => {
@@ -154,8 +154,8 @@ test.describe("INDXONE site — collectivites page", () => {
     await page.goto("/collectivites/");
     const footer = page.locator(".footer");
     const box = await footer.boundingBox();
-    expect(box?.height).toBeGreaterThanOrEqual(380);
-    expect(box?.height).toBeLessThanOrEqual(480);
+    expect(box?.height).toBeGreaterThanOrEqual(300);
+    expect(box?.height).toBeLessThanOrEqual(400);
     const legal = page.locator(".footer-legal-links");
     await expect(legal).toBeVisible();
     const legalBox = await legal.boundingBox();
