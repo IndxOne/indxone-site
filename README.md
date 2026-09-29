@@ -1,53 +1,42 @@
-# indxone-site
+# INDXONE
 
-Site vitrine **https://indxone.com** — INDXONE SASU (consultant SI, offre collectivités, portfolio).
+Vitrine statique : HTML, CSS modulaire, JavaScript. Publication Netlify depuis `dist/` ; source de déploiement actuelle : GitLab. GitHub sert de miroir et de revue.
 
-## Stack
+## Développement
 
-- **HTML statique** + CSS modulaire (`css/style.css`) — Stack unique en production
-- **Build** : PostCSS (purge) + assemble includes + minification HTML (`scripts/build.js`)
-- **Déploiement** : **Netlify** (`dist/`, `netlify.toml`, `_redirects`)
-- **Analytics** : **Plausible** (sans cookies publicitaires — voir `politique-confidentialite.html`)
-- **Formulaires** : **Netlify Forms**
-- **Tests** : Vitest (unit), Playwright (e2e)
-- **Stack** : HTML statique + CSS modulaire, build `dist/` unique
-
-## Commandes
+Node 24, npm 11 ou supérieur.
 
 ```bash
-npm install
-npm run dev          # build + serve dist sur :8000
-npm run build:all    # CSS + assemble + HTML → dist/
+npm ci
+npm run dev
 npm run lint
-npm run test:all     # unit + e2e
-npm run deploy       # build + netlify deploy --prod
+npm run test:unit
+npm run test:e2e
 ```
 
-## Structure
+`dev` reconstruit le site lors des changements HTML, CSS et JavaScript. Le serveur statique local ne fournit pas les fonctions : leurs handlers sont testés directement dans Vitest ; utiliser Netlify Dev pour une vérification intégrée.
 
-| Chemin | Rôle |
-|--------|------|
-| `index.html` | Accueil FR |
-| `en/` | Pages EN |
-| `collectivites/` | Offre mairies |
-| `projets/` | Réalisations |
-| `politique-confidentialite.html` | RGPD |
-| `mentions-legales.html` | Mentions légales |
-| `accessibilite/` | Déclaration d'accessibilité |
-| `404.html` | Page erreur |
-| `_includes/` | Fragments HTML (head, nav, footer) inclus via `scripts/assemble.js` |
-| `scripts/build.js` | Pipeline de publication |
-| `docs/SPEC-conformite-amelioration.md` | Roadmap conformité |
+## Build et Preview
 
-## Conformité
+```bash
+npm run build
+npm run deploy
+```
 
-Voir `docs/SPEC-conformite-amelioration.md` pour la roadmap complète (Phases 0–3).
+Le build échoue et supprime l'artefact partiel si une page, un include ou un bundle obligatoire manque ou est invalide. CSS compilé une fois, fichiers internes exclus de `dist/`.
 
-## Liens produits
+`deploy` crée uniquement un brouillon Netlify avec la CLI authentifiée. Aucun script de publication production. Sans contexte production publié, les API valident puis répondent explicitement en mode simulation : aucune demande envoyée ni écriture Blobs.
 
-- Hub : https://hub.indxone.com
-- Démo mairie : https://mairies.indxone.com/mons-en-laonnois/
+## Formulaires
 
-## Dépôt
+- `/api/submit-idee` : parcours guidé avec brouillon local, honeypot, consentement renouvelé et UUID stable.
+- `/api/contact` : contrat du formulaire contact historique, FR/EN.
+- En production : Netlify Forms reçoit les champs déclarés dans le HTML.
+- Netlify Blobs conserve uniquement un reçu technique (hash, état, date) pour empêcher les doubles envois, y compris entre instances et déploiements.
+- Réponse réseau ambiguë : aucun nouvel envoi automatique. Réconciliation manuelle avant reprise.
 
-GitLab : `indxone-group/indxone-site`
+Contrat : [docs/submission-contract.md](docs/submission-contract.md). Validation et transfert GitLab : [docs/gates/SITE-001.md](docs/gates/SITE-001.md).
+
+## Tests
+
+Les tests unitaires exécutent le vrai code client, les vrais handlers et le vrai pipeline de build. Les appels externes sont simulés ; leur succès ne prouve pas la réception Netlify réelle. Les tests navigateur vérifient les pages, le mobile et le parcours guidé.

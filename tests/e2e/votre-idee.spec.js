@@ -640,7 +640,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     expect(payload.meta.language).toBe("fr");
   });
 
-  test("created_at uses started_at from draft (not submit time)", async ({ page }) => {
+  test("separates draft start from fresh submission time", async ({ page }) => {
     // Load page — draft starts with current time
     const beforeLoad = Date.now();
     await page.goto("/votre-idee/");
@@ -652,12 +652,14 @@ test.describe("INDXONE — /votre-idee page", () => {
     const payload = JSON.parse(request.postData() || "{}");
 
     const createdAt = new Date(payload.created_at).getTime();
-    // created_at should be close to page load time, not submit time
-    expect(createdAt).toBeGreaterThanOrEqual(beforeLoad - 1000);
+    // Fresh transmission time is separate from the persisted draft start.
+    expect(createdAt).toBeGreaterThanOrEqual(beforeLoad);
+    expect(new Date(payload.started_at).getTime()).toBeLessThanOrEqual(createdAt);
+    expect(payload.company_name).toBe("");
     expect(createdAt).toBeLessThanOrEqual(Date.now());
   });
 
-  test("draft is cleared from localStorage after successful submit attempt", async ({ page }) => {
+  test("draft remains in localStorage after failed submission", async ({ page }) => {
     await page.goto("/votre-idee/");
     await navigateToStep6(page);
 

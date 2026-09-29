@@ -1,12 +1,16 @@
-const fs = require('fs');
-const path = require('path');
-const { minify } = require('html-minifier-terser');
-const { assembleFile } = require('./assemble');
+const fs = require("fs");
+const path = require("path");
+const postcss = require("postcss");
+const { minify } = require("html-minifier-terser");
+const { assembleFile } = require("./assemble");
 
-const ROOT = path.join(__dirname, '..');
-const DIST = path.join(ROOT, 'dist');
-
-const HTML_MINIFY_OPTIONS = {
+const ROOT = path.join(__dirname, "..");
+const HTML_FILES = ["index.html", "404.html"];
+const HTML_DIRS = ["collectivites", "projets", "merci", "votre-idee", "accessibilite"];
+const HTML_ROUTES = ["mentions-legales", "politique-confidentialite"];
+const ASSET_DIRS = ["js", "img", "fonts"];
+const ROOT_ASSETS = ["robots.txt", "sitemap.xml", "favicon.svg", "favicon.ico"];
+const MINIFY_OPTIONS = {
   removeComments: true,
   collapseWhitespace: true,
   collapseBooleanAttributes: true,
@@ -15,209 +19,95 @@ const HTML_MINIFY_OPTIONS = {
   minifyJS: true,
 };
 
-const COPY_DIRS = ['css', 'js', 'img', 'fonts', '_includes'];
-const COPY_FILES = [
-  '_redirects',
-  'netlify.toml',
-  'robots.txt',
-  'sitemap.xml',
-  'favicon.svg',
-  'favicon.ico',
-  'startup-launch-kit-bloc.html',
-];
-const HTML_DIRS = [
-  { src: 'collectivites', dest: 'collectivites' },
-  { src: 'projets', dest: 'projets' },
-  { src: 'merci', dest: 'merci' },
-  { src: 'votre-idee', dest: 'votre-idee' },
-  { src: 'accessibilite', dest: 'accessibilite' },
-];
-
-const ROOT_HTML = [
-  'index.html',
-  '404.html',
-];
-
-// Ces pages sont générées comme répertoires (src.html → dest/index.html)
-// pour que Python http.server les serve sans extension, cohérent avec les autres pages
-const ROOT_HTML_AS_DIRS = [
-  { src: 'mentions-legales.html',          dest: 'mentions-legales' },
-  { src: 'politique-confidentialite.html', dest: 'politique-confidentialite' },
-];
-
-function ensureDir(dir) {
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
+function requireSource(source) {
+  if (!fs.existsSync(source)) throw new Error(`Source not found: ${source}`);
 }
 
-function copyDir(src, dest) {
-  if (!fs.existsSync(src)) return;
-  const entries = fs.readdirSync(src, { withFileTypes: true });
-  for (const entry of entries) {
-    const srcPath = path.join(src, entry.name);
-    const destPath = path.join(dest, entry.name);
-    if (entry.name.endsWith('.backup')) continue;
-    if (entry.isDirectory()) {
-      copyDir(srcPath, destPath);
-    } else {
-      ensureDir(path.dirname(destPath));
-      fs.copyFileSync(srcPath, destPath);
+function copyAssets(source, target) {
+  for (const entry of fs.readdirSync(source, { withFileTypes: true })) {
+    if (entry.name.startsWith(".") || entry.name.endsWith(".backup")) continue;
+    const from = path.join(source, entry.name);
+    const to = path.join(target, entry.name);
+    if (entry.isDirectory()) copyAssets(from, to);
+    else {
+      fs.mkdirSync(path.dirname(to), { recursive: true });
+      fs.copyFileSync(from, to);
     }
   }
 }
 
-async function minifyAndCopyHtml(src, dest, assemble = false) {
-  if (!fs.existsSync(src)) return;
-  ensureDir(path.dirname(dest));
-
-  if (fs.statSync(src).isDirectory()) {
-    const entries = fs.readdirSync(src);
-    for (const entry of entries) {
-      if (entry.endsWith('.backup') || entry.startsWith('.')) continue;
-      await minifyAndCopyHtml(path.join(src, entry), path.join(dest, entry), assemble);
-    }
-    return;
-  }
-
-  if (!src.endsWith('.html')) return;
-
-  try {
-    let content = fs.readFileSync(src, 'utf8');
-    if (assemble) {
-      const assembled = assembleFile(src);
-      if (assembled) content = assembled;
-    }
-    content = content.replace(/\s*<link\s+rel="alternate"\s+hreflang="en"[^>]*>/gi, '');
-    const minified = await minify(content, HTML_MINIFY_OPTIONS);
-    fs.writeFileSync(dest, minified, 'utf8');
-
-    const originalSize = Buffer.byteLength(content, 'utf8');
-    const minifiedSize = Buffer.byteLength(minified, 'utf8');
-    const reduction = ((originalSize - minifiedSize) / originalSize * 100).toFixed(1);
-    const relPath = path.relative(ROOT, dest);
-    console.log(`  ${relPath}  ${(originalSize / 1024).toFixed(1)}K -> ${(minifiedSize / 1024).toFixed(1)}K  (-${reduction}%)`);
-  } catch (err) {
-    console.error(`  Error processing ${src}: ${err.message}`);
-  }
-}
-
-async function main() {
-  console.log('Building site to dist/\n');
-
-  // Clean dist
-  if (fs.existsSync(DIST)) {
-    fs.rmSync(DIST, { recursive: true });
-  }
-  ensureDir(DIST);
-
-  // Copy HTML files
-  console.log('--- HTML ---');
-  for (const dir of HTML_DIRS) {
-    const srcDir = path.join(ROOT, dir.src);
-    const destDir = path.join(DIST, dir.dest);
-    if (fs.existsSync(srcDir)) {
-      await minifyAndCopyHtml(srcDir, destDir, true);
-    }
-  }
-  for (const file of ROOT_HTML) {
-    const src = path.join(ROOT, file);
-    const dest = path.join(DIST, file);
-    if (fs.existsSync(src)) {
-      await minifyAndCopyHtml(src, dest, true);
-    }
-  }
-  for (const { src: srcFile, dest: destDir } of ROOT_HTML_AS_DIRS) {
-    const src = path.join(ROOT, srcFile);
-    const dest = path.join(DIST, destDir, 'index.html');
-    if (fs.existsSync(src)) {
-      await minifyAndCopyHtml(src, dest, true);
-    }
-  }
-
-  // Copy static directories
-  console.log('\n--- Assets ---');
-  for (const dir of COPY_DIRS) {
-    const src = path.join(ROOT, dir);
-    const dest = path.join(DIST, dir);
-    if (fs.existsSync(src)) {
-      copyDir(src, dest);
-      console.log(`  ${dir}/`);
-    }
-  }
-
-  // Copy root files
-  for (const file of COPY_FILES) {
-    const src = path.join(ROOT, file);
-    const dest = path.join(DIST, file);
-    if (fs.existsSync(src)) {
-      fs.copyFileSync(src, dest);
-      console.log(`  ${file}`);
-    }
-  }
-
-  // Build CSS with PostCSS
-  console.log('\n--- CSS (PostCSS) ---');
-  try {
-    const postcss = require('postcss');
-    const postcssConfig = require(path.join(ROOT, 'postcss.config.js'));
-    const cssContent = fs.readFileSync(path.join(ROOT, 'css/style.css'), 'utf8');
-    const plugins = Object.entries(postcssConfig.plugins).map(([name, opts]) => {
-      const plugin = require(name);
-      return plugin(opts);
-    });
-    const result = await postcss(plugins).process(cssContent, { from: path.join(ROOT, 'css/style.css'), to: path.join(DIST, 'css/optimized.css') });
-    ensureDir(path.join(DIST, 'css'));
-    fs.writeFileSync(path.join(DIST, 'css/optimized.css'), result.css);
-    // Overwrite style.css with the optimized bundle (HTML references style.css)
-    fs.writeFileSync(path.join(DIST, 'css/style.css'), result.css);
-    console.log(`  css/optimized.css  (${(result.css.length / 1024).toFixed(1)}K)`);
-  } catch (err) {
-    console.error(`  PostCSS build failed: ${err.message}`);
-    console.log('  Falling back: copying CSS files as-is');
-    copyDir(path.join(ROOT, 'css'), path.join(DIST, 'css'));
-  }
-
-  // Copy _redirects with assemble support
-  const redirectsSrc = path.join(ROOT, '_redirects');
-  if (fs.existsSync(redirectsSrc)) {
-    const redirectsDest = path.join(DIST, '_redirects');
-    let redirectsContent = fs.readFileSync(redirectsSrc, 'utf8');
-    const assembledRedirects = assembleFile ? assembleFile(redirectsSrc) : null;
-    if (assembledRedirects) redirectsContent = assembledRedirects;
-    fs.writeFileSync(redirectsDest, redirectsContent, 'utf8');
-    console.log('  _redirects');
-  }
-
-  // Copy optimized.css if exists
-  const optCss = path.join(ROOT, 'css/optimized.css');
-  if (fs.existsSync(optCss)) {
-    ensureDir(path.join(DIST, 'css'));
-    fs.copyFileSync(optCss, path.join(DIST, 'css/optimized.css'));
-  }
-
-  // Summary
-  let totalSize = 0;
-  let fileCount = 0;
-  function countFiles(dir) {
-    if (!fs.existsSync(dir)) return;
-    const entries = fs.readdirSync(dir, { withFileTypes: true });
-    for (const entry of entries) {
-      const fullPath = path.join(dir, entry.name);
-      if (entry.isDirectory()) {
-        countFiles(fullPath);
-      } else {
-        totalSize += fs.statSync(fullPath).size;
-        fileCount++;
+async function buildSite({ root = ROOT, dist = path.join(root, "dist") } = {}) {
+  root = path.resolve(root);
+  dist = path.resolve(dist);
+  if (dist === root || root.startsWith(dist + path.sep)) throw new Error("Output cannot contain the source root");
+  fs.rmSync(dist, { recursive: true, force: true });
+  fs.mkdirSync(dist, { recursive: true });
+  async function html(source, target) {
+    requireSource(source);
+    if (fs.statSync(source).isDirectory()) {
+      for (const entry of fs.readdirSync(source)) {
+        if (entry.startsWith(".") || entry.endsWith(".backup")) continue;
+        await html(path.join(source, entry), path.join(target, entry));
       }
+      return;
     }
+    if (!source.endsWith(".html")) return;
+    const content = assembleFile(source, root).replace(/\s*<link\s+rel="alternate"\s+hreflang="en"[^>]*>/gi, "");
+    const output = await minify(content, MINIFY_OPTIONS);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, output);
   }
-  countFiles(DIST);
+  try {
+    for (const file of HTML_FILES) await html(path.join(root, file), path.join(dist, file));
+    for (const dir of HTML_DIRS) {
+      requireSource(path.join(root, dir, "index.html"));
+      await html(path.join(root, dir), path.join(dist, dir));
+    }
+    for (const route of HTML_ROUTES) await html(path.join(root, `${route}.html`), path.join(dist, route, "index.html"));
+    requireSource(path.join(root, "js", "main.js"));
+    for (const dir of ASSET_DIRS) {
+      const source = path.join(root, dir);
+      if (fs.existsSync(source)) copyAssets(source, path.join(dist, dir));
+    }
+    for (const file of ROOT_ASSETS) {
+      const source = path.join(root, file);
+      if (fs.existsSync(source)) fs.copyFileSync(source, path.join(dist, file));
+    }
+    const redirects = path.join(root, "_redirects");
+    requireSource(redirects);
+    fs.writeFileSync(path.join(dist, "_redirects"), assembleFile(redirects, root));
 
-  console.log(`\n✅ Build complete`);
-  console.log(`   Files: ${fileCount}`);
-  console.log(`   Total size: ${(totalSize / 1024).toFixed(1)}K`);
-  console.log(`   Output: dist/`);
+    const source = path.join(root, "css", "style.css");
+    requireSource(source);
+    const config = require(path.join(root, "postcss.config.js"));
+    const plugins = Object.entries(config.plugins).map(([name, options]) => {
+      // Resolve content against the source root, independent of process cwd.
+      if (name === "@fullhuman/postcss-purgecss") {
+        options = { ...options, content: options.content.map((pattern) => path.resolve(root, pattern)) };
+      }
+      return require(name)(options);
+    });
+    const target = path.join(dist, "css", "style.css");
+    const result = await postcss(plugins).process(fs.readFileSync(source, "utf8"), {
+      from: source,
+      to: target,
+      map: false,
+    });
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, result.css);
+    console.log(`Build complete: ${dist}`);
+    return dist;
+  } catch (error) {
+    // Never leave a partially successful artifact available for deployment.
+    fs.rmSync(dist, { recursive: true, force: true });
+    throw error;
+  }
 }
 
-main().catch(console.error);
+module.exports = { buildSite };
+if (require.main === module) {
+  buildSite().catch((error) => {
+    console.error(`Build failed: ${error.message}`);
+    process.exitCode = 1;
+  });
+}

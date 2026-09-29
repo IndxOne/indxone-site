@@ -1,67 +1,14 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 
-// ---------------------------------------------------------------------------
-// Helper: extract functions from main.js by re-defining them in test scope
-// This avoids polluting the global DOM with the full script.
-// ---------------------------------------------------------------------------
+import { readFileSync } from "node:fs";
 
-function animateValue(element) {
-  const text = element.textContent;
-  const hasNumber = /\d+/.test(text);
-  if (!hasNumber) return;
-  const match = text.match(/(\d+)/);
-  if (!match) return;
-  const targetValue = parseInt(match[1], 10);
-  const prefix = text.substring(0, text.indexOf(match[1]));
-  const suffix = text.substring(text.indexOf(match[1]) + match[1].length);
-  let currentValue = 0;
-  const duration = 1000;
-  const steps = 20;
-  const increment = targetValue / steps;
-  const stepDuration = duration / steps;
-  const timer = setInterval(() => {
-    currentValue += increment;
-    if (currentValue >= targetValue) {
-      currentValue = targetValue;
-      clearInterval(timer);
-    }
-    element.textContent = prefix + Math.floor(currentValue) + suffix;
-  }, stepDuration);
-  return timer;
-}
-
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
-
-function throttle(func, limit) {
-  let inThrottle;
-  return function (...args) {
-    if (!inThrottle) {
-      func.apply(this, args);
-      inThrottle = true;
-      setTimeout(() => (inThrottle = false), limit);
-    }
-  };
-}
-
-function isInViewport(element) {
-  const rect = element.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-}
+const source = readFileSync("js/main.js", "utf8");
+const { animateValue, debounce, throttle, isInViewport, initFormEnhancements } = new Function(
+  "document",
+  "window",
+  "console",
+  source + "\nreturn { animateValue, debounce, throttle, isInViewport, initFormEnhancements };"
+)(document, window, { log() {} });
 
 // ---------------------------------------------------------------------------
 // Tests
@@ -199,5 +146,49 @@ describe("isInViewport()", () => {
       toJSON: () => ({}),
     });
     expect(isInViewport(el)).toBe(false);
+  });
+});
+
+describe("actual contact form script", () => {
+  beforeEach(() => {
+    document.body.innerHTML = `<form data-netlify="true">
+      <input name="nom" value="Test"><input name="email" value="test@example.org">
+      <input type="checkbox" name="consent" checked>
+      <button type="submit">Envoyer</button></form>`;
+    vi.stubGlobal("fetch", vi.fn());
+    initFormEnhancements();
+  });
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    document.body.innerHTML = "";
+  });
+  const submit = () => document.querySelector("form").dispatchEvent(new Event("submit", { cancelable: true }));
+  const settled = () => new Promise((resolve) => setTimeout(resolve, 0));
+  it("shows server error without trying to join absent details", async () => {
+    fetch.mockResolvedValue({ ok: false, status: 500, json: async () => ({ error: "Erreur serveur" }) });
+    submit();
+    await settled();
+    expect(document.querySelector('[role="alert"]').textContent).toBe("Erreur serveur");
+    expect(document.querySelector("button").disabled).toBe(false);
+  });
+  it("keeps the same request ID on retry and sends boolean consent", async () => {
+    fetch.mockResolvedValue({ ok: false, status: 502, json: async () => ({ error: "Transmission" }) });
+    submit();
+    await settled();
+    submit();
+    await settled();
+    const payloads = fetch.mock.calls.map((call) => JSON.parse(call[1].body));
+    expect(payloads[0].submission_id).toMatch(/^[0-9a-f-]{36}$/);
+    expect(payloads[1].submission_id).toBe(payloads[0].submission_id);
+    expect(payloads[0].consent).toBe(true);
+    expect(payloads[0].started_at).toBeTruthy();
+  });
+  it("shows honest preview simulation without redirect or disabling retry", async () => {
+    fetch.mockResolvedValue({ ok: true, json: async () => ({ ok: false, simulated: true }) });
+    submit();
+    await settled();
+    expect(document.querySelector('[role="status"]').textContent).toContain("aucune demande envoyée");
+    expect(document.querySelector("button").disabled).toBe(false);
+    expect(document.querySelector("input[name=nom]").value).toBe("Test");
   });
 });
