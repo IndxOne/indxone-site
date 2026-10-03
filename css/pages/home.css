@@ -573,3 +573,57 @@
     display: none;
   }
 }
+
+/* Bloc Terrain : 3 preuves, sans JS */
+.terrain {
+  background: var(--bg-primary);
+  padding: var(--space-2xl) var(--space-lg);
+}
+
+.terrain > .section-label,
+.terrain > h2,
+.terrain-list {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.terrain-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.terrain-list li {
+  display: grid;
+  gap: var(--space-xs);
+  padding: var(--space-lg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--card-bg);
+}
+
+.terrain-list strong {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.terrain-list span {
+  color: var(--text-secondary);
+}
+
+.terrain-list a {
+  color: var(--blue);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+}
+
+@media (width >= 768px) {
+  .terrain-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
