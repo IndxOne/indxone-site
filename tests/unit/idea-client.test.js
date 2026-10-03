@@ -31,7 +31,7 @@ function boot(draft) {
   return { window, form, navigation, fetch: window.fetch, status: window.document.querySelector("#idea-form-status") };
 }
 function complete({ form, window }) {
-  const choice = form.querySelector('input[value="site internet"]');
+  const choice = form.querySelector('input[value="structurer un besoin"]');
   choice.checked = true;
   choice.dispatchEvent(new window.Event("change", { bubbles: true }));
   for (const [name, value] of Object.entries({
@@ -41,7 +41,7 @@ function complete({ form, window }) {
     "branch-two": "Présentation et contact",
     style: "Sobre",
     start: "Dans le mois",
-    support: "Jusqu'à la mise en ligne",
+    support: "Jusqu'à la mise en production",
     name: "Koffi",
     email: "test@example.com",
   }))

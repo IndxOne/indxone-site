@@ -8,9 +8,9 @@ test.describe("INDXONE — /votre-idee page", () => {
   // ─── Page structure ───────────────────────────────────────
 
   test("has correct title and meta tags", async ({ page }) => {
-    await expect(page).toHaveTitle(/Racontez votre idée/);
+    await expect(page).toHaveTitle(/Échangeons sur votre projet SI/);
     const metaDesc = page.locator('meta[name="description"]');
-    await expect(metaDesc).toHaveAttribute("content", /Parlez-nous/i);
+    await expect(metaDesc).toHaveAttribute("content", /Cadrage, pilotage et transformation/i);
     const canonical = page.locator('link[rel="canonical"]');
     await expect(canonical).toHaveAttribute("href", /\/votre-idee/);
   });
@@ -23,7 +23,7 @@ test.describe("INDXONE — /votre-idee page", () => {
   });
 
   test("heading and intro are visible", async ({ page }) => {
-    await expect(page.locator("#idea-title")).toHaveText("Racontez votre idée.");
+    await expect(page.locator("#idea-title")).toHaveText("Échangeons sur votre projet SI.");
     await expect(page.locator(".idea-lead")).toBeVisible();
     await expect(page.locator(".idea-lead")).toContainText(/aucun engagement/i);
   });
@@ -52,20 +52,18 @@ test.describe("INDXONE — /votre-idee page", () => {
 
   // ─── Step 0 — Project type ───────────────────────────────
 
-  test("step 0 shows 5 project type choices", async ({ page }) => {
+  test("step 0 shows 3 project type choices", async ({ page }) => {
     const step0 = page.locator('[data-step="0"]');
     await expect(step0).toBeVisible();
     const choices = page.locator(".idea-choice");
-    await expect(choices).toHaveCount(5);
+    await expect(choices).toHaveCount(3);
   });
 
   test("step 0 has correct choice labels", async ({ page }) => {
     const labels = page.locator(".idea-choice strong");
-    await expect(labels.nth(0)).toHaveText("Un mariage ou événement");
-    await expect(labels.nth(1)).toHaveText("Un site internet");
-    await expect(labels.nth(2)).toHaveText("Une application");
-    await expect(labels.nth(3)).toHaveText("Une activité à développer");
-    await expect(labels.nth(4)).toHaveText("Une idée encore floue");
+    await expect(labels.nth(0)).toHaveText("Piloter un projet SI");
+    await expect(labels.nth(1)).toHaveText("Structurer un besoin");
+    await expect(labels.nth(2)).toHaveText("Transformer un processus");
   });
 
   test("step 0 validates: cannot continue without selection", async ({ page }) => {
@@ -135,60 +133,42 @@ test.describe("INDXONE — /votre-idee page", () => {
   test("step 1: continue with valid data advances to step 2", async ({ page }) => {
     await page.locator(".idea-choice").nth(0).click();
     await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-goal").fill("Un site pour mon mariage");
-    await page.locator("#idea-audience").fill("Mes invités");
+    await page.locator("#idea-goal").fill("Cadrage d'un projet ERP");
+    await page.locator("#idea-audience").fill("Direction et métiers");
     await page.getByRole("button", { name: "Continuer" }).click();
     await expect(page.locator('[data-step="2"]')).toBeVisible();
   });
 
   // ─── Step 2 — Branch-specific questions ──────────────────
 
-  test("step 2 branch content updates for mariage", async ({ page }) => {
+  test("step 2 branch content updates for pilotage", async ({ page }) => {
     await page.locator(".idea-choice").nth(0).click();
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-goal").fill("test");
     await page.locator("#idea-audience").fill("test");
     await page.getByRole("button", { name: "Continuer" }).click();
-    await expect(page.locator("[data-branch-title]")).toHaveText("Votre événement");
-    await expect(page.locator("[data-branch-one-label]")).toContainText(/date.*lieu/i);
+    await expect(page.locator("[data-branch-title]")).toHaveText("Votre projet SI");
+    await expect(page.locator("[data-branch-one-label]")).toContainText(/périmètre.*avancement/i);
   });
 
-  test("step 2 branch content updates for site", async ({ page }) => {
+  test("step 2 branch content updates for besoin", async ({ page }) => {
     await page.locator(".idea-choice").nth(1).click();
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-goal").fill("test");
     await page.locator("#idea-audience").fill("test");
     await page.getByRole("button", { name: "Continuer" }).click();
-    await expect(page.locator("[data-branch-title]")).toHaveText("Votre site");
-    await expect(page.locator("[data-branch-one-label]")).toContainText(/activité.*sujet/i);
+    await expect(page.locator("[data-branch-title]")).toHaveText("Votre besoin");
+    await expect(page.locator("[data-branch-one-label]")).toContainText(/situation.*dysfonctionnement/i);
   });
 
-  test("step 2 branch content updates for application", async ({ page }) => {
+  test("step 2 branch content updates for processus", async ({ page }) => {
     await page.locator(".idea-choice").nth(2).click();
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-goal").fill("test");
     await page.locator("#idea-audience").fill("test");
     await page.getByRole("button", { name: "Continuer" }).click();
-    await expect(page.locator("[data-branch-title]")).toHaveText("Votre application");
-    await expect(page.locator("[data-branch-one-label]")).toContainText(/action.*problème/i);
-  });
-
-  test("step 2 branch content updates for activite", async ({ page }) => {
-    await page.locator(".idea-choice").nth(3).click();
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-goal").fill("test");
-    await page.locator("#idea-audience").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await expect(page.locator("[data-branch-title]")).toHaveText("Votre activité");
-  });
-
-  test("step 2 branch content updates for idée floue", async ({ page }) => {
-    await page.locator(".idea-choice").nth(4).click();
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-goal").fill("test");
-    await page.locator("#idea-audience").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await expect(page.locator("[data-branch-title]")).toHaveText("Votre point de départ");
+    await expect(page.locator("[data-branch-title]")).toHaveText("Votre processus");
+    await expect(page.locator("[data-branch-one-label]")).toContainText(/processus.*outils/i);
   });
 
   // ─── Step 3 — Style, examples, start ─────────────────────
@@ -244,7 +224,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     await page.locator("#idea-style").fill("test");
     await page.locator("#idea-start").selectOption("Dans le mois");
     await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-support").selectOption("Clarifier l'idée et démarrer");
+    await page.locator("#idea-support").selectOption("Cadrer le besoin");
     await page.getByRole("button", { name: "Continuer" }).click();
     await expect(page.locator('[data-step="5"]')).toBeVisible();
     await expect(page.locator("#idea-name")).toBeVisible();
@@ -266,7 +246,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     await page.locator("#idea-style").fill("test");
     await page.locator("#idea-start").selectOption("Dans le mois");
     await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-support").selectOption("Clarifier l'idée et démarrer");
+    await page.locator("#idea-support").selectOption("Cadrer le besoin");
     await page.getByRole("button", { name: "Continuer" }).click();
     // Try to proceed without filling required fields
     await page.getByRole("button", { name: "Voir le récapitulatif" }).click();
@@ -289,7 +269,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     await page.locator("#idea-start").selectOption("Dans les 3 mois");
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-budget").selectOption("1 500–5 000 €");
-    await page.locator("#idea-support").selectOption("Jusqu'à la mise en ligne");
+    await page.locator("#idea-support").selectOption("Jusqu'à la mise en production");
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-name").fill("Dupont");
     await page.locator("#idea-firstname").fill("Jean");
@@ -301,7 +281,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     await expect(page.locator("#review-title")).toHaveText("Votre récapitulatif");
 
     const summary = page.locator("#idea-summary");
-    await expect(summary).toContainText("site internet");
+    await expect(summary).toContainText("structurer un besoin");
     await expect(summary).toContainText("Un site vitrine");
     await expect(summary).toContainText("Mes clients");
     await expect(summary).toContainText("Jean");
@@ -322,7 +302,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     await page.locator("#idea-style").fill("test");
     await page.locator("#idea-start").selectOption("Dans le mois");
     await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-support").selectOption("Clarifier l'idée et démarrer");
+    await page.locator("#idea-support").selectOption("Cadrer le besoin");
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-name").fill("Test");
     await page.locator("#idea-email").fill("test@test.fr");
@@ -336,18 +316,18 @@ test.describe("INDXONE — /votre-idee page", () => {
 
   // ─── Query parameter preselection ────────────────────────
 
-  test("?type=mariage preselects mariage choice", async ({ page }) => {
-    await page.goto("/votre-idee/?type=mariage");
+  test("?type=pilotage preselects pilotage choice", async ({ page }) => {
+    await page.goto("/votre-idee/?type=pilotage");
     await expect(page.locator(".idea-choice").nth(0).locator("input")).toBeChecked();
   });
 
-  test("?type=site preselects site choice", async ({ page }) => {
-    await page.goto("/votre-idee/?type=site");
+  test("?type=besoin preselects besoin choice", async ({ page }) => {
+    await page.goto("/votre-idee/?type=besoin");
     await expect(page.locator(".idea-choice").nth(1).locator("input")).toBeChecked();
   });
 
-  test("?type=application preselects application choice", async ({ page }) => {
-    await page.goto("/votre-idee/?type=application");
+  test("?type=processus preselects processus choice", async ({ page }) => {
+    await page.goto("/votre-idee/?type=processus");
     await expect(page.locator(".idea-choice").nth(2).locator("input")).toBeChecked();
   });
 
@@ -356,7 +336,7 @@ test.describe("INDXONE — /votre-idee page", () => {
   test("all form fields have associated labels", async ({ page }) => {
     // Step 0 uses label wrapping (radio inputs inside label elements)
     const step0Labels = page.locator(".idea-choice");
-    await expect(step0Labels).toHaveCount(5);
+    await expect(step0Labels).toHaveCount(3);
 
     // Navigate to step 5 to check input labels
     await page.locator(".idea-choice").nth(1).click();
@@ -370,7 +350,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     await page.locator("#idea-style").fill("test");
     await page.locator("#idea-start").selectOption("Dans le mois");
     await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-support").selectOption("Clarifier l'idée et démarrer");
+    await page.locator("#idea-support").selectOption("Cadrer le besoin");
     await page.getByRole("button", { name: "Continuer" }).click();
 
     // Check that labels have for attributes matching input ids
@@ -444,7 +424,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     expect(draft).toBeTruthy();
     const parsed = JSON.parse(draft || "{}");
     expect(parsed.goal).toBe("Mon projet de test");
-    expect(parsed["project-type-choice"]).toBe("site internet");
+    expect(parsed["project-type-choice"]).toBe("structurer un besoin");
   });
 
   test("form restores draft after page reload", async ({ page }) => {
@@ -518,7 +498,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     await page.locator("#idea-style").fill("test");
     await page.locator("#idea-start").selectOption("Dans le mois");
     await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-support").selectOption("Clarifier l'idée et démarrer");
+    await page.locator("#idea-support").selectOption("Cadrer le besoin");
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-name").fill("Test");
     await page.locator("#idea-email").fill("test@test.fr");
@@ -542,7 +522,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     await page.locator("#idea-start").selectOption("Dans les 3 mois");
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-budget").selectOption("1 500–5 000 €");
-    await page.locator("#idea-support").selectOption("Jusqu'à la mise en ligne");
+    await page.locator("#idea-support").selectOption("Jusqu'à la mise en production");
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-name").fill("Dupont");
     await page.locator("#idea-firstname").fill("Jean");
@@ -619,7 +599,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     const payload = JSON.parse(request.postData() || "{}");
 
     expect(payload.form_version).toBe("1.0.0");
-    expect(payload.project_type).toBe("site");
+    expect(payload.project_type).toBe("besoin");
     expect(payload.submission_id).toMatch(
       /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/
     );
@@ -633,7 +613,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     expect(payload.responses.trunk.style).toBe("Sobre, chaleureux, professionnel");
     expect(payload.responses.trunk.start).toBe("Dans les 3 mois");
     expect(payload.responses.trunk.budget).toBe("1 500–5 000 €");
-    expect(payload.responses.trunk.support).toBe("Jusqu'à la mise en ligne");
+    expect(payload.responses.trunk.support).toBe("Jusqu'à la mise en production");
     expect(payload.responses.conditional.branch_one).toBe("Mon activité de coaching professionnel");
     expect(payload.responses.conditional.branch_two).toBe("Accueil, services, témoignages, contact");
     expect(payload.meta.origin).toContain("/votre-idee");

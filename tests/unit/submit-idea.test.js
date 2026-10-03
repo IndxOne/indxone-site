@@ -10,7 +10,7 @@ const dates = () => ({ started_at: new Date(Date.now() - 5000).toISOString(), cr
 const payload = () => ({
   form_version: "1.0.0",
   submission_id: id,
-  project_type: "site",
+  project_type: "besoin",
   ...dates(),
   contact: { nom: "Koffi", email: "test@example.com" },
   consent: { accepted: true, accepted_at: new Date().toISOString() },
@@ -20,7 +20,7 @@ const payload = () => ({
       audience: "Clients",
       style: "Sobre",
       start: "Dans le mois",
-      support: "Jusqu'à la mise en ligne",
+      support: "Jusqu'à la mise en production",
     },
     conditional: { branch_one: "Conseil SI", branch_two: "Services et contact" },
   },

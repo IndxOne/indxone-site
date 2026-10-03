@@ -11,21 +11,15 @@
   const projectTypeChoices = [...form.querySelectorAll('input[name="project-type-choice"]')];
   const submitButton = form.querySelector('button[type="submit"]');
   const projectTypeMap = {
-    "mariage ou événement": "mariage",
-    "site internet": "site",
-    application: "application",
-    "activité à développer": "activite",
-    "idée encore floue": "idee_floue",
+    "piloter un projet SI": "pilotage",
+    "structurer un besoin": "besoin",
+    "transformer un processus": "processus",
   };
   const queryTypeMap = {
-    mariage: "mariage ou événement",
-    site: "site internet",
-    application: "application",
-    activite: "activité à développer",
-    organisation: "application",
-    floue: "idée encore floue",
-    idee_floue: "idée encore floue",
-    collectivite: "site internet",
+    pilotage: "piloter un projet SI",
+    besoin: "structurer un besoin",
+    processus: "transformer un processus",
+    collectivite: "structurer un besoin",
   };
   const branch = {
     title: form.querySelector("[data-branch-title]"),
@@ -35,35 +29,23 @@
   };
 
   const branchCopy = {
-    "mariage ou événement": {
-      title: "Votre événement",
-      hint: "Quelques repères pour imaginer l’expérience à proposer aux invités.",
-      one: "Quelle date et quel lieu envisagez-vous ? *",
-      two: "Quelles informations ou services devront trouver les invités ? *",
+    "piloter un projet SI": {
+      title: "Votre projet SI",
+      hint: "Quelques repères sur le périmètre et la gouvernance.",
+      one: "Quel est le périmètre et l’état d’avancement du projet ? *",
+      two: "Quelles sont les principales contraintes (délais, budget, prestataires) ? *",
     },
-    "site internet": {
-      title: "Votre site",
-      hint: "Pensons d’abord à ce que vos visiteurs doivent comprendre et faire.",
-      one: "Quelle activité ou quel sujet le site présentera-t-il ? *",
-      two: "Quelles pages ou informations sont indispensables ? *",
+    "structurer un besoin": {
+      title: "Votre besoin",
+      hint: "Partons de la situation réelle avant de choisir une solution.",
+      one: "Quelle situation ou quel dysfonctionnement motive ce besoin ? *",
+      two: "Qui sont les parties prenantes et que doit permettre la solution ? *",
     },
-    application: {
-      title: "Votre application",
-      hint: "Décrivons le problème à résoudre avant de parler de technologie.",
-      one: "Quelle action ou quel problème souhaitez-vous simplifier ? *",
-      two: "Qui l’utilisera et sur quel support : mobile, web ou les deux ? *",
-    },
-    "activité à développer": {
-      title: "Votre activité",
-      hint: "Quelques éléments sur votre offre et votre priorité immédiate.",
-      one: "Que proposez-vous et à qui ? *",
-      two: "Quelle tâche ou quel point souhaitez-vous simplifier en premier ? *",
-    },
-    "idée encore floue": {
-      title: "Votre point de départ",
-      hint: "Partons de la situation réelle, sans chercher la solution tout de suite.",
-      one: "D’où vient cette idée ? *",
-      two: "Quelle situation vous gêne aujourd’hui ? *",
+    "transformer un processus": {
+      title: "Votre processus",
+      hint: "Décrivons le processus actuel avant d’envisager l’outil.",
+      one: "Quel processus souhaitez-vous faire évoluer, avec quels outils aujourd’hui ? *",
+      two: "Quels gains attendez-vous (temps, fiabilité, qualité) ? *",
     },
   };
 
@@ -190,7 +172,7 @@
   function syncBranch() {
     const selected = projectTypeChoices.find((choice) => choice.checked)?.value || "";
     projectTypeInput.value = selected;
-    const copy = branchCopy[selected] || branchCopy["idée encore floue"];
+    const copy = branchCopy[selected] || branchCopy["structurer un besoin"];
     branch.title.textContent = copy.title;
     branch.hint.textContent = copy.hint;
     branch.oneLabel.textContent = copy.one;

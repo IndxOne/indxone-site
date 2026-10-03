@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Racontez votre idée — INDXONE</title>
-    <meta name="description" content="Parlez-nous de votre mariage, activité, site, application ou idée. Quelques questions pour clarifier votre projet, sans engagement.">
+    <title>Échangeons sur votre projet SI — INDXONE</title>
+    <meta name="description" content="Cadrage, pilotage et transformation des projets SI. Quelques questions pour clarifier votre besoin, sans engagement.">
     <link rel="canonical" href="https://indxone.com/votre-idee">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,8 +20,8 @@
       <section class="idea-shell" aria-labelledby="idea-title">
         <div class="idea-intro">
           <p class="section-label">Parlons de votre projet</p>
-          <h1 id="idea-title">Racontez votre idée.</h1>
-          <p class="idea-lead">Quelques questions pour comprendre ce que vous imaginez et vous proposer une direction utile. Il n'y a aucun engagement.</p>
+          <h1 id="idea-title">Échangeons sur votre projet SI.</h1>
+          <p class="idea-lead">Quelques questions pour cadrer votre besoin et vous proposer une direction utile. Il n'y a aucun engagement.</p>
         </div>
 
         <form id="idea-form" class="idea-form" name="soumission-votre-idee" method="POST" action="/merci" data-netlify="true" data-custom-submit="true" netlify-honeypot="bot-field" novalidate>
@@ -43,15 +43,13 @@
           </div>
 
           <fieldset class="idea-step" data-step="0">
-            <legend tabindex="-1">Que souhaitez-vous créer ?</legend>
-            <p class="step-hint">Choisissez le point de départ qui vous ressemble le plus.</p>
+            <legend tabindex="-1">Quel est votre besoin ?</legend>
+            <p class="step-hint">Choisissez le point de départ qui correspond le mieux à votre situation.</p>
             <div class="idea-choice-grid">
-              <label class="idea-choice"><input type="radio" name="project-type-choice" value="mariage ou événement" required><span><strong>Un mariage ou événement</strong><small>Un site pour informer, partager et faire vivre un moment.</small></span></label>
-              <label class="idea-choice"><input type="radio" name="project-type-choice" value="site internet"><span><strong>Un site internet</strong><small>Présenter une activité, une association ou un projet.</small></span></label>
-              <label class="idea-choice"><input type="radio" name="project-type-choice" value="application"><span><strong>Une application</strong><small>Simplifier une action pour vos clients, équipes ou membres.</small></span></label>
-              <label class="idea-choice"><input type="radio" name="project-type-choice" value="activité à développer"><span><strong>Une activité à développer</strong><small>Clarifier votre offre et les premiers outils utiles.</small></span></label>
-              <label class="idea-choice"><input type="radio" name="project-type-choice" value="idée encore floue"><span><strong>Une idée encore floue</strong><small>Mettre des mots sur un besoin avant de choisir la solution.</small></span></label>
-            </div>
+<label class="idea-choice"><input type="radio" name="project-type-choice" value="piloter un projet SI" required><span><strong>Piloter un projet SI</strong><small>Cadrer, planifier et suivre un projet jusqu'à la mise en production.</small></span></label>
+<label class="idea-choice"><input type="radio" name="project-type-choice" value="structurer un besoin"><span><strong>Structurer un besoin</strong><small>Formaliser l'expression du besoin, le périmètre et les priorités.</small></span></label>
+<label class="idea-choice"><input type="radio" name="project-type-choice" value="transformer un processus"><span><strong>Transformer un processus</strong><small>Faire évoluer un processus métier, un outil ou une automatisation.</small></span></label>
+</div>
             <p class="idea-error" data-error="project-type" role="alert"></p>
             <button type="button" class="btn-primary idea-next">Continuer</button>
           </fieldset>
@@ -59,8 +57,8 @@
           <fieldset class="idea-step" data-step="1" hidden>
             <legend tabindex="-1">Commençons simplement.</legend>
             <p class="step-hint">Les grandes lignes suffisent à ce stade.</p>
-            <div class="form-group"><label for="idea-goal">Que souhaitez-vous créer ou améliorer ? *</label><textarea maxlength="2000" id="idea-goal" name="goal" rows="4" required placeholder="Ex. Un espace simple pour présenter mon activité et recevoir des demandes."></textarea></div>
-            <div class="form-group"><label for="idea-audience">À qui cela servira-t-il ? *</label><input id="idea-audience" type="text" name="audience" maxlength="2000" required placeholder="Ex. Mes clients, des invités, une équipe…"></div>
+            <div class="form-group"><label for="idea-goal">Quel projet ou quel besoin souhaitez-vous traiter ? *</label><textarea maxlength="2000" id="idea-goal" name="goal" rows="4" required placeholder="Ex. Cadrer le déploiement d'un ERP et coordonner les prestataires."></textarea></div>
+            <div class="form-group"><label for="idea-audience">Qui est concerné ? *</label><input id="idea-audience" type="text" name="audience" maxlength="2000" required placeholder="Ex. Direction, métiers, DSI, utilisateurs…"></div>
             <div class="idea-nav"><button type="button" class="btn-outline idea-back">Retour</button><button type="button" class="btn-primary idea-next">Continuer</button></div>
           </fieldset>
 
@@ -73,10 +71,10 @@
           </fieldset>
 
           <fieldset class="idea-step" data-step="3" hidden>
-            <legend tabindex="-1">Votre vision.</legend>
-            <p class="step-hint">Il n'y a pas de mauvaise réponse.</p>
-            <div class="form-group"><label for="idea-style">Quelle ambiance imaginez-vous ? *</label><input id="idea-style" type="text" name="style" maxlength="2000" required placeholder="Ex. Sobre, chaleureuse, très simple à utiliser…"></div>
-            <div class="form-group"><label for="idea-examples">Avez-vous des exemples que vous aimez ?</label><textarea maxlength="2000" id="idea-examples" name="examples" rows="3" placeholder="Un lien ou quelques mots suffisent."></textarea></div>
+            <legend tabindex="-1">Votre contexte.</legend>
+            <p class="step-hint">Quelques éléments pour situer le projet.</p>
+            <div class="form-group"><label for="idea-style">Quel est l'environnement technique et organisationnel ? *</label><input id="idea-style" type="text" name="style" maxlength="2000" required placeholder="Ex. ERP, Microsoft 365, CRM, nombre d'utilisateurs…"></div>
+            <div class="form-group"><label for="idea-examples">Avez-vous des documents ou références utiles ?</label><textarea maxlength="2000" id="idea-examples" name="examples" rows="3" placeholder="Cahier des charges, schéma, lien… quelques mots suffisent."></textarea></div>
             <div class="form-group"><label for="idea-start">Quand souhaitez-vous commencer ou lancer le projet ? *</label><select id="idea-start" name="start" required><option value="">Sélectionnez une option</option><option>J'explore encore</option><option>Dans le mois</option><option>Dans les 3 mois</option><option>Ce trimestre</option><option>À une date précise</option></select></div>
             <div class="idea-nav"><button type="button" class="btn-outline idea-back">Retour</button><button type="button" class="btn-primary idea-next">Continuer</button></div>
           </fieldset>
@@ -85,7 +83,7 @@
             <legend tabindex="-1">Comment avancer ensemble ?</legend>
             <p class="step-hint">Une indication suffit ; elle pourra évoluer.</p>
             <div class="form-group"><label for="idea-budget">Quelle enveloppe envisagez-vous ?</label><select id="idea-budget" name="budget"><option value="">Choisissez une option</option><option>Moins de 1 500 €</option><option>1 500–5 000 €</option><option>5 000–15 000 €</option><option>Budget à définir ensemble</option></select></div>
-            <div class="form-group"><label for="idea-support">Jusqu'où souhaitez-vous être accompagné(e) ? *</label><select id="idea-support" name="support" required><option value="">Sélectionnez une option</option><option>Clarifier l'idée et démarrer</option><option>Construire une première version</option><option>Jusqu'à la mise en ligne</option><option>Je ne sais pas encore</option></select></div>
+            <div class="form-group"><label for="idea-support">Jusqu'où souhaitez-vous être accompagné(e) ? *</label><select id="idea-support" name="support" required><option value="">Sélectionnez une option</option><option>Cadrer le besoin</option><option>Piloter la mise en œuvre</option><option>Jusqu'à la mise en production</option><option>Je ne sais pas encore</option></select></div>
             <div class="idea-nav"><button type="button" class="btn-outline idea-back">Retour</button><button type="button" class="btn-primary idea-next">Continuer</button></div>
           </fieldset>
 

@@ -3,9 +3,9 @@ import { test, expect } from "@playwright/test";
 test.describe("INDXONE site — homepage", () => {
   test("has correct title and description meta tags", async ({ page }) => {
     await page.goto("/");
-    await expect(page).toHaveTitle(/INDXONE.*Donnons vie à votre idée/);
+    await expect(page).toHaveTitle(/INDXONE.*Chef de projet SI/);
     const metaDesc = page.locator('meta[name="description"]');
-    await expect(metaDesc).toHaveAttribute("content", /transforme vos idées/i);
+    await expect(metaDesc).toHaveAttribute("content", /Cadrage, pilotage et transformation des projets SI/i);
   });
 
   test("navigation links are present and work", async ({ page }) => {
@@ -22,7 +22,7 @@ test.describe("INDXONE site — homepage", () => {
   test("contact is guided to the project form", async ({ page }) => {
     await page.goto("/");
     await expect(page.locator("#contact")).toBeVisible();
-    await expect(page.locator('#contact a[href="/votre-idee"]')).toHaveText(/Obtenir une estimation/);
+    await expect(page.locator('#contact a[href="/votre-idee"]')).toHaveText(/Échangeons sur votre projet SI/);
     await expect(page.locator(".contact-form")).toHaveCount(0);
   });
 
@@ -57,7 +57,7 @@ test.describe("INDXONE site — homepage", () => {
     const form = page.locator(".idea-form");
     await expect(form).toBeVisible();
     await expect(form).toHaveCSS("box-sizing", "border-box");
-    await expect(page.locator(".idea-choice")).toHaveCount(5);
+    await expect(page.locator(".idea-choice")).toHaveCount(3);
     await expect(form).toHaveAttribute("data-custom-submit", "true");
     const formWidth = await form.evaluate((element) => element.getBoundingClientRect().width);
     expect(formWidth).toBeLessThanOrEqual(390);
@@ -134,7 +134,7 @@ test.describe("INDXONE site — collectivites page", () => {
     await expect(page.locator(".nav-cta")).toHaveAttribute("href", "/votre-idee/?type=collectivite");
     await page.locator(".nav-cta").click();
     await expect(page).toHaveURL(/\/votre-idee\/\?type=collectivite/);
-    await expect(page.locator('input[name="project-type-choice"][value="site internet"]')).toBeChecked();
+    await expect(page.locator('input[name="project-type-choice"][value="structurer un besoin"]')).toBeChecked();
     await page.getByRole("button", { name: "Continuer" }).click();
     await expect(page.locator("#idea-goal")).toHaveValue(/collectivité/i);
   });
@@ -210,9 +210,9 @@ test.describe("INDXONE site — votre idée", () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/votre-idee/");
 
-    await expect(page).toHaveTitle(/Racontez votre idée/);
-    await expect(page.locator("#idea-title")).toHaveText("Racontez votre idée.");
-    await page.locator(".idea-choice", { hasText: "Une application" }).click();
+    await expect(page).toHaveTitle(/Échangeons sur votre projet SI/);
+    await expect(page.locator("#idea-title")).toHaveText("Échangeons sur votre projet SI.");
+    await page.locator(".idea-choice", { hasText: "Piloter un projet SI" }).click();
     await page.getByRole("button", { name: "Continuer" }).click();
     await expect(page.locator('[data-step="1"]')).toBeVisible();
     await expect(page.locator('[data-step="2"]')).toBeHidden();

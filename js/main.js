@@ -484,7 +484,7 @@ window.toggleFAQ = function (button) {
 // Console Easter Egg
 // ============================================================
 console.log(
-  "%c🚀 INDXONE %c— Consultant SI & Architecte Digital",
+  "%c🚀 INDXONE %c— Chef de projet SI & AMOA",
   "color: #C9A84C; font-size: 20px; font-weight: bold;",
   "color: #0F1923; font-size: 20px;"
 );
