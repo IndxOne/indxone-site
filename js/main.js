@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initFormEnhancements();
   initSmoothScroll();
   initIntersectionObservers();
+  initStickyCta();
 
   // Auto-init FAQ on page load
   document.querySelectorAll(".faq-q").forEach((q) => {
@@ -489,3 +490,21 @@ console.log(
 );
 console.log("%cBesoin d'un projet IT ? Contactez-moi !", "color: #2A7A4B; font-size: 14px;");
 console.log("%c📧 contact@indxone.com | 📞 07 75 67 90 67", "color: #1B3A6B; font-size: 12px;");
+
+// ============================================================
+// CTA mobile persistant (affiché hors hero, masqué près du contact/footer)
+// ============================================================
+function initStickyCta() {
+  var cta = document.querySelector("[data-sticky-cta]");
+  var hero = document.querySelector(".hero-actions .btn-primary");
+  if (!cta || !hero || !("IntersectionObserver" in window)) return;
+  var seen = new Map();
+  var targets = [hero].concat(Array.from(document.querySelectorAll("#contact, .footer")));
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      seen.set(e.target, e.isIntersecting);
+    });
+    cta.classList.toggle("is-visible", !targets.some(function (el) { return seen.get(el); }));
+  });
+  targets.forEach(function (el) { io.observe(el); });
+}

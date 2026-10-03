@@ -218,3 +218,41 @@ test.describe("INDXONE site — votre idée", () => {
     await expect(page.locator('[data-step="2"]')).toBeHidden();
   });
 });
+
+test.describe("INDXONE site — CTA mobile persistant", () => {
+  for (const [width, height] of [[375, 667], [390, 844], [430, 932]]) {
+    test(`apparaît hors hero, disparaît près du contact — ${width}×${height}`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto("/");
+      const cta = page.locator("[data-sticky-cta]");
+      await expect(cta).toBeHidden();
+      await page.locator("#services").scrollIntoViewIfNeeded();
+      await expect(cta).toBeVisible();
+      await expect(cta).toHaveAttribute("href", "/votre-idee");
+      await page.locator(".nav-toggle, .menu-toggle, button[aria-controls]").first().click();
+      await expect(cta).toBeHidden();
+      await page.locator(".nav-toggle, .menu-toggle, button[aria-controls]").first().click();
+      await expect(cta).toBeVisible();
+      expect((await cta.boundingBox()).height).toBeGreaterThanOrEqual(44);
+      await page.locator(".footer").scrollIntoViewIfNeeded();
+      await expect(cta).toBeHidden();
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await expect(cta).toBeHidden();
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
+      expect(overflow).toBe(false);
+    });
+  }
+
+  test("absent sur desktop", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto("/");
+    await page.locator("#services").scrollIntoViewIfNeeded();
+    await expect(page.locator("[data-sticky-cta]")).toBeHidden();
+  });
+
+  test("absent sur /votre-idee/", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/votre-idee/");
+    await expect(page.locator("[data-sticky-cta]")).toHaveCount(0);
+  });
+});
