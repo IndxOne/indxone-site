@@ -63,15 +63,14 @@ test.describe("INDXONE site — homepage", () => {
     expect(formWidth).toBeLessThanOrEqual(390);
   });
 
-  test("homepage keeps the compact nine-block mobile journey", async ({ page }) => {
+  test("homepage keeps the compact eight-block mobile journey", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/");
-    await expect(page.locator("section:visible")).toHaveCount(9);
+    await expect(page.locator("section:visible")).toHaveCount(8);
     await expect(page.locator("#expertise")).toBeHidden();
     await expect(page.locator("#cas-usage")).toBeHidden();
     await expect(page.locator(".corporate-proof")).toBeHidden();
     await expect(page.locator("#terrain")).toBeVisible();
-    await expect(page.locator("#projets")).toBeVisible();
     await expect(page.locator("#lab")).toBeVisible();
   });
 
