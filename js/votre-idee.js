@@ -32,7 +32,7 @@
 
   const branchCopy = {
     "piloter un projet SI": {
-      title: "Votre projet SI",
+      title: "Votre projet",
       hint: "Quelques repères sur le périmètre et la gouvernance.",
       one: "Quel est le périmètre et l’état d’avancement du projet ? *",
       two: "Quelles sont les principales contraintes (délais, budget, prestataires) ? *",

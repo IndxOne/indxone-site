@@ -22,7 +22,7 @@ test.describe("INDXONE site — homepage", () => {
   test("contact is guided to the project form", async ({ page }) => {
     await page.goto("/");
     await expect(page.locator("#contact")).toBeVisible();
-    await expect(page.locator('#contact a[href="/votre-idee"]')).toHaveText(/Échangeons sur votre projet SI/);
+    await expect(page.locator('#contact a[href="/votre-idee"]')).toHaveText(/Échangeons sur votre projet/);
     await expect(page.locator(".contact-form")).toHaveCount(0);
   });
 
@@ -210,9 +210,9 @@ test.describe("INDXONE site — votre idée", () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/votre-idee/");
 
-    await expect(page).toHaveTitle(/Échangeons sur votre projet SI/);
-    await expect(page.locator("#idea-title")).toHaveText("Échangeons sur votre projet SI.");
-    await page.locator(".idea-choice", { hasText: "Piloter un projet SI" }).click();
+    await expect(page).toHaveTitle(/Échangeons sur votre projet/);
+    await expect(page.locator("#idea-title")).toHaveText("Échangeons sur votre projet.");
+    await page.locator(".idea-choice", { hasText: "J’ai un projet" }).click();
     await page.getByRole("button", { name: "Continuer" }).click();
     await expect(page.locator('[data-step="1"]')).toBeVisible();
     await expect(page.locator('[data-step="2"]')).toBeHidden();

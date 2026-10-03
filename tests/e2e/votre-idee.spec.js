@@ -8,7 +8,7 @@ test.describe("INDXONE — /votre-idee page", () => {
   // ─── Page structure ───────────────────────────────────────
 
   test("has correct title and meta tags", async ({ page }) => {
-    await expect(page).toHaveTitle(/Échangeons sur votre projet SI/);
+    await expect(page).toHaveTitle(/Échangeons sur votre projet/);
     const metaDesc = page.locator('meta[name="description"]');
     await expect(metaDesc).toHaveAttribute("content", /Cadrage, pilotage et transformation/i);
     const canonical = page.locator('link[rel="canonical"]');
@@ -23,7 +23,7 @@ test.describe("INDXONE — /votre-idee page", () => {
   });
 
   test("heading and intro are visible", async ({ page }) => {
-    await expect(page.locator("#idea-title")).toHaveText("Échangeons sur votre projet SI.");
+    await expect(page.locator("#idea-title")).toHaveText("Échangeons sur votre projet.");
     await expect(page.locator(".idea-lead")).toBeVisible();
     await expect(page.locator(".idea-lead")).toContainText(/aucun engagement/i);
   });
@@ -61,10 +61,10 @@ test.describe("INDXONE — /votre-idee page", () => {
 
   test("step 0 has correct choice labels", async ({ page }) => {
     const labels = page.locator(".idea-choice strong");
-    await expect(labels.nth(0)).toHaveText("Piloter un projet SI");
-    await expect(labels.nth(1)).toHaveText("Structurer un besoin");
-    await expect(labels.nth(2)).toHaveText("Créer une solution numérique");
-    await expect(labels.nth(3)).toHaveText("Automatiser un processus");
+    await expect(labels.nth(0)).toHaveText("J’ai un projet");
+    await expect(labels.nth(1)).toHaveText("J’ai besoin d’y voir clair");
+    await expect(labels.nth(2)).toHaveText("Je veux créer une solution");
+    await expect(labels.nth(3)).toHaveText("Je veux automatiser une tâche");
   });
 
   test("step 0 validates: cannot continue without selection", async ({ page }) => {
@@ -148,7 +148,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     await page.locator("#idea-goal").fill("test");
     await page.locator("#idea-audience").fill("test");
     await page.getByRole("button", { name: "Continuer" }).click();
-    await expect(page.locator("[data-branch-title]")).toHaveText("Votre projet SI");
+    await expect(page.locator("[data-branch-title]")).toHaveText("Votre projet");
     await expect(page.locator("[data-branch-one-label]")).toContainText(/périmètre.*avancement/i);
   });
 
