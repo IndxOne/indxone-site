@@ -89,14 +89,14 @@ test.describe("INDXONE — /votre-idee page", () => {
 
   // ─── Progress bar ────────────────────────────────────────
 
-  test("progress bar starts at step 1 of 6", async ({ page }) => {
-    await expect(page.locator("#idea-progress-label")).toHaveText("Étape 1 sur 6");
+  test("progress bar starts at step 1 of 3", async ({ page }) => {
+    await expect(page.locator("#idea-progress-label")).toHaveText("Étape 1 sur 3");
   });
 
   test("progress bar updates on step change", async ({ page }) => {
     await page.locator(".idea-choice").nth(0).click();
     await page.getByRole("button", { name: "Continuer" }).click();
-    await expect(page.locator("#idea-progress-label")).toHaveText("Étape 2 sur 6");
+    await expect(page.locator("#idea-progress-label")).toHaveText("Étape 2 sur 3");
   });
 
   // ─── Step navigation (back/next) ─────────────────────────
@@ -111,175 +111,90 @@ test.describe("INDXONE — /votre-idee page", () => {
     await expect(page.locator(".idea-choice").nth(2).locator("input")).toBeChecked();
   });
 
-  // ─── Step 1 — Goal & audience ────────────────────────────
+  // ─── Step 1 — Votre projet ───────────────────────────────
 
-  test("step 1 has goal and audience fields", async ({ page }) => {
+  test("step 1 has goal, context, start and support fields", async ({ page }) => {
     await page.locator(".idea-choice").nth(0).click();
     await page.getByRole("button", { name: "Continuer" }).click();
     await expect(page.locator("#idea-goal")).toBeVisible();
-    await expect(page.locator("#idea-audience")).toBeVisible();
+    await expect(page.locator("#branch-one")).toBeVisible();
+    await expect(page.locator("#idea-start")).toBeVisible();
+    await expect(page.locator("#idea-support")).toBeVisible();
+    await expect(page.locator("#idea-audience")).toBeHidden();
   });
 
-  test("step 1 validates required fields", async ({ page }) => {
+  test("step 1: only the goal is required", async ({ page }) => {
     await page.locator(".idea-choice").nth(0).click();
     await page.getByRole("button", { name: "Continuer" }).click();
-    // Clear any restored draft values
     await page.locator("#idea-goal").fill("");
-    await page.locator("#idea-audience").fill("");
     await page.getByRole("button", { name: "Continuer" }).click();
-    // Should still be on step 1
     await expect(page.locator('[data-step="1"]')).toBeVisible();
-  });
-
-  test("step 1: continue with valid data advances to step 2", async ({ page }) => {
-    await page.locator(".idea-choice").nth(0).click();
-    await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-goal").fill("Cadrage d'un projet ERP");
-    await page.locator("#idea-audience").fill("Direction et métiers");
     await page.getByRole("button", { name: "Continuer" }).click();
     await expect(page.locator('[data-step="2"]')).toBeVisible();
   });
 
-  // ─── Step 2 — Branch-specific questions ──────────────────
-
-  test("step 2 branch content updates for pilotage", async ({ page }) => {
+  test("step 1 branch content updates for pilotage", async ({ page }) => {
     await page.locator(".idea-choice").nth(0).click();
     await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-goal").fill("test");
-    await page.locator("#idea-audience").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
     await expect(page.locator("[data-branch-title]")).toHaveText("Votre projet");
-    await expect(page.locator("[data-branch-one-label]")).toContainText(/périmètre.*avancement/i);
+    await expect(page.locator("[data-branch-one-label]")).toContainText(/Où en est-il/i);
   });
 
-  test("step 2 branch content updates for besoin", async ({ page }) => {
+  test("step 1 branch content updates for besoin", async ({ page }) => {
     await page.locator(".idea-choice").nth(1).click();
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-goal").fill("test");
-    await page.locator("#idea-audience").fill("test");
     await page.getByRole("button", { name: "Continuer" }).click();
     await expect(page.locator("[data-branch-title]")).toHaveText("Votre besoin");
-    await expect(page.locator("[data-branch-one-label]")).toContainText(/situation.*dysfonctionnement/i);
+    await expect(page.locator("[data-branch-one-label]")).toContainText(/pose problème/i);
   });
 
-  test("step 2 branch content updates for solution", async ({ page }) => {
+  test("step 1 branch content updates for solution", async ({ page }) => {
     await page.locator(".idea-choice").nth(2).click();
     await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-goal").fill("test");
-    await page.locator("#idea-audience").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
     await expect(page.locator("[data-branch-title]")).toHaveText("Votre solution");
-    await expect(page.locator("[data-branch-one-label]")).toContainText(/site, application.*concevoir/i);
+    await expect(page.locator("[data-branch-one-label]")).toContainText(/utile/i);
   });
 
-  test("step 2 branch content updates for processus", async ({ page }) => {
+  test("step 1 branch content updates for processus", async ({ page }) => {
     await page.locator(".idea-choice").nth(3).click();
     await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-goal").fill("test");
-    await page.locator("#idea-audience").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await expect(page.locator("[data-branch-title]")).toHaveText("Votre processus");
-    await expect(page.locator("[data-branch-one-label]")).toContainText(/tâches.*automatiser/i);
+    await expect(page.locator("[data-branch-title]")).toHaveText("Votre tâche");
+    await expect(page.locator("[data-branch-one-label]")).toContainText(/outils/i);
   });
 
-  // ─── Step 3 — Style, examples, start ─────────────────────
+  // ─── Step 2 — Contact info ───────────────────────────────
 
-  test("step 3 has style, examples, and start fields", async ({ page }) => {
-    // Navigate to step 3
-    await page.locator(".idea-choice").nth(1).click();
+  async function goToContact(page, index = 1) {
+    await page.locator(".idea-choice").nth(index).click();
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-goal").fill("test");
-    await page.locator("#idea-audience").fill("test");
     await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#branch-one").fill("test");
-    await page.locator("#branch-two").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await expect(page.locator('[data-step="3"]')).toBeVisible();
-    await expect(page.locator("#idea-style")).toBeVisible();
-    await expect(page.locator("#idea-examples")).toBeVisible();
-    await expect(page.locator("#idea-start")).toBeVisible();
-  });
+    await expect(page.locator('[data-step="2"]')).toBeVisible();
+  }
 
-  // ─── Step 4 — Budget & support ───────────────────────────
-
-  test("step 4 has budget and support selects", async ({ page }) => {
-    // Navigate to step 4
-    await page.locator(".idea-choice").nth(1).click();
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-goal").fill("test");
-    await page.locator("#idea-audience").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#branch-one").fill("test");
-    await page.locator("#branch-two").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-style").fill("test");
-    await page.locator("#idea-start").selectOption("Dans le mois");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await expect(page.locator('[data-step="4"]')).toBeVisible();
-    await expect(page.locator("#idea-budget")).toBeVisible();
-    await expect(page.locator("#idea-support")).toBeVisible();
-  });
-
-  // ─── Step 5 — Contact info ───────────────────────────────
-
-  test("step 5 has name, email, phone, and consent fields", async ({ page }) => {
-    // Navigate through all steps to step 5
-    await page.locator(".idea-choice").nth(1).click();
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-goal").fill("test");
-    await page.locator("#idea-audience").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#branch-one").fill("test");
-    await page.locator("#branch-two").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-style").fill("test");
-    await page.locator("#idea-start").selectOption("Dans le mois");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-support").selectOption("Cadrer le besoin");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await expect(page.locator('[data-step="5"]')).toBeVisible();
+  test("step 2 has name, email, phone, and consent fields", async ({ page }) => {
+    await goToContact(page);
     await expect(page.locator("#idea-name")).toBeVisible();
     await expect(page.locator("#idea-email")).toBeVisible();
     await expect(page.locator("#idea-phone")).toBeVisible();
     await expect(page.locator("#idea-consent")).toBeVisible();
   });
 
-  test("step 5 validates required contact fields", async ({ page }) => {
-    // Navigate to step 5
-    await page.locator(".idea-choice").nth(1).click();
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-goal").fill("test");
-    await page.locator("#idea-audience").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#branch-one").fill("test");
-    await page.locator("#branch-two").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-style").fill("test");
-    await page.locator("#idea-start").selectOption("Dans le mois");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-support").selectOption("Cadrer le besoin");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    // Try to proceed without filling required fields
+  test("step 2 validates required contact fields", async ({ page }) => {
+    await goToContact(page);
     await page.getByRole("button", { name: "Voir le récapitulatif" }).click();
-    await expect(page.locator('[data-step="5"]')).toBeVisible();
+    await expect(page.locator('[data-step="2"]')).toBeVisible();
   });
 
-  // ─── Step 6 — Summary / Review ───────────────────────────
+  // ─── Step 3 — Summary / Review ───────────────────────────
 
-  test("step 6 shows summary with all answers", async ({ page }) => {
+  test("step 3 shows summary with all answers", async ({ page }) => {
     // Fill everything through to step 6
     await page.locator(".idea-choice").nth(1).click();
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-goal").fill("Un site vitrine");
-    await page.locator("#idea-audience").fill("Mes clients");
-    await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#branch-one").fill("Mon activité de coaching");
-    await page.locator("#branch-two").fill("Pages indispensable : accueil, services, contact");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-style").fill("Sobre et chaleureux");
     await page.locator("#idea-start").selectOption("Dans les 3 mois");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-budget").selectOption("1 500–5 000 €");
     await page.locator("#idea-support").selectOption("Jusqu'à la mise en production");
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-name").fill("Dupont");
@@ -288,41 +203,35 @@ test.describe("INDXONE — /votre-idee page", () => {
     await page.locator("#idea-consent").check();
     await page.getByRole("button", { name: "Voir le récapitulatif" }).click();
 
-    await expect(page.locator('[data-step="6"]')).toBeVisible();
+    await expect(page.locator('[data-step="3"]')).toBeVisible();
     await expect(page.locator("#review-title")).toHaveText("Votre récapitulatif");
 
     const summary = page.locator("#idea-summary");
-    await expect(summary).toContainText("structurer un besoin");
+    await expect(summary).toContainText("J’ai besoin d’y voir clair");
     await expect(summary).toContainText("Un site vitrine");
-    await expect(summary).toContainText("Mes clients");
+    await expect(summary).not.toContainText("structurer un besoin");
     await expect(summary).toContainText("Jean");
     await expect(summary).toContainText("Dupont");
     await expect(summary).toContainText("jean@test.fr");
   });
 
-  test("step 6: modify button returns to step 5", async ({ page }) => {
+  test("step 3: modify button returns to contact", async ({ page }) => {
     // Navigate to step 6
     await page.locator(".idea-choice").nth(0).click();
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-goal").fill("test");
-    await page.locator("#idea-audience").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#branch-one").fill("test");
-    await page.locator("#branch-two").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-style").fill("test");
     await page.locator("#idea-start").selectOption("Dans le mois");
-    await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-support").selectOption("Cadrer le besoin");
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-name").fill("Test");
     await page.locator("#idea-email").fill("test@test.fr");
     await page.locator("#idea-consent").check();
     await page.getByRole("button", { name: "Voir le récapitulatif" }).click();
-    await expect(page.locator('[data-step="6"]')).toBeVisible();
+    await expect(page.locator('[data-step="3"]')).toBeVisible();
 
     await page.getByRole("button", { name: "Modifier" }).click();
-    await expect(page.locator('[data-step="5"]')).toBeVisible();
+    await expect(page.locator('[data-step="2"]')).toBeVisible();
   });
 
   // ─── Query parameter preselection ────────────────────────
@@ -358,14 +267,8 @@ test.describe("INDXONE — /votre-idee page", () => {
     await page.locator(".idea-choice").nth(1).click();
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-goal").fill("test");
-    await page.locator("#idea-audience").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#branch-one").fill("test");
-    await page.locator("#branch-two").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-style").fill("test");
     await page.locator("#idea-start").selectOption("Dans le mois");
-    await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-support").selectOption("Cadrer le besoin");
     await page.getByRole("button", { name: "Continuer" }).click();
 
@@ -506,14 +409,8 @@ test.describe("INDXONE — /votre-idee page", () => {
     await page.locator(".idea-choice").nth(0).click();
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-goal").fill("test");
-    await page.locator("#idea-audience").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#branch-one").fill("test");
-    await page.locator("#branch-two").fill("test");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-style").fill("test");
     await page.locator("#idea-start").selectOption("Dans le mois");
-    await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-support").selectOption("Cadrer le besoin");
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-name").fill("Test");
@@ -529,15 +426,8 @@ test.describe("INDXONE — /votre-idee page", () => {
     await page.locator(".idea-choice").nth(1).click();
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-goal").fill("Un site vitrine pour mon coaching");
-    await page.locator("#idea-audience").fill("Mes clients potentiels");
-    await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#branch-one").fill("Mon activité de coaching professionnel");
-    await page.locator("#branch-two").fill("Accueil, services, témoignages, contact");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-style").fill("Sobre, chaleureux, professionnel");
     await page.locator("#idea-start").selectOption("Dans les 3 mois");
-    await page.getByRole("button", { name: "Continuer" }).click();
-    await page.locator("#idea-budget").selectOption("1 500–5 000 €");
     await page.locator("#idea-support").selectOption("Jusqu'à la mise en production");
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-name").fill("Dupont");
@@ -545,7 +435,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     await page.locator("#idea-email").fill("jean@coaching.fr");
     await page.locator("#idea-consent").check();
     await page.getByRole("button", { name: "Voir le récapitulatif" }).click();
-    await expect(page.locator('[data-step="6"]')).toBeVisible();
+    await expect(page.locator('[data-step="3"]')).toBeVisible();
   }
 
   test("submit shows loading state then error when API is unreachable", async ({ page }) => {
@@ -561,7 +451,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     // After failed submission: button re-enabled with original text, still on step 6
     await expect(submitBtn).toBeEnabled({ timeout: 10000 });
     await expect(submitBtn).toHaveText("Envoyer ma demande");
-    await expect(page.locator('[data-step="6"]')).toBeVisible();
+    await expect(page.locator('[data-step="3"]')).toBeVisible();
     // Error message is shown to the user
     const statusText = await page.locator("#idea-form-status").textContent();
     expect(statusText.length).toBeGreaterThan(0);
@@ -584,7 +474,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     await expect(submitBtn).toBeEnabled({ timeout: 10000 });
     await expect(submitBtn).toHaveText("Envoyer ma demande");
     // Still on step 6, no crash
-    await expect(page.locator('[data-step="6"]')).toBeVisible();
+    await expect(page.locator('[data-step="3"]')).toBeVisible();
   });
 
   test("double-click does not crash or navigate away", async ({ page }) => {
@@ -602,7 +492,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     // Wait for recovery
     await expect(submitBtn).toBeEnabled({ timeout: 10000 });
     // Still on step 6 (no redirect, no crash)
-    await expect(page.locator('[data-step="6"]')).toBeVisible();
+    await expect(page.locator('[data-step="3"]')).toBeVisible();
   });
 
   test("submit builds correct payload structure", async ({ page }) => {
@@ -625,13 +515,13 @@ test.describe("INDXONE — /votre-idee page", () => {
     expect(payload.consent.accepted).toBe(true);
     expect(payload.consent.accepted_at).toBeTruthy();
     expect(payload.responses.trunk.goal).toBe("Un site vitrine pour mon coaching");
-    expect(payload.responses.trunk.audience).toBe("Mes clients potentiels");
-    expect(payload.responses.trunk.style).toBe("Sobre, chaleureux, professionnel");
+    expect(payload.responses.trunk.audience).toBe("");
+    expect(payload.responses.trunk.style).toBe("");
     expect(payload.responses.trunk.start).toBe("Dans les 3 mois");
-    expect(payload.responses.trunk.budget).toBe("1 500–5 000 €");
+    expect(payload.responses.trunk.budget).toBe("");
     expect(payload.responses.trunk.support).toBe("Jusqu'à la mise en production");
     expect(payload.responses.conditional.branch_one).toBe("Mon activité de coaching professionnel");
-    expect(payload.responses.conditional.branch_two).toBe("Accueil, services, témoignages, contact");
+    expect(payload.responses.conditional.branch_two).toBe("");
     expect(payload.meta.origin).toContain("/votre-idee");
     expect(payload.meta.language).toBe("fr");
   });

@@ -38,11 +38,16 @@ export function validatePayload(body) {
     return [...errors, "Réponses requises"];
   const trunk = responses.trunk;
   const conditional = responses.conditional;
-  for (const key of ["goal", "audience", "style", "start", "support"])
-    if (!text(trunk[key], 2000, true) || !text(clean(trunk[key]), 2000, true))
-      errors.push(`${key} requis (2000 caractères maximum)`);
-  if (!text(trunk.examples ?? "", 2000) || !text(trunk.budget ?? "", 200)) errors.push("Exemples ou budget invalide");
-  if (!starts.includes(trunk.start) || !supports.includes(trunk.support) || !budgets.includes(trunk.budget ?? ""))
+  if (!text(trunk.goal, 2000, true) || !text(clean(trunk.goal), 2000, true))
+    errors.push("goal requis (2000 caractères maximum)");
+  for (const key of ["audience", "style", "examples"])
+    if (!text(trunk[key] ?? "", 2000)) errors.push(`${key} invalide (2000 caractères maximum)`);
+  if (!text(trunk.budget ?? "", 200)) errors.push("Exemples ou budget invalide");
+  if (
+    !["", ...starts].includes(trunk.start ?? "") ||
+    !["", ...supports].includes(trunk.support ?? "") ||
+    !budgets.includes(trunk.budget ?? "")
+  )
     errors.push("Option de projet invalide");
   if (
     Object.keys(trunk).some(
@@ -52,8 +57,7 @@ export function validatePayload(body) {
   )
     errors.push("Champ de réponse inconnu");
   for (const key of ["branch_one", "branch_two"])
-    if (!text(conditional[key], 2000, true) || !text(clean(conditional[key]), 2000, true))
-      errors.push(`${key} requis (2000 caractères maximum)`);
+    if (!text(conditional[key] ?? "", 2000)) errors.push(`${key} invalide (2000 caractères maximum)`);
   if (
     body.meta !== undefined &&
     (!isObject(body.meta) ||

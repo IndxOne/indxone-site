@@ -48,8 +48,8 @@ function complete({ form, window }) {
     form.elements.namedItem(name).value = value;
   form.elements.namedItem("consent").checked = true;
   form.dispatchEvent(new window.Event("input", { bubbles: true }));
-  for (let step = 0; step < 6; step++) form.querySelector(`[data-step="${step}"] .idea-next`).click();
-  expect(form.querySelector('[data-step="6"]').hidden).toBe(false);
+  for (let step = 0; step < 3; step++) form.querySelector(`[data-step="${step}"] .idea-next`).click();
+  expect(form.querySelector('[data-step="3"]').hidden).toBe(false);
 }
 async function submit(app, response) {
   app.fetch.mockResolvedValueOnce({ ok: response.ok !== false, json: async () => response.body });

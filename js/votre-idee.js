@@ -25,38 +25,18 @@
   };
   const branch = {
     title: form.querySelector("[data-branch-title]"),
-    hint: form.querySelector("[data-branch-hint]"),
     oneLabel: form.querySelector("[data-branch-one-label]"),
-    twoLabel: form.querySelector("[data-branch-two-label]"),
   };
 
   const branchCopy = {
-    "piloter un projet SI": {
-      title: "Votre projet",
-      hint: "Quelques repères sur le périmètre et la gouvernance.",
-      one: "Quel est le périmètre et l’état d’avancement du projet ? *",
-      two: "Quelles sont les principales contraintes (délais, budget, prestataires) ? *",
-    },
-    "structurer un besoin": {
-      title: "Votre besoin",
-      hint: "Partons de la situation réelle avant de choisir une solution.",
-      one: "Quelle situation ou quel dysfonctionnement motive ce besoin ? *",
-      two: "Qui sont les parties prenantes et que doit permettre la solution ? *",
-    },
-    "créer une solution numérique": {
-      title: "Votre solution",
-      hint: "Décrivons l’usage attendu avant de parler de technologie.",
-      one: "Quel site, application, service ou outil souhaitez-vous concevoir ? *",
-      two: "Qui l’utilisera et à quoi reconnaîtra-t-on que c’est réussi ? *",
-    },
-    "automatiser un processus": {
-      title: "Votre processus",
-      hint: "Décrivons le processus actuel avant d’envisager l’outil.",
-      one: "Quelles tâches, données ou outils souhaitez-vous connecter ou automatiser ? *",
-      two: "Quels gains attendez-vous (temps, fiabilité, qualité) ? *",
-    },
+    "piloter un projet SI": { title: "Votre projet", one: "Où en est-il aujourd’hui ?" },
+    "structurer un besoin": { title: "Votre besoin", one: "Qu’est-ce qui pose problème aujourd’hui ?" },
+    "créer une solution numérique": { title: "Votre solution", one: "À qui sera-t-elle utile ?" },
+    "automatiser un processus": { title: "Votre tâche", one: "Quels outils utilisez-vous aujourd’hui ?" },
   };
 
+  const reviewIndex = steps.length - 1;
+  const contactIndex = reviewIndex - 1;
   let currentStep = 0;
   let startedAt = new Date().toISOString();
   let submissionId = createSubmissionId();
@@ -182,9 +162,7 @@
     projectTypeInput.value = selected;
     const copy = branchCopy[selected] || branchCopy["structurer un besoin"];
     branch.title.textContent = copy.title;
-    branch.hint.textContent = copy.hint;
     branch.oneLabel.textContent = copy.one;
-    branch.twoLabel.textContent = copy.two;
   }
 
   function showError(message, focusElement) {
@@ -219,22 +197,20 @@
 
   function renderSummary() {
     const summary = document.querySelector("#idea-summary");
+    const checked = projectTypeChoices.find((choice) => choice.checked);
     const labels = [
-      ["Type de projet", projectTypeInput.value],
-      ["Votre objectif", form.elements.goal.value],
-      ["Pour qui", form.elements.audience.value],
-      ["Précisions", form.elements["branch-one"].value + "\n" + form.elements["branch-two"].value],
-      ["Votre vision", form.elements.style.value],
-      ["Budget", form.elements.budget.value],
-      ["Démarrage", form.elements.start.value],
-      ["Accompagnement", form.elements.support.value],
+      ["Votre besoin", checked?.closest("label")?.querySelector("strong")?.textContent || ""],
+      ["Votre projet", form.elements.goal.value],
+      ["Contexte", form.elements["branch-one"].value],
+      ["Échéance", form.elements.start.value],
+      ["Accompagnement", form.elements.support.selectedOptions[0]?.textContent],
       [
         "Contact",
         [form.elements.firstname.value, form.elements.name.value, form.elements.email.value]
           .filter(Boolean)
           .join(" · "),
       ],
-    ];
+    ].filter(([label, value]) => value || ["Votre besoin", "Votre projet", "Contact"].includes(label));
     summary.replaceChildren();
     labels.forEach(([label, value]) => {
       const wrapper = document.createElement("div");
@@ -248,9 +224,11 @@
   }
 
   function updateProgress() {
-    const visibleIndex = Math.min(currentStep, 5);
-    progressBar.style.width = (Math.max(1, visibleIndex + 1) / 6) * 100 + "%";
-    progressLabel.textContent = currentStep === 6 ? "Récapitulatif" : "Étape " + (visibleIndex + 1) + " sur 6";
+    const total = contactIndex + 1;
+    const visibleIndex = Math.min(currentStep, contactIndex);
+    progressBar.style.width = (Math.max(1, visibleIndex + 1) / total) * 100 + "%";
+    progressLabel.textContent =
+      currentStep === reviewIndex ? "Récapitulatif" : "Étape " + (visibleIndex + 1) + " sur " + total;
   }
 
   function showStep(nextStep) {
@@ -258,12 +236,12 @@
     steps.forEach((step) => {
       step.hidden = Number(step.dataset.step) !== currentStep;
     });
-    const review = form.querySelector('[data-step="6"]');
-    if (review) review.hidden = currentStep !== 6;
+    const review = steps[reviewIndex];
+    if (review) review.hidden = currentStep !== reviewIndex;
     updateProgress();
     clearError();
     window.scrollTo({ top: 0, behavior: "smooth" });
-    const heading = (currentStep === 6 ? review : steps[currentStep]).querySelector("legend, h2");
+    const heading = (currentStep === reviewIndex ? review : steps[currentStep]).querySelector("legend, h2");
     heading?.focus?.({ preventScroll: true });
   }
 
@@ -280,8 +258,8 @@
     button.addEventListener("click", () => {
       if (!validateStep(currentStep)) return;
       syncBranch();
-      if (currentStep === 5) renderSummary();
-      showStep(Math.min(6, currentStep + 1));
+      if (currentStep === contactIndex) renderSummary();
+      showStep(Math.min(reviewIndex, currentStep + 1));
     });
   });
 
@@ -290,13 +268,13 @@
   });
 
   form.addEventListener("submit", async (event) => {
-    if (currentStep !== 6) {
+    if (currentStep !== reviewIndex) {
       event.preventDefault();
       return;
     }
-    if (!validateStep(5)) {
+    if (!validateStep(contactIndex)) {
       event.preventDefault();
-      showStep(5);
+      showStep(contactIndex);
       return;
     }
     event.preventDefault();

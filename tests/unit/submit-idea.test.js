@@ -76,6 +76,14 @@ describe("actual submission handlers", () => {
     data.contact.phone = "x".repeat(51);
     expect((await post(data)).status).toBe(400);
   });
+  it("accepts a minimal submission with only the goal answered", async () => {
+    const data = payload();
+    data.responses.trunk = { goal: "Cadrer un projet" };
+    data.responses.conditional = {};
+    expect((await post(data)).status).not.toBe(400);
+    data.responses.trunk.support = "valeur inconnue";
+    expect((await post(data)).status).toBe(400);
+  });
   it("blocks honeypot submissions and fast/future/invalid timestamps", async () => {
     for (const patch of [
       { company_name: "spam" },

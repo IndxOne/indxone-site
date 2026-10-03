@@ -39,7 +39,7 @@
 
           <div class="idea-progress">
             <div class="idea-progress-track"><span id="idea-progress-bar"></span></div>
-            <p id="idea-progress-label" class="idea-progress-label" aria-live="polite">Étape 1 sur 6</p>
+            <p id="idea-progress-label" class="idea-progress-label" aria-live="polite">Étape 1 sur 3</p>
           </div>
 
           <fieldset class="idea-step" data-step="0">
@@ -56,39 +56,17 @@
           </fieldset>
 
           <fieldset class="idea-step" data-step="1" hidden>
-            <legend tabindex="-1">Commençons simplement.</legend>
-            <p class="step-hint">Les grandes lignes suffisent à ce stade.</p>
-            <div class="form-group"><label for="idea-goal">Quel projet ou quel besoin souhaitez-vous traiter ? *</label><textarea maxlength="2000" id="idea-goal" name="goal" rows="4" required placeholder="Ex. Cadrer le déploiement d'un ERP et coordonner les prestataires."></textarea></div>
-            <div class="form-group"><label for="idea-audience">Qui est concerné ? *</label><input id="idea-audience" type="text" name="audience" maxlength="2000" required placeholder="Ex. Direction, métiers, DSI, utilisateurs…"></div>
-            <div class="idea-nav"><button type="button" class="btn-outline idea-back">Retour</button><button type="button" class="btn-primary idea-next">Continuer</button></div>
-          </fieldset>
+<legend tabindex="-1" data-branch-title>Votre projet.</legend>
+<p class="step-hint">Quelques mots suffisent, nous préciserons ensemble.</p>
+<div class="form-group"><label for="idea-goal">Que souhaitez-vous faire ou améliorer ? *</label><textarea maxlength="2000" id="idea-goal" name="goal" rows="4" required placeholder="Ex. Mettre en place un nouvel outil pour mon équipe."></textarea></div>
+<div class="form-group"><label for="branch-one" data-branch-one-label>Un élément de contexte utile ?</label><textarea maxlength="2000" id="branch-one" name="branch-one" rows="3"></textarea></div>
+<input type="hidden" name="branch-two"><input type="hidden" name="audience"><input type="hidden" name="style"><input type="hidden" name="examples"><input type="hidden" name="budget">
+<div class="form-group"><label for="idea-start">Pour quand ?</label><select id="idea-start" name="start"><option value="">Pas de date précise</option><option>J'explore encore</option><option>Dans le mois</option><option>Dans les 3 mois</option><option>Ce trimestre</option><option>À une date précise</option></select></div>
+<div class="form-group"><label for="idea-support">Quel accompagnement souhaitez-vous ?</label><select id="idea-support" name="support"><option value="">Je ne sais pas encore</option><option value="Cadrer le besoin">Clarifier et cadrer</option><option value="Piloter la mise en œuvre">Piloter la réalisation</option><option value="Jusqu'à la mise en production">Jusqu'à la mise en service</option></select></div>
+<div class="idea-nav"><button type="button" class="btn-outline idea-back">Retour</button><button type="button" class="btn-primary idea-next">Continuer</button></div>
+</fieldset>
 
-          <fieldset class="idea-step" data-step="2" hidden>
-            <legend tabindex="-1" data-branch-title>Quelques précisions.</legend>
-            <p class="step-hint" data-branch-hint>Ces réponses nous aideront à comprendre votre contexte.</p>
-            <div class="form-group"><label for="branch-one" data-branch-one-label>Quelle est la priorité aujourd'hui ? *</label><textarea maxlength="2000" id="branch-one" name="branch-one" rows="3" required></textarea></div>
-            <div class="form-group"><label for="branch-two" data-branch-two-label>À quoi reconnaîtra-t-on que le projet est réussi ? *</label><textarea maxlength="2000" id="branch-two" name="branch-two" rows="3" required></textarea></div>
-            <div class="idea-nav"><button type="button" class="btn-outline idea-back">Retour</button><button type="button" class="btn-primary idea-next">Continuer</button></div>
-          </fieldset>
-
-          <fieldset class="idea-step" data-step="3" hidden>
-            <legend tabindex="-1">Votre contexte.</legend>
-            <p class="step-hint">Quelques éléments pour situer le projet.</p>
-            <div class="form-group"><label for="idea-style">Quel est l'environnement technique et organisationnel ? *</label><input id="idea-style" type="text" name="style" maxlength="2000" required placeholder="Ex. ERP, Microsoft 365, CRM, nombre d'utilisateurs…"></div>
-            <div class="form-group"><label for="idea-examples">Avez-vous des documents ou références utiles ?</label><textarea maxlength="2000" id="idea-examples" name="examples" rows="3" placeholder="Cahier des charges, schéma, lien… quelques mots suffisent."></textarea></div>
-            <div class="form-group"><label for="idea-start">Quand souhaitez-vous commencer ou lancer le projet ? *</label><select id="idea-start" name="start" required><option value="">Sélectionnez une option</option><option>J'explore encore</option><option>Dans le mois</option><option>Dans les 3 mois</option><option>Ce trimestre</option><option>À une date précise</option></select></div>
-            <div class="idea-nav"><button type="button" class="btn-outline idea-back">Retour</button><button type="button" class="btn-primary idea-next">Continuer</button></div>
-          </fieldset>
-
-          <fieldset class="idea-step" data-step="4" hidden>
-            <legend tabindex="-1">Comment avancer ensemble ?</legend>
-            <p class="step-hint">Une indication suffit ; elle pourra évoluer.</p>
-            <div class="form-group"><label for="idea-budget">Quelle enveloppe envisagez-vous ?</label><select id="idea-budget" name="budget"><option value="">Choisissez une option</option><option>Moins de 1 500 €</option><option>1 500–5 000 €</option><option>5 000–15 000 €</option><option>Budget à définir ensemble</option></select></div>
-            <div class="form-group"><label for="idea-support">Jusqu'où souhaitez-vous être accompagné(e) ? *</label><select id="idea-support" name="support" required><option value="">Sélectionnez une option</option><option>Cadrer le besoin</option><option>Piloter la mise en œuvre</option><option>Jusqu'à la mise en production</option><option>Je ne sais pas encore</option></select></div>
-            <div class="idea-nav"><button type="button" class="btn-outline idea-back">Retour</button><button type="button" class="btn-primary idea-next">Continuer</button></div>
-          </fieldset>
-
-          <fieldset class="idea-step" data-step="5" hidden>
+<fieldset class="idea-step" data-step="2" hidden>
             <legend tabindex="-1">Comment vous recontacter ?</legend>
             <p class="step-hint">Nous utiliserons ces informations uniquement pour répondre à votre demande.</p>
             <div class="form-row"><div class="form-group"><label for="idea-name">Nom *</label><input id="idea-name" type="text" name="name" maxlength="200" required autocomplete="family-name"></div><div class="form-group"><label for="idea-firstname">Prénom</label><input id="idea-firstname" type="text" name="firstname" maxlength="200" autocomplete="given-name"></div></div>
@@ -99,7 +77,7 @@
             <div class="idea-nav"><button type="button" class="btn-outline idea-back">Retour</button><button type="button" class="btn-primary idea-next">Voir le récapitulatif</button></div>
           </fieldset>
 
-          <section class="idea-review" data-step="6" hidden aria-labelledby="review-title">
+          <section class="idea-review" data-step="3" hidden aria-labelledby="review-title">
             <h2 id="review-title" tabindex="-1">Votre récapitulatif</h2>
             <p class="step-hint">Relisez tranquillement avant l'envoi.</p>
             <dl id="idea-summary" class="idea-summary"></dl>
