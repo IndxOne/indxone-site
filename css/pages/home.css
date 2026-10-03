@@ -526,3 +526,50 @@
   border-color: var(--gold);
   color: var(--ink);
 }
+
+/* Hero mobile-first (390×844) : message, CTA, une preuve */
+@media (width <= 640px) {
+  .hero {
+    padding: var(--space-3xl) var(--space-lg) var(--space-2xl);
+    align-items: flex-start;
+    text-align: left;
+    min-height: calc(100svh - 64px);
+    justify-content: center;
+  }
+
+  .hero::after,
+  .hero-sub,
+  .dispo-card {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 10vw, 2.6rem);
+  }
+
+  .hero p {
+    margin-bottom: var(--space-xl);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+  }
+
+  .hero-actions a {
+    min-height: 48px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-stats-compact {
+    width: 100% !important;
+    gap: var(--space-sm);
+  }
+
+  .hero-stats-compact .h-stat:nth-child(n + 2) {
+    display: none;
+  }
+}
