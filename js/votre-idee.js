@@ -13,13 +13,15 @@
   const projectTypeMap = {
     "piloter un projet SI": "pilotage",
     "structurer un besoin": "besoin",
-    "transformer un processus": "processus",
+    "créer une solution numérique": "solution",
+    "automatiser un processus": "processus",
   };
   const queryTypeMap = {
     pilotage: "piloter un projet SI",
     besoin: "structurer un besoin",
-    processus: "transformer un processus",
-    collectivite: "structurer un besoin",
+    solution: "créer une solution numérique",
+    processus: "automatiser un processus",
+    collectivite: "créer une solution numérique",
   };
   const branch = {
     title: form.querySelector("[data-branch-title]"),
@@ -41,10 +43,16 @@
       one: "Quelle situation ou quel dysfonctionnement motive ce besoin ? *",
       two: "Qui sont les parties prenantes et que doit permettre la solution ? *",
     },
-    "transformer un processus": {
+    "créer une solution numérique": {
+      title: "Votre solution",
+      hint: "Décrivons l’usage attendu avant de parler de technologie.",
+      one: "Quel site, application, service ou outil souhaitez-vous concevoir ? *",
+      two: "Qui l’utilisera et à quoi reconnaîtra-t-on que c’est réussi ? *",
+    },
+    "automatiser un processus": {
       title: "Votre processus",
       hint: "Décrivons le processus actuel avant d’envisager l’outil.",
-      one: "Quel processus souhaitez-vous faire évoluer, avec quels outils aujourd’hui ? *",
+      one: "Quelles tâches, données ou outils souhaitez-vous connecter ou automatiser ? *",
       two: "Quels gains attendez-vous (temps, fiabilité, qualité) ? *",
     },
   };

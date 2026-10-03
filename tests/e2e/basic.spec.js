@@ -57,7 +57,7 @@ test.describe("INDXONE site — homepage", () => {
     const form = page.locator(".idea-form");
     await expect(form).toBeVisible();
     await expect(form).toHaveCSS("box-sizing", "border-box");
-    await expect(page.locator(".idea-choice")).toHaveCount(3);
+    await expect(page.locator(".idea-choice")).toHaveCount(4);
     await expect(form).toHaveAttribute("data-custom-submit", "true");
     const formWidth = await form.evaluate((element) => element.getBoundingClientRect().width);
     expect(formWidth).toBeLessThanOrEqual(390);
@@ -134,7 +134,7 @@ test.describe("INDXONE site — collectivites page", () => {
     await expect(page.locator(".nav-cta")).toHaveAttribute("href", "/votre-idee/?type=collectivite");
     await page.locator(".nav-cta").click();
     await expect(page).toHaveURL(/\/votre-idee\/\?type=collectivite/);
-    await expect(page.locator('input[name="project-type-choice"][value="structurer un besoin"]')).toBeChecked();
+    await expect(page.locator('input[name="project-type-choice"][value="créer une solution numérique"]')).toBeChecked();
     await page.getByRole("button", { name: "Continuer" }).click();
     await expect(page.locator("#idea-goal")).toHaveValue(/collectivité/i);
   });

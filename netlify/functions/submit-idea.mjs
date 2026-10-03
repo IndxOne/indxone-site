@@ -1,5 +1,5 @@
 import { handler, isObject, clean, text, email, iso } from "./_shared/forms.mjs";
-const types = ["pilotage", "besoin", "processus", "mariage", "site", "application", "activite", "idee_floue"];
+const types = ["pilotage", "besoin", "solution", "processus", "mariage", "site", "application", "activite", "idee_floue"];
 const starts = ["J'explore encore", "Dans le mois", "Dans les 3 mois", "Ce trimestre", "À une date précise"];
 const supports = [
   "Cadrer le besoin",

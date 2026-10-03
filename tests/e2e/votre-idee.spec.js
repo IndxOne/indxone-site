@@ -52,18 +52,19 @@ test.describe("INDXONE — /votre-idee page", () => {
 
   // ─── Step 0 — Project type ───────────────────────────────
 
-  test("step 0 shows 3 project type choices", async ({ page }) => {
+  test("step 0 shows 4 project type choices", async ({ page }) => {
     const step0 = page.locator('[data-step="0"]');
     await expect(step0).toBeVisible();
     const choices = page.locator(".idea-choice");
-    await expect(choices).toHaveCount(3);
+    await expect(choices).toHaveCount(4);
   });
 
   test("step 0 has correct choice labels", async ({ page }) => {
     const labels = page.locator(".idea-choice strong");
     await expect(labels.nth(0)).toHaveText("Piloter un projet SI");
     await expect(labels.nth(1)).toHaveText("Structurer un besoin");
-    await expect(labels.nth(2)).toHaveText("Transformer un processus");
+    await expect(labels.nth(2)).toHaveText("Créer une solution numérique");
+    await expect(labels.nth(3)).toHaveText("Automatiser un processus");
   });
 
   test("step 0 validates: cannot continue without selection", async ({ page }) => {
@@ -161,14 +162,24 @@ test.describe("INDXONE — /votre-idee page", () => {
     await expect(page.locator("[data-branch-one-label]")).toContainText(/situation.*dysfonctionnement/i);
   });
 
-  test("step 2 branch content updates for processus", async ({ page }) => {
+  test("step 2 branch content updates for solution", async ({ page }) => {
     await page.locator(".idea-choice").nth(2).click();
     await page.getByRole("button", { name: "Continuer" }).click();
     await page.locator("#idea-goal").fill("test");
     await page.locator("#idea-audience").fill("test");
     await page.getByRole("button", { name: "Continuer" }).click();
+    await expect(page.locator("[data-branch-title]")).toHaveText("Votre solution");
+    await expect(page.locator("[data-branch-one-label]")).toContainText(/site, application.*concevoir/i);
+  });
+
+  test("step 2 branch content updates for processus", async ({ page }) => {
+    await page.locator(".idea-choice").nth(3).click();
+    await page.getByRole("button", { name: "Continuer" }).click();
+    await page.locator("#idea-goal").fill("test");
+    await page.locator("#idea-audience").fill("test");
+    await page.getByRole("button", { name: "Continuer" }).click();
     await expect(page.locator("[data-branch-title]")).toHaveText("Votre processus");
-    await expect(page.locator("[data-branch-one-label]")).toContainText(/processus.*outils/i);
+    await expect(page.locator("[data-branch-one-label]")).toContainText(/tâches.*automatiser/i);
   });
 
   // ─── Step 3 — Style, examples, start ─────────────────────
@@ -326,9 +337,14 @@ test.describe("INDXONE — /votre-idee page", () => {
     await expect(page.locator(".idea-choice").nth(1).locator("input")).toBeChecked();
   });
 
+  test("?type=solution preselects solution choice", async ({ page }) => {
+    await page.goto("/votre-idee/?type=solution");
+    await expect(page.locator(".idea-choice").nth(2).locator("input")).toBeChecked();
+  });
+
   test("?type=processus preselects processus choice", async ({ page }) => {
     await page.goto("/votre-idee/?type=processus");
-    await expect(page.locator(".idea-choice").nth(2).locator("input")).toBeChecked();
+    await expect(page.locator(".idea-choice").nth(3).locator("input")).toBeChecked();
   });
 
   // ─── Accessibility ───────────────────────────────────────
@@ -336,7 +352,7 @@ test.describe("INDXONE — /votre-idee page", () => {
   test("all form fields have associated labels", async ({ page }) => {
     // Step 0 uses label wrapping (radio inputs inside label elements)
     const step0Labels = page.locator(".idea-choice");
-    await expect(step0Labels).toHaveCount(3);
+    await expect(step0Labels).toHaveCount(4);
 
     // Navigate to step 5 to check input labels
     await page.locator(".idea-choice").nth(1).click();
