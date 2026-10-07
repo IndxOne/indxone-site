@@ -1,53 +1,49 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const ROOT = path.join(__dirname, '..');
-const INCLUDES_DIR = path.join(ROOT, '_includes');
+const ROOT = path.join(__dirname, "..");
 const INCLUDE_RE = /<!--#include\s+file="([^"]+)"\s*-->/g;
 
-function resolveIncludePath(filePath) {
-  if (filePath.startsWith('_includes/')) {
-    return path.join(ROOT, filePath);
+function resolveIncludePath(filePath, root) {
+  const resolved = path.resolve(root, filePath);
+  if (!resolved.startsWith(root + path.sep)) {
+    throw new Error(`Include outside site root: ${filePath}`);
   }
-  return path.join(ROOT, filePath);
+  return resolved;
 }
 
-function assemble(content, filePath, depth = 0) {
+function assemble(content, filePath, depth = 0, root = ROOT) {
   if (depth > 5) {
-    console.error(`  [assemble] Max include depth reached in ${filePath}`);
-    return content;
+    throw new Error(`Max include depth reached in ${filePath}`);
   }
   return content.replace(INCLUDE_RE, (match, includeFile) => {
-    const includePath = resolveIncludePath(includeFile);
+    const includePath = resolveIncludePath(includeFile, root);
     if (!fs.existsSync(includePath)) {
-      console.warn(`  [assemble] Include not found: ${includeFile} (referenced in ${filePath})`);
-      return `<!-- Include not found: ${includeFile} -->`;
+      throw new Error(`Include not found: ${includeFile} (referenced in ${filePath})`);
     }
-    const includeContent = fs.readFileSync(includePath, 'utf8');
-    return assemble(includeContent, includePath, depth + 1);
+    const includeContent = fs.readFileSync(includePath, "utf8");
+    return assemble(includeContent, includePath, depth + 1, root);
   });
 }
 
-function assembleFile(filePath) {
-  if (!fs.existsSync(filePath)) return null;
-  const content = fs.readFileSync(filePath, 'utf8');
-  if (!INCLUDE_RE.test(content)) return content;
-  INCLUDE_RE.lastIndex = 0;
-  return assemble(content, filePath);
+function assembleFile(filePath, root = ROOT) {
+  if (!fs.existsSync(filePath)) throw new Error(`Source not found: ${filePath}`);
+  const content = fs.readFileSync(filePath, "utf8");
+  return assemble(content, filePath, 0, root);
 }
 
 function assembleDir(srcDir) {
   if (!fs.existsSync(srcDir)) return;
   const entries = fs.readdirSync(srcDir);
   for (const entry of entries) {
-    if (entry.endsWith('.backup') || entry.startsWith('.')) continue;
+    if (entry.endsWith(".backup") || entry.startsWith(".")) continue;
     const fullPath = path.join(srcDir, entry);
     if (fs.statSync(fullPath).isDirectory()) {
       assembleDir(fullPath);
-    } else if (entry.endsWith('.html')) {
+    } else if (entry.endsWith(".html")) {
       const assembled = assembleFile(fullPath);
       if (assembled !== null) {
-        fs.writeFileSync(fullPath, assembled, 'utf8');
+        fs.writeFileSync(fullPath, assembled, "utf8");
       }
     }
   }
@@ -56,22 +52,22 @@ function assembleDir(srcDir) {
 module.exports = { assemble, assembleFile, assembleDir };
 
 if (require.main === module) {
-  console.log('Assembling HTML includes...');
-  const rootHtml = fs.readdirSync(ROOT).filter(f => f.endsWith('.html'));
+  console.log("Assembling HTML includes...");
+  const rootHtml = fs.readdirSync(ROOT).filter((f) => f.endsWith(".html"));
   for (const file of rootHtml) {
     const fullPath = path.join(ROOT, file);
     const assembled = assembleFile(fullPath);
     if (assembled) {
-      fs.writeFileSync(fullPath, assembled, 'utf8');
+      fs.writeFileSync(fullPath, assembled, "utf8");
       console.log(`  ${file}`);
     }
   }
-  const htmlDirs = ['collectivites', 'projets', 'merci', 'en', 'accessibilite'];
+  const htmlDirs = ["collectivites", "projets", "merci", "en", "accessibilite"];
   for (const dir of htmlDirs) {
     const dirPath = path.join(ROOT, dir);
     if (fs.existsSync(dirPath)) {
       assembleDir(dirPath);
     }
   }
-  console.log('Done.');
+  console.log("Done.");
 }

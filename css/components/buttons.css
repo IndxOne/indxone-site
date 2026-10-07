@@ -97,3 +97,34 @@
 .btn-blue:hover {
   background: var(--blue-mid);
 }
+
+/* CTA mobile persistant : masqué par défaut, activé par js/main.js */
+.sticky-cta {
+  display: none;
+}
+
+@media (width <= 640px) {
+  .sticky-cta {
+    display: flex;
+    position: fixed;
+    left: var(--space-lg);
+    right: var(--space-lg);
+    bottom: calc(var(--space-md) + env(safe-area-inset-bottom, 0px));
+    z-index: calc(var(--z-sticky) - 2);
+    min-height: 48px;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(150%);
+    visibility: hidden;
+    transition: transform var(--transition-base), visibility 0s linear 0.3s;
+  }
+
+  .sticky-cta.is-visible {
+    transform: none;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  .menu-open .sticky-cta {
+    visibility: hidden;
+  }
+}

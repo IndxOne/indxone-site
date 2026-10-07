@@ -1,7 +1,6 @@
 User-agent: *
-Allow: /
 
-# Directives
+# Chemins techniques — ces règles ne remplacent pas le contrôle d'accès.
 Disallow: /admin/
 Disallow: /.env
 Disallow: /node_modules/
@@ -9,27 +8,7 @@ Disallow: /.git/
 Disallow: /.codex/
 Disallow: /.agents/
 
-# Sitemap
-Sitemap: https://indxone.com/sitemap.xml
-
-# Crawl delay (0.5 seconds between requests)
-Crawl-delay: 0.5
-Request-rate: 2/1s
-
-# Allow all bots
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-# Disallow scraping of internal files
+# Exclusions techniques existantes, communes à tous les robots.
 Disallow: /*.html?
 Disallow: /*.php$
 Disallow: /*.sh$
@@ -37,9 +16,4 @@ Disallow: /*.json$
 Disallow: /*.yml$
 Disallow: /*.yaml$
 
-# Clean parameter handling
-Clean-param: utm_source /?
-Clean-param: utm_medium /?
-Clean-param: utm_campaign /?
-Clean-param: gclid /?
-Clean-param: fbclid /?
+Sitemap: https://indxone.com/sitemap.xml

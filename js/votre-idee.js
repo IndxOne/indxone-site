@@ -1,83 +1,55 @@
 (() => {
-  const form = document.querySelector('#idea-form');
+  const form = document.querySelector("#idea-form");
   if (!form) return;
 
-  const STORAGE_KEY = 'indxone:votre-idee:draft:v1';
-  const steps = [...form.querySelectorAll('[data-step]')];
-  const progressBar = document.querySelector('#idea-progress-bar');
-  const progressLabel = document.querySelector('#idea-progress-label');
-  const status = document.querySelector('#idea-form-status');
+  const STORAGE_KEY = "indxone:votre-idee:draft:v1";
+  const steps = [...form.querySelectorAll("[data-step]")];
+  const progressBar = document.querySelector("#idea-progress-bar");
+  const progressLabel = document.querySelector("#idea-progress-label");
+  const status = document.querySelector("#idea-form-status");
   const projectTypeInput = form.querySelector('[data-serialized="project-type"]');
   const projectTypeChoices = [...form.querySelectorAll('input[name="project-type-choice"]')];
   const submitButton = form.querySelector('button[type="submit"]');
   const projectTypeMap = {
-    'mariage ou événement': 'mariage',
-    'site internet': 'site',
-    application: 'application',
-    'activité à développer': 'activite',
-    'idée encore floue': 'idee_floue',
+    "piloter un projet SI": "pilotage",
+    "structurer un besoin": "besoin",
+    "créer une solution numérique": "solution",
+    "automatiser un processus": "processus",
   };
   const queryTypeMap = {
-    mariage: 'mariage ou événement',
-    site: 'site internet',
-    application: 'application',
-    activite: 'activité à développer',
-    organisation: 'application',
-    floue: 'idée encore floue',
-    idee_floue: 'idée encore floue',
-    collectivite: 'site internet',
+    pilotage: "piloter un projet SI",
+    besoin: "structurer un besoin",
+    solution: "créer une solution numérique",
+    processus: "automatiser un processus",
+    collectivite: "créer une solution numérique",
   };
   const branch = {
-    title: form.querySelector('[data-branch-title]'),
-    hint: form.querySelector('[data-branch-hint]'),
-    oneLabel: form.querySelector('[data-branch-one-label]'),
-    twoLabel: form.querySelector('[data-branch-two-label]'),
+    title: form.querySelector("[data-branch-title]"),
+    oneLabel: form.querySelector("[data-branch-one-label]"),
   };
 
   const branchCopy = {
-    'mariage ou événement': {
-      title: 'Votre événement',
-      hint: 'Quelques repères pour imaginer l’expérience à proposer aux invités.',
-      one: 'Quelle date et quel lieu envisagez-vous ? *',
-      two: 'Quelles informations ou services devront trouver les invités ? *',
-    },
-    'site internet': {
-      title: 'Votre site',
-      hint: 'Pensons d’abord à ce que vos visiteurs doivent comprendre et faire.',
-      one: 'Quelle activité ou quel sujet le site présentera-t-il ? *',
-      two: 'Quelles pages ou informations sont indispensables ? *',
-    },
-    application: {
-      title: 'Votre application',
-      hint: 'Décrivons le problème à résoudre avant de parler de technologie.',
-      one: 'Quelle action ou quel problème souhaitez-vous simplifier ? *',
-      two: 'Qui l’utilisera et sur quel support : mobile, web ou les deux ? *',
-    },
-    'activité à développer': {
-      title: 'Votre activité',
-      hint: 'Quelques éléments sur votre offre et votre priorité immédiate.',
-      one: 'Que proposez-vous et à qui ? *',
-      two: 'Quelle tâche ou quel point souhaitez-vous simplifier en premier ? *',
-    },
-    'idée encore floue': {
-      title: 'Votre point de départ',
-      hint: 'Partons de la situation réelle, sans chercher la solution tout de suite.',
-      one: 'D’où vient cette idée ? *',
-      two: 'Quelle situation vous gêne aujourd’hui ? *',
-    },
+    "piloter un projet SI": { title: "Votre projet", one: "Où en est-il aujourd’hui ?" },
+    "structurer un besoin": { title: "Votre besoin", one: "Qu’est-ce qui pose problème aujourd’hui ?" },
+    "créer une solution numérique": { title: "Votre solution", one: "À qui sera-t-elle utile ?" },
+    "automatiser un processus": { title: "Votre tâche", one: "Quels outils utilisez-vous aujourd’hui ?" },
   };
 
+  const reviewIndex = steps.length - 1;
+  const contactIndex = reviewIndex - 1;
   let currentStep = 0;
+  let startedAt = new Date().toISOString();
+  let submissionId = createSubmissionId();
+  let submitting = false;
 
   function saveDraft() {
     const data = Object.fromEntries(new FormData(form).entries());
-    data['project-type-choice'] = projectTypeChoices.find((choice) => choice.checked)?.value || '';
-    try {
-      const previous = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
-      data.started_at = previous?.started_at || new Date().toISOString();
-    } catch {
-      data.started_at = new Date().toISOString();
-    }
+    data["project-type-choice"] = projectTypeChoices.find((choice) => choice.checked)?.value || "";
+    data.started_at = startedAt;
+    data.submission_id = submissionId;
+    // Never persist a trap value or a previous consent decision.
+    delete data.company_name;
+    delete data.consent;
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     } catch {}
@@ -86,64 +58,75 @@
   function restoreDraft() {
     let data;
     try {
-      data = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+      data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
     } catch {
       data = null;
     }
-    if (!data) return;
+    if (!data || typeof data !== "object" || Array.isArray(data)) return;
+    if (
+      typeof data.started_at === "string" &&
+      Number.isFinite(Date.parse(data.started_at)) &&
+      Date.parse(data.started_at) <= Date.now()
+    )
+      startedAt = data.started_at;
+    if (
+      typeof data.submission_id === "string" &&
+      /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(data.submission_id)
+    )
+      submissionId = data.submission_id;
 
     projectTypeChoices.forEach((choice) => {
-      choice.checked = choice.value === data['project-type-choice'];
+      choice.checked = choice.value === data["project-type-choice"];
     });
     [...form.elements].forEach((element) => {
-      if (!element.name || element.name === 'form-name' || element.name === 'bot-field') return;
-      if (element.type === 'checkbox') element.checked = data[element.name] === 'on';
-      else if (element.type === 'radio') return;
+      if (
+        !element.name ||
+        element.name === "form-name" ||
+        element.name === "bot-field" ||
+        element.name === "company_name" ||
+        element.name === "consent"
+      )
+        return;
+      if (element.type === "checkbox") element.checked = data[element.name] === "on";
+      else if (element.type === "radio") return;
       else if (data[element.name] !== undefined) element.value = data[element.name];
     });
     syncBranch();
   }
 
   function applyQueryType() {
-    const type = new URLSearchParams(window.location.search).get('type');
+    const type = new URLSearchParams(window.location.search).get("type");
     const choiceValue = queryTypeMap[type];
     const choice = projectTypeChoices.find((candidate) => candidate.value === choiceValue);
     if (!choice) return;
     choice.checked = true;
     syncBranch();
-    if (type === 'collectivite') {
-      form.elements.goal.value = 'Un site officiel clair pour notre collectivité.';
-      form.elements.audience.value = 'Habitants, élus et services municipaux';
+    if (type === "collectivite") {
+      form.elements.goal.value = "Un site officiel clair pour notre collectivité.";
+      form.elements.audience.value = "Habitants, élus et services municipaux";
     }
     saveDraft();
   }
 
-  function getStartedAt() {
-    try {
-      const draft = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
-      return draft?.started_at || new Date().toISOString();
-    } catch {
-      return new Date().toISOString();
-    }
-  }
-
   function createSubmissionId() {
     if (window.crypto?.randomUUID) return window.crypto.randomUUID();
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (char) => {
-      const random = Math.random() * 16 | 0;
-      const value = char === 'x' ? random : (random & 0x3 | 0x8);
-      return value.toString(16);
-    });
+    const bytes = window.crypto.getRandomValues(new Uint8Array(16));
+    bytes[6] = (bytes[6] & 0x0f) | 0x40;
+    bytes[8] = (bytes[8] & 0x3f) | 0x80;
+    const hex = [...bytes].map((value) => value.toString(16).padStart(2, "0")).join("");
+    return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
   }
 
   function buildPayload() {
-    const selected = projectTypeChoices.find((choice) => choice.checked)?.value || '';
+    const selected = projectTypeChoices.find((choice) => choice.checked)?.value || "";
     const now = new Date().toISOString();
     return {
-      form_version: '1.0.0',
-      submission_id: createSubmissionId(),
+      form_version: "1.0.0",
+      submission_id: submissionId,
       project_type: projectTypeMap[selected],
-      created_at: getStartedAt(),
+      created_at: now,
+      started_at: startedAt,
+      company_name: form.elements.company_name.value,
       contact: {
         nom: form.elements.name.value,
         prenom: form.elements.firstname.value,
@@ -162,26 +145,24 @@
           support: form.elements.support.value,
         },
         conditional: {
-          branch_one: form.elements['branch-one'].value,
-          branch_two: form.elements['branch-two'].value,
+          branch_one: form.elements["branch-one"].value,
+          branch_two: form.elements["branch-two"].value,
         },
       },
       meta: {
         origin: window.location.href,
         referrer: document.referrer,
-        language: document.documentElement.lang || 'fr',
+        language: document.documentElement.lang || "fr",
       },
     };
   }
 
   function syncBranch() {
-    const selected = projectTypeChoices.find((choice) => choice.checked)?.value || '';
+    const selected = projectTypeChoices.find((choice) => choice.checked)?.value || "";
     projectTypeInput.value = selected;
-    const copy = branchCopy[selected] || branchCopy['idée encore floue'];
+    const copy = branchCopy[selected] || branchCopy["structurer un besoin"];
     branch.title.textContent = copy.title;
-    branch.hint.textContent = copy.hint;
     branch.oneLabel.textContent = copy.one;
-    branch.twoLabel.textContent = copy.two;
   }
 
   function showError(message, focusElement) {
@@ -190,119 +171,148 @@
   }
 
   function clearError() {
-    status.textContent = '';
-    form.querySelectorAll('[data-error]').forEach((element) => { element.textContent = ''; });
+    status.textContent = "";
+    form.querySelectorAll("[data-error]").forEach((element) => {
+      element.textContent = "";
+    });
   }
 
   function validateStep(stepIndex) {
     const step = steps[stepIndex];
     if (stepIndex === 0 && !projectTypeChoices.some((choice) => choice.checked)) {
-      showError('Choisissez un type de projet pour continuer.');
+      showError("Choisissez un type de projet pour continuer.");
       return false;
     }
-    const fields = [...step.querySelectorAll('input, textarea, select')].filter((field) => !field.disabled && field.type !== 'hidden');
+    const fields = [...step.querySelectorAll("input, textarea, select")].filter(
+      (field) => !field.disabled && field.type !== "hidden"
+    );
     const invalid = fields.find((field) => !field.checkValidity());
     if (invalid) {
       invalid.reportValidity();
-      showError('Vérifiez la réponse indiquée avant de continuer.', invalid);
+      showError("Vérifiez la réponse indiquée avant de continuer.", invalid);
       return false;
     }
     return true;
   }
 
   function renderSummary() {
-    const summary = document.querySelector('#idea-summary');
+    const summary = document.querySelector("#idea-summary");
+    const checked = projectTypeChoices.find((choice) => choice.checked);
     const labels = [
-      ['Type de projet', projectTypeInput.value],
-      ['Votre objectif', form.elements.goal.value],
-      ['Pour qui', form.elements.audience.value],
-      ['Précisions', form.elements['branch-one'].value + '\n' + form.elements['branch-two'].value],
-      ['Votre vision', form.elements.style.value],
-      ['Budget', form.elements.budget.value],
-      ['Démarrage', form.elements.start.value],
-      ['Accompagnement', form.elements.support.value],
-      ['Contact', [form.elements.firstname.value, form.elements.name.value, form.elements.email.value].filter(Boolean).join(' · ')],
-    ];
+      ["Votre besoin", checked?.closest("label")?.querySelector("strong")?.textContent || ""],
+      ["Votre projet", form.elements.goal.value],
+      ["Contexte", form.elements["branch-one"].value],
+      ["Échéance", form.elements.start.value],
+      ["Accompagnement", form.elements.support.selectedOptions[0]?.textContent],
+      [
+        "Contact",
+        [form.elements.firstname.value, form.elements.name.value, form.elements.email.value]
+          .filter(Boolean)
+          .join(" · "),
+      ],
+    ].filter(([label, value]) => value || ["Votre besoin", "Votre projet", "Contact"].includes(label));
     summary.replaceChildren();
     labels.forEach(([label, value]) => {
-      const wrapper = document.createElement('div');
-      const term = document.createElement('dt');
-      const description = document.createElement('dd');
+      const wrapper = document.createElement("div");
+      const term = document.createElement("dt");
+      const description = document.createElement("dd");
       term.textContent = label;
-      description.textContent = value || 'Non renseigné';
+      description.textContent = value || "Non renseigné";
       wrapper.append(term, description);
       summary.append(wrapper);
     });
   }
 
   function updateProgress() {
-    const visibleIndex = Math.min(currentStep, 5);
-    progressBar.style.width = (Math.max(1, visibleIndex + 1) / 6 * 100) + '%';
-    progressLabel.textContent = currentStep === 6 ? 'Récapitulatif' : 'Étape ' + (visibleIndex + 1) + ' sur 6';
+    const total = contactIndex + 1;
+    const visibleIndex = Math.min(currentStep, contactIndex);
+    progressBar.style.width = (Math.max(1, visibleIndex + 1) / total) * 100 + "%";
+    progressLabel.textContent =
+      currentStep === reviewIndex ? "Récapitulatif" : "Étape " + (visibleIndex + 1) + " sur " + total;
   }
 
   function showStep(nextStep) {
     currentStep = nextStep;
-    steps.forEach((step) => { step.hidden = Number(step.dataset.step) !== currentStep; });
-    const review = form.querySelector('[data-step="6"]');
-    if (review) review.hidden = currentStep !== 6;
+    steps.forEach((step) => {
+      step.hidden = Number(step.dataset.step) !== currentStep;
+    });
+    const review = steps[reviewIndex];
+    if (review) review.hidden = currentStep !== reviewIndex;
     updateProgress();
     clearError();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    const heading = (currentStep === 6 ? review : steps[currentStep]).querySelector('legend, h2');
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    const heading = (currentStep === reviewIndex ? review : steps[currentStep]).querySelector("legend, h2");
     heading?.focus?.({ preventScroll: true });
   }
 
-  projectTypeChoices.forEach((choice) => choice.addEventListener('change', () => { syncBranch(); saveDraft(); }));
-  form.addEventListener('input', saveDraft);
-  form.addEventListener('change', saveDraft);
+  projectTypeChoices.forEach((choice) =>
+    choice.addEventListener("change", () => {
+      syncBranch();
+      saveDraft();
+    })
+  );
+  form.addEventListener("input", saveDraft);
+  form.addEventListener("change", saveDraft);
 
-  form.querySelectorAll('.idea-next').forEach((button) => {
-    button.addEventListener('click', () => {
+  form.querySelectorAll(".idea-next").forEach((button) => {
+    button.addEventListener("click", () => {
       if (!validateStep(currentStep)) return;
       syncBranch();
-      if (currentStep === 5) renderSummary();
-      showStep(Math.min(6, currentStep + 1));
+      if (currentStep === contactIndex) renderSummary();
+      showStep(Math.min(reviewIndex, currentStep + 1));
     });
   });
 
-  form.querySelectorAll('.idea-back').forEach((button) => {
-    button.addEventListener('click', () => showStep(Math.max(0, currentStep - 1)));
+  form.querySelectorAll(".idea-back").forEach((button) => {
+    button.addEventListener("click", () => showStep(Math.max(0, currentStep - 1)));
   });
 
-  form.addEventListener('submit', async (event) => {
-    if (currentStep !== 6) {
+  form.addEventListener("submit", async (event) => {
+    if (currentStep !== reviewIndex) {
       event.preventDefault();
       return;
     }
-    if (!validateStep(5)) {
+    if (!validateStep(contactIndex)) {
       event.preventDefault();
-      showStep(5);
+      showStep(contactIndex);
       return;
     }
     event.preventDefault();
+    if (submitting) return;
+    submitting = true;
+    saveDraft();
     clearError();
     submitButton.disabled = true;
-    submitButton.textContent = 'Envoi en cours…';
-    status.textContent = 'Votre demande est en cours d’envoi…';
+    submitButton.textContent = "Envoi en cours…";
+    status.textContent = "Votre demande est en cours d’envoi…";
     try {
-      const response = await fetch('/api/submit-idee', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      const response = await fetch("/api/submit-idee", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(buildPayload()),
       });
       const result = await response.json().catch(() => ({}));
-      if (!response.ok || result.fallback || !result.ok) throw new Error('submission_failed');
-      try { localStorage.removeItem(STORAGE_KEY); } catch {}
-      window.location.assign('/merci/');
-    } catch {
+      if (result.simulated) {
+        showError(result.message || "Mode Preview : demande validée, aucun envoi effectué.");
+        return;
+      }
+      if (!response.ok || result.fallback || !result.ok)
+        throw new Error(result.error || "La demande n’a pas pu être envoyée. Vérifiez votre connexion puis réessayez.");
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch {}
+      window.location.assign("/merci/");
+    } catch (error) {
+      showError(error.message || "Connexion interrompue. Réessayez sans modifier votre demande.");
+    } finally {
+      submitting = false;
       submitButton.disabled = false;
-      submitButton.textContent = 'Envoyer ma demande';
-      showError('La demande n’a pas pu être envoyée. Vérifiez votre connexion puis réessayez.');
+      submitButton.textContent = "Envoyer ma demande";
     }
   });
 
   restoreDraft();
+  saveDraft();
   applyQueryType();
   syncBranch();
   showStep(0);
