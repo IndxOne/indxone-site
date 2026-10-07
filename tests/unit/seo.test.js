@@ -67,9 +67,33 @@ describe("SEO-002A technical hygiene", () => {
       expect(blocked(url.pathname)).toBe(false);
       const document = html(pages[url.pathname]);
       expect(document.querySelector('meta[name="robots"]')?.content || "").not.toMatch(/noindex/i);
-      const canonical = document.querySelector('link[rel="canonical"]');
-      if (canonical) expect(canonical.href).toBe(url.href);
+      const canonicals = document.querySelectorAll('link[rel="canonical"]');
+      expect(canonicals, url.href).toHaveLength(1);
+      expect(canonicals[0].getAttribute("href")).toBe(url.href);
       expect(entry.querySelector("lastmod").textContent).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    }
+  });
+
+  it("aligns every public canonical, Open Graph URL and supported hreflang", () => {
+    for (const [route, file] of Object.entries(pages)) {
+      const document = html(file);
+      const expected = `https://indxone.com${route}`;
+      const ogUrls = document.querySelectorAll('meta[property="og:url"]');
+      expect(ogUrls, route).toHaveLength(1);
+      expect(ogUrls[0].content).toBe(expected);
+      const links = [...document.querySelectorAll('link[rel="alternate"][hreflang]')];
+      const languages = links.map((link) => link.hreflang);
+      expect(new Set(languages).size).toBe(languages.length);
+      for (const link of links) {
+        expect(["fr", "x-default"]).toContain(link.hreflang);
+        expect(link.getAttribute("href")).toBe(expected);
+        const target = new URL(link.href);
+        expect(target.protocol).toBe("https:");
+        expect(target.host).toBe("indxone.com");
+        expect(pages).toHaveProperty(target.pathname);
+        expect(html(pages[target.pathname]).documentElement.lang).toBe("fr");
+        expect(redirects.filter(([from, , status]) => from === target.pathname && /^3\d\d/.test(status))).toEqual([]);
+      }
     }
   });
 
