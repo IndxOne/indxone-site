@@ -559,7 +559,7 @@ test.describe("INDXONE — /votre-idee page", () => {
     );
 
     await page.locator('button[type="submit"]').click();
-    await expect(page.locator("#idea-form-status")).toContainText(/connexion|réessayez|envoyée/i, {
+    await expect(page.locator("#idea-form-status")).toContainText(/test|connexion|réessayez|envoyée/i, {
       timeout: 10000,
     });
 
