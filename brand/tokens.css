@@ -1,0 +1,26 @@
+/* INDXONE BRAND-01 — tokens de marque, NON IMPORTÉS dans les applications.
+   Ces valeurs ne remplacent pas les tokens métier. Usage après QA contrastes. */
+:root {
+  --indx-brand-ink: #0C1620;
+  --indx-brand-terracotta: #D65F3C;
+  --indx-brand-ivory: #F7F1E8;
+  --indx-brand-white: #FFFFFF;
+  --indx-brand-surface: #FFFFFF;
+  --indx-brand-text: #0C1620;
+  --indx-brand-border: rgba(12,22,32,.14);
+  --indx-brand-space-1: 4px;
+  --indx-brand-space-2: 8px;
+  --indx-brand-space-3: 12px;
+  --indx-brand-space-4: 16px;
+  --indx-brand-space-6: 24px;
+  --indx-brand-radius-sm: 8px;
+  --indx-brand-radius-md: 12px;
+  --indx-brand-radius-lg: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --indx-brand-surface: #0C1620;
+    --indx-brand-text: #F7F1E8;
+    --indx-brand-border: rgba(247,241,232,.2);
+  }
+}
