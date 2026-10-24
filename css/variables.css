@@ -2,14 +2,16 @@
   /* Valeurs extraites de la maquette validée (26/08/2026) : ivoire chaud,
      encre presque noire, orange terracotta CTA + orange doux secondaire,
      accents pêche et moutarde en petite touche. */
-  --ink: #14202B;
+  --ink: #0C1620;
   --ink-light: #4A5560;
   --ink-lighter: #82909A;
 
-  --bone: #F8F3EC;
+  --bone: #F7F1E8;
   --white: #FFFFFF;
   --black: #000000;
 
+  /* CTA historical kept until contrast QA; logo uses --brand-terracotta. */
+  --brand-terracotta: #D65F3C;
   --gold: #C8603A;
   --gold-light: #DD8562;
   --gold-lighter: #FBE9E3;
