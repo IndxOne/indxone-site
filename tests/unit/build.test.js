@@ -16,6 +16,7 @@ beforeEach(() => {
   for (const entry of [
     "index.html",
     "favicon.svg",
+    "img",
     "404.html",
     "mentions-legales.html",
     "politique-confidentialite.html",
