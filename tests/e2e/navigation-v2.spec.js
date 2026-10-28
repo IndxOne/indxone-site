@@ -20,7 +20,7 @@ test.describe("Site V2 — navigation and contact journeys", () => {
     await page.goto("/collectivites/");
     await page.getByRole("link", { name: /Recevoir votre devis/ }).first().click();
     await expect(page).toHaveURL(/\/votre-idee\/\?type=collectivite$/);
-    await expect(page.locator('input[value="créer une solution numérique"]')).toBeChecked();
+    await expect(page.locator('input[type="radio"][name="project-type-choice"][value="créer une solution numérique"]')).toBeChecked();
     await expect(page.locator("#idea-form")).toBeVisible();
   });
 
