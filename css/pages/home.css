@@ -342,10 +342,6 @@
     display: none;
   }
 
-  .services-grid .service-card:nth-child(3) {
-    display: none;
-  }
-
   .bento-card:nth-child(n + 4) {
     display: none;
   }
