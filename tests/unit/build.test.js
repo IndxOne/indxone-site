@@ -3,6 +3,7 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import sharp from "sharp";
 import { createRequire } from "node:module";
 
 const require = createRequire(import.meta.url);
@@ -14,6 +15,7 @@ beforeEach(() => {
   root = fs.mkdtempSync(path.join(os.tmpdir(), "indxone-build-"));
   for (const entry of [
     "index.html",
+    "favicon.svg",
     "404.html",
     "mentions-legales.html",
     "politique-confidentialite.html",
@@ -56,6 +58,29 @@ describe("production build", () => {
     for (const internal of ["_includes", "netlify.toml", "postcss.config.js", "scripts", "tests"])
       expect(fs.existsSync(path.join(dist, internal))).toBe(false);
     expect(fs.existsSync(path.join(dist, "mentions-legales/index.html"))).toBe(true);
+    for (const [filename, size] of [
+      ["favicon-16x16.png", 16],
+      ["favicon-32x32.png", 32],
+      ["favicon-48x48.png", 48],
+      ["apple-touch-icon.png", 180],
+      ["android-chrome-192x192.png", 192],
+      ["android-chrome-512x512.png", 512],
+    ]) {
+      const metadata = await sharp(path.join(dist, "img", filename)).metadata();
+      expect([metadata.width, metadata.height, metadata.format]).toEqual([size, size, "png"]);
+    }
+    const ico = fs.readFileSync(path.join(dist, "favicon.ico"));
+    expect(ico.readUInt16LE(0)).toBe(0);
+    expect(ico.readUInt16LE(2)).toBe(1);
+    expect(ico.readUInt16LE(4)).toBe(3);
+    const manifest = JSON.parse(fs.readFileSync(path.join(dist, "img/site.webmanifest"), "utf8"));
+    expect(manifest.icons.map((item) => item.sizes)).toEqual(["192x192", "512x512"]);
+    for (const route of ["index.html", "collectivites/index.html", "projets/index.html", "votre-idee/index.html", "accessibilite/index.html", "mentions-legales/index.html", "politique-confidentialite/index.html"]) {
+      const markup = fs.readFileSync(path.join(dist, route), "utf8");
+      expect(markup, route).toContain('rel="manifest"');
+      expect(markup, route).toContain('rel="apple-touch-icon"');
+      expect(markup, route).toContain("/favicon.svg?v=brand01v2");
+    }
   });
   it("rejects a missing required page", async () => {
     fs.rmSync(path.join(root, "merci/index.html"));
