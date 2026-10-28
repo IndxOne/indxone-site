@@ -571,7 +571,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   padding: 1.1rem 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  text-align: left;
   cursor: pointer;
   font-weight: 600;
   font-size: 0.9rem;
@@ -581,6 +587,12 @@
 .faq-q:hover {
   color: var(--blue);
 }
+
+.faq-q:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
 
 .faq-q::after {
   content: '+';
