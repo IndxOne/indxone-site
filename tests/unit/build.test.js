@@ -24,6 +24,7 @@ beforeEach(() => {
     "js",
     "collectivites",
     "projets",
+    "produits",
     "merci",
     "votre-idee",
     "accessibilite",
