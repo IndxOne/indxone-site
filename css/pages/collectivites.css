@@ -746,10 +746,6 @@
   grid-template-columns: 1fr;
 }
 
-.pricing-details .maint-grid .mc:not(:first-child) {
-  display: none;
-}
-
 .pricing-details .mod-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
