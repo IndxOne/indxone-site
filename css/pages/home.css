@@ -572,7 +572,7 @@
     gap: var(--space-sm);
   }
 
-  .hero-stats-compact .h-stat:nth-child(n + 2) {
+  .hero-stats-compact .h-stat:nth-child(n + 3) {
     display: none;
   }
 }
