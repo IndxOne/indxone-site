@@ -6,7 +6,7 @@ const { assembleFile } = require("./assemble");
 
 const ROOT = path.join(__dirname, "..");
 const HTML_FILES = ["index.html", "404.html"];
-const HTML_DIRS = ["collectivites", "projets", "merci", "votre-idee", "accessibilite"];
+const HTML_DIRS = ["collectivites", "projets", "produits", "merci", "votre-idee", "accessibilite"];
 const HTML_ROUTES = ["mentions-legales", "politique-confidentialite"];
 const ASSET_DIRS = ["js", "img", "fonts"];
 const ROOT_ASSETS = ["robots.txt", "sitemap.xml", "favicon.svg", "favicon.ico"];
