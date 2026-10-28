@@ -1,6 +1,6 @@
 # BRAND-01-V2 — Site Vitrine : favicon et assets
 
-Statut : implémentation candidate sur branche dédiée, non publiée ; PR Draft empilée sur la fondation [#13](https://github.com/IndxOne/indxone-site/pull/13).
+Statut : implémentation candidate sur branche dédiée, non publiée ; PR Draft [#15](https://github.com/IndxOne/indxone-site/pull/15) ciblant `main` **uniquement pour permettre la Preview Netlify**. Cette branche a été créée à partir de la fondation [#13](https://github.com/IndxOne/indxone-site/pull/13) et inclut donc les commits de #13 dans son diff vers `main`. Les deux PR restent Draft et ne doivent pas être fusionnées sans décision de réconciliation explicite.
 
 ## Source de vérité
 
