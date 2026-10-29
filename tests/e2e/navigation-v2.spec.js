@@ -120,3 +120,62 @@ test.describe("Site V2 — navigation and contact journeys", () => {
     }
   });
 });
+
+
+test.describe("Site S6 — responsive density and centering", () => {
+  for (const width of [320, 390, 1440]) {
+    test(`Réalisations hero has compact vertical padding at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto("/projets/");
+      const hero = page.locator(".projets-hero");
+      await expect(hero).toBeVisible();
+      const vertical = await hero.evaluate((node) => {
+        const css = getComputedStyle(node);
+        return { top: parseFloat(css.paddingTop), bottom: parseFloat(css.paddingBottom) };
+      });
+      expect(vertical.top).toBeLessThanOrEqual(65);
+      expect(vertical.bottom).toBeLessThanOrEqual(65);
+      await expect(hero.getByRole("heading", { level: 1 })).toBeVisible();
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+    });
+
+    test(`Collectivités hero and pricing flow have no crowding at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto("/collectivites/");
+      const hero = page.locator(".hero-collectivites");
+      const stats = hero.locator(".hero-stats");
+      const cta = hero.locator(".hero-actions");
+      await expect(stats).toBeVisible();
+      await expect(cta).toBeVisible();
+      const statsBox = await stats.boundingBox();
+      const ctaBox = await cta.boundingBox();
+      expect(statsBox).not.toBeNull();
+      expect(ctaBox).not.toBeNull();
+      expect(ctaBox.y - (statsBox.y + statsBox.height)).toBeGreaterThanOrEqual(12);
+
+      if (width <= 600) {
+        await expect(stats).toHaveCSS("grid-template-columns", /px/);
+        const columns = await stats.evaluate((node) => getComputedStyle(node).gridTemplateColumns.split(" ").length);
+        expect(columns).toBe(2);
+        const minHeight = await hero.evaluate((node) => parseFloat(getComputedStyle(node).minHeight));
+        expect(minHeight).toBe(0);
+      }
+
+      const noteBox = await page.locator(".pricing-note").boundingBox();
+      const refsBox = await page.locator(".refs > .section-label").boundingBox();
+      expect(noteBox).not.toBeNull();
+      expect(refsBox).not.toBeNull();
+      expect(noteBox.width).toBeLessThanOrEqual(1181);
+      expect(refsBox.y - (noteBox.y + noteBox.height)).toBeLessThanOrEqual(width <= 600 ? 120 : 150);
+
+      const faqBox = await page.locator(".faq-list").boundingBox();
+      const titleBox = await page.locator(".faq > h2").boundingBox();
+      expect(faqBox).not.toBeNull();
+      expect(titleBox).not.toBeNull();
+      expect(faqBox.width).toBeLessThanOrEqual(701);
+      expect(Math.abs(faqBox.x - titleBox.x)).toBeLessThanOrEqual(3);
+      expect(Math.abs(faqBox.x - (width - faqBox.width) / 2)).toBeLessThanOrEqual(3);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+    });
+  }
+});
