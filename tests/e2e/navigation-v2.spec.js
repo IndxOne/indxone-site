@@ -2,6 +2,44 @@ import { test, expect } from "@playwright/test";
 
 // Tests only the built Preview-like site served locally by Playwright.
 // No production URLs are opened and no form is submitted.
+test.describe("Site V2 — homepage responsive information", () => {
+  test("desktop centers CTA and all four availability fields", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto("/");
+    const availability = page.locator(".hero .dispo-card");
+    await expect(availability).toBeVisible();
+    await expect(availability.locator(".dispo-item")).toHaveCount(4);
+    await expect(availability).toHaveCSS("grid-template-columns", /px/);
+    for (const item of await availability.locator(".dispo-item").all()) {
+      await expect(item).toHaveCSS("text-align", "center");
+    }
+    await expect(page.locator(".nav-cta")).toHaveCSS("text-align", "center");
+  });
+
+  for (const width of [320, 375, 390]) {
+    test(`mobile ${width}px preserves location and 2×2 availability`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto("/");
+      const stats = page.locator(".hero-stats-compact");
+      await expect(stats.locator(".h-stat")).toHaveCount(3);
+      const location = stats.locator(".h-stat").nth(2);
+      await expect(location).toBeVisible();
+      await expect(location).toContainText("Aisne");
+      await expect(location).toContainText("À distance");
+
+      const availability = page.locator(".hero .dispo-card");
+      await expect(availability).toBeVisible();
+      await expect(availability.locator(".dispo-item")).toHaveCount(4);
+      await expect(availability).toContainText("580 €");
+      await expect(availability).toContainText("Immédiat");
+      await availability.scrollIntoViewIfNeeded();
+      const columns = await availability.evaluate((node) => getComputedStyle(node).gridTemplateColumns.split(" ").length);
+      expect(columns).toBe(2);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    });
+  }
+});
+
 test.describe("Site V2 — navigation and contact journeys", () => {
   test("menu Produits opens the curated catalog and CTA leads to guided contact", async ({ page }) => {
     await page.goto("/");
