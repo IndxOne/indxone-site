@@ -864,6 +864,20 @@ body[data-form-context="collectivite"] .faq-item {
 }
 
 @media (width <= 600px) {
+  /* Long demo URLs and commune names must wrap instead of widening the viewport. */
+  .demo-bar {
+    flex-wrap: wrap;
+    gap: 0.35rem 0.75rem;
+    text-align: center;
+    padding-inline: 1rem;
+  }
+
+  .demo-bar > * {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
   .hero-collectivites {
     min-height: 0;
     align-items: center;
