@@ -11,6 +11,7 @@ module.exports = {
         './accessibilite/*.html',
         './collectivites/*.html',
         './projets/*.html',
+        './produits/*.html',
         './votre-idee/*.html',
       ],
       safelist: {

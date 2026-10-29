@@ -82,6 +82,10 @@
 }
 
 .nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   background: var(--blue);
   color: var(--white);
   padding: var(--space-sm) var(--space-lg);

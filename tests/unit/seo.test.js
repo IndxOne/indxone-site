@@ -13,6 +13,7 @@ const pages = {
   "/": "index.html",
   "/collectivites/": "collectivites/index.html",
   "/projets/": "projets/index.html",
+  "/produits/": "produits/index.html",
   "/votre-idee/": "votre-idee/index.html",
   "/mentions-legales/": "mentions-legales.html",
   "/politique-confidentialite/": "politique-confidentialite.html",
@@ -113,7 +114,6 @@ describe("SEO-002A technical hygiene", () => {
     expect(services[0].offers.map((offer) => [offer["@type"], offer.price, offer.priceCurrency])).toEqual([
       ["Offer", "1490", "EUR"],
       ["Offer", "3490", "EUR"],
-      ["Offer", "6490", "EUR"],
     ]);
     expect(nodes.filter((node) => [].concat(node["@type"] || []).includes("Product"))).toEqual([]);
     expect(nodes.some((node) => node.review || node.aggregateRating)).toBe(false);

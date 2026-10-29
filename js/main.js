@@ -18,7 +18,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // Auto-init FAQ on page load
   document.querySelectorAll(".faq-q").forEach((q) => {
     q.addEventListener("click", function () {
-      this.closest(".faq-item").classList.toggle("open");
+      const item = this.closest(".faq-item");
+      if (!item) return;
+      const expanded = item.classList.toggle("open");
+      this.setAttribute("aria-expanded", String(expanded));
     });
   });
 });

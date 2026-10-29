@@ -342,10 +342,6 @@
     display: none;
   }
 
-  .services-grid .service-card:nth-child(3) {
-    display: none;
-  }
-
   .bento-card:nth-child(n + 4) {
     display: none;
   }
@@ -534,6 +530,25 @@
   color: var(--ink);
 }
 
+/* Accueil : quatre indicateurs lisibles et centrés sur desktop. */
+.hero .dispo-card {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.hero .dispo-card .dispo-item {
+  min-width: 0;
+  text-align: center;
+}
+
+@media (width <= 900px) {
+  .hero .dispo-card {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 /* Hero mobile-first (390×844) : message, CTA, une preuve */
 @media (width <= 640px) {
   .hero {
@@ -545,8 +560,7 @@
   }
 
   .hero::after,
-  .hero-sub,
-  .dispo-card {
+  .hero-sub {
     display: none;
   }
 
@@ -571,13 +585,27 @@
     text-align: center;
   }
 
-  .hero-stats-compact {
+  .hero .hero-stats-compact {
     width: 100% !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: var(--space-sm);
   }
 
-  .hero-stats-compact .h-stat:nth-child(n + 2) {
-    display: none;
+  .hero .hero-stats-compact .h-stat {
+    min-width: 0;
+    text-align: center;
+  }
+
+  .hero .hero-stats-compact .h-stat:nth-child(3) {
+    display: block;
+    grid-column: 1 / -1;
+  }
+
+  .hero .dispo-card {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md) var(--space-sm);
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
   }
 }
 

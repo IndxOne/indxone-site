@@ -6,6 +6,7 @@ const routes = [
   "/",
   "/collectivites/",
   "/projets/",
+  "/produits/",
   "/votre-idee/",
   "/mentions-legales/",
   "/politique-confidentialite/",
@@ -33,12 +34,12 @@ for (const route of routes) {
       expect(values).toHaveLength(1);
       const graph = JSON.parse(values[0])["@graph"];
       expect(graph.map((node) => node["@type"])).toEqual(["Service"]);
-      expect(graph[0].offers.map((offer) => offer.price)).toEqual(["1490", "3490", "6490"]);
+      expect(graph[0].offers.map((offer) => offer.price)).toEqual(["1490", "3490"]);
     }
   });
 }
 
-test("SEO smoke sitemap: valid XML and all seven final URLs served without redirects", async ({ page, request }) => {
+test("SEO smoke sitemap: valid XML and all published final URLs served without redirects", async ({ page, request }) => {
   const response = await request.get(`${base}/sitemap.xml`, { maxRedirects: 0 });
   expect(response.status()).toBe(200);
   const xml = await response.text();
