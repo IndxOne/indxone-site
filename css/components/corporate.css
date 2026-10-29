@@ -389,6 +389,14 @@
   line-height: 1.6;
 }
 
+.products-foundation .products-foundation-note {
+  margin-top: 1.75rem;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: rgb(255 255 255 / 75%);
+}
+
+
 .products-more {
   padding-top: 3rem;
   padding-bottom: 4rem;
