@@ -24,12 +24,18 @@ for (const width of [320, 375, 390, 1280, 1440]) {
         columns: getComputedStyle(hero.querySelector(".hero-stats")).gridTemplateColumns.split(" ").length,
         documentWidth: document.documentElement.scrollWidth,
         viewportWidth: document.documentElement.clientWidth,
+        offenders: [...document.querySelectorAll("body *")].map((node) => {
+          const rect = node.getBoundingClientRect();
+          return { tag: node.tagName.toLowerCase(), cls: String(node.className).slice(0, 50),
+            text: (node.textContent || "").trim().slice(0, 35),
+            x: Math.round(rect.left), right: Math.round(rect.right) };
+        }).filter((x) => x.right > window.innerWidth + 1).slice(0, 12),
       };
     });
     expect(spacing.gap, "Stats and actions must not collide").toBeGreaterThanOrEqual(16);
     expect(spacing.topPadding, "Hero must not reserve a blank screen").toBeLessThanOrEqual(72);
     expect(spacing.columns).toBe(width <= 600 ? 2 : 4);
-    expect(spacing.documentWidth).toBeLessThanOrEqual(spacing.viewportWidth + 1);
+    expect(spacing.documentWidth, JSON.stringify(spacing.offenders)).toBeLessThanOrEqual(spacing.viewportWidth + 1);
 
     const note = page.locator(".pricing-note");
     const noteBox = await note.boundingBox();
