@@ -50,6 +50,32 @@
   font-weight: 500;
 }
 
+.demo-meta {
+  color: #6b7280;
+}
+
+/* Preserve all demo details without horizontal overflow on small devices. */
+@media (width <= 600px) {
+  .demo-bar {
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.75rem;
+    padding-inline: var(--space-md);
+    text-align: center;
+  }
+
+  .demo-bar > span {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .demo-bar .demo-meta {
+    flex-basis: 100%;
+  }
+}
+
+
 .problem {
   background: var(--white);
   padding: var(--space-4xl) var(--space-lg);
