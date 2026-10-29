@@ -10,6 +10,20 @@ test("communal demonstration is never presented as official publication", async 
   await expect(page.locator(".terrain-list")).not.toContainText("Site officiel de Mons-en-Laonnois");
 });
 
+test("product ecosystem explains three internal components without promising full integration", async ({ page }) => {
+  await page.goto("/produits/");
+  const section = page.locator(".products-foundation");
+  await expect(section.getByText("Notre écosystème")).toBeVisible();
+  await expect(section.getByRole("heading", { name: "Des solutions indépendantes, une architecture cohérente." })).toBeVisible();
+  await expect(section.locator("dt")).toHaveCount(3);
+  for (const component of ["Identity", "Launcher", "Control Center"]) {
+    await expect(section.locator("dt").getByText(component, { exact: true })).toBeVisible();
+  }
+  await expect(section).toContainText("Ces composants évoluent progressivement");
+  await expect(section).not.toContainText("Un socle commun, des usages distincts.");
+  await expect(section.locator("a")).toHaveCount(0);
+});
+
 test.describe("Site V2 — homepage responsive information", () => {
   test("desktop centers CTA and all four availability fields", async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
