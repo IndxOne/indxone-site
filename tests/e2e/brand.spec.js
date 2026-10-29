@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 // BRAND-01-V2: non-production checks of the built Site, including real HTTP assets.
 const publicPages = [
-  "/", "/collectivites/", "/projets/", "/votre-idee/",
+  "/", "/collectivites/", "/projets/", "/produits/", "/votre-idee/",
   "/mentions-legales/", "/politique-confidentialite/", "/accessibilite/",
 ];
 
