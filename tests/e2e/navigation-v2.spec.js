@@ -175,7 +175,18 @@ test.describe("Site S6 — responsive density and centering", () => {
       expect(faqBox.width).toBeLessThanOrEqual(901);
       expect(Math.abs(faqBox.x - titleBox.x)).toBeLessThanOrEqual(3);
       expect(Math.abs(faqBox.x - (width - faqBox.width) / 2)).toBeLessThanOrEqual(3);
-      expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+      const overflowInfo = await page.evaluate(() => ({
+        wide: document.documentElement.scrollWidth, viewport: window.innerWidth,
+        offenders: [...document.querySelectorAll("body *")].filter((node) => {
+          const r = node.getBoundingClientRect();
+          return r.width && r.right > window.innerWidth + 1 && getComputedStyle(node).position !== "fixed";
+        }).slice(0, 6).map((node) => ({
+          parent: node.parentElement?.className?.toString().slice(0, 80),
+          tag: node.tagName, text: node.textContent?.trim().slice(0, 110),
+          right: Math.round(node.getBoundingClientRect().right),
+        })),
+      }));
+      expect(overflowInfo.wide, JSON.stringify(overflowInfo)).toBeLessThanOrEqual(width + 1);
     });
   }
 });
@@ -218,7 +229,7 @@ test.describe("Site S7 — references and footer balance", () => {
             return r.width && r.right > window.innerWidth + 1 && getComputedStyle(node).position !== "fixed";
           })
           .slice(0, 8)
-          .map((node) => ({ tag: node.tagName, cls: node.className?.toString().slice(0, 80), right: Math.round(node.getBoundingClientRect().right) })),
+          .map((node) => ({ tag: node.tagName, cls: node.className?.toString().slice(0, 80), parent: node.parentElement?.className?.toString().slice(0, 80), text: node.textContent?.trim().slice(0, 110), right: Math.round(node.getBoundingClientRect().right) })),
       }));
       expect(overflow.wide, JSON.stringify(overflow)).toBeLessThanOrEqual(width + 1);
     });
