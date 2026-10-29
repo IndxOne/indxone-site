@@ -438,6 +438,31 @@ test.describe("INDXONE — /votre-idee page", () => {
     await expect(page.locator('[data-step="3"]')).toBeVisible();
   }
 
+  test("Preview simulated acceptance does not claim a real submission", async ({ page }) => {
+    let intercepted = 0;
+    await page.route("**/api/submit-idee", (route) => {
+      intercepted += 1;
+      return route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({
+          ok: false,
+          simulated: true,
+          message: "Mode Preview : demande validée, aucun envoi effectué.",
+        }),
+      });
+    });
+    await navigateToStep6(page);
+    const btn = page.locator('button[type="submit"]');
+    await btn.click();
+    await expect(page.locator("#idea-form-status")).toContainText("aucun envoi effectué");
+    await expect(page.locator('[data-step="3"]')).toBeVisible();
+    await expect(page).toHaveURL(/\/votre-idee\/$/);
+    await expect(btn).toBeEnabled();
+    await expect(btn).toHaveText("Envoyer ma demande");
+    expect(intercepted).toBe(1);
+  });
+
   test("submit shows loading state then error when API is unreachable", async ({ page }) => {
     await page.route("**/api/submit-idee", (route) =>
       route.fulfill({ status: 500, body: JSON.stringify({ error: "test" }) })

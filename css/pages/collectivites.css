@@ -775,3 +775,161 @@
 .secondary-contact:focus-visible {
   color: var(--white);
 }
+
+/* S6 — Municipal page spacing only; the homepage hero and pricing stay unchanged. */
+.hero-collectivites {
+  min-height: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-block: clamp(2.5rem, 4.5vw, 4rem);
+}
+
+.hero-collectivites > p {
+  margin-inline: auto;
+}
+
+.hero-collectivites .hero-stats {
+  width: min(100%, 760px);
+  margin-inline: auto;
+}
+
+.hero-collectivites .hero-actions {
+  width: auto;
+  justify-content: center;
+  margin: clamp(1.5rem, 3vw, 2rem) auto 0;
+}
+
+body[data-form-context="collectivite"] .pricing {
+  padding-bottom: clamp(2rem, 3.5vw, 3rem);
+}
+
+body[data-form-context="collectivite"] .pricing-note {
+  max-width: 1180px;
+  margin: 1.5rem auto 0;
+}
+
+/* Aligned references and FAQ: shared centered content width. */
+body[data-form-context="collectivite"] .refs {
+  padding-block: clamp(2.25rem, 4vw, 3.25rem);
+}
+
+body[data-form-context="collectivite"] .refs > .section-label,
+body[data-form-context="collectivite"] .refs > h2,
+body[data-form-context="collectivite"] .refs > p,
+body[data-form-context="collectivite"] .refs-grid {
+  width: 100%;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+body[data-form-context="collectivite"] .refs-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  margin-top: 1.75rem;
+}
+
+body[data-form-context="collectivite"] .ref-card {
+  min-width: 0;
+}
+
+body[data-form-context="collectivite"] .ref-card > div:not(.ref-icon) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+body[data-form-context="collectivite"] .ref-status {
+  flex-shrink: 1;
+  overflow-wrap: anywhere;
+}
+
+body[data-form-context="collectivite"] .faq {
+  padding-block: clamp(2.25rem, 4vw, 3.25rem);
+}
+
+body[data-form-context="collectivite"] .faq > .section-label,
+body[data-form-context="collectivite"] .faq > h2,
+body[data-form-context="collectivite"] .faq-list {
+  width: 100%;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+body[data-form-context="collectivite"] .faq-list {
+  margin-top: 2rem;
+}
+
+body[data-form-context="collectivite"] .faq-item {
+  max-width: none;
+}
+
+@media (width <= 600px) {
+  /* Long demo URLs and commune names must wrap instead of widening the viewport. */
+  .demo-bar {
+    flex-wrap: wrap;
+    gap: 0.35rem 0.75rem;
+    text-align: center;
+    padding-inline: 1rem;
+  }
+
+  .demo-bar > * {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-collectivites {
+    min-height: 0;
+    align-items: center;
+    text-align: center;
+    padding-block: 2.5rem;
+  }
+
+  .hero-collectivites .hero-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .hero-collectivites .hero-stat {
+    min-width: 0;
+    border: 0;
+    padding: 0;
+  }
+
+  .hero-collectivites .hero-actions {
+    width: 100%;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .hero-collectivites .hero-actions a {
+    width: 100%;
+  }
+
+  body[data-form-context="collectivite"] .pricing {
+    padding-bottom: 2.25rem;
+  }
+
+  body[data-form-context="collectivite"] .refs,
+  body[data-form-context="collectivite"] .faq {
+    padding-block: 2.25rem;
+  }
+
+  body[data-form-context="collectivite"] .refs-grid {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 1.5rem;
+  }
+
+  body[data-form-context="collectivite"] .ref-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.5rem 0.75rem;
+    padding: 1rem;
+  }
+
+  body[data-form-context="collectivite"] .ref-status {
+    grid-column: 2;
+    justify-self: start;
+    margin-left: 0;
+  }
+}

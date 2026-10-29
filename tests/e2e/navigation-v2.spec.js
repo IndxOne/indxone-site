@@ -2,6 +2,28 @@ import { test, expect } from "@playwright/test";
 
 // Tests only the built Preview-like site served locally by Playwright.
 // No production URLs are opened and no form is submitted.
+test("communal demonstration is never presented as official publication", async ({ page }) => {
+  await page.goto("/");
+  const proof = page.locator(".terrain-list").getByText("Démonstration communale");
+  await expect(proof).toBeVisible();
+  await expect(page.locator(".terrain-list")).toContainText("présentée à la mairie pour validation");
+  await expect(page.locator(".terrain-list")).not.toContainText("Site officiel de Mons-en-Laonnois");
+});
+
+test("product ecosystem explains three internal components without promising full integration", async ({ page }) => {
+  await page.goto("/produits/");
+  const section = page.locator(".products-foundation");
+  await expect(section.getByText("Notre écosystème")).toBeVisible();
+  await expect(section.getByRole("heading", { name: "Des solutions indépendantes, une architecture cohérente." })).toBeVisible();
+  await expect(section.locator("dt")).toHaveCount(3);
+  for (const component of ["Identity", "Launcher", "Control Center"]) {
+    await expect(section.locator("dt").getByText(component, { exact: true })).toBeVisible();
+  }
+  await expect(section).toContainText("Ces composants évoluent progressivement");
+  await expect(section).not.toContainText("Un socle commun, des usages distincts.");
+  await expect(section.locator("a")).toHaveCount(0);
+});
+
 test.describe("Site V2 — homepage responsive information", () => {
   test("desktop centers CTA and all four availability fields", async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
@@ -97,4 +119,144 @@ test.describe("Site V2 — navigation and contact journeys", () => {
       expect(response.status(), route).toBe(200);
     }
   });
+});
+
+
+test.describe("Site S6 — responsive density and centering", () => {
+  for (const width of [320, 390, 1440]) {
+    test(`Réalisations hero has compact vertical padding at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto("/projets/");
+      const hero = page.locator(".projets-hero");
+      await expect(hero).toBeVisible();
+      const vertical = await hero.evaluate((node) => {
+        const css = getComputedStyle(node);
+        return { top: parseFloat(css.paddingTop), bottom: parseFloat(css.paddingBottom) };
+      });
+      expect(vertical.top).toBeLessThanOrEqual(65);
+      expect(vertical.bottom).toBeLessThanOrEqual(65);
+      await expect(hero.getByRole("heading", { level: 1 })).toBeVisible();
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+    });
+
+    test(`Collectivités hero and pricing flow have no crowding at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto("/collectivites/");
+      const hero = page.locator(".hero-collectivites");
+      const stats = hero.locator(".hero-stats");
+      const cta = hero.locator(".hero-actions");
+      await expect(stats).toBeVisible();
+      await expect(cta).toBeVisible();
+      const statsBox = await stats.boundingBox();
+      const ctaBox = await cta.boundingBox();
+      expect(statsBox).not.toBeNull();
+      expect(ctaBox).not.toBeNull();
+      expect(ctaBox.y - (statsBox.y + statsBox.height)).toBeGreaterThanOrEqual(12);
+
+      if (width <= 600) {
+        await expect(stats).toHaveCSS("grid-template-columns", /px/);
+        const columns = await stats.evaluate((node) => getComputedStyle(node).gridTemplateColumns.split(" ").length);
+        expect(columns).toBe(2);
+        const minHeight = await hero.evaluate((node) => parseFloat(getComputedStyle(node).minHeight));
+        expect(minHeight).toBe(0);
+      }
+
+      const noteBox = await page.locator(".pricing-note").boundingBox();
+      const refsBox = await page.locator(".refs > .section-label").boundingBox();
+      expect(noteBox).not.toBeNull();
+      expect(refsBox).not.toBeNull();
+      expect(noteBox.width).toBeLessThanOrEqual(1181);
+      expect(refsBox.y - (noteBox.y + noteBox.height)).toBeLessThanOrEqual(width <= 600 ? 120 : 150);
+
+      const faqBox = await page.locator(".faq-list").boundingBox();
+      const titleBox = await page.locator(".faq > h2").boundingBox();
+      expect(faqBox).not.toBeNull();
+      expect(titleBox).not.toBeNull();
+      expect(faqBox.width).toBeLessThanOrEqual(901);
+      expect(Math.abs(faqBox.x - titleBox.x)).toBeLessThanOrEqual(3);
+      expect(Math.abs(faqBox.x - (width - faqBox.width) / 2)).toBeLessThanOrEqual(3);
+      const overflowInfo = await page.evaluate(() => ({
+        wide: document.documentElement.scrollWidth, viewport: window.innerWidth,
+        offenders: [...document.querySelectorAll("body *")].filter((node) => {
+          const r = node.getBoundingClientRect();
+          return r.width && r.right > window.innerWidth + 1 && getComputedStyle(node).position !== "fixed";
+        }).slice(0, 6).map((node) => ({
+          parent: node.parentElement?.className?.toString().slice(0, 80),
+          tag: node.tagName, text: node.textContent?.trim().slice(0, 110),
+          right: Math.round(node.getBoundingClientRect().right),
+        })),
+      }));
+      expect(overflowInfo.wide, JSON.stringify(overflowInfo)).toBeLessThanOrEqual(width + 1);
+    });
+  }
+});
+
+
+test.describe("Site S7 — references and footer balance", () => {
+  for (const width of [320, 390, 1440]) {
+    test(`two references balance desktop and wrap safely on mobile ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto("/collectivites/");
+      const grid = page.locator(".refs-grid");
+      const cards = grid.locator(".ref-card");
+      await expect(cards).toHaveCount(2);
+      const boxes = await cards.evaluateAll((elements) => elements.map((element) => {
+        const r = element.getBoundingClientRect();
+        return { x: r.x, y: r.y, width: r.width, right: r.right };
+      }));
+      const gridBox = await grid.boundingBox();
+      const faqHeading = await page.locator(".faq > h2").boundingBox();
+      const referencesHeading = await page.locator(".refs > h2").boundingBox();
+      expect(gridBox).not.toBeNull();
+      expect(faqHeading).not.toBeNull();
+      expect(referencesHeading).not.toBeNull();
+      expect(gridBox.width).toBeLessThanOrEqual(901);
+      expect(Math.abs(gridBox.x - (width - gridBox.width) / 2)).toBeLessThanOrEqual(3);
+      expect(Math.abs(faqHeading.x - referencesHeading.x)).toBeLessThanOrEqual(3);
+      if (width > 600) {
+        expect(Math.abs(boxes[1].y - boxes[0].y)).toBeLessThanOrEqual(2);
+        expect(boxes[1].x).toBeGreaterThan(boxes[0].right);
+      } else {
+        expect(boxes[1].y).toBeGreaterThan(boxes[0].y);
+        expect(boxes.every((box) => box.right <= width + 1)).toBe(true);
+      }
+      const overflow = await page.evaluate(() => ({
+        wide: document.documentElement.scrollWidth,
+        viewport: window.innerWidth,
+        offenders: [...document.querySelectorAll("body *")]
+          .filter((node) => {
+            const r = node.getBoundingClientRect();
+            return r.width && r.right > window.innerWidth + 1 && getComputedStyle(node).position !== "fixed";
+          })
+          .slice(0, 8)
+          .map((node) => ({ tag: node.tagName, cls: node.className?.toString().slice(0, 80), parent: node.parentElement?.className?.toString().slice(0, 80), text: node.textContent?.trim().slice(0, 110), right: Math.round(node.getBoundingClientRect().right) })),
+      }));
+      expect(overflow.wide, JSON.stringify(overflow)).toBeLessThanOrEqual(width + 1);
+    });
+
+    test(`footer remains compact, aligned and accessible at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto("/collectivites/");
+      const footer = page.locator("footer.footer");
+      const main = footer.locator(".footer-grid");
+      const bottom = footer.locator(".footer-bottom");
+      await expect(main).toBeVisible();
+      await expect(bottom).toBeVisible();
+      await expect(footer.getByRole("link", { name: "Mentions légales" })).toBeVisible();
+      await expect(footer.getByRole("link", { name: "Confidentialité" })).toBeVisible();
+      const a = await main.boundingBox();
+      const b = await bottom.boundingBox();
+      expect(a.width).toBeLessThanOrEqual(961);
+      expect(b.width).toBeLessThanOrEqual(961);
+      expect(Math.abs(a.x - b.x)).toBeLessThanOrEqual(3);
+      if (width > 768) {
+        const contact = await footer.locator(".footer-contact").boundingBox();
+        const brand = await footer.locator(".footer-brand").boundingBox();
+        expect(contact.x).toBeGreaterThan(brand.x + brand.width);
+      } else {
+        const columns = await main.evaluate((node) => getComputedStyle(node).gridTemplateColumns.split(" ").length);
+        expect(columns).toBe(1);
+      }
+    });
+  }
 });
