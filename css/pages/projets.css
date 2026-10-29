@@ -50,6 +50,18 @@
   max-width: 680px;
 }
 
+/* The projects hero contains two metrics, unlike the three on the homepage. */
+.projets-page .projets-hero .hero-stats-compact {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  width: min(100%, 560px) !important;
+}
+
+.projets-page .projets-hero .h-stat {
+  min-width: 0;
+  text-align: center;
+}
+
+
 .projets-section-heading {
   max-width: 650px;
   margin-bottom: var(--space-2xl);
