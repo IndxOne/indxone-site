@@ -809,19 +809,49 @@ body[data-form-context="collectivite"] .pricing-note {
   margin: 1.5rem auto 0;
 }
 
+/* Aligned references and FAQ: shared centered content width. */
 body[data-form-context="collectivite"] .refs {
-  padding-top: clamp(2rem, 3.5vw, 3rem);
+  padding-block: clamp(2.25rem, 4vw, 3.25rem);
+}
+
+body[data-form-context="collectivite"] .refs > .section-label,
+body[data-form-context="collectivite"] .refs > h2,
+body[data-form-context="collectivite"] .refs > p,
+body[data-form-context="collectivite"] .refs-grid {
+  width: 100%;
+  max-width: 900px;
+  margin-inline: auto;
 }
 
 body[data-form-context="collectivite"] .refs-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.75rem, 2vw, 1.5rem);
   margin-top: 1.75rem;
+}
+
+body[data-form-context="collectivite"] .ref-card {
+  min-width: 0;
+}
+
+body[data-form-context="collectivite"] .ref-card > div:not(.ref-icon) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+body[data-form-context="collectivite"] .ref-status {
+  flex-shrink: 1;
+  overflow-wrap: anywhere;
+}
+
+body[data-form-context="collectivite"] .faq {
+  padding-block: clamp(2.25rem, 4vw, 3.25rem);
 }
 
 body[data-form-context="collectivite"] .faq > .section-label,
 body[data-form-context="collectivite"] .faq > h2,
 body[data-form-context="collectivite"] .faq-list {
   width: 100%;
-  max-width: 700px;
+  max-width: 900px;
   margin-inline: auto;
 }
 
@@ -866,11 +896,26 @@ body[data-form-context="collectivite"] .faq-item {
     padding-bottom: 2.25rem;
   }
 
-  body[data-form-context="collectivite"] .refs {
-    padding-top: 2.25rem;
+  body[data-form-context="collectivite"] .refs,
+  body[data-form-context="collectivite"] .faq {
+    padding-block: 2.25rem;
   }
 
   body[data-form-context="collectivite"] .refs-grid {
+    grid-template-columns: minmax(0, 1fr);
     margin-top: 1.5rem;
+  }
+
+  body[data-form-context="collectivite"] .ref-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.5rem 0.75rem;
+    padding: 1rem;
+  }
+
+  body[data-form-context="collectivite"] .ref-status {
+    grid-column: 2;
+    justify-self: start;
+    margin-left: 0;
   }
 }
