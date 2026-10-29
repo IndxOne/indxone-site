@@ -2,6 +2,14 @@ import { test, expect } from "@playwright/test";
 
 // Tests only the built Preview-like site served locally by Playwright.
 // No production URLs are opened and no form is submitted.
+test("communal demonstration is never presented as official publication", async ({ page }) => {
+  await page.goto("/");
+  const proof = page.locator(".terrain-list").getByText("Démonstration communale");
+  await expect(proof).toBeVisible();
+  await expect(page.locator(".terrain-list")).toContainText("présentée à la mairie pour validation");
+  await expect(page.locator(".terrain-list")).not.toContainText("Site officiel de Mons-en-Laonnois");
+});
+
 test.describe("Site V2 — homepage responsive information", () => {
   test("desktop centers CTA and all four availability fields", async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
