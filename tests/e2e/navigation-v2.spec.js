@@ -172,10 +172,80 @@ test.describe("Site S6 — responsive density and centering", () => {
       const titleBox = await page.locator(".faq > h2").boundingBox();
       expect(faqBox).not.toBeNull();
       expect(titleBox).not.toBeNull();
-      expect(faqBox.width).toBeLessThanOrEqual(701);
+      expect(faqBox.width).toBeLessThanOrEqual(901);
       expect(Math.abs(faqBox.x - titleBox.x)).toBeLessThanOrEqual(3);
       expect(Math.abs(faqBox.x - (width - faqBox.width) / 2)).toBeLessThanOrEqual(3);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+    });
+  }
+});
+
+
+test.describe("Site S7 — references and footer balance", () => {
+  for (const width of [320, 390, 1440]) {
+    test(`two references balance desktop and wrap safely on mobile ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto("/collectivites/");
+      const grid = page.locator(".refs-grid");
+      const cards = grid.locator(".ref-card");
+      await expect(cards).toHaveCount(2);
+      const boxes = await cards.evaluateAll((elements) => elements.map((element) => {
+        const r = element.getBoundingClientRect();
+        return { x: r.x, y: r.y, width: r.width, right: r.right };
+      }));
+      const gridBox = await grid.boundingBox();
+      const faqHeading = await page.locator(".faq > h2").boundingBox();
+      const referencesHeading = await page.locator(".refs > h2").boundingBox();
+      expect(gridBox).not.toBeNull();
+      expect(faqHeading).not.toBeNull();
+      expect(referencesHeading).not.toBeNull();
+      expect(gridBox.width).toBeLessThanOrEqual(901);
+      expect(Math.abs(gridBox.x - (width - gridBox.width) / 2)).toBeLessThanOrEqual(3);
+      expect(Math.abs(faqHeading.x - referencesHeading.x)).toBeLessThanOrEqual(3);
+      if (width > 600) {
+        expect(Math.abs(boxes[1].y - boxes[0].y)).toBeLessThanOrEqual(2);
+        expect(boxes[1].x).toBeGreaterThan(boxes[0].right);
+      } else {
+        expect(boxes[1].y).toBeGreaterThan(boxes[0].y);
+        expect(boxes.every((box) => box.right <= width + 1)).toBe(true);
+      }
+      const overflow = await page.evaluate(() => ({
+        wide: document.documentElement.scrollWidth,
+        viewport: window.innerWidth,
+        offenders: [...document.querySelectorAll("body *")]
+          .filter((node) => {
+            const r = node.getBoundingClientRect();
+            return r.width && r.right > window.innerWidth + 1 && getComputedStyle(node).position !== "fixed";
+          })
+          .slice(0, 8)
+          .map((node) => ({ tag: node.tagName, cls: node.className?.toString().slice(0, 80), right: Math.round(node.getBoundingClientRect().right) })),
+      }));
+      expect(overflow.wide, JSON.stringify(overflow)).toBeLessThanOrEqual(width + 1);
+    });
+
+    test(`footer remains compact, aligned and accessible at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto("/collectivites/");
+      const footer = page.locator("footer.footer");
+      const main = footer.locator(".footer-grid");
+      const bottom = footer.locator(".footer-bottom");
+      await expect(main).toBeVisible();
+      await expect(bottom).toBeVisible();
+      await expect(footer.getByRole("link", { name: "Mentions légales" })).toBeVisible();
+      await expect(footer.getByRole("link", { name: "Confidentialité" })).toBeVisible();
+      const a = await main.boundingBox();
+      const b = await bottom.boundingBox();
+      expect(a.width).toBeLessThanOrEqual(961);
+      expect(b.width).toBeLessThanOrEqual(961);
+      expect(Math.abs(a.x - b.x)).toBeLessThanOrEqual(3);
+      if (width > 768) {
+        const contact = await footer.locator(".footer-contact").boundingBox();
+        const brand = await footer.locator(".footer-brand").boundingBox();
+        expect(contact.x).toBeGreaterThan(brand.x + brand.width);
+      } else {
+        const columns = await main.evaluate((node) => getComputedStyle(node).gridTemplateColumns.split(" ").length);
+        expect(columns).toBe(1);
+      }
     });
   }
 });
