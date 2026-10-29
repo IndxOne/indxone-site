@@ -25,7 +25,7 @@
 
 .projets-hero {
   background: var(--surface-soft);
-  padding: clamp(4rem, 10vw, 8rem) var(--space-lg) clamp(3rem, 7vw, 5rem);
+  padding: clamp(2.5rem, 5vw, 4rem) var(--space-lg);
   text-align: center;
 }
 
@@ -46,9 +46,21 @@
 }
 
 .projets-hero .hero-stats {
-  margin: var(--space-3xl) auto 0;
+  margin: var(--space-xl) auto 0;
   max-width: 680px;
 }
+
+/* The projects hero contains two metrics, unlike the three on the homepage. */
+.projets-page .projets-hero .hero-stats-compact {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  width: min(100%, 560px) !important;
+}
+
+.projets-page .projets-hero .h-stat {
+  min-width: 0;
+  text-align: center;
+}
+
 
 .projets-section-heading {
   max-width: 650px;
@@ -481,6 +493,14 @@
 }
 
 @media (width <= 560px) {
+  .projets-hero {
+    padding-block: 2.5rem;
+  }
+
+  .projets-hero .hero-stats {
+    margin-top: 1.5rem;
+  }
+
   .bento {
     grid-template-columns: 1fr;
   }

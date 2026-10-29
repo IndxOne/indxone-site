@@ -3,10 +3,11 @@ const path = require("path");
 const postcss = require("postcss");
 const { minify } = require("html-minifier-terser");
 const { assembleFile } = require("./assemble");
+const { generateFavicons } = require("./generate-favicons");
 
 const ROOT = path.join(__dirname, "..");
 const HTML_FILES = ["index.html", "404.html"];
-const HTML_DIRS = ["collectivites", "projets", "merci", "votre-idee", "accessibilite"];
+const HTML_DIRS = ["collectivites", "projets", "produits", "merci", "votre-idee", "accessibilite"];
 const HTML_ROUTES = ["mentions-legales", "politique-confidentialite"];
 const ASSET_DIRS = ["js", "img", "fonts"];
 const ROOT_ASSETS = ["robots.txt", "sitemap.xml", "favicon.svg", "favicon.ico"];
@@ -95,6 +96,7 @@ async function buildSite({ root = ROOT, dist = path.join(root, "dist") } = {}) {
     });
     fs.mkdirSync(path.dirname(target), { recursive: true });
     fs.writeFileSync(target, result.css);
+    await generateFavicons({ root, dist });
     console.log(`Build complete: ${dist}`);
     return dist;
   } catch (error) {

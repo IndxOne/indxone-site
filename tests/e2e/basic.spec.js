@@ -22,7 +22,7 @@ test.describe("INDXONE site — homepage", () => {
   test("contact is guided to the project form", async ({ page }) => {
     await page.goto("/");
     await expect(page.locator("#contact")).toBeVisible();
-    await expect(page.locator('#contact a[href="/votre-idee"]')).toHaveText(/Échangeons sur votre projet/);
+    await expect(page.locator('#contact a[href="/votre-idee/"]')).toHaveText(/Échangeons sur votre projet/);
     await expect(page.locator(".contact-form")).toHaveCount(0);
   });
 
@@ -107,7 +107,10 @@ test.describe("INDXONE site — projets page", () => {
     await page.goto("/projets/");
     await expect(page.locator(".filter-bar")).toBeHidden();
     await expect(page.locator(".project-grid")).toBeVisible();
-    await expect(page.locator(".project-card")).toHaveCount(3);
+    await expect(page.locator(".project-card")).toHaveCount(6);
+    await expect(page.locator(".project-grid")).toContainText("Family");
+    await expect(page.locator(".project-grid")).toContainText("Diagnostic SI");
+    await expect(page.locator(".project-grid")).not.toContainText("TAGA");
   });
 });
 
@@ -227,7 +230,7 @@ test.describe("INDXONE site — CTA mobile persistant", () => {
       await expect(cta).toBeHidden();
       await page.locator("#services").scrollIntoViewIfNeeded();
       await expect(cta).toBeVisible();
-      await expect(cta).toHaveAttribute("href", "/votre-idee");
+      await expect(cta).toHaveAttribute("href", "/votre-idee/");
       await page.locator(".nav-toggle, .menu-toggle, button[aria-controls]").first().click();
       await expect(cta).toBeHidden();
       await page.locator(".nav-toggle, .menu-toggle, button[aria-controls]").first().click();
