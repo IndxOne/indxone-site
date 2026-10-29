@@ -107,7 +107,10 @@ test.describe("INDXONE site — projets page", () => {
     await page.goto("/projets/");
     await expect(page.locator(".filter-bar")).toBeHidden();
     await expect(page.locator(".project-grid")).toBeVisible();
-    await expect(page.locator(".project-card")).toHaveCount(3);
+    await expect(page.locator(".project-card")).toHaveCount(6);
+    await expect(page.locator(".project-grid")).toContainText("Family");
+    await expect(page.locator(".project-grid")).toContainText("Diagnostic SI");
+    await expect(page.locator(".project-grid")).not.toContainText("TAGA");
   });
 });
 
