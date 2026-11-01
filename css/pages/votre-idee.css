@@ -321,15 +321,12 @@
   }
 
   .idea-nav {
-    position: sticky;
-    bottom: 0.5rem;
-    z-index: 2;
-    padding: 0.6rem;
+    position: static;
+    padding: 0;
     margin-inline: 0;
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--surface-color) 94%, transparent);
-    backdrop-filter: blur(8px);
+    background: transparent;
     flex-direction: column;
   }
 
