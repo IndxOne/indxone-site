@@ -316,13 +316,16 @@ test.describe("INDXONE — /votre-idee page", () => {
     expect(btnBox?.width).toBeGreaterThan((formBox?.width || 0) * 0.8);
   });
 
-  test("mobile: nav bar is sticky at bottom", async ({ page }) => {
+  test("mobile: nav actions remain in document flow", async ({ page }) => {
     await page.setViewportSize({ width: 360, height: 640 });
     // Navigate to step 1 to see the nav buttons
     await page.locator(".idea-choice").nth(0).click();
     await page.getByRole("button", { name: "Continuer" }).click();
     const nav = page.locator(".idea-nav").first();
-    await expect(nav).toHaveCSS("position", /sticky|fixed/);
+    await expect(nav).toHaveCSS("position", "static");
+    const field = await page.locator("#idea-goal").boundingBox();
+    const actions = await nav.boundingBox();
+    expect(actions.y).toBeGreaterThan(field.y + field.height);
   });
 
   // ─── Reduced motion ──────────────────────────────────────
