@@ -1,5 +1,6 @@
 import { handler, isObject, clean, text, email, iso } from "./_shared/forms.mjs";
 const types = ["pilotage", "besoin", "solution", "processus", "mariage", "site", "application", "activite", "idee_floue"];
+const offers = ["autre", "cadrage_si", "diagnostic_si", "collectivites"];
 const starts = ["J'explore encore", "Dans le mois", "Dans les 3 mois", "Ce trimestre", "À une date précise"];
 const supports = [
   "Cadrer le besoin",
@@ -15,6 +16,7 @@ export function validatePayload(body) {
   const errors = [];
   if (body.form_version !== "1.0.0") errors.push("form_version invalide");
   if (!types.includes(body.project_type)) errors.push("project_type invalide");
+  if (body.offer_intent !== undefined && !offers.includes(body.offer_intent)) errors.push("offre invalide");
   const contact = body.contact;
   if (
     !isObject(contact) ||
@@ -76,6 +78,7 @@ const fields = (body) => {
       "form-version": body.form_version,
       "created-at": body.created_at,
       "project-type": body.project_type,
+      "offer-intent": body.offer_intent || "autre",
       "project-type-choice": body.project_type,
       ...trunk,
       "branch-one": branch.branch_one,
