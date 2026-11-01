@@ -252,6 +252,11 @@
   margin-bottom: var(--space-md);
 }
 
+.service-card.featured .service-tools-note {
+  color: rgb(255 255 255 / 78%) !important;
+}
+
+
 .startup-kit h3 {
   font-size: 1.1rem;
   font-weight: 700;
