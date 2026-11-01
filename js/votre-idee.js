@@ -10,6 +10,8 @@
   const projectTypeInput = form.querySelector('[data-serialized="project-type"]');
   const projectTypeChoices = [...form.querySelectorAll('input[name="project-type-choice"]')];
   const submitButton = form.querySelector('button[type="submit"]');
+  const offerIntent = form.elements["offer-intent"];
+  const allowedOffers = ["autre", "cadrage_si", "diagnostic_si", "collectivites"];
   const projectTypeMap = {
     "piloter un projet SI": "pilotage",
     "structurer un besoin": "besoin",
@@ -95,7 +97,11 @@
   }
 
   function applyQueryType() {
-    const type = new URLSearchParams(window.location.search).get("type");
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get("type");
+    const offer = params.get("offre");
+    if (allowedOffers.includes(offer)) offerIntent.value = offer;
+    else if (type === "collectivite") offerIntent.value = "collectivites";
     const choiceValue = queryTypeMap[type];
     const choice = projectTypeChoices.find((candidate) => candidate.value === choiceValue);
     if (!choice) return;
@@ -124,6 +130,7 @@
       form_version: "1.0.0",
       submission_id: submissionId,
       project_type: projectTypeMap[selected],
+      offer_intent: offerIntent.value,
       created_at: now,
       started_at: startedAt,
       company_name: form.elements.company_name.value,
@@ -200,6 +207,7 @@
     const checked = projectTypeChoices.find((choice) => choice.checked);
     const labels = [
       ["Votre besoin", checked?.closest("label")?.querySelector("strong")?.textContent || ""],
+      ["Prestation", offerIntent.selectedOptions[0]?.textContent || ""],
       ["Votre projet", form.elements.goal.value],
       ["Contexte", form.elements["branch-one"].value],
       ["Échéance", form.elements.start.value],
