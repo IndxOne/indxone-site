@@ -63,7 +63,7 @@
 <div class="form-group"><label for="idea-goal">Que souhaitez-vous faire ou améliorer ? *</label><textarea maxlength="2000" id="idea-goal" name="goal" rows="4" required placeholder="Ex. Mettre en place un nouvel outil pour mon équipe."></textarea></div>
 <div class="form-group"><label for="branch-one" data-branch-one-label>Un élément de contexte utile ?</label><textarea maxlength="2000" id="branch-one" name="branch-one" rows="3"></textarea></div>
 <input type="hidden" name="branch-two"><input type="hidden" name="audience"><input type="hidden" name="style"><input type="hidden" name="examples"><input type="hidden" name="budget">
-<div class="form-group"><label for="idea-start">Pour quand ?</label><select id="idea-start" name="start"><option value="">Pas de date précise</option><option>J'explore encore</option><option>Dans le mois</option><option>Dans les 3 mois</option><option>Ce trimestre</option><option>À une date précise</option></select></div>
+<div class="form-group"><label for="idea-start">Pour quand ?</label><select id="idea-start" name="start"><option value="">Pas de date précise</option><option>J'explore encore</option><option>Dans le mois</option><option>Dans les 3 mois</option><option>Plus de 3 mois</option><option>À une date précise</option></select></div>
 <div class="form-group"><label for="idea-support">Quel accompagnement souhaitez-vous ?</label><select id="idea-support" name="support"><option value="">Je ne sais pas encore</option><option value="Cadrer le besoin">Clarifier et cadrer</option><option value="Piloter la mise en œuvre">Piloter la réalisation</option><option value="Jusqu'à la mise en production">Jusqu'à la mise en service</option></select></div>
 <div class="idea-nav"><button type="button" class="btn-outline idea-back">Retour</button><button type="button" class="btn-primary idea-next">Continuer</button></div>
 </fieldset>
@@ -71,6 +71,8 @@
 <fieldset class="idea-step" data-step="2" hidden>
             <legend tabindex="-1">Comment vous recontacter ?</legend>
             <p class="step-hint">Nous utiliserons ces informations uniquement pour répondre à votre demande.</p>
+            <div class="form-group"><label for="idea-organization">Entreprise / organisation (facultatif)</label><input id="idea-organization" type="text" name="organization_name" maxlength="200" autocomplete="organization"></div>
+            <div class="form-group"><label for="idea-role">Votre fonction (facultatif)</label><select id="idea-role" name="contact_role"><option value="">Non précisée</option><option value="direction">Direction générale</option><option value="it">Responsable informatique / DSI</option><option value="project">Chef de projet / Métier</option><option value="other">Autre</option></select></div>
             <div class="form-row"><div class="form-group"><label for="idea-name">Nom *</label><input id="idea-name" type="text" name="name" maxlength="200" required autocomplete="family-name"></div><div class="form-group"><label for="idea-firstname">Prénom</label><input id="idea-firstname" type="text" name="firstname" maxlength="200" autocomplete="given-name"></div></div>
             <div class="form-group"><label for="idea-email">Email *</label><input id="idea-email" type="email" name="email" maxlength="200" required autocomplete="email" placeholder="vous@exemple.fr"></div>
             <div class="form-group"><label for="idea-phone">Téléphone (facultatif)</label><input id="idea-phone" type="tel" name="phone" maxlength="50" autocomplete="tel"></div>

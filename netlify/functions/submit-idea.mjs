@@ -1,7 +1,7 @@
 import { handler, isObject, clean, text, email, iso } from "./_shared/forms.mjs";
 const types = ["pilotage", "besoin", "solution", "processus", "mariage", "site", "application", "activite", "idee_floue"];
 const offers = ["autre", "cadrage_si", "diagnostic_si", "collectivites"];
-const starts = ["J'explore encore", "Dans le mois", "Dans les 3 mois", "Ce trimestre", "À une date précise"];
+const starts = ["J'explore encore", "Dans le mois", "Dans les 3 mois", "Ce trimestre", "Plus de 3 mois", "À une date précise"];
 const supports = [
   "Cadrer le besoin",
   "Piloter la mise en œuvre",
@@ -17,6 +17,8 @@ export function validatePayload(body) {
   if (body.form_version !== "1.0.0") errors.push("form_version invalide");
   if (!types.includes(body.project_type)) errors.push("project_type invalide");
   if (body.offer_intent !== undefined && !offers.includes(body.offer_intent)) errors.push("offre invalide");
+  if (!text(body.organization_name ?? "", 200)) errors.push("organisation invalide");
+  if (!["", "direction", "it", "project", "other"].includes(body.contact_role ?? "")) errors.push("fonction invalide");
   const contact = body.contact;
   if (
     !isObject(contact) ||
@@ -92,6 +94,8 @@ const fields = (body) => {
       origin: body.meta?.origin || "",
       referrer: body.meta?.referrer || "",
       language: body.meta?.language || "fr",
+      organization_name: body.organization_name || "",
+      "contact-role": body.contact_role || "",
       company_name: "",
       "bot-field": "",
     }).map(([key, value]) => [key, clean(value)])

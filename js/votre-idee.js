@@ -134,6 +134,8 @@
       created_at: now,
       started_at: startedAt,
       company_name: form.elements.company_name.value,
+      organization_name: form.elements.organization_name.value,
+      contact_role: form.elements.contact_role.value,
       contact: {
         nom: form.elements.name.value,
         prenom: form.elements.firstname.value,
@@ -211,6 +213,8 @@
       ["Votre projet", form.elements.goal.value],
       ["Contexte", form.elements["branch-one"].value],
       ["Échéance", form.elements.start.value],
+      ["Organisation", form.elements.organization_name.value],
+      ["Fonction", form.elements.contact_role.selectedOptions[0]?.textContent || ""],
       ["Accompagnement", form.elements.support.selectedOptions[0]?.textContent],
       [
         "Contact",
