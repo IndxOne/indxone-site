@@ -95,7 +95,7 @@ const fields = (body) => {
       referrer: body.meta?.referrer || "",
       language: body.meta?.language || "fr",
       organization_name: body.organization_name || "",
-      "contact-role": body.contact_role || "",
+      contact_role: body.contact_role || "",
       company_name: "",
       "bot-field": "",
     }).map(([key, value]) => [key, clean(value)])
